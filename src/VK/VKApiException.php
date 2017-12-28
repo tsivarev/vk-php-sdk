@@ -30,4 +30,24 @@ class VKApiException extends \Exception
         $this->error_code = $error_code;
         $this->error_msg = $error_msg;
     }
+
+    /**
+     *
+     * @return string|null
+     *
+     */
+    public function get_error_code()
+    {
+        return $this->error_code;
+    }
+
+    /**
+     *
+     * @return string|null
+     *
+     */
+    public function get_error_msg()
+    {
+        return $this->error_msg;
+    }
 }
