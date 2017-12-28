@@ -2,6 +2,8 @@
 
 namespace VK;
 
+require_once ('VKResponse.php');
+
 use VK\Exceptions\VKClientException;
 
 /**
@@ -51,5 +53,15 @@ class VKClient
         curl_close($curl);
 
         return $return_response;
+    }
+
+    /**
+     *
+     * @param string
+     *
+     */
+    public function set_api_version($api_version)
+    {
+        $this->api_version = $api_version;
     }
 }
