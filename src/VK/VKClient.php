@@ -14,6 +14,7 @@ class VKClient
     const VK_API_HOST = "https://api.vk.com/method";
 
     protected $api_version = "5.69";
+
     /**
      *
      * @param string                  $method
@@ -48,5 +49,7 @@ class VKClient
         }
 
         curl_close($curl);
+
+        return $return_response;
     }
 }

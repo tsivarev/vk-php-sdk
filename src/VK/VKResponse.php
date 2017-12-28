@@ -2,6 +2,13 @@
 
 namespace VK;
 
+use VK\Exceptions\VKApiException;
+
+/**
+ * Class VKResponse
+ *
+ * @package VK
+ */
 class VKResponse
 {
     /**
@@ -30,6 +37,11 @@ class VKResponse
     protected $decoded_body = [];
 
     /**
+     * @var VKApiException The exception thrown by api.
+     */
+    protected $thrown_exception;
+
+    /**
      * Creates a new Response entity from raw response.
      *
      * @var string|boolean The raw response from the server
@@ -39,7 +51,7 @@ class VKResponse
         $this->raw_response = $raw_response;
         $this->parse_raw_response();
 
-        $this->decodeBody();
+        $this->decode_body();
     }
 
     /**
@@ -83,6 +95,16 @@ class VKResponse
     }
 
     /**
+     * Returns the exception that was thrown for this request.
+     *
+     * @return VKApiException|null
+     */
+    public function get_thrown_exception()
+    {
+        return $this->thrown_exception;
+    }
+
+    /**
      * Breaks the raw response down into its headers, body and http status code.
      *
      */
@@ -103,10 +125,10 @@ class VKResponse
     private function extract_response_headers_and_body()
     {
         $parts = explode("\r\n\r\n", $this->raw_response);
-        $rawBody = array_pop($parts);
-        $rawHeaders = implode("\r\n\r\n", $parts);
+        $raw_body = array_pop($parts);
+        $raw_headers = implode("\r\n\r\n", $parts);
 
-        return [trim($rawHeaders), trim($rawBody)];
+        return [trim($raw_headers), trim($raw_body)];
     }
 
     /**
@@ -148,9 +170,18 @@ class VKResponse
     }
 
     /**
+     * Instantiates an exception to be thrown later.
+     */
+    public function make_exception()
+    {
+        $this->thrown_exception = new VKApiException($this->decoded_body['error']['error_code'],
+            $this->decoded_body['error']['error_msg']);
+    }
+
+    /**
      * Convert the raw response into an array if possible.
      */
-    private function decodeBody()
+    private function decode_body()
     {
         $this->decoded_body = json_decode($this->body, true);
 
@@ -162,8 +193,8 @@ class VKResponse
             $this->decoded_body = [];
         }
 
-        if (isset($this->decodedBody['error'])) {
-            $this->makeException();
+        if (isset($this->decoded_body['error'])) {
+            $this->make_exception();
         }
     }
 }
