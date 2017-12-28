@@ -14,7 +14,7 @@ class VKResponse
     /**
      * @var string|boolean The raw response from the server.
      */
-    private $raw_response;
+    protected $raw_response;
 
     /**
      * @var int The HTTP status code response.
@@ -44,7 +44,7 @@ class VKResponse
     /**
      * Creates a new Response entity from raw response.
      *
-     * @var string|boolean The raw response from the server
+     * @var string|boolean The raw response from the server.
      */
     public function __construct($raw_response)
     {
@@ -106,9 +106,8 @@ class VKResponse
 
     /**
      * Breaks the raw response down into its headers, body and http status code.
-     *
      */
-    private function parse_raw_response()
+    protected function parse_raw_response()
     {
         list($raw_headers, $raw_body) = $this->extract_response_headers_and_body();
 
@@ -118,11 +117,11 @@ class VKResponse
     }
 
     /**
-     * Extracts the headers and the body into a two-part array
+     * Extracts the headers and the body into a two-part array.
      *
      * @return array
      */
-    private function extract_response_headers_and_body()
+    protected function extract_response_headers_and_body()
     {
         $parts = explode("\r\n\r\n", $this->raw_response);
         $raw_body = array_pop($parts);
@@ -136,7 +135,7 @@ class VKResponse
      *
      * @param string The raw headers from the response.
      */
-    private function set_headers_from_string($raw_headers)
+    protected function set_headers_from_string($raw_headers)
     {
         // Normalize line breaks
         $raw_headers = str_replace("\r\n", "\n", $raw_headers);
@@ -163,7 +162,7 @@ class VKResponse
      *
      * @param string
      */
-    private function set_http_response_code_from_header($raw_response_header)
+    protected function set_http_response_code_from_header($raw_response_header)
     {
         preg_match('|HTTP/\d\.\d\s+(\d+)\s+.*|', $raw_response_header, $match);
         $this->http_status_code = (int)$match[1];
@@ -172,24 +171,30 @@ class VKResponse
     /**
      * Instantiates an exception to be thrown later.
      */
-    public function make_exception()
+    protected function make_exception()
     {
         $this->thrown_exception = new VKApiException($this->decoded_body['error']['error_code'],
             $this->decoded_body['error']['error_msg']);
     }
 
     /**
+     * Throws the exception.
+     *
+     * @throws VKApiException
+     */
+    public function throw_exception()
+    {
+        throw $this->thrown_exception;
+    }
+
+    /**
      * Convert the raw response into an array if possible.
      */
-    private function decode_body()
+    protected function decode_body()
     {
         $this->decoded_body = json_decode($this->body, true);
 
-        if ($this->decoded_body === null) {
-            $this->decoded_body = [];
-        }
-
-        if (!is_array($this->decoded_body)) {
+        if ($this->decoded_body === null || !is_array($this->decoded_body)) {
             $this->decoded_body = [];
         }
 

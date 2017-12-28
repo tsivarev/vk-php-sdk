@@ -9,8 +9,14 @@ namespace VK\Exceptions;
  */
 class VKApiException extends \Exception
 {
-
+    /**
+     * @var string|boolean The error code.
+     */
     protected $error_code;
+
+    /**
+     * @var string|boolean The error message.
+     */
     protected $error_msg;
 
     /**
