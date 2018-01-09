@@ -10,18 +10,22 @@ use VK\Exceptions\VKApiException;
  * @package VK
  */
 class VKResponse {
+    const ERROR_KEY = 'error';
+    const ERROR_CODE_KEY = 'error_code';
+    const ERROR_MSG_KEY = 'error_msg';
+
     /**
      * @var string|boolean The raw response from the server.
      */
     protected $raw_response;
 
     /**
-     * @var int The HTTP status code response.
+     * @var int The HTTP status code of the response.
      */
     protected $http_status_code;
 
     /**
-     * @var array The returned headers.
+     * @var array The headers of the response.
      */
     protected $headers;
 
@@ -36,12 +40,12 @@ class VKResponse {
     protected $decoded_body = [];
 
     /**
-     * @var VKApiException The exception thrown by api.
+     * @var VKApiException The exception thrown by API.
      */
     protected $thrown_exception;
 
     /**
-     * Creates a new Response entity from raw response.
+     * Creates a new VKResponse from the raw response.
      *
      * @var string|boolean The raw response from the server.
      */
@@ -53,7 +57,7 @@ class VKResponse {
     }
 
     /**
-     * Return the HTTP status code for this response.
+     * Returns the HTTP status code for this response.
      *
      * @return int
      */
@@ -62,7 +66,7 @@ class VKResponse {
     }
 
     /**
-     * Return the HTTP headers for this response.
+     * Returns the HTTP headers for this response.
      *
      * @return array
      */
@@ -71,7 +75,7 @@ class VKResponse {
     }
 
     /**
-     * Return the raw body response.
+     * Returns the raw body response.
      *
      * @return string
      */
@@ -80,7 +84,7 @@ class VKResponse {
     }
 
     /**
-     * Return the decoded body response.
+     * Returns the decoded body response.
      *
      * @return array
      */
@@ -122,7 +126,7 @@ class VKResponse {
     }
 
     /**
-     * Parse the raw headers and set as an array.
+     * Parses the raw headers and sets as an array.
      *
      * @param string The raw headers from the response.
      */
@@ -160,9 +164,9 @@ class VKResponse {
     /**
      * Instantiates an exception to be thrown later.
      */
-    protected function makeException() {
-        $this->thrown_exception = new VKApiException($this->decoded_body['error']['error_code'],
-            $this->decoded_body['error']['error_msg']);
+    protected function createException() {
+        $this->thrown_exception = new VKApiException($this->decoded_body[static::ERROR_KEY][static::ERROR_CODE_KEY],
+            $this->decoded_body[static::ERROR_KEY][static::ERROR_MSG_KEY]);
     }
 
     /**
@@ -175,7 +179,7 @@ class VKResponse {
     }
 
     /**
-     * Convert the raw response into an array if possible.
+     * Converts the raw response into an array if possible.
      */
     protected function decodeBody() {
         $this->decoded_body = json_decode($this->body, true);
@@ -184,8 +188,8 @@ class VKResponse {
             $this->decoded_body = [];
         }
 
-        if (isset($this->decoded_body['error'])) {
-            $this->makeException();
+        if (isset($this->decoded_body[static::ERROR_KEY])) {
+            $this->createException();
         }
     }
 }

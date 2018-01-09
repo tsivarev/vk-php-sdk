@@ -11,30 +11,32 @@ use VK\Exceptions\VKClientException;
  */
 class VKClient {
     const VK_API_HOST = 'https://api.vk.com/method';
-    const CONNECT_TIME_OUT = 10;
+    const CONNECTION_TIMEOUT = 10;
+    const VERSION_PARAM = 'v';
+    const ACCESS_TOKEN_PARAM = 'access_token';
 
     protected $api_version = '5.69';
 
     /**
      *
      * @param string $method
-     * @param array|null $params
      * @param string|null $access_token
+     * @param array|null $params
      *
      * @return VKResponse
      *
      * @throws VKClientException
      */
-    public function request($method, $params = array(), $access_token) {
-        $params['v'] = $this->api_version;
-        $params['access_token'] = $access_token;
+    public function request($method, $access_token, $params = array()) {
+        $params[static::VERSION_PARAM] = $this->api_version;
+        $params[static::ACCESS_TOKEN_PARAM] = $access_token;
 
         $url = static::VK_API_HOST . '/' . $method;
         $curl = curl_init($url);
         curl_setopt_array($curl, array(
             CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
-            CURLOPT_CONNECTTIMEOUT => static::CONNECT_TIME_OUT,
+            CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $params
         ));
