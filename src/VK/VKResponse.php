@@ -9,8 +9,7 @@ use VK\Exceptions\VKApiException;
  *
  * @package VK
  */
-class VKResponse
-{
+class VKResponse {
     /**
      * @var string|boolean The raw response from the server.
      */
@@ -46,8 +45,7 @@ class VKResponse
      *
      * @var string|boolean The raw response from the server.
      */
-    public function __construct($raw_response)
-    {
+    public function __construct($raw_response) {
         $this->raw_response = $raw_response;
         $this->parseRawResponse();
 
@@ -59,8 +57,7 @@ class VKResponse
      *
      * @return int
      */
-    public function getHttpStatusCode()
-    {
+    public function getHttpStatusCode() {
         return $this->http_status_code;
     }
 
@@ -69,8 +66,7 @@ class VKResponse
      *
      * @return array
      */
-    public function getHeaders()
-    {
+    public function getHeaders() {
         return $this->headers;
     }
 
@@ -79,8 +75,7 @@ class VKResponse
      *
      * @return string
      */
-    public function getBody()
-    {
+    public function getBody() {
         return $this->body;
     }
 
@@ -89,8 +84,7 @@ class VKResponse
      *
      * @return array
      */
-    public function getDecodedBody()
-    {
+    public function getDecodedBody() {
         return $this->decoded_body;
     }
 
@@ -99,16 +93,14 @@ class VKResponse
      *
      * @return VKApiException|null
      */
-    public function getThrownException()
-    {
+    public function getThrownException() {
         return $this->thrown_exception;
     }
 
     /**
      * Breaks the raw response down into its headers, body and http status code.
      */
-    protected function parseRawResponse()
-    {
+    protected function parseRawResponse() {
         list($raw_headers, $raw_body) = $this->extractResponseHeadersAndBody();
 
         $this->setHeadersFromString($raw_headers);
@@ -121,8 +113,7 @@ class VKResponse
      *
      * @return array
      */
-    protected function extractResponseHeadersAndBody()
-    {
+    protected function extractResponseHeadersAndBody() {
         $parts = explode("\r\n\r\n", $this->raw_response);
         $raw_body = array_pop($parts);
         $raw_headers = implode("\r\n\r\n", $parts);
@@ -135,8 +126,7 @@ class VKResponse
      *
      * @param string The raw headers from the response.
      */
-    protected function setHeadersFromString($raw_headers)
-    {
+    protected function setHeadersFromString($raw_headers) {
         // Normalize line breaks
         $raw_headers = str_replace("\r\n", "\n", $raw_headers);
 
@@ -162,8 +152,7 @@ class VKResponse
      *
      * @param string
      */
-    protected function setHttpStatusCodeFromHeader($raw_response_header)
-    {
+    protected function setHttpStatusCodeFromHeader($raw_response_header) {
         preg_match('|HTTP/\d\.\d\s+(\d+)\s+.*|', $raw_response_header, $match);
         $this->http_status_code = (int)$match[1];
     }
@@ -171,8 +160,7 @@ class VKResponse
     /**
      * Instantiates an exception to be thrown later.
      */
-    protected function makeException()
-    {
+    protected function makeException() {
         $this->thrown_exception = new VKApiException($this->decoded_body['error']['error_code'],
             $this->decoded_body['error']['error_msg']);
     }
@@ -182,16 +170,14 @@ class VKResponse
      *
      * @throws VKApiException
      */
-    public function throwException()
-    {
+    public function throwException() {
         throw $this->thrown_exception;
     }
 
     /**
      * Convert the raw response into an array if possible.
      */
-    protected function decodeBody()
-    {
+    protected function decodeBody() {
         $this->decoded_body = json_decode($this->body, true);
 
         if ($this->decoded_body === null || !is_array($this->decoded_body)) {

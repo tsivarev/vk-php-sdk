@@ -7,7 +7,6 @@ namespace VK\Exceptions;
  *
  * @package VK
  */
-class VKClientException extends \Exception
-{
+class VKClientException extends \Exception {
 
 }

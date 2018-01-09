@@ -7,8 +7,7 @@ namespace VK\Exceptions;
  *
  * @package VK
  */
-class VKApiException extends \Exception
-{
+class VKApiException extends \Exception {
     /**
      * @var string|boolean The error code.
      */

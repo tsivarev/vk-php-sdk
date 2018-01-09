@@ -9,8 +9,7 @@ use VK\Exceptions\VKClientException;
  *
  * @package VK
  */
-class VKClient
-{
+class VKClient {
     const VK_API_HOST = 'https://api.vk.com/method';
     const CONNECT_TIME_OUT = 10;
 
@@ -18,16 +17,15 @@ class VKClient
 
     /**
      *
-     * @param string                  $method
-     * @param array|null              $params
-     * @param string|null             $access_token
+     * @param string $method
+     * @param array|null $params
+     * @param string|null $access_token
      *
      * @return VKResponse
      *
      * @throws VKClientException
      */
-    public function request($method, $params = array(), $access_token)
-    {
+    public function request($method, $params = array(), $access_token) {
         $params['v'] = $this->api_version;
         $params['access_token'] = $access_token;
 
@@ -59,8 +57,7 @@ class VKClient
      * @param string
      *
      */
-    public function setApiVersion($api_version)
-    {
+    public function setApiVersion($api_version) {
         $this->api_version = $api_version;
     }
 }
