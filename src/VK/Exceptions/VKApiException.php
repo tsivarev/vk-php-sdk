@@ -25,8 +25,7 @@ class VKApiException extends \Exception
      * @param string|null The code of the error.
      * @param string|null The message of the error.
      */
-    public function __construct($error_code, $error_msg)
-    {
+    public function __construct($error_code, $error_msg) {
         $this->error_code = $error_code;
         $this->error_msg = $error_msg;
     }
@@ -36,8 +35,7 @@ class VKApiException extends \Exception
      * @return string|null
      *
      */
-    public function get_error_code()
-    {
+    public function getErrorCode() {
         return $this->error_code;
     }
 
@@ -46,8 +44,7 @@ class VKApiException extends \Exception
      * @return string|null
      *
      */
-    public function get_error_msg()
-    {
+    public function getErrorMsg() {
         return $this->error_msg;
     }
 }

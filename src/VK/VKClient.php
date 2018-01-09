@@ -2,8 +2,6 @@
 
 namespace VK;
 
-require_once ('VKResponse.php');
-
 use VK\Exceptions\VKClientException;
 
 /**
@@ -13,9 +11,10 @@ use VK\Exceptions\VKClientException;
  */
 class VKClient
 {
-    const VK_API_HOST = "https://api.vk.com/method";
+    const VK_API_HOST = 'https://api.vk.com/method';
+    const CONNECT_TIME_OUT = 10;
 
-    protected $api_version = "5.69";
+    protected $api_version = '5.69';
 
     /**
      *
@@ -27,23 +26,23 @@ class VKClient
      *
      * @throws VKClientException
      */
-    public function request($method, $params, $access_token)
+    public function request($method, $params = array(), $access_token)
     {
-        $params["v"] = $this->api_version;
-        $params["access_token"] = $access_token;
+        $params['v'] = $this->api_version;
+        $params['access_token'] = $access_token;
 
-        $url = static::VK_API_HOST . "/$method";
+        $url = static::VK_API_HOST . '/' . $method;
         $curl = curl_init($url);
         curl_setopt_array($curl, array(
             CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
-            CURLOPT_CONNECTTIMEOUT => 10,
+            CURLOPT_CONNECTTIMEOUT => static::CONNECT_TIME_OUT,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $params
         ));
         $raw_response = curl_exec($curl);
 
-        $return_response = new VKResponse($raw_response);
+        $response = new VKResponse($raw_response);
 
         $curl_error_code = curl_errno($curl);
         if ($curl_error_code) {
@@ -52,7 +51,7 @@ class VKClient
 
         curl_close($curl);
 
-        return $return_response;
+        return $response;
     }
 
     /**
@@ -60,7 +59,7 @@ class VKClient
      * @param string
      *
      */
-    public function set_api_version($api_version)
+    public function setApiVersion($api_version)
     {
         $this->api_version = $api_version;
     }

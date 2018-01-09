@@ -1,5 +1,6 @@
 <?php
 require(dirname(getcwd()) . '/src/VK/VKClient.php');
+require(dirname(getcwd()) . '/src/VK/VKResponse.php');
 $access_token = '';
 
 $vk = new VK\VKClient();
