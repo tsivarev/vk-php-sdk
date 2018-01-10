@@ -32,14 +32,54 @@ class VKClient {
         $params[static::ACCESS_TOKEN_PARAM] = $access_token;
 
         $url = static::VK_API_HOST . '/' . $method;
-        $curl = curl_init($url);
-        curl_setopt_array($curl, array(
+
+        return $this->sendRequest($url, array(
             CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
             CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $params
         ));
+    }
+
+    /**
+     *
+     * @param string $upload_url
+     * @param string $photoPath
+     *
+     * @return VKResponse
+     *
+     * @throws VKClientException
+     */
+    public function postPhoto($upload_url, $photoPath) {
+        $files = array();
+        $files['photo'] = (class_exists('CURLFile', false)) ?
+            new \CURLFile($photoPath) : '@' . $photoPath;
+
+        return $this->sendRequest($upload_url, array(
+            CURLOPT_POST => 1,
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type:multipart/form-data"
+            ),
+            CURLOPT_HEADER => true,
+            CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => $files,
+        ));
+    }
+
+    /**
+     *
+     * @param string $url
+     * @param array $opt_array
+     *
+     * @return VKResponse
+     *
+     * @throws VKClientException
+     */
+    protected function sendRequest($url, $opt_array) {
+        $curl = curl_init($url);
+        curl_setopt_array($curl, $opt_array);
         $raw_response = curl_exec($curl);
 
         $response = new VKResponse($raw_response);

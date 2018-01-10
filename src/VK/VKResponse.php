@@ -92,6 +92,10 @@ class VKResponse {
         return $this->decoded_body;
     }
 
+    public function getResponse() {
+        return $this->getDecodedBody()['response'];
+    }
+
     /**
      * Returns the exception that was thrown for this request.
      *
