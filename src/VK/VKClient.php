@@ -46,16 +46,16 @@ class VKClient {
     /**
      *
      * @param string $upload_url
-     * @param string $type
+     * @param string $parameter_name
      * @param string $path
      *
      * @return VKResponse
      *
      * @throws VKClientException
      */
-    public function upload($upload_url, $type, $path) {
+    public function upload($upload_url, $parameter_name, $path) {
         $payload = array();
-        $payload[$type] = (class_exists('CURLFile', false)) ?
+        $payload[$parameter_name] = (class_exists('CURLFile', false)) ?
             new \CURLFile($path) : '@' . $path;
 
         return $this->sendRequest($upload_url, array(
