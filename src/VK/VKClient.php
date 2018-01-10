@@ -14,6 +14,7 @@ class VKClient {
     const CONNECTION_TIMEOUT = 10;
     const VERSION_PARAM = 'v';
     const ACCESS_TOKEN_PARAM = 'access_token';
+    const CONTENT_TYPE_HEADER = 'Content-Type:multipart/form-data';
 
     protected $api_version = '5.69';
 
@@ -32,14 +33,55 @@ class VKClient {
         $params[static::ACCESS_TOKEN_PARAM] = $access_token;
 
         $url = static::VK_API_HOST . '/' . $method;
-        $curl = curl_init($url);
-        curl_setopt_array($curl, array(
+
+        return $this->sendRequest($url, array(
             CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
             CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $params
         ));
+    }
+
+    /**
+     *
+     * @param string $upload_url
+     * @param string $parameter_name
+     * @param string $path
+     *
+     * @return VKResponse
+     *
+     * @throws VKClientException
+     */
+    public function upload($upload_url, $parameter_name, $path) {
+        $payload = array();
+        $payload[$parameter_name] = (class_exists('CURLFile', false)) ?
+            new \CURLFile($path) : '@' . $path;
+
+        return $this->sendRequest($upload_url, array(
+            CURLOPT_POST => 1,
+            CURLOPT_HTTPHEADER => array(
+                static::CONTENT_TYPE_HEADER,
+            ),
+            CURLOPT_HEADER => true,
+            CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => $payload,
+        ));
+    }
+
+    /**
+     *
+     * @param string $url
+     * @param array $options
+     *
+     * @return VKResponse
+     *
+     * @throws VKClientException
+     */
+    protected function sendRequest($url, $options) {
+        $curl = curl_init($url);
+        curl_setopt_array($curl, $options);
         $raw_response = curl_exec($curl);
 
         $response = new VKResponse($raw_response);
