@@ -3,13 +3,9 @@
 namespace VK;
 
 use VK\Exceptions\VKClientException;
+use VK\TransportClient\HttpClient;
 
-/**
- * Class HttpClient
- *
- * @package VK
- */
-class HttpClient {
+class VKAPIClient {
     const VK_API_HOST = 'https://api.vk.com/method';
     const CONNECTION_TIMEOUT = 10;
     const VERSION_PARAM = 'v';
@@ -17,6 +13,11 @@ class HttpClient {
     const CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
 
     protected $api_version = '5.69';
+    protected $http_client;
+
+    public function __construct() {
+        $this->http_client = new HttpClient();
+    }
 
     /**
      *
@@ -24,7 +25,7 @@ class HttpClient {
      * @param string|null $access_token
      * @param array|null $params
      *
-     * @return VKResponse
+     * @return \VK\VKResponse
      *
      * @throws VKClientException
      */
@@ -34,7 +35,7 @@ class HttpClient {
 
         $url = static::VK_API_HOST . '/' . $method;
 
-        return $this->sendRequest($url, array(
+        return $this->http_client->post($url, array(
             CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
             CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
@@ -49,7 +50,7 @@ class HttpClient {
      * @param string $parameter_name
      * @param string $path
      *
-     * @return VKResponse
+     * @return \VK\VKResponse
      *
      * @throws VKClientException
      */
@@ -58,7 +59,7 @@ class HttpClient {
         $payload[$parameter_name] = (class_exists('CURLFile', false)) ?
             new \CURLFile($path) : '@' . $path;
 
-        return $this->sendRequest($upload_url, array(
+        return $this->http_client->post($upload_url, array(
             CURLOPT_POST => 1,
             CURLOPT_HTTPHEADER => array(
                 static::CONTENT_TYPE_HEADER,
@@ -68,32 +69,6 @@ class HttpClient {
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $payload,
         ));
-    }
-
-    /**
-     *
-     * @param string $url
-     * @param array $options
-     *
-     * @return VKResponse
-     *
-     * @throws VKClientException
-     */
-    protected function sendRequest($url, $options) {
-        $curl = curl_init($url);
-        curl_setopt_array($curl, $options);
-        $raw_response = curl_exec($curl);
-
-        $response = new VKResponse($raw_response);
-
-        $curl_error_code = curl_errno($curl);
-        if ($curl_error_code) {
-            throw new VKClientException(curl_error($curl), $curl_error_code);
-        }
-
-        curl_close($curl);
-
-        return $response;
     }
 
     /**
