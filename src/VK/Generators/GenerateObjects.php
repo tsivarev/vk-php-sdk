@@ -186,7 +186,7 @@ class GenerateObjects {
     }
 
     protected function wrapClassMember($type, $varName) {
-        $result = PHP_EOL . $this->wrapComment(array("@var {$type}"));
+        $result = PHP_EOL . $this->wrapComment(array('@var ' . $type));
         $result .= PHP_EOL;
         $result .= $this->tab(1) . 'private ' . static::DOLLAR . $varName . ';';
         return $result;
