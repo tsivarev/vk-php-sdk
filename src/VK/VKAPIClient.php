@@ -25,7 +25,7 @@ class VKAPIClient {
      * @param string|null $access_token
      * @param array|null $params
      *
-     * @return \VK\VKResponse
+     * @return VKResponse
      *
      * @throws VKClientException
      */
@@ -35,7 +35,7 @@ class VKAPIClient {
 
         $url = static::VK_API_HOST . '/' . $method;
 
-        return $this->http_client->post($url, array(
+        return $this->sendRequest($url, array(
             CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
             CURLOPT_CONNECTTIMEOUT => static::CONNECTION_TIMEOUT,
@@ -50,7 +50,7 @@ class VKAPIClient {
      * @param string $parameter_name
      * @param string $path
      *
-     * @return \VK\VKResponse
+     * @return VKResponse
      *
      * @throws VKClientException
      */
@@ -59,7 +59,7 @@ class VKAPIClient {
         $payload[$parameter_name] = (class_exists('CURLFile', false)) ?
             new \CURLFile($path) : '@' . $path;
 
-        return $this->http_client->post($upload_url, array(
+        return $this->sendRequest($upload_url, array(
             CURLOPT_POST => 1,
             CURLOPT_HTTPHEADER => array(
                 static::CONTENT_TYPE_HEADER,
@@ -69,6 +69,27 @@ class VKAPIClient {
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $payload,
         ));
+    }
+
+
+    /**
+     *
+     * @param string $url
+     * @param array $params
+     *
+     * @return VKResponse
+     *
+     * @throws VKClientException
+     */
+    public function sendRequest($url, $params) {
+        $this->http_client->post($url, $params);
+
+        $error_code = $this->http_client->getErrorCode();
+        if ($error_code) {
+            throw new VKClientException($this->http_client->getError(), $error_code);
+        }
+
+        return new VKResponse($this->http_client->getRawResponse());
     }
 
     /**
