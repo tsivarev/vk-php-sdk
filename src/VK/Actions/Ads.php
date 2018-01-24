@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AdsCheckLinkLinkType;
 use VK\Actions\Enums\AdsGetStatisticsIdsType;
 use VK\Actions\Enums\AdsGetStatisticsPeriod;
@@ -33,10 +32,9 @@ class Ads {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAccounts($access_token, $params = array()) {
@@ -50,10 +48,9 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getClients($access_token, $params = array()) {
@@ -69,10 +66,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe created campaigns. Description of
      *        'client_specification' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createClients($access_token, $params = array()) {
@@ -88,10 +84,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe changes in clients. Description of
      *        'client_mod' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function updateClients($access_token, $params = array()) {
@@ -106,10 +101,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with IDs of deleted clients.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteClients($access_token, $params = array()) {
@@ -130,10 +124,9 @@ class Ads {
      *        IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be
      *        shown. If the parameter is null, all campaigns will be shown.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCampaigns($access_token, $params = array()) {
@@ -149,10 +142,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe created campaigns. Description of
      *        'campaign_specification' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createCampaigns($access_token, $params = array()) {
@@ -168,10 +160,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe changes in campaigns. Description of
      *        'campaign_mod' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function updateCampaigns($access_token, $params = array()) {
@@ -186,10 +177,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with IDs of deleted campaigns.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteCampaigns($access_token, $params = array()) {
@@ -214,10 +204,9 @@ class Ads {
      *        'campaign_ids' parameter contains ID of only one campaign.
      *      - integer offset: Offset. Used in the same cases as 'limit' parameter.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAds($access_token, $params = array()) {
@@ -241,10 +230,9 @@ class Ads {
      *        'campaign_ids' parameter contains ID of only one campaign.
      *      - integer offset: Offset. Used in the same cases as 'limit' parameter.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAdsLayout($access_token, $params = array()) {
@@ -268,10 +256,9 @@ class Ads {
      *        'campaign_ids' parameter contains ID of only one campaign.
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAdsTargeting($access_token, $params = array()) {
@@ -287,10 +274,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe created ads. Description of
      *        'ad_specification' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createAds($access_token, $params = array()) {
@@ -306,10 +292,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe changes in ads. Description of
      *        'ad_edit_specification' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function updateAds($access_token, $params = array()) {
@@ -324,10 +309,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with ad IDs.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteAds($access_token, $params = array()) {
@@ -346,10 +330,9 @@ class Ads {
      *      - string link_url: Object URL.
      *      - integer campaign_id: Campaign ID
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function checkLink($access_token, $params = array()) {
@@ -378,10 +361,9 @@ class Ads {
      *        used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM,
      *        example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getStatistics($access_token, $params = array()) {
@@ -410,10 +392,9 @@ class Ads {
      *        used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM,
      *        example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getDemographics($access_token, $params = array()) {
@@ -428,10 +409,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ads_ids: Ads IDS separated by comma.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAdsPostsReach($access_token, $params = array()) {
@@ -445,10 +425,9 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getBudget($access_token, $params = array()) {
@@ -462,10 +441,9 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getOfficeUsers($access_token, $params = array()) {
@@ -481,10 +459,9 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe added managers. Description of
      *        'user_specification' objects see below.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addOfficeUsers($access_token, $params = array()) {
@@ -499,10 +476,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with IDs of deleted managers.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function removeOfficeUsers($access_token, $params = array()) {
@@ -528,10 +504,9 @@ class Ads {
      *      - string link_url: URL for the advertised object.
      *      - string link_domain: Domain of the advertised object.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTargetingStats($access_token, $params = array()) {
@@ -564,10 +539,9 @@ class Ads {
      *        Russian,, *ua — Ukrainian,, *en — English.
      *        @see AdsGetSuggestionsLang
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
@@ -581,10 +555,9 @@ class Ads {
      * @param $params array
      *      - string lang: Language. The full list of supported languages is [vk.com/dev/api_requests|here].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCategories($access_token, $params = array()) {
@@ -600,10 +573,9 @@ class Ads {
      *        exclusive format,, *4 — community, square image,, *7 — special app format.
      *        @see AdsGetUploadURLAdFormat
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUploadURL($access_token, $params = array()) {
@@ -616,10 +588,9 @@ class Ads {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getVideoUploadURL($access_token, $params = array()) {
@@ -634,10 +605,9 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getFloodStats($access_token, $params = array()) {
@@ -652,10 +622,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - integer ad_id: Ad ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getRejectionReason($access_token, $params = array()) {
@@ -676,10 +645,9 @@ class Ads {
      *      - integer lifetime: 'For groups with auditory created with pixel code only.', , Number of days after
      *        that users will be automatically removed from the group. '0' — not to remove users.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createTargetGroup($access_token, $params = array()) {
@@ -701,10 +669,9 @@ class Ads {
      *        in days when users added to a retarget group will be automatically excluded from it. '0' – automatic
      *        exclusion is off.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function updateTargetGroup($access_token, $params = array()) {
@@ -721,10 +688,9 @@ class Ads {
      *        where the group will be created.
      *      - integer target_group_id: Group ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteTargetGroup($access_token, $params = array()) {
@@ -741,10 +707,9 @@ class Ads {
      *        where the group will be created.
      *      - boolean extended: '1' — to return pixel code.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTargetGroups($access_token, $params = array()) {
@@ -762,10 +727,9 @@ class Ads {
      *      - integer target_group_id: Target group ID.
      *      - string contacts: List of phone numbers, emails or user IDs separated with a comma.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function importTargetContacts($access_token, $params = array()) {

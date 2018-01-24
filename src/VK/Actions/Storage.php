@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 
 class Storage {
 
@@ -27,10 +26,9 @@ class Storage {
      *      - array keys:
      *      - integer user_id:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -46,10 +44,9 @@ class Storage {
      *      - string value:
      *      - integer user_id:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function set($access_token, $params = array()) {
@@ -65,10 +62,9 @@ class Storage {
      *        method.
      *      - integer count: amount of variable names the info needs to be collected from.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getKeys($access_token, $params = array()) {

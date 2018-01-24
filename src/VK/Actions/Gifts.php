@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 
 class Gifts {
 
@@ -27,10 +26,9 @@ class Gifts {
      *      - integer count: Number of gifts to return.
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {

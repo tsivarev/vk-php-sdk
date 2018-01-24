@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\MessagesGetHistoryRev;
 use VK\Actions\Enums\MessagesGetHistoryAttachmentsMediaType;
 use VK\Actions\Enums\MessagesGetChatNameCase;
@@ -40,10 +39,9 @@ class Messages {
      *        (provided that no more than 'count' messages were received before it, otherwise 'offset' parameter shall be
      *        used).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -65,10 +63,9 @@ class Messages {
      *      - boolean important: '1' — return important conversations only.
      *      - boolean unanswered: '1' — return unanswered conversations only.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getDialogs($access_token, $params = array()) {
@@ -82,10 +79,9 @@ class Messages {
      * @param $params array
      *      - array message_ids: Message IDs.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -107,10 +103,9 @@ class Messages {
      *      - integer offset: Offset needed to return a specific subset of messages.
      *      - integer count: Number of messages to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -131,10 +126,9 @@ class Messages {
      *        messages in reverse chronological order.
      *        @see MessagesGetHistoryRev
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getHistory($access_token, $params = array()) {
@@ -156,10 +150,9 @@ class Messages {
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      *      - array fields: Additional profile [vk.com/dev/fields|fields] to return. 
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getHistoryAttachments($access_token, $params = array()) {
@@ -191,10 +184,9 @@ class Messages {
      *      - integer sticker_id: Sticker id.
      *      - boolean notification: '1' if the message is a notification (for community messages).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function send($access_token, $params = array()) {
@@ -209,10 +201,9 @@ class Messages {
      *      - array message_ids: Message IDs.
      *      - boolean spam: '1' — to mark message as spam.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -231,10 +222,9 @@ class Messages {
      *      - integer count: Number of messages to delete. "NOTE: If the number of messages exceeds the maximum,
      *        the method shall be called several times."
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteDialog($access_token, $params = array()) {
@@ -248,10 +238,9 @@ class Messages {
      * @param $params array
      *      - integer message_id: ID of a previously-deleted message to restore.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restore($access_token, $params = array()) {
@@ -268,10 +257,9 @@ class Messages {
      *        'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      *      - integer start_message_id: Message ID to start from.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function markAsRead($access_token, $params = array()) {
@@ -286,10 +274,9 @@ class Messages {
      *      - array message_ids: IDs of messages to mark as important.
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function markAsImportant($access_token, $params = array()) {
@@ -304,10 +291,9 @@ class Messages {
      *      - array peer_id: IDs of messages to mark as important.
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function markAsImportantDialog($access_token, $params = array()) {
@@ -322,10 +308,9 @@ class Messages {
      *      - array peer_id: IDs of messages to mark as important.
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function markAsUnansweredDialog($access_token, $params = array()) {
@@ -341,10 +326,9 @@ class Messages {
      *      - boolean need_pts: '1' — to return the 'pts' field, needed for the
      *        [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLongPollServer($access_token, $params = array()) {
@@ -371,10 +355,9 @@ class Messages {
      *        received with API methods (for example, , ), and data received from a Long Poll server (events with code 4)
      *        are taken into account.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLongPollHistory($access_token, $params = array()) {
@@ -394,10 +377,9 @@ class Messages {
      *        prepositional
      *        @see MessagesGetChatNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getChat($access_token, $params = array()) {
@@ -412,10 +394,9 @@ class Messages {
      *      - array user_ids: IDs of the users to be added to the chat.
      *      - string title: Chat title.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createChat($access_token, $params = array()) {
@@ -430,10 +411,9 @@ class Messages {
      *      - integer chat_id: Chat ID.
      *      - string title: New title of the chat.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editChat($access_token, $params = array()) {
@@ -453,10 +433,9 @@ class Messages {
      *        'abl' — prepositional
      *        @see MessagesGetChatUsersNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getChatUsers($access_token, $params = array()) {
@@ -473,10 +452,9 @@ class Messages {
      *      - integer peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' +
      *        'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setActivity($access_token, $params = array()) {
@@ -492,10 +470,9 @@ class Messages {
      *      - integer limit: Maximum number of results.
      *      - array fields: Profile fields to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function searchDialogs($access_token, $params = array()) {
@@ -510,10 +487,9 @@ class Messages {
      *      - integer chat_id: Chat ID.
      *      - integer user_id: ID of the user to be added to the chat.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addChatUser($access_token, $params = array()) {
@@ -529,10 +505,9 @@ class Messages {
      *      - integer chat_id: Chat ID.
      *      - string user_id: ID of the user to be removed from the chat.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function removeChatUser($access_token, $params = array()) {
@@ -546,10 +521,9 @@ class Messages {
      * @param $params array
      *      - integer user_id: User ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLastActivity($access_token, $params = array()) {
@@ -565,10 +539,9 @@ class Messages {
      *        [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an
      *        image.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setChatPhoto($access_token, $params = array()) {
@@ -582,10 +555,9 @@ class Messages {
      * @param $params array
      *      - integer chat_id: Chat ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteChatPhoto($access_token, $params = array()) {
@@ -599,10 +571,9 @@ class Messages {
      * @param $params array
      *      - integer group_id: Group ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function denyMessagesFromGroup($access_token, $params = array()) {
@@ -616,10 +587,9 @@ class Messages {
      * @param $params array
      *      - integer group_id: Group ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function allowMessagesFromGroup($access_token, $params = array()) {
@@ -634,10 +604,9 @@ class Messages {
      *      - integer group_id: Group ID.
      *      - integer user_id: User ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function isMessagesFromGroupAllowed($access_token, $params = array()) {

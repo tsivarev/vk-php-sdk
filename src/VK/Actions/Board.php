@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\BoardGetTopicsOrder;
 use VK\Actions\Enums\BoardGetTopicsPreview;
 use VK\Actions\Enums\BoardGetCommentsSort;
@@ -44,10 +43,9 @@ class Board {
      *      - integer preview_length: Number of characters after which to truncate the previewed comment. To
      *        preview the full comment, specify '0'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTopics($access_token, $params = array()) {
@@ -72,10 +70,9 @@ class Board {
      *        by creation date in reverse chronological order,
      *        @see BoardGetCommentsSort
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -98,10 +95,9 @@ class Board {
      *        ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one
      *        reference, an error will be thrown.",
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addTopic($access_token, $params = array()) {
@@ -125,10 +121,9 @@ class Board {
      *      - integer sticker_id: Sticker ID.
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createComment($access_token, $params = array()) {
@@ -143,10 +138,9 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteTopic($access_token, $params = array()) {
@@ -162,10 +156,9 @@ class Board {
      *      - integer topic_id: Topic ID.
      *      - string title: New title of the topic.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editTopic($access_token, $params = array()) {
@@ -186,10 +179,9 @@ class Board {
      *        — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner.
      *        '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editComment($access_token, $params = array()) {
@@ -205,10 +197,9 @@ class Board {
      *      - integer topic_id: Topic ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
@@ -224,10 +215,9 @@ class Board {
      *      - integer topic_id: Topic ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
@@ -242,10 +232,9 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function openTopic($access_token, $params = array()) {
@@ -260,10 +249,9 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function closeTopic($access_token, $params = array()) {
@@ -278,10 +266,9 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function fixTopic($access_token, $params = array()) {
@@ -296,10 +283,9 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function unfixTopic($access_token, $params = array()) {

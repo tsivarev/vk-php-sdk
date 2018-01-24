@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\FriendsGetOrder;
 use VK\Actions\Enums\FriendsGetNameCase;
 use VK\Actions\Enums\FriendsGetRequestsSort;
@@ -47,10 +46,9 @@ class Friends {
      *        — prepositional
      *        @see FriendsGetNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -70,10 +68,9 @@ class Friends {
      *      - integer count: Number of friends to return.
      *      - integer offset: Offset needed to return a specific subset of friends.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getOnline($access_token, $params = array()) {
@@ -95,10 +92,9 @@ class Friends {
      *      - integer count: Number of mutual friends to return.
      *      - integer offset: Offset needed to return a specific subset of mutual friends.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getMutual($access_token, $params = array()) {
@@ -112,10 +108,9 @@ class Friends {
      * @param $params array
      *      - integer count: Number of recently added friends to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getRecent($access_token, $params = array()) {
@@ -138,10 +133,9 @@ class Friends {
      *      - boolean suggested: '1' — to return a list of suggested friends, '0' — to return friend requests
      *        (default)
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getRequests($access_token, $params = array()) {
@@ -158,10 +152,9 @@ class Friends {
      *      - string text: Text of the message (up to 500 characters) for the friend request, if any.
      *      - boolean follow: '1' to pass an incoming request to followers list.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function add($access_token, $params = array()) {
@@ -176,10 +169,9 @@ class Friends {
      *      - integer user_id: ID of the user whose friend list is to be edited.
      *      - array list_ids: IDs of the friend lists to which to add the user.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -194,10 +186,9 @@ class Friends {
      *      - integer user_id: ID of the user whose friend request is to be declined or who is to be deleted from
      *        the current user's friend list.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -212,10 +203,9 @@ class Friends {
      *      - integer user_id: User ID.
      *      - boolean return_system: '1' — to return system friend lists. By default: '0'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLists($access_token, $params = array()) {
@@ -230,10 +220,9 @@ class Friends {
      *      - string name: Name of the friend list.
      *      - array user_ids: IDs of users to be added to the friend list.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addList($access_token, $params = array()) {
@@ -253,10 +242,9 @@ class Friends {
      *      - array delete_user_ids: (Applies if 'user_ids' parameter is not set.), User IDs to delete from the
      *        friend list.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editList($access_token, $params = array()) {
@@ -270,10 +258,9 @@ class Friends {
      * @param $params array
      *      - integer list_id: ID of the friend list to delete.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteList($access_token, $params = array()) {
@@ -286,10 +273,9 @@ class Friends {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAppUsers($access_token, $params = array()) {
@@ -308,10 +294,9 @@ class Friends {
      *        (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate',
      *        'contacts', 'education', 'online, counters'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getByPhones($access_token, $params = array()) {
@@ -324,10 +309,9 @@ class Friends {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteAllRequests($access_token, $params = array()) {
@@ -353,10 +337,9 @@ class Friends {
      *        , 'abl' — prepositional
      *        @see FriendsGetSuggestionsNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
@@ -373,10 +356,9 @@ class Friends {
      *        md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows
      *        to check that data has not been modified by the client. By default: '0'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function areFriends($access_token, $params = array()) {
@@ -396,10 +378,9 @@ class Friends {
      *        instrumental , 'abl' — prepositional
      *        @see FriendsGetAvailableForCallNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAvailableForCall($access_token, $params = array()) {
@@ -423,10 +404,9 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of friends.
      *      - integer count: Number of friends to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {

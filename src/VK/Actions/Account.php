@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AccountLookupContactsService;
 use VK\Actions\Enums\AccountSaveProfileInfoSex;
 use VK\Actions\Enums\AccountSaveProfileInfoRelation;
@@ -29,10 +28,9 @@ class Account {
      * @param $params array
      *      - array filter: Counters to be returned.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCounters($access_token, $params = array()) {
@@ -47,10 +45,9 @@ class Account {
      *      - integer user_id: User ID.
      *      - string name: Application screen name.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setNameInMenu($access_token, $params = array()) {
@@ -64,10 +61,9 @@ class Account {
      * @param $params array
      *      - boolean voip: '1' if videocalls are available for current device.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setOnline($access_token, $params = array()) {
@@ -80,10 +76,9 @@ class Account {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setOffline($access_token, $params = array()) {
@@ -107,10 +102,9 @@ class Account {
      *        country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation,
      *        last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function lookupContacts($access_token, $params = array()) {
@@ -130,10 +124,9 @@ class Account {
      *      - string system_version: String version of device operating system.
      *      - string settings: Push settings in a [vk.com/dev/push_settings|special format].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function registerDevice($access_token, $params = array()) {
@@ -147,10 +140,9 @@ class Account {
      * @param $params array
      *      - string device_id: Unique device ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function unregisterDevice($access_token, $params = array()) {
@@ -169,10 +161,9 @@ class Account {
      *      - integer sound: '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id'
      *        contains user or community ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setSilenceMode($access_token, $params = array()) {
@@ -186,10 +177,9 @@ class Account {
      * @param $params array
      *      - string device_id: Unique device ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getPushSettings($access_token, $params = array()) {
@@ -206,10 +196,9 @@ class Account {
      *      - string key: Notification key.
      *      - array value: New value for the key in a [vk.com/dev/push_settings|special format].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setPushSettings($access_token, $params = array()) {
@@ -223,10 +212,9 @@ class Account {
      * @param $params array
      *      - integer user_id: User ID whose settings information shall be got. By default: current user.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAppPermissions($access_token, $params = array()) {
@@ -241,10 +229,9 @@ class Account {
      * @param $params array
      *      - integer count: Number of results to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getActiveOffers($access_token, $params = array()) {
@@ -258,10 +245,9 @@ class Account {
      * @param $params array
      *      - integer user_id: User ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function banUser($access_token, $params = array()) {
@@ -275,10 +261,9 @@ class Account {
      * @param $params array
      *      - integer user_id: User ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function unbanUser($access_token, $params = array()) {
@@ -293,10 +278,9 @@ class Account {
      *      - integer offset: Offset needed to return a specific subset of results.
      *      - integer count: Number of results to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getBanned($access_token, $params = array()) {
@@ -313,10 +297,9 @@ class Account {
      *        *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,,
      *        *'lang' — user language. By default: all.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getInfo($access_token, $params = array()) {
@@ -331,10 +314,9 @@ class Account {
      *      - string name: Setting name.
      *      - string value: Setting value.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setInfo($access_token, $params = array()) {
@@ -354,10 +336,9 @@ class Account {
      *      - string old_password: Current user password.
      *      - string new_password: New password that will be set as a current
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function changePassword($access_token, $params = array()) {
@@ -370,10 +351,9 @@ class Account {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getProfileInfo($access_token, $params = array()) {
@@ -407,10 +387,9 @@ class Account {
      *      - integer city_id: User city.
      *      - string status: Status text.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveProfileInfo($access_token, $params = array()) {

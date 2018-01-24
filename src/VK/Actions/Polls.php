@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PollsGetVotersNameCase;
 
 class Polls {
@@ -29,10 +28,9 @@ class Polls {
      *      - boolean is_board: '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
      *      - integer poll_id: Poll ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -50,10 +48,9 @@ class Polls {
      *      - integer answer_id: Answer ID.
      *      - boolean is_board:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addVote($access_token, $params = array()) {
@@ -71,10 +68,9 @@ class Polls {
      *      - integer answer_id: Answer ID.
      *      - boolean is_board:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteVote($access_token, $params = array()) {
@@ -104,10 +100,9 @@ class Polls {
      *        , 'abl' — prepositional
      *        @see PollsGetVotersNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getVoters($access_token, $params = array()) {
@@ -127,10 +122,9 @@ class Polls {
      *      - string add_answers: available answers list, for example: " ["yes","no","maybe"]", There can be from 1
      *        to 10 answers.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function create($access_token, $params = array()) {
@@ -150,10 +144,9 @@ class Polls {
      *        new answer text. Example: {"382967099":"option1", "382967103":"option2"}"
      *      - string delete_answers: list of answer ids to be deleted. For example: "[382967099, 382967103]"
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function edit($access_token, $params = array()) {

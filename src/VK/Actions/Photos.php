@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PhotosGetAlbumId;
 use VK\Actions\Enums\PhotosReportReason;
 use VK\Actions\Enums\PhotosReportCommentReason;
@@ -35,10 +34,9 @@ class Photos {
      *      - boolean upload_by_admins_only:
      *      - boolean comments_disabled:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createAlbum($access_token, $params = array()) {
@@ -59,10 +57,9 @@ class Photos {
      *      - boolean upload_by_admins_only:
      *      - boolean comments_disabled:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
@@ -82,10 +79,9 @@ class Photos {
      *      - boolean need_covers: '1' — to return an additional 'thumb_src' field, '0' — (default)
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
@@ -114,10 +110,9 @@ class Photos {
      *      - integer offset:
      *      - integer count:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -132,10 +127,9 @@ class Photos {
      *      - integer user_id: User ID.
      *      - integer group_id: Community ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAlbumsCount($access_token, $params = array()) {
@@ -154,10 +148,9 @@ class Photos {
      *      - boolean extended: '1' — to return additional fields, '0' — (default)
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -173,10 +166,9 @@ class Photos {
      *      - integer group_id: ID of community that owns the album (if the photo will be uploaded to a community
      *        album).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUploadServer($access_token, $params = array()) {
@@ -195,10 +187,9 @@ class Photos {
      *      - integer crop_x2: X coordinate of the right-bottom corner
      *      - integer crop_y2: Y coordinate of the right-bottom corner
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getOwnerCoverPhotoUploadServer($access_token, $params = array()) {
@@ -213,10 +204,9 @@ class Photos {
      *      - integer owner_id: identifier of a community or current user. "Note that community id must be
      *        negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getOwnerPhotoUploadServer($access_token, $params = array()) {
@@ -233,10 +223,9 @@ class Photos {
      *      - integer crop_y: 
      *      - integer crop_width: Width (in pixels) of the photo after cropping.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getChatUploadServer($access_token, $params = array()) {
@@ -254,10 +243,9 @@ class Photos {
      *      - integer crop_y: Y coordinate of the crop left upper corner.
      *      - integer crop_width: Width of the cropped photo in px.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getMarketUploadServer($access_token, $params = array()) {
@@ -271,10 +259,9 @@ class Photos {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getMarketAlbumUploadServer($access_token, $params = array()) {
@@ -293,10 +280,9 @@ class Photos {
      *      - string crop_data: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *      - string crop_hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveMarketPhoto($access_token, $params = array()) {
@@ -311,10 +297,9 @@ class Photos {
      *      - string photo: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveOwnerCoverPhoto($access_token, $params = array()) {
@@ -331,10 +316,9 @@ class Photos {
      *      - integer server: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveMarketAlbumPhoto($access_token, $params = array()) {
@@ -351,10 +335,9 @@ class Photos {
      *      - string hash: parameter returned after [vk.com/dev/upload_files|photo upload].
      *      - string photo: parameter returned after [vk.com/dev/upload_files|photo upload].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveOwnerPhoto($access_token, $params = array()) {
@@ -376,10 +359,9 @@ class Photos {
      *      - number longitude: Geographical longitude, in degrees (from '-180' to '180').
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveWallPhoto($access_token, $params = array()) {
@@ -393,10 +375,9 @@ class Photos {
      * @param $params array
      *      - integer group_id: ID of community to whose wall the photo will be uploaded.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getWallUploadServer($access_token, $params = array()) {
@@ -409,10 +390,9 @@ class Photos {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getMessagesUploadServer($access_token, $params = array()) {
@@ -429,10 +409,9 @@ class Photos {
      *      - integer server:
      *      - string hash:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveMessagesPhoto($access_token, $params = array()) {
@@ -450,10 +429,9 @@ class Photos {
      *        extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see PhotosReportReason
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function report($access_token, $params = array()) {
@@ -471,10 +449,9 @@ class Photos {
      *        '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see PhotosReportCommentReason
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function reportComment($access_token, $params = array()) {
@@ -497,10 +474,9 @@ class Photos {
      *      - integer radius: Radius of search in meters (works very approximately). Available values: '10', '100',
      *        '800', '6000', '50000'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -521,10 +497,9 @@ class Photos {
      *      - number longitude: Geographical longitude, in degrees (from '-180' to '180').
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function save($access_token, $params = array()) {
@@ -540,10 +515,9 @@ class Photos {
      *      - integer photo_id: photo ID
      *      - string access_key: for private photos
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function copy($access_token, $params = array()) {
@@ -565,10 +539,9 @@ class Photos {
      *      - string foursquare_id:
      *      - boolean delete_place:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -584,10 +557,9 @@ class Photos {
      *      - integer target_album_id: ID of the album to which the photo will be moved.
      *      - integer photo_id: Photo ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function move($access_token, $params = array()) {
@@ -603,10 +575,9 @@ class Photos {
      *      - integer photo_id: Photo ID.
      *      - integer album_id: Album ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function makeCover($access_token, $params = array()) {
@@ -623,10 +594,9 @@ class Photos {
      *      - integer before: ID of the album before which the album in question shall be placed.
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
@@ -643,10 +613,9 @@ class Photos {
      *      - integer before: ID of the photo before which the photo in question shall be placed.
      *      - integer after: ID of the photo after which the photo in question shall be placed.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function reorderPhotos($access_token, $params = array()) {
@@ -671,10 +640,9 @@ class Photos {
      *      - boolean skip_hidden: '1' – not to return photos being hidden from the block above the wall. Works
      *        only with owner_id>0, no_service_albums is ignored.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAll($access_token, $params = array()) {
@@ -693,10 +661,9 @@ class Photos {
      *      - string sort: Sort order: '1' — by date the tag was added in ascending order, '0' — by date the
      *        tag was added in descending order
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUserPhotos($access_token, $params = array()) {
@@ -711,10 +678,9 @@ class Photos {
      *      - integer album_id: Album ID.
      *      - integer group_id: ID of the community that owns the album.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
@@ -729,10 +695,9 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer photo_id: Photo ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -747,10 +712,9 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer photo_id: Photo ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restore($access_token, $params = array()) {
@@ -766,10 +730,9 @@ class Photos {
      *      - string photo_id: Photo ID.
      *      - integer tag_id: Tag ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function confirmTag($access_token, $params = array()) {
@@ -793,10 +756,9 @@ class Photos {
      *      - boolean extended:
      *      - array fields:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -816,10 +778,9 @@ class Photos {
      *      - integer offset: Offset needed to return a specific subset of comments. By default, '0'.
      *      - integer count: Number of comments to return. By default, '20'. Maximum value, '100'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAllComments($access_token, $params = array()) {
@@ -844,10 +805,9 @@ class Photos {
      *      - string access_key:
      *      - string guid:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createComment($access_token, $params = array()) {
@@ -862,10 +822,9 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer comment_id: Comment ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
@@ -880,10 +839,9 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer comment_id: ID of the deleted comment.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
@@ -903,10 +861,9 @@ class Photos {
      *        — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner
      *        ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editComment($access_token, $params = array()) {
@@ -922,10 +879,9 @@ class Photos {
      *      - integer photo_id: Photo ID.
      *      - string access_key:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTags($access_token, $params = array()) {
@@ -945,10 +901,9 @@ class Photos {
      *      - number x2: Lower right-corner coordinate of the tagged area (as a percentage of the photo's width).
      *      - number y2: Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function putTag($access_token, $params = array()) {
@@ -964,10 +919,9 @@ class Photos {
      *      - integer photo_id: Photo ID.
      *      - integer tag_id: Tag ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function removeTag($access_token, $params = array()) {
@@ -982,10 +936,9 @@ class Photos {
      *      - integer offset: Offset needed to return a specific subset of photos.
      *      - integer count: Number of photos to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getNewTags($access_token, $params = array()) {

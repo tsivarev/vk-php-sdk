@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 
 class Database {
 
@@ -29,10 +28,9 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of countries.
      *      - integer count: Number of countries to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCountries($access_token, $params = array()) {
@@ -50,10 +48,9 @@ class Database {
      *      - integer offset: Offset needed to return specific subset of regions.
      *      - integer count: Number of regions to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getRegions($access_token, $params = array()) {
@@ -67,10 +64,9 @@ class Database {
      * @param $params array
      *      - array street_ids: Street IDs.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getStreetsById($access_token, $params = array()) {
@@ -84,10 +80,9 @@ class Database {
      * @param $params array
      *      - array country_ids: Country IDs.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCountriesById($access_token, $params = array()) {
@@ -107,10 +102,9 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of cities.
      *      - integer count: Number of cities to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCities($access_token, $params = array()) {
@@ -124,10 +118,9 @@ class Database {
      * @param $params array
      *      - array city_ids: City IDs.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCitiesById($access_token, $params = array()) {
@@ -145,10 +138,9 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of universities.
      *      - integer count: Number of universities to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUniversities($access_token, $params = array()) {
@@ -165,10 +157,9 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of schools.
      *      - integer count: Number of schools to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSchools($access_token, $params = array()) {
@@ -182,10 +173,9 @@ class Database {
      * @param $params array
      *      - integer country_id: Country ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSchoolClasses($access_token, $params = array()) {
@@ -201,10 +191,9 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of faculties.
      *      - integer count: Number of faculties to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getFaculties($access_token, $params = array()) {
@@ -220,10 +209,9 @@ class Database {
      *      - integer offset: offset required to get a certain subset of chairs
      *      - integer count: amount of chairs to get
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getChairs($access_token, $params = array()) {

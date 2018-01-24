@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\UsersGetNameCase;
 use VK\Actions\Enums\UsersSearchSort;
 use VK\Actions\Enums\UsersSearchSex;
@@ -41,10 +40,9 @@ class Users {
      *        prepositional
      *        @see UsersGetNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -96,10 +94,9 @@ class Users {
      *      - integer group_id: ID of a community to search in communities.
      *      - array from_list:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -113,10 +110,9 @@ class Users {
      * @param $params array
      *      - integer user_id:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function isAppUser($access_token, $params = array()) {
@@ -135,10 +131,9 @@ class Users {
      *      - integer count: Number of users and communities to return.
      *      - array fields:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSubscriptions($access_token, $params = array()) {
@@ -161,10 +156,9 @@ class Users {
      *        'abl' — prepositional
      *        @see UsersGetFollowersNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getFollowers($access_token, $params = array()) {
@@ -182,10 +176,9 @@ class Users {
      *        @see UsersReportType
      *      - string comment: Comment describing the complaint.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function report($access_token, $params = array()) {
@@ -214,10 +207,9 @@ class Users {
      *        prepositional
      *        @see UsersGetNearbyNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getNearby($access_token, $params = array()) {

@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\LikesGetListType;
 use VK\Actions\Enums\LikesGetListFilter;
 use VK\Actions\Enums\LikesAddType;
@@ -56,10 +55,9 @@ class Likes {
      *        set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
      *      - boolean skip_own:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getList($access_token, $params = array()) {
@@ -80,10 +78,9 @@ class Likes {
      *      - integer item_id: Object ID.
      *      - string access_key: Access key required for an object owned by a private entity.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function add($access_token, $params = array()) {
@@ -103,10 +100,9 @@ class Likes {
      *      - integer owner_id: ID of the user or community that owns the object.
      *      - integer item_id: Object ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -127,10 +123,9 @@ class Likes {
      *      - integer owner_id: ID of the user or community that owns the object.
      *      - integer item_id: Object ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function isLiked($access_token, $params = array()) {

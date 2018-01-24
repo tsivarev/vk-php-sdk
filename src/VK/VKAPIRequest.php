@@ -9,19 +9,19 @@ use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
 class VKAPIRequest {
-   
-    protected $api_version = '5.69';
-    protected $host;
-
-    const CONNECTION_TIMEOUT = 10;
     const VERSION_PARAM = 'v';
     const ACCESS_TOKEN_PARAM = 'access_token';
+
+    const CONNECTION_TIMEOUT = 10;
+    const STATUS_CODE_OK = 200;
 
     const ERROR_KEY = 'error';
     const ERROR_CODE_KEY = 'error_code';
     const ERROR_MSG_KEY = 'error_msg';
 
+    protected $api_version = '5.69';
     protected $http_client;
+    protected $host;
 
     public function __construct($host) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
@@ -35,19 +35,22 @@ class VKAPIRequest {
      * @param string|null $access_token
      * @param array|null $params
      *
-     * @return array
+     * @return mixed
      *
      * @throws VKClientException
      * @throws VKApiException
-     * @throws HttpRequestException
      */
     public function post($method, $access_token, $params = array()) {
         $params[static::VERSION_PARAM] = $this->api_version;
         $params[static::ACCESS_TOKEN_PARAM] = $access_token;
 
         $url = $this->host . '/' . $method;
-        
-        $response = $this->http_client->post($url, $params);
+
+        try {
+            $response = $this->http_client->post($url, $params);
+        } catch (HttpRequestException $e) {
+            throw new VKClientException($e);
+        }
 
         return $this->checkResponse($response);
     }
@@ -59,31 +62,34 @@ class VKAPIRequest {
      * @param string $parameter_name
      * @param string $path
      *
-     * @return array
+     * @return mixed
      *
      * @throws VKClientException
      * @throws VKApiException
-     * @throws HttpRequestException
      */
     public function upload($upload_url, $parameter_name, $path) {
-        $response = $this->http_client->upload($upload_url, $parameter_name, $path);
+        try {
+            $response = $this->http_client->upload($upload_url, $parameter_name, $path);
+        } catch (HttpRequestException $e) {
+            throw new VKClientException($e);
+        }
 
         return $this->checkResponse($response);
     }
 
     /**
-     * Decodes the response and checks its status code and whether it has an API error.
+     * Decodes the response and checks its status code and whether it has an API error. Returns decoded response.
      *
      * @param TransportClientResponse $response
      *
-     * @return array
+     * @return mixed
      *
      * @throws VKApiException
-     * @throws HttpRequestException
+     * @throws VKClientException
      */
     private function checkResponse($response) {
-        if ($response->getHttpStatus() != 200) {
-            throw new HttpRequestException();
+        if ($response->getHttpStatus() != static::STATUS_CODE_OK) {
+            throw new VKClientException('Invalid http status.');
         }
 
         $body = $response->getBody();
@@ -102,7 +108,7 @@ class VKAPIRequest {
      *
      * @param string
      *
-     * @return array
+     * @return mixed
      */
     private function decodeBody($body) {
         $decoded_body = json_decode($body, true);

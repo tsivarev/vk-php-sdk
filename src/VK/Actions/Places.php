@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PlacesSearchRadius;
 
 class Places {
@@ -35,10 +34,9 @@ class Places {
      *        [vk.com/dev/database.getCities|database.getCities] method.
      *      - string address: Street address of the location (e.g., '125 Elm Street').
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function add($access_token, $params = array()) {
@@ -52,10 +50,9 @@ class Places {
      * @param $params array
      *      - array places: Location IDs.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -78,10 +75,9 @@ class Places {
      *      - integer offset: Offset needed to return a specific subset of locations.
      *      - integer count: Number of locations to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -102,10 +98,9 @@ class Places {
      *      - array services: List of services or websites (e.g., 'twitter', 'facebook') to which the check-in will
      *        be exported, if the user has set up the respective option.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function checkin($access_token, $params = array()) {
@@ -133,10 +128,9 @@ class Places {
      *      - boolean need_places: '1' — to return location information with the check-ins. (Ignored if 'place'
      *        is not set.),
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCheckins($access_token, $params = array()) {
@@ -149,10 +143,9 @@ class Places {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTypes($access_token, $params = array()) {

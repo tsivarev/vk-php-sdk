@@ -36,7 +36,6 @@ class GenerateActions {
     const USE_VK_API_REQUEST = 'use VK\VKAPIRequest;';
     const USE_VK_CLIENT_EXCEPTION = 'use VK\Exceptions\VKClientException;';
     const USE_VK_API_EXCEPTION = 'use VK\Exceptions\VKAPIException;';
-    const USE_HTTP_REQUEST_EXCEPTION = 'use VK\Exceptions\HttpRequestException;';
     private $response = null;
     private $api_client_use = '';
     private $api_client_members = '';
@@ -84,7 +83,6 @@ class GenerateActions {
             $action_class_use = PHP_EOL . static::USE_VK_API_REQUEST;
             $action_class_use .= PHP_EOL . static::USE_VK_CLIENT_EXCEPTION;
             $action_class_use .= PHP_EOL . static::USE_VK_API_EXCEPTION;
-            $action_class_use .= PHP_EOL . static::USE_HTTP_REQUEST_EXCEPTION;
             $action_class_use .= $this->addActionEnumsToUse($action_methods, $action_name);
             $action_class_members = $this->api_request_member;
             $action_class_construct = $this->wrapConstruct('$client',
@@ -211,8 +209,8 @@ class GenerateActions {
         $method_description_array = explode(PHP_EOL, $method_description);
 
         $result .= $this->wrapComment(array_merge($method_description_array, array('', '@param $access_token string',
-                '@param $params array'), $params, array('', '@return array',
-                '@throws VKClientException', '@throws VKAPIException', '@throws HttpRequestException', ''))) . PHP_EOL;
+                '@param $params array'), $params, array('', '@return mixed',
+                '@throws VKClientException error on the API side', '@throws VKAPIException network error', ''))) . PHP_EOL;
 
         $result .= $this->tab(1) . 'public function ' . $method_name . '(' . static::DOLLAR . 'access_token'
             . ', ' . static::DOLLAR . 'params = array()) {' . PHP_EOL;

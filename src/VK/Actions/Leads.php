@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\LeadsGetUsersStatus;
 
 class Leads {
@@ -28,10 +27,9 @@ class Leads {
      *      - string secret: Secret key from the lead testing interface.
      *      - string comment: Comment text.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function complete($access_token, $params = array()) {
@@ -46,10 +44,9 @@ class Leads {
      *      - integer lead_id: Lead ID.
      *      - string secret: Secret key from the lead testing interface.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function start($access_token, $params = array()) {
@@ -66,10 +63,9 @@ class Leads {
      *      - string date_start: Day to start stats from (YYYY_MM_DD, e.g.2011-09-17).
      *      - string date_end: Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getStats($access_token, $params = array()) {
@@ -91,10 +87,9 @@ class Leads {
      *      - boolean reverse: Sort order. Possible values: *'1' — chronological,, *'0' — reverse
      *        chronological.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUsers($access_token, $params = array()) {
@@ -111,10 +106,9 @@ class Leads {
      *      - integer age: User age.
      *      - string country: User country code.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function checkUser($access_token, $params = array()) {
@@ -128,10 +122,9 @@ class Leads {
      * @param $params array
      *      - string data: Metric data obtained in the lead interface.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function metricHit($access_token, $params = array()) {

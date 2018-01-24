@@ -2,11 +2,6 @@
 
 namespace VK\Exceptions;
 
-/**
- * Class VKApiException
- *
- * @package VK
- */
 class VKApiException extends \Exception {
     /**
      * @var string|null The error code.

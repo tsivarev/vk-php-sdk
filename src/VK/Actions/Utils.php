@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\UtilsGetLinkStatsInterval;
 
 class Utils {
@@ -26,10 +25,9 @@ class Utils {
      * @param $params array
      *      - string url: Link to check (e.g., 'http://google.com').
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function checkLink($access_token, $params = array()) {
@@ -43,10 +41,9 @@ class Utils {
      * @param $params array
      *      - string key: Link key (characters after vk.cc/).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteFromLastShortened($access_token, $params = array()) {
@@ -61,10 +58,9 @@ class Utils {
      *      - integer count: Number of links to return.
      *      - integer offset: Offset needed to return a specific subset of links.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLastShortenedLinks($access_token, $params = array()) {
@@ -84,10 +80,9 @@ class Utils {
      *      - boolean extended: 1 — to return extended stats data (sex, age, geo). 0 — to return views number
      *        only.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLinkStats($access_token, $params = array()) {
@@ -102,10 +97,9 @@ class Utils {
      *      - string url: URL to be shortened.
      *      - boolean private: 1 — private stats, 0 — public stats.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getShortLink($access_token, $params = array()) {
@@ -120,10 +114,9 @@ class Utils {
      *      - string screen_name: Screen name of the user, community (e.g., 'apiclub,' 'andrew', or
      *        'rules_of_war'), or application.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function resolveScreenName($access_token, $params = array()) {
@@ -136,10 +129,9 @@ class Utils {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getServerTime($access_token, $params = array()) {

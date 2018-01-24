@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 
 class Fave {
 
@@ -26,10 +25,9 @@ class Fave {
      *      - integer offset: Offset needed to return a specific subset of users.
      *      - integer count: Number of users to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUsers($access_token, $params = array()) {
@@ -45,10 +43,9 @@ class Fave {
      *      - integer count: Number of photos to return.
      *      - boolean photo_sizes: '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getPhotos($access_token, $params = array()) {
@@ -65,10 +62,9 @@ class Fave {
      *      - boolean extended: '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default:
      *        '0'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getPosts($access_token, $params = array()) {
@@ -85,10 +81,9 @@ class Fave {
      *      - boolean extended: Return an additional information about videos. Also returns all owners profiles and
      *        groups.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getVideos($access_token, $params = array()) {
@@ -103,10 +98,9 @@ class Fave {
      *      - integer offset: Offset needed to return a specific subset of users.
      *      - integer count: Number of results to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLinks($access_token, $params = array()) {
@@ -122,10 +116,9 @@ class Fave {
      *      - boolean extended: '1' – to return additional fields 'likes, can_comment, can_repost, photos'. By
      *        default: '0'.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getMarketItems($access_token, $params = array()) {
@@ -139,10 +132,9 @@ class Fave {
      * @param $params array
      *      - integer user_id: Profile ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addUser($access_token, $params = array()) {
@@ -156,10 +148,9 @@ class Fave {
      * @param $params array
      *      - integer user_id: Profile ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function removeUser($access_token, $params = array()) {
@@ -173,10 +164,9 @@ class Fave {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addGroup($access_token, $params = array()) {
@@ -190,10 +180,9 @@ class Fave {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function removeGroup($access_token, $params = array()) {
@@ -208,10 +197,9 @@ class Fave {
      *      - string link: Link URL.
      *      - string text: Description text.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addLink($access_token, $params = array()) {
@@ -225,10 +213,9 @@ class Fave {
      * @param $params array
      *      - string link_id: Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function removeLink($access_token, $params = array()) {

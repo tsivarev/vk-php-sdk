@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\WallGetFilter;
 use VK\Actions\Enums\WallGetCommentsSort;
 use VK\Actions\Enums\WallReportPostReason;
@@ -40,10 +39,9 @@ class Wall {
      *        additional fields (default)
      *      - array fields:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -64,10 +62,9 @@ class Wall {
      *      - boolean extended: show extended post info.
      *      - array fields:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -87,10 +84,9 @@ class Wall {
      *        that is returned if the post is a repost from another wall.
      *      - array fields:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -128,10 +124,9 @@ class Wall {
      *      - string guid:
      *      - boolean mark_as_ads:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function post($access_token, $params = array()) {
@@ -148,10 +143,9 @@ class Wall {
      *      - integer group_id: Target community ID when reposting to a community.
      *      - boolean mark_as_ads:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function repost($access_token, $params = array()) {
@@ -169,10 +163,9 @@ class Wall {
      *      - integer offset: Offset needed to return a specific subset of reposts.
      *      - integer count: Number of reposts to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getReposts($access_token, $params = array()) {
@@ -207,10 +200,9 @@ class Wall {
      *      - integer place_id: ID of the location where the user was tagged.
      *      - boolean mark_as_ads:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -225,10 +217,9 @@ class Wall {
      *      - integer owner_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer post_id: ID of the post to be deleted.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -244,10 +235,9 @@ class Wall {
      *        to designate a community ID.
      *      - integer post_id: ID of the post to be restored.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restore($access_token, $params = array()) {
@@ -263,10 +253,9 @@ class Wall {
      *        negative value to designate a community ID.
      *      - integer post_id: Post ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function pin($access_token, $params = array()) {
@@ -282,10 +271,9 @@ class Wall {
      *        negative value to designate a community ID.
      *      - integer post_id: Post ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function unpin($access_token, $params = array()) {
@@ -310,10 +298,9 @@ class Wall {
      *        default, '90'. Specify '0' if you do not want to truncate comments.
      *      - boolean extended:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -337,10 +324,9 @@ class Wall {
      *      - integer sticker_id: Sticker ID.
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function createComment($access_token, $params = array()) {
@@ -360,10 +346,9 @@ class Wall {
      *        — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner.
      *        '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function editComment($access_token, $params = array()) {
@@ -378,10 +363,9 @@ class Wall {
      *      - integer owner_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
@@ -396,10 +380,9 @@ class Wall {
      *      - integer owner_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
@@ -417,10 +400,9 @@ class Wall {
      *        – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see WallReportPostReason
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function reportPost($access_token, $params = array()) {
@@ -438,10 +420,9 @@ class Wall {
      *        '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see WallReportCommentReason
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function reportComment($access_token, $params = array()) {

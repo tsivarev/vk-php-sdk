@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PagesSaveAccessView;
 use VK\Actions\Enums\PagesSaveAccessEdit;
 
@@ -33,10 +32,9 @@ class Pages {
      *      - boolean need_source:
      *      - boolean need_html: '1' — to return the page as HTML,
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -54,10 +52,9 @@ class Pages {
      *      - integer user_id: 
      *      - string title: Wiki page title.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function save($access_token, $params = array()) {
@@ -79,10 +76,9 @@ class Pages {
      *        users can edit the page, '0' — only community managers
      *        @see PagesSaveAccessEdit
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveAccess($access_token, $params = array()) {
@@ -98,10 +94,9 @@ class Pages {
      *      - integer group_id: ID of the community that owns the wiki page.
      *      - integer user_id: 
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getHistory($access_token, $params = array()) {
@@ -115,10 +110,9 @@ class Pages {
      * @param $params array
      *      - integer group_id: ID of the community that owns the wiki page.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTitles($access_token, $params = array()) {
@@ -135,10 +129,9 @@ class Pages {
      *      - integer user_id: 
      *      - boolean need_html: '1' — to return the page as HTML
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getVersion($access_token, $params = array()) {
@@ -153,10 +146,9 @@ class Pages {
      *      - string text: Text of the wiki page.
      *      - integer group_id: ID of the group in the context of which this markup is interpreted.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function parseWiki($access_token, $params = array()) {
@@ -170,10 +162,9 @@ class Pages {
      * @param $params array
      *      - string url: Address of the page where you need to refesh the cached version
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function clearCache($access_token, $params = array()) {

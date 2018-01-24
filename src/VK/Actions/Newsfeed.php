@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\NewsfeedGetBannedNameCase;
 use VK\Actions\Enums\NewsfeedIgnoreItemType;
 use VK\Actions\Enums\NewsfeedUnignoreItemType;
@@ -47,10 +46,9 @@ class Newsfeed {
      *      - array fields: Additional fields of [vk.com/dev/fields|profiles] and
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -72,10 +70,9 @@ class Newsfeed {
      *      - array fields: Additional fields of [vk.com/dev/fields|profiles] and
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getRecommended($access_token, $params = array()) {
@@ -103,10 +100,9 @@ class Newsfeed {
      *      - array fields: Additional fields of [vk.com/dev/fields|profiles] and
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -124,10 +120,9 @@ class Newsfeed {
      *      - integer offset: Offset needed to return a specific subset of posts.
      *      - integer count: Number of posts to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getMentions($access_token, $params = array()) {
@@ -146,10 +141,9 @@ class Newsfeed {
      *        'abl' — prepositional
      *        @see NewsfeedGetBannedNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getBanned($access_token, $params = array()) {
@@ -164,10 +158,9 @@ class Newsfeed {
      *      - array user_ids:
      *      - array group_ids:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addBan($access_token, $params = array()) {
@@ -182,10 +175,9 @@ class Newsfeed {
      *      - array user_ids:
      *      - array group_ids:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteBan($access_token, $params = array()) {
@@ -204,10 +196,9 @@ class Newsfeed {
      *        negative. 'owner_id=1' – user , 'owner_id=-1' – community "
      *      - integer item_id: Item identifier
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function ignoreItem($access_token, $params = array()) {
@@ -226,10 +217,9 @@ class Newsfeed {
      *        negative. 'owner_id=1' – user , 'owner_id=-1' – community "
      *      - integer item_id: Item identifier
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function unignoreItem($access_token, $params = array()) {
@@ -255,10 +245,9 @@ class Newsfeed {
      *      - array fields: Additional fields of [vk.com/dev/fields|profiles] and
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -273,10 +262,9 @@ class Newsfeed {
      *      - array list_ids: numeric list identifiers.
      *      - boolean extended: Return additional list info
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLists($access_token, $params = array()) {
@@ -294,10 +282,9 @@ class Newsfeed {
      *        must be negative numbers.
      *      - boolean no_reposts: reposts display on and off ('1' is for off).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function saveList($access_token, $params = array()) {
@@ -311,10 +298,9 @@ class Newsfeed {
      * @param $params array
      *      - integer list_id:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteList($access_token, $params = array()) {
@@ -332,10 +318,9 @@ class Newsfeed {
      *      - integer owner_id: Object owner ID.
      *      - integer item_id: Object ID.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function unsubscribe($access_token, $params = array()) {
@@ -353,10 +338,9 @@ class Newsfeed {
      *      - array fields: list of extra fields to be returned. See available fields for [vk.com/dev/fields|users]
      *        and [vk.com/dev/fields_groups|communities].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSuggestedSources($access_token, $params = array()) {

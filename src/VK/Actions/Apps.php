@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AppsGetCatalogSort;
 use VK\Actions\Enums\AppsGetPlatform;
 use VK\Actions\Enums\AppsGetNameCase;
@@ -46,10 +45,9 @@ class Apps {
      *      - integer genre_id:
      *      - string filter: 'installed' — to return list of installed apps (only for mobile platform).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
@@ -75,10 +73,9 @@ class Apps {
      *        — prepositional. (only if 'return_friends' = '1')
      *        @see AppsGetNameCase
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -99,10 +96,9 @@ class Apps {
      *      - string key: special string key to be sent with the request
      *      - boolean separate:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function sendRequest($access_token, $params = array()) {
@@ -115,10 +111,9 @@ class Apps {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function deleteAppRequests($access_token, $params = array()) {
@@ -136,10 +131,9 @@ class Apps {
      *        @see AppsGetFriendsListType
      *      - array fields: Additional profile fields, see [vk.com/dev/fields|description].
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getFriendsList($access_token, $params = array()) {
@@ -158,10 +152,9 @@ class Apps {
      *        rating among user friends.
      *      - boolean extended: 1 — to return additional info about users
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getLeaderboard($access_token, $params = array()) {
@@ -175,10 +168,9 @@ class Apps {
      * @param $params array
      *      - integer user_id:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getScore($access_token, $params = array()) {

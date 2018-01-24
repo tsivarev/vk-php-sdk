@@ -2,6 +2,7 @@
 
 namespace VK\TransportClient;
 
+use VK\Exceptions\HttpRequestException;
 use VK\Exceptions\VKClientException;
 
 class CurlHttpClient implements TransportClient {
@@ -27,7 +28,7 @@ class CurlHttpClient implements TransportClient {
      * @param array $payload
      *
      * @return TransportClientResponse
-     * @throws VKClientException
+     * @throws HttpRequestException
      */
     public function post($url, $payload = null) {
         return $this->sendRequest($url, array(
@@ -43,7 +44,7 @@ class CurlHttpClient implements TransportClient {
      * @param string $path
      *
      * @return TransportClientResponse
-     * @throws VKClientException
+     * @throws HttpRequestException
      */
     public function upload($url, $parameter_name, $path) {
         $payload = array();
@@ -65,7 +66,7 @@ class CurlHttpClient implements TransportClient {
      * @param array $opts
      *
      * @return TransportClientResponse
-     * @throws VKClientException
+     * @throws HttpRequestException
      */
     public function sendRequest($url, $opts) {
         $curl = curl_init($url);
@@ -80,7 +81,7 @@ class CurlHttpClient implements TransportClient {
         curl_close($curl);
 
         if ($curl_error || $curl_error_code) {
-            throw new VKClientException($curl_error, $curl_error_code);
+            throw new HttpRequestException("Failed curl request. Error {$curl_error_code}: {$curl_error}");
         }
 
         return $this->parseRawResponse($response);

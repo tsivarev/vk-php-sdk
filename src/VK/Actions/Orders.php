@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\OrdersChangeStateAction;
 
 class Orders {
@@ -28,10 +27,9 @@ class Orders {
      *      - boolean test_mode: if this parameter is set to 1, this method returns a list of test mode orders. By
      *        default — 0.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -48,10 +46,9 @@ class Orders {
      *      - boolean test_mode: if this parameter is set to 1, this method returns a list of test mode orders. By
      *        default — 0.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -72,10 +69,9 @@ class Orders {
      *      - boolean test_mode: if this parameter is set to 1, this method returns a list of test mode orders. By
      *        default — 0.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function changeState($access_token, $params = array()) {
@@ -90,10 +86,9 @@ class Orders {
      *      - integer user_id:
      *      - array votes:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAmount($access_token, $params = array()) {

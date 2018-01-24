@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AuthSignupSex;
 
 class Auth {
@@ -29,10 +28,9 @@ class Auth {
      *      - string client_secret:
      *      - boolean auth_by_phone:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function checkPhone($access_token, $params = array()) {
@@ -61,10 +59,9 @@ class Auth {
      *        @see AuthSignupSex
      *      - string sid: Session ID required for method recall when SMS was not delivered.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function signup($access_token, $params = array()) {
@@ -85,10 +82,9 @@ class Auth {
      *      - boolean test_mode:
      *      - integer intro:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function confirm($access_token, $params = array()) {
@@ -104,10 +100,9 @@ class Auth {
      *      - string phone: User phone number.
      *      - string last_name: User last name.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function restore($access_token, $params = array()) {

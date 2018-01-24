@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 
 class Secure {
 
@@ -24,10 +23,9 @@ class Secure {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getAppBalance($access_token, $params = array()) {
@@ -40,10 +38,9 @@ class Secure {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getTransactionsHistory($access_token, $params = array()) {
@@ -61,10 +58,9 @@ class Secure {
      *      - integer date_to: filter by end date. It is set as UNIX-time.
      *      - integer limit: number of returned posts. By default — 1000.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getSMSHistory($access_token, $params = array()) {
@@ -81,10 +77,9 @@ class Secure {
      *      - string message: 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are
      *        allowed. Maximum size is '160' characters.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function sendSMSNotification($access_token, $params = array()) {
@@ -101,10 +96,9 @@ class Secure {
      *      - string message: notification text which should be sent in 'UTF-8' encoding ('254' characters
      *        maximum).
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function sendNotification($access_token, $params = array()) {
@@ -120,10 +114,9 @@ class Secure {
      *      - integer user_id:
      *      - integer counter: counter value.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setCounter($access_token, $params = array()) {
@@ -139,10 +132,9 @@ class Secure {
      *      - integer user_id:
      *      - integer level: level value.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function setUserLevel($access_token, $params = array()) {
@@ -156,10 +148,9 @@ class Secure {
      * @param $params array
      *      - array user_ids:
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getUserLevel($access_token, $params = array()) {
@@ -177,10 +168,9 @@ class Secure {
      *      - integer value: depends on activity_id: * 1 – number, current level number,, * 2 – number, current
      *        user's points amount, , Any other value is ignored
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function addAppEvent($access_token, $params = array()) {
@@ -196,10 +186,9 @@ class Secure {
      *      - string ip: user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is
      *        required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function checkToken($access_token, $params = array()) {

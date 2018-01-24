@@ -5,7 +5,6 @@ namespace VK\Actions;
 use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
-use VK\Exceptions\HttpRequestException;
 
 class Stats {
 
@@ -28,10 +27,9 @@ class Stats {
      *      - string date_from: Latest datestamp (in Unix time) of statistics to return.
      *      - string date_to: End datestamp (in Unix time) of statistics to return.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -44,10 +42,9 @@ class Stats {
      * @param $access_token string
      * @param $params array
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function trackVisitor($access_token, $params = array()) {
@@ -63,10 +60,9 @@ class Stats {
      *      - integer post_id: wall post id. Note that stats are available only for '300' last (newest) posts on a
      *        community wall.
      * 
-     * @return array
-     * @throws VKClientException
-     * @throws VKAPIException
-     * @throws HttpRequestException
+     * @return mixed
+     * @throws VKClientException error on the API side
+     * @throws VKAPIException network error
      * 
      **/
     public function getPostReach($access_token, $params = array()) {
