@@ -3,11 +3,11 @@
 namespace VK\Actions\Enums;
 
 class VideoReportReason {
-    const _0 = "0"; // spam
-    const _1 = "1"; // child pornography
-    const _2 = "2"; // extremism
-    const _3 = "3"; // violence
-    const _4 = "4"; // drug propaganda
-    const _5 = "5"; // adult material
-    const _6 = "6"; // insult abuse
+    const SPAM = '0'; // spam
+    const CHILD_PORNOGRAPHY = '1'; // child pornography
+    const EXTREMISM = '2'; // extremism
+    const VIOLENCE = '3'; // violence
+    const DRUG_PROPAGANDA = '4'; // drug propaganda
+    const ADULT_MATERIAL = '5'; // adult material
+    const INSULT_ABUSE = '6'; // insult abuse
 }

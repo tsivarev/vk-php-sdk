@@ -3,9 +3,9 @@
 namespace VK\Actions\Enums;
 
 class AdsGetUploadURLAdFormat {
-    const _1 = "1"; // image and text
-    const _2 = "2"; // big image
-    const _3 = "3"; // exclusive format
-    const _4 = "4"; // community, square image
-    const _7 = "7"; // special app format
+    const IMAGE_AND_TEXT = '1'; // image and text
+    const BIG_IMAGE = '2'; // big image
+    const EXCLUSIVE_FORMAT = '3'; // exclusive format
+    const COMMUNITY,_SQUARE_IMAGE = '4'; // community, square image
+    const SPECIAL_APP_FORMAT = '7'; // special app format
 }

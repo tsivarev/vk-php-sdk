@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Notes {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -25,12 +27,14 @@ class Notes {
      *      - integer user_id: Note owner ID.
      *      - integer count: Number of notes to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('notes.get', $access_token, $params);
+        return $this->client->post('notes.get', $access_token, $params);
     }
 
     /**
@@ -41,12 +45,14 @@ class Notes {
      *      - integer note_id: Note ID.
      *      - integer owner_id: Note owner ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('notes.getById', $access_token, $params);
+        return $this->client->post('notes.getById', $access_token, $params);
     }
 
     /**
@@ -59,12 +65,14 @@ class Notes {
      *      - array privacy_view:
      *      - array privacy_comment:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('notes.add', $access_token, $params);
+        return $this->client->post('notes.add', $access_token, $params);
     }
 
     /**
@@ -78,12 +86,14 @@ class Notes {
      *      - array privacy_view:
      *      - array privacy_comment:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('notes.edit', $access_token, $params);
+        return $this->client->post('notes.edit', $access_token, $params);
     }
 
     /**
@@ -93,12 +103,14 @@ class Notes {
      * @param $params array
      *      - integer note_id: Note ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('notes.delete', $access_token, $params);
+        return $this->client->post('notes.delete', $access_token, $params);
     }
 
     /**
@@ -110,12 +122,14 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      *      - integer count: Number of comments to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('notes.getComments', $access_token, $params);
+        return $this->client->post('notes.getComments', $access_token, $params);
     }
 
     /**
@@ -130,12 +144,14 @@ class Notes {
      *      - string message: Comment text.
      *      - string guid:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->request('notes.createComment', $access_token, $params);
+        return $this->client->post('notes.createComment', $access_token, $params);
     }
 
     /**
@@ -147,12 +163,14 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      *      - string message: New comment text.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->request('notes.editComment', $access_token, $params);
+        return $this->client->post('notes.editComment', $access_token, $params);
     }
 
     /**
@@ -163,12 +181,14 @@ class Notes {
      *      - integer comment_id: Comment ID.
      *      - integer owner_id: Note owner ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->request('notes.deleteComment', $access_token, $params);
+        return $this->client->post('notes.deleteComment', $access_token, $params);
     }
 
     /**
@@ -179,11 +199,13 @@ class Notes {
      *      - integer comment_id: Comment ID.
      *      - integer owner_id: Note owner ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->request('notes.restoreComment', $access_token, $params);
+        return $this->client->post('notes.restoreComment', $access_token, $params);
     }
 }

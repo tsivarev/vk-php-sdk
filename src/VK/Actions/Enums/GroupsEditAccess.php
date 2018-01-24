@@ -3,7 +3,7 @@
 namespace VK\Actions\Enums;
 
 class GroupsEditAccess {
-    const _0 = "0"; // open
-    const _1 = "1"; // closed
-    const _2 = "2"; // private
+    const OPEN = '0'; // open
+    const CLOSED = '1'; // closed
+    const PRIVATE = '2'; // private
 }

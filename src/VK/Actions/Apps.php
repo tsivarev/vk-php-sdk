@@ -2,9 +2,10 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AppsGetCatalogSort;
 use VK\Actions\Enums\AppsGetPlatform;
 use VK\Actions\Enums\AppsGetNameCase;
@@ -13,8 +14,9 @@ use VK\Actions\Enums\AppsGetFriendsListType;
 use VK\Actions\Enums\AppsGetLeaderboardType;
 
 class Apps {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -44,12 +46,14 @@ class Apps {
      *      - integer genre_id:
      *      - string filter: 'installed' — to return list of installed apps (only for mobile platform).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
-        return $this->client->request('apps.getCatalog', $access_token, $params);
+        return $this->client->post('apps.getCatalog', $access_token, $params);
     }
 
     /**
@@ -71,12 +75,14 @@ class Apps {
      *        — prepositional. (only if 'return_friends' = '1')
      *        @see AppsGetNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('apps.get', $access_token, $params);
+        return $this->client->post('apps.get', $access_token, $params);
     }
 
     /**
@@ -93,12 +99,14 @@ class Apps {
      *      - string key: special string key to be sent with the request
      *      - boolean separate:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function sendRequest($access_token, $params = array()) {
-        return $this->client->request('apps.sendRequest', $access_token, $params);
+        return $this->client->post('apps.sendRequest', $access_token, $params);
     }
 
     /**
@@ -107,12 +115,14 @@ class Apps {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteAppRequests($access_token, $params = array()) {
-        return $this->client->request('apps.deleteAppRequests', $access_token, $params);
+        return $this->client->post('apps.deleteAppRequests', $access_token, $params);
     }
 
     /**
@@ -126,12 +136,14 @@ class Apps {
      *        @see AppsGetFriendsListType
      *      - array fields: Additional profile fields, see [vk.com/dev/fields|description].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getFriendsList($access_token, $params = array()) {
-        return $this->client->request('apps.getFriendsList', $access_token, $params);
+        return $this->client->post('apps.getFriendsList', $access_token, $params);
     }
 
     /**
@@ -146,12 +158,14 @@ class Apps {
      *        rating among user friends.
      *      - boolean extended: 1 — to return additional info about users
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLeaderboard($access_token, $params = array()) {
-        return $this->client->request('apps.getLeaderboard', $access_token, $params);
+        return $this->client->post('apps.getLeaderboard', $access_token, $params);
     }
 
     /**
@@ -161,11 +175,13 @@ class Apps {
      * @param $params array
      *      - integer user_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getScore($access_token, $params = array()) {
-        return $this->client->request('apps.getScore', $access_token, $params);
+        return $this->client->post('apps.getScore', $access_token, $params);
     }
 }

@@ -2,14 +2,16 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PollsGetVotersNameCase;
 
 class Polls {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -27,12 +29,14 @@ class Polls {
      *      - boolean is_board: '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
      *      - integer poll_id: Poll ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('polls.getById', $access_token, $params);
+        return $this->client->post('polls.getById', $access_token, $params);
     }
 
     /**
@@ -46,12 +50,14 @@ class Polls {
      *      - integer answer_id: Answer ID.
      *      - boolean is_board:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addVote($access_token, $params = array()) {
-        return $this->client->request('polls.addVote', $access_token, $params);
+        return $this->client->post('polls.addVote', $access_token, $params);
     }
 
     /**
@@ -65,12 +71,14 @@ class Polls {
      *      - integer answer_id: Answer ID.
      *      - boolean is_board:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteVote($access_token, $params = array()) {
-        return $this->client->request('polls.deleteVote', $access_token, $params);
+        return $this->client->post('polls.deleteVote', $access_token, $params);
     }
 
     /**
@@ -96,12 +104,14 @@ class Polls {
      *        , 'abl' — prepositional
      *        @see PollsGetVotersNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getVoters($access_token, $params = array()) {
-        return $this->client->request('polls.getVoters', $access_token, $params);
+        return $this->client->post('polls.getVoters', $access_token, $params);
     }
 
     /**
@@ -117,12 +127,14 @@ class Polls {
      *      - string add_answers: available answers list, for example: " ["yes","no","maybe"]", There can be from 1
      *        to 10 answers.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function create($access_token, $params = array()) {
-        return $this->client->request('polls.create', $access_token, $params);
+        return $this->client->post('polls.create', $access_token, $params);
     }
 
     /**
@@ -138,11 +150,13 @@ class Polls {
      *        new answer text. Example: {"382967099":"option1", "382967103":"option2"}"
      *      - string delete_answers: list of answer ids to be deleted. For example: "[382967099, 382967103]"
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('polls.edit', $access_token, $params);
+        return $this->client->post('polls.edit', $access_token, $params);
     }
 }

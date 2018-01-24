@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Status {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -24,12 +26,14 @@ class Status {
      *      - integer user_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer group_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('status.get', $access_token, $params);
+        return $this->client->post('status.get', $access_token, $params);
     }
 
     /**
@@ -41,11 +45,13 @@ class Status {
      *      - integer group_id: Identifier of a community to set a status in. If left blank the status is set to
      *        current user.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function set($access_token, $params = array()) {
-        return $this->client->request('status.set', $access_token, $params);
+        return $this->client->post('status.set', $access_token, $params);
     }
 }

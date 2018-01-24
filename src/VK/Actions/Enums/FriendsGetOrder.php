@@ -3,6 +3,6 @@
 namespace VK\Actions\Enums;
 
 class FriendsGetOrder {
-    const NAME = "name";
-    const HINTS = "hints";
+    const NAME = 'name';
+    const HINTS = 'hints';
 }

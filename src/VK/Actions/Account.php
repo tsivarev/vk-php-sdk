@@ -2,17 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AccountLookupContactsService;
 use VK\Actions\Enums\AccountSaveProfileInfoSex;
 use VK\Actions\Enums\AccountSaveProfileInfoRelation;
 use VK\Actions\Enums\AccountSaveProfileInfoBdateVisibility;
 
 class Account {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -27,12 +29,14 @@ class Account {
      * @param $params array
      *      - array filter: Counters to be returned.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCounters($access_token, $params = array()) {
-        return $this->client->request('account.getCounters', $access_token, $params);
+        return $this->client->post('account.getCounters', $access_token, $params);
     }
 
     /**
@@ -43,12 +47,14 @@ class Account {
      *      - integer user_id: User ID.
      *      - string name: Application screen name.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setNameInMenu($access_token, $params = array()) {
-        return $this->client->request('account.setNameInMenu', $access_token, $params);
+        return $this->client->post('account.setNameInMenu', $access_token, $params);
     }
 
     /**
@@ -58,12 +64,14 @@ class Account {
      * @param $params array
      *      - boolean voip: '1' if videocalls are available for current device.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setOnline($access_token, $params = array()) {
-        return $this->client->request('account.setOnline', $access_token, $params);
+        return $this->client->post('account.setOnline', $access_token, $params);
     }
 
     /**
@@ -72,12 +80,14 @@ class Account {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setOffline($access_token, $params = array()) {
-        return $this->client->request('account.setOffline', $access_token, $params);
+        return $this->client->post('account.setOffline', $access_token, $params);
     }
 
     /**
@@ -97,12 +107,14 @@ class Account {
      *        country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation,
      *        last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function lookupContacts($access_token, $params = array()) {
-        return $this->client->request('account.lookupContacts', $access_token, $params);
+        return $this->client->post('account.lookupContacts', $access_token, $params);
     }
 
     /**
@@ -118,12 +130,14 @@ class Account {
      *      - string system_version: String version of device operating system.
      *      - string settings: Push settings in a [vk.com/dev/push_settings|special format].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function registerDevice($access_token, $params = array()) {
-        return $this->client->request('account.registerDevice', $access_token, $params);
+        return $this->client->post('account.registerDevice', $access_token, $params);
     }
 
     /**
@@ -133,12 +147,14 @@ class Account {
      * @param $params array
      *      - string device_id: Unique device ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function unregisterDevice($access_token, $params = array()) {
-        return $this->client->request('account.unregisterDevice', $access_token, $params);
+        return $this->client->post('account.unregisterDevice', $access_token, $params);
     }
 
     /**
@@ -153,12 +169,14 @@ class Account {
      *      - integer sound: '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id'
      *        contains user or community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setSilenceMode($access_token, $params = array()) {
-        return $this->client->request('account.setSilenceMode', $access_token, $params);
+        return $this->client->post('account.setSilenceMode', $access_token, $params);
     }
 
     /**
@@ -168,12 +186,14 @@ class Account {
      * @param $params array
      *      - string device_id: Unique device ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getPushSettings($access_token, $params = array()) {
-        return $this->client->request('account.getPushSettings', $access_token, $params);
+        return $this->client->post('account.getPushSettings', $access_token, $params);
     }
 
     /**
@@ -186,12 +206,14 @@ class Account {
      *      - string key: Notification key.
      *      - array value: New value for the key in a [vk.com/dev/push_settings|special format].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setPushSettings($access_token, $params = array()) {
-        return $this->client->request('account.setPushSettings', $access_token, $params);
+        return $this->client->post('account.setPushSettings', $access_token, $params);
     }
 
     /**
@@ -201,12 +223,14 @@ class Account {
      * @param $params array
      *      - integer user_id: User ID whose settings information shall be got. By default: current user.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAppPermissions($access_token, $params = array()) {
-        return $this->client->request('account.getAppPermissions', $access_token, $params);
+        return $this->client->post('account.getAppPermissions', $access_token, $params);
     }
 
     /**
@@ -217,12 +241,14 @@ class Account {
      * @param $params array
      *      - integer count: Number of results to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getActiveOffers($access_token, $params = array()) {
-        return $this->client->request('account.getActiveOffers', $access_token, $params);
+        return $this->client->post('account.getActiveOffers', $access_token, $params);
     }
 
     /**
@@ -232,12 +258,14 @@ class Account {
      * @param $params array
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function banUser($access_token, $params = array()) {
-        return $this->client->request('account.banUser', $access_token, $params);
+        return $this->client->post('account.banUser', $access_token, $params);
     }
 
     /**
@@ -247,12 +275,14 @@ class Account {
      * @param $params array
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function unbanUser($access_token, $params = array()) {
-        return $this->client->request('account.unbanUser', $access_token, $params);
+        return $this->client->post('account.unbanUser', $access_token, $params);
     }
 
     /**
@@ -263,12 +293,14 @@ class Account {
      *      - integer offset: Offset needed to return a specific subset of results.
      *      - integer count: Number of results to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getBanned($access_token, $params = array()) {
-        return $this->client->request('account.getBanned', $access_token, $params);
+        return $this->client->post('account.getBanned', $access_token, $params);
     }
 
     /**
@@ -281,12 +313,14 @@ class Account {
      *        *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,,
      *        *'lang' — user language. By default: all.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getInfo($access_token, $params = array()) {
-        return $this->client->request('account.getInfo', $access_token, $params);
+        return $this->client->post('account.getInfo', $access_token, $params);
     }
 
     /**
@@ -297,12 +331,14 @@ class Account {
      *      - string name: Setting name.
      *      - string value: Setting value.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setInfo($access_token, $params = array()) {
-        return $this->client->request('account.setInfo', $access_token, $params);
+        return $this->client->post('account.setInfo', $access_token, $params);
     }
 
     /**
@@ -318,12 +354,14 @@ class Account {
      *      - string old_password: Current user password.
      *      - string new_password: New password that will be set as a current
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function changePassword($access_token, $params = array()) {
-        return $this->client->request('account.changePassword', $access_token, $params);
+        return $this->client->post('account.changePassword', $access_token, $params);
     }
 
     /**
@@ -332,12 +370,14 @@ class Account {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getProfileInfo($access_token, $params = array()) {
-        return $this->client->request('account.getProfileInfo', $access_token, $params);
+        return $this->client->post('account.getProfileInfo', $access_token, $params);
     }
 
     /**
@@ -367,11 +407,13 @@ class Account {
      *      - integer city_id: User city.
      *      - string status: Status text.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveProfileInfo($access_token, $params = array()) {
-        return $this->client->request('account.saveProfileInfo', $access_token, $params);
+        return $this->client->post('account.saveProfileInfo', $access_token, $params);
     }
 }

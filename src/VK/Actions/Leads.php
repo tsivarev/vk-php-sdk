@@ -2,14 +2,16 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\LeadsGetUsersStatus;
 
 class Leads {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -26,12 +28,14 @@ class Leads {
      *      - string secret: Secret key from the lead testing interface.
      *      - string comment: Comment text.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function complete($access_token, $params = array()) {
-        return $this->client->request('leads.complete', $access_token, $params);
+        return $this->client->post('leads.complete', $access_token, $params);
     }
 
     /**
@@ -42,12 +46,14 @@ class Leads {
      *      - integer lead_id: Lead ID.
      *      - string secret: Secret key from the lead testing interface.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function start($access_token, $params = array()) {
-        return $this->client->request('leads.start', $access_token, $params);
+        return $this->client->post('leads.start', $access_token, $params);
     }
 
     /**
@@ -60,12 +66,14 @@ class Leads {
      *      - string date_start: Day to start stats from (YYYY_MM_DD, e.g.2011-09-17).
      *      - string date_end: Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getStats($access_token, $params = array()) {
-        return $this->client->request('leads.getStats', $access_token, $params);
+        return $this->client->post('leads.getStats', $access_token, $params);
     }
 
     /**
@@ -83,12 +91,14 @@ class Leads {
      *      - boolean reverse: Sort order. Possible values: *'1' — chronological,, *'0' — reverse
      *        chronological.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUsers($access_token, $params = array()) {
-        return $this->client->request('leads.getUsers', $access_token, $params);
+        return $this->client->post('leads.getUsers', $access_token, $params);
     }
 
     /**
@@ -101,12 +111,14 @@ class Leads {
      *      - integer age: User age.
      *      - string country: User country code.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function checkUser($access_token, $params = array()) {
-        return $this->client->request('leads.checkUser', $access_token, $params);
+        return $this->client->post('leads.checkUser', $access_token, $params);
     }
 
     /**
@@ -116,11 +128,13 @@ class Leads {
      * @param $params array
      *      - string data: Metric data obtained in the lead interface.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function metricHit($access_token, $params = array()) {
-        return $this->client->request('leads.metricHit', $access_token, $params);
+        return $this->client->post('leads.metricHit', $access_token, $params);
     }
 }

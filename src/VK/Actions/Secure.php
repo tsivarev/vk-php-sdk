@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Secure {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -22,12 +24,14 @@ class Secure {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAppBalance($access_token, $params = array()) {
-        return $this->client->request('secure.getAppBalance', $access_token, $params);
+        return $this->client->post('secure.getAppBalance', $access_token, $params);
     }
 
     /**
@@ -36,12 +40,14 @@ class Secure {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTransactionsHistory($access_token, $params = array()) {
-        return $this->client->request('secure.getTransactionsHistory', $access_token, $params);
+        return $this->client->post('secure.getTransactionsHistory', $access_token, $params);
     }
 
     /**
@@ -55,12 +61,14 @@ class Secure {
      *      - integer date_to: filter by end date. It is set as UNIX-time.
      *      - integer limit: number of returned posts. By default — 1000.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSMSHistory($access_token, $params = array()) {
-        return $this->client->request('secure.getSMSHistory', $access_token, $params);
+        return $this->client->post('secure.getSMSHistory', $access_token, $params);
     }
 
     /**
@@ -73,12 +81,14 @@ class Secure {
      *      - string message: 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are
      *        allowed. Maximum size is '160' characters.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function sendSMSNotification($access_token, $params = array()) {
-        return $this->client->request('secure.sendSMSNotification', $access_token, $params);
+        return $this->client->post('secure.sendSMSNotification', $access_token, $params);
     }
 
     /**
@@ -91,12 +101,14 @@ class Secure {
      *      - string message: notification text which should be sent in 'UTF-8' encoding ('254' characters
      *        maximum).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function sendNotification($access_token, $params = array()) {
-        return $this->client->request('secure.sendNotification', $access_token, $params);
+        return $this->client->post('secure.sendNotification', $access_token, $params);
     }
 
     /**
@@ -108,12 +120,14 @@ class Secure {
      *      - integer user_id:
      *      - integer counter: counter value.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setCounter($access_token, $params = array()) {
-        return $this->client->request('secure.setCounter', $access_token, $params);
+        return $this->client->post('secure.setCounter', $access_token, $params);
     }
 
     /**
@@ -125,12 +139,14 @@ class Secure {
      *      - integer user_id:
      *      - integer level: level value.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setUserLevel($access_token, $params = array()) {
-        return $this->client->request('secure.setUserLevel', $access_token, $params);
+        return $this->client->post('secure.setUserLevel', $access_token, $params);
     }
 
     /**
@@ -140,12 +156,14 @@ class Secure {
      * @param $params array
      *      - array user_ids:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUserLevel($access_token, $params = array()) {
-        return $this->client->request('secure.getUserLevel', $access_token, $params);
+        return $this->client->post('secure.getUserLevel', $access_token, $params);
     }
 
     /**
@@ -159,12 +177,14 @@ class Secure {
      *      - integer value: depends on activity_id: * 1 – number, current level number,, * 2 – number, current
      *        user's points amount, , Any other value is ignored
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addAppEvent($access_token, $params = array()) {
-        return $this->client->request('secure.addAppEvent', $access_token, $params);
+        return $this->client->post('secure.addAppEvent', $access_token, $params);
     }
 
     /**
@@ -176,11 +196,13 @@ class Secure {
      *      - string ip: user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is
      *        required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function checkToken($access_token, $params = array()) {
-        return $this->client->request('secure.checkToken', $access_token, $params);
+        return $this->client->post('secure.checkToken', $access_token, $params);
     }
 }

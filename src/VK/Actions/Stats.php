@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Stats {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -26,12 +28,14 @@ class Stats {
      *      - string date_from: Latest datestamp (in Unix time) of statistics to return.
      *      - string date_to: End datestamp (in Unix time) of statistics to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('stats.get', $access_token, $params);
+        return $this->client->post('stats.get', $access_token, $params);
     }
 
     /**
@@ -40,12 +44,14 @@ class Stats {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function trackVisitor($access_token, $params = array()) {
-        return $this->client->request('stats.trackVisitor', $access_token, $params);
+        return $this->client->post('stats.trackVisitor', $access_token, $params);
     }
 
     /**
@@ -57,11 +63,13 @@ class Stats {
      *      - integer post_id: wall post id. Note that stats are available only for '300' last (newest) posts on a
      *        community wall.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getPostReach($access_token, $params = array()) {
-        return $this->client->request('stats.getPostReach', $access_token, $params);
+        return $this->client->post('stats.getPostReach', $access_token, $params);
     }
 }

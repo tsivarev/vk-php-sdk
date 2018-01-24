@@ -2,9 +2,10 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\UsersGetNameCase;
 use VK\Actions\Enums\UsersSearchSort;
 use VK\Actions\Enums\UsersSearchSex;
@@ -15,8 +16,9 @@ use VK\Actions\Enums\UsersGetNearbyRadius;
 use VK\Actions\Enums\UsersGetNearbyNameCase;
 
 class Users {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -39,12 +41,14 @@ class Users {
      *        prepositional
      *        @see UsersGetNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('users.get', $access_token, $params);
+        return $this->client->post('users.get', $access_token, $params);
     }
 
     /**
@@ -92,12 +96,14 @@ class Users {
      *      - integer group_id: ID of a community to search in communities.
      *      - array from_list:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('users.search', $access_token, $params);
+        return $this->client->post('users.search', $access_token, $params);
     }
 
     /**
@@ -107,12 +113,14 @@ class Users {
      * @param $params array
      *      - integer user_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function isAppUser($access_token, $params = array()) {
-        return $this->client->request('users.isAppUser', $access_token, $params);
+        return $this->client->post('users.isAppUser', $access_token, $params);
     }
 
     /**
@@ -127,12 +135,14 @@ class Users {
      *      - integer count: Number of users and communities to return.
      *      - array fields:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSubscriptions($access_token, $params = array()) {
-        return $this->client->request('users.getSubscriptions', $access_token, $params);
+        return $this->client->post('users.getSubscriptions', $access_token, $params);
     }
 
     /**
@@ -151,12 +161,14 @@ class Users {
      *        'abl' — prepositional
      *        @see UsersGetFollowersNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getFollowers($access_token, $params = array()) {
-        return $this->client->request('users.getFollowers', $access_token, $params);
+        return $this->client->post('users.getFollowers', $access_token, $params);
     }
 
     /**
@@ -170,12 +182,14 @@ class Users {
      *        @see UsersReportType
      *      - string comment: Comment describing the complaint.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->request('users.report', $access_token, $params);
+        return $this->client->post('users.report', $access_token, $params);
     }
 
     /**
@@ -200,11 +214,13 @@ class Users {
      *        prepositional
      *        @see UsersGetNearbyNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getNearby($access_token, $params = array()) {
-        return $this->client->request('users.getNearby', $access_token, $params);
+        return $this->client->post('users.getNearby', $access_token, $params);
     }
 }

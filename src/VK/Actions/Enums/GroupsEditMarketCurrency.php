@@ -3,9 +3,9 @@
 namespace VK\Actions\Enums;
 
 class GroupsEditMarketCurrency {
-    const _643 = "643"; // russian rubles
-    const _980 = "980"; // ukrainian hryvnia
-    const _398 = "398"; // kazakh tenge
-    const _978 = "978"; // euro
-    const _840 = "840"; // us dollars
+    const RUSSIAN_RUBLES = '643'; // russian rubles
+    const UKRAINIAN_HRYVNIA = '980'; // ukrainian hryvnia
+    const KAZAKH_TENGE = '398'; // kazakh tenge
+    const EURO = '978'; // euro
+    const US_DOLLARS = '840'; // us dollars
 }

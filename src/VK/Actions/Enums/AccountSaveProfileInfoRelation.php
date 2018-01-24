@@ -3,12 +3,12 @@
 namespace VK\Actions\Enums;
 
 class AccountSaveProfileInfoRelation {
-    const _1 = "1"; // single
-    const _2 = "2"; // relationship
-    const _3 = "3"; // engaged
-    const _4 = "4"; // married
-    const _5 = "5"; // complicated
-    const _6 = "6"; // actively searching
-    const _7 = "7"; // in love
-    const _0 = "0"; // not specified
+    const SINGLE = '1'; // single
+    const RELATIONSHIP = '2'; // relationship
+    const ENGAGED = '3'; // engaged
+    const MARRIED = '4'; // married
+    const COMPLICATED = '5'; // complicated
+    const ACTIVELY_SEARCHING = '6'; // actively searching
+    const IN_LOVE = '7'; // in love
+    const NOT_SPECIFIED = '0'; // not specified
 }

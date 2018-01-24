@@ -2,17 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\MarketSearchRev;
 use VK\Actions\Enums\MarketGetCommentsSort;
 use VK\Actions\Enums\MarketReportCommentReason;
 use VK\Actions\Enums\MarketReportReason;
 
 class Market {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -32,12 +34,14 @@ class Market {
      *      - boolean extended: '1' – method will return additional fields: 'likes, can_comment, car_repost,
      *        photos'. These parameters are not returned by default.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('market.get', $access_token, $params);
+        return $this->client->post('market.get', $access_token, $params);
     }
 
     /**
@@ -50,12 +54,14 @@ class Market {
      *      - boolean extended: '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By
      *        default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('market.getById', $access_token, $params);
+        return $this->client->post('market.getById', $access_token, $params);
     }
 
     /**
@@ -75,12 +81,14 @@ class Market {
      *      - boolean extended: '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By
      *        default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('market.search', $access_token, $params);
+        return $this->client->post('market.search', $access_token, $params);
     }
 
     /**
@@ -92,12 +100,14 @@ class Market {
      *      - integer offset: Offset needed to return a specific subset of results.
      *      - integer count: Number of items to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
-        return $this->client->request('market.getAlbums', $access_token, $params);
+        return $this->client->post('market.getAlbums', $access_token, $params);
     }
 
     /**
@@ -110,12 +120,14 @@ class Market {
      *        "
      *      - array album_ids: collections identifiers to obtain data from
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbumById($access_token, $params = array()) {
-        return $this->client->request('market.getAlbumById', $access_token, $params);
+        return $this->client->post('market.getAlbumById', $access_token, $params);
     }
 
     /**
@@ -136,12 +148,14 @@ class Market {
      *      - integer sticker_id: Sticker ID.
      *      - string guid: Random value to avoid resending one comment.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->request('market.createComment', $access_token, $params);
+        return $this->client->post('market.createComment', $access_token, $params);
     }
 
     /**
@@ -160,12 +174,14 @@ class Market {
      *        'profiles' and 'groups' objects will be returned.
      *      - array fields: List of additional profile fields to return. See the [vk.com/dev/fields|details]
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('market.getComments', $access_token, $params);
+        return $this->client->post('market.getComments', $access_token, $params);
     }
 
     /**
@@ -178,12 +194,14 @@ class Market {
      *        "
      *      - integer comment_id: comment id
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->request('market.deleteComment', $access_token, $params);
+        return $this->client->post('market.deleteComment', $access_token, $params);
     }
 
     /**
@@ -196,12 +214,14 @@ class Market {
      *        "
      *      - integer comment_id: deleted comment id
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->request('market.restoreComment', $access_token, $params);
+        return $this->client->post('market.restoreComment', $access_token, $params);
     }
 
     /**
@@ -218,12 +238,14 @@ class Market {
      *        photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' -
      *        media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->request('market.editComment', $access_token, $params);
+        return $this->client->post('market.editComment', $access_token, $params);
     }
 
     /**
@@ -238,12 +260,14 @@ class Market {
      *        — insult.
      *        @see MarketReportCommentReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->request('market.reportComment', $access_token, $params);
+        return $this->client->post('market.reportComment', $access_token, $params);
     }
 
     /**
@@ -254,12 +278,14 @@ class Market {
      *      - integer count: Number of results to return.
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCategories($access_token, $params = array()) {
-        return $this->client->request('market.getCategories', $access_token, $params);
+        return $this->client->post('market.getCategories', $access_token, $params);
     }
 
     /**
@@ -274,12 +300,14 @@ class Market {
      *        insult.
      *        @see MarketReportReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->request('market.report', $access_token, $params);
+        return $this->client->post('market.report', $access_token, $params);
     }
 
     /**
@@ -296,12 +324,14 @@ class Market {
      *      - integer main_photo_id: Cover photo ID.
      *      - array photo_ids: IDs of additional photos.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('market.add', $access_token, $params);
+        return $this->client->post('market.add', $access_token, $params);
     }
 
     /**
@@ -319,12 +349,14 @@ class Market {
      *      - integer main_photo_id: Cover photo ID.
      *      - array photo_ids: IDs of additional photos.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('market.edit', $access_token, $params);
+        return $this->client->post('market.edit', $access_token, $params);
     }
 
     /**
@@ -335,12 +367,14 @@ class Market {
      *      - integer owner_id: ID of an item owner community.
      *      - integer item_id: Item ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('market.delete', $access_token, $params);
+        return $this->client->post('market.delete', $access_token, $params);
     }
 
     /**
@@ -351,12 +385,14 @@ class Market {
      *      - integer owner_id: ID of an item owner community.
      *      - integer item_id: Deleted item ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->request('market.restore', $access_token, $params);
+        return $this->client->post('market.restore', $access_token, $params);
     }
 
     /**
@@ -370,12 +406,14 @@ class Market {
      *      - integer before: ID of an item to place current item before it.
      *      - integer after: ID of an item to place current item after it.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderItems($access_token, $params = array()) {
-        return $this->client->request('market.reorderItems', $access_token, $params);
+        return $this->client->post('market.reorderItems', $access_token, $params);
     }
 
     /**
@@ -388,12 +426,14 @@ class Market {
      *      - integer before: ID of a collection to place current collection before it.
      *      - integer after: ID of a collection to place current collection after it.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
-        return $this->client->request('market.reorderAlbums', $access_token, $params);
+        return $this->client->post('market.reorderAlbums', $access_token, $params);
     }
 
     /**
@@ -406,12 +446,14 @@ class Market {
      *      - integer photo_id: Cover photo ID.
      *      - boolean main_album: Set as main ('1' – set, '0' – no).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addAlbum($access_token, $params = array()) {
-        return $this->client->request('market.addAlbum', $access_token, $params);
+        return $this->client->post('market.addAlbum', $access_token, $params);
     }
 
     /**
@@ -425,12 +467,14 @@ class Market {
      *      - integer photo_id: Cover photo id
      *      - boolean main_album: Set as main ('1' – set, '0' – no).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
-        return $this->client->request('market.editAlbum', $access_token, $params);
+        return $this->client->post('market.editAlbum', $access_token, $params);
     }
 
     /**
@@ -441,12 +485,14 @@ class Market {
      *      - integer owner_id: ID of an collection owner community.
      *      - integer album_id: Collection ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
-        return $this->client->request('market.deleteAlbum', $access_token, $params);
+        return $this->client->post('market.deleteAlbum', $access_token, $params);
     }
 
     /**
@@ -458,12 +504,14 @@ class Market {
      *      - integer item_id: Item ID.
      *      - array album_ids: Collections IDs to remove item from.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeFromAlbum($access_token, $params = array()) {
-        return $this->client->request('market.removeFromAlbum', $access_token, $params);
+        return $this->client->post('market.removeFromAlbum', $access_token, $params);
     }
 
     /**
@@ -475,11 +523,13 @@ class Market {
      *      - integer item_id: Item ID.
      *      - array album_ids: Collections IDs to add item to.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addToAlbum($access_token, $params = array()) {
-        return $this->client->request('market.addToAlbum', $access_token, $params);
+        return $this->client->post('market.addToAlbum', $access_token, $params);
     }
 }

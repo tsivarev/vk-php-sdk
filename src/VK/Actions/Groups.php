@@ -2,9 +2,10 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\GroupsGetMembersSort;
 use VK\Actions\Enums\GroupsGetMembersFilter;
 use VK\Actions\Enums\GroupsSearchType;
@@ -27,8 +28,9 @@ use VK\Actions\Enums\GroupsEditMarketCurrency;
 use VK\Actions\Enums\GroupsEditManagerRole;
 
 class Groups {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -46,12 +48,14 @@ class Groups {
      *      - array user_ids: User IDs.
      *      - boolean extended: '1' — to return an extended response with additional fields. By default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function isMember($access_token, $params = array()) {
-        return $this->client->request('groups.isMember', $access_token, $params);
+        return $this->client->post('groups.isMember', $access_token, $params);
     }
 
     /**
@@ -63,12 +67,14 @@ class Groups {
      *      - string group_id: ID or screen name of the community.
      *      - array fields: Group fields to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('groups.getById', $access_token, $params);
+        return $this->client->post('groups.getById', $access_token, $params);
     }
 
     /**
@@ -87,12 +93,14 @@ class Groups {
      *      - integer offset: Offset needed to return a specific subset of communities.
      *      - integer count: Number of communities to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('groups.get', $access_token, $params);
+        return $this->client->post('groups.get', $access_token, $params);
     }
 
     /**
@@ -116,12 +124,14 @@ class Groups {
      *        *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
      *        @see GroupsGetMembersFilter
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getMembers($access_token, $params = array()) {
-        return $this->client->request('groups.getMembers', $access_token, $params);
+        return $this->client->post('groups.getMembers', $access_token, $params);
     }
 
     /**
@@ -133,12 +143,14 @@ class Groups {
      *      - string not_sure: Optional parameter which is taken into account when 'gid' belongs to the event: '1'
      *        — Perhaps I will attend, '0' — I will be there for sure (default), ,
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function join($access_token, $params = array()) {
-        return $this->client->request('groups.join', $access_token, $params);
+        return $this->client->post('groups.join', $access_token, $params);
     }
 
     /**
@@ -148,12 +160,14 @@ class Groups {
      * @param $params array
      *      - integer group_id: ID or screen name of the community.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function leave($access_token, $params = array()) {
-        return $this->client->request('groups.leave', $access_token, $params);
+        return $this->client->post('groups.leave', $access_token, $params);
     }
 
     /**
@@ -177,12 +191,14 @@ class Groups {
      *      - integer count: Number of communities to return. "Note that you can not receive more than first
      *        thousand of results, regardless of 'count' and 'offset' values."
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('groups.search', $access_token, $params);
+        return $this->client->post('groups.search', $access_token, $params);
     }
 
     /**
@@ -195,12 +211,14 @@ class Groups {
      *      - integer subcategory_id: Subcategory id received from
      *        [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
-        return $this->client->request('groups.getCatalog', $access_token, $params);
+        return $this->client->post('groups.getCatalog', $access_token, $params);
     }
 
     /**
@@ -211,12 +229,14 @@ class Groups {
      *      - boolean extended: 1 – to return communities count and three communities for preview. By default: 0.
      *      - boolean subcategories: 1 – to return subcategories info. By default: 0.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCatalogInfo($access_token, $params = array()) {
-        return $this->client->request('groups.getCatalogInfo', $access_token, $params);
+        return $this->client->post('groups.getCatalogInfo', $access_token, $params);
     }
 
     /**
@@ -228,12 +248,14 @@ class Groups {
      *      - integer count: Number of invitations to return.
      *      - boolean extended: '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getInvites($access_token, $params = array()) {
-        return $this->client->request('groups.getInvites', $access_token, $params);
+        return $this->client->post('groups.getInvites', $access_token, $params);
     }
 
     /**
@@ -254,12 +276,14 @@ class Groups {
      *        *'ins' — instrumental,, *'abl' — prepositional.
      *        @see GroupsGetInvitedUsersNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getInvitedUsers($access_token, $params = array()) {
-        return $this->client->request('groups.getInvitedUsers', $access_token, $params);
+        return $this->client->post('groups.getInvitedUsers', $access_token, $params);
     }
 
     /**
@@ -277,12 +301,14 @@ class Groups {
      *      - boolean comment_visible: '1' — text of comment will be visible to the user,, '0' — text of
      *        comment will be invisible to the user. By default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function banUser($access_token, $params = array()) {
-        return $this->client->request('groups.banUser', $access_token, $params);
+        return $this->client->post('groups.banUser', $access_token, $params);
     }
 
     /**
@@ -293,12 +319,14 @@ class Groups {
      *      - integer group_id: Community ID.
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function unbanUser($access_token, $params = array()) {
-        return $this->client->request('groups.unbanUser', $access_token, $params);
+        return $this->client->post('groups.unbanUser', $access_token, $params);
     }
 
     /**
@@ -312,12 +340,14 @@ class Groups {
      *      - array fields:
      *      - integer user_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getBanned($access_token, $params = array()) {
-        return $this->client->request('groups.getBanned', $access_token, $params);
+        return $this->client->post('groups.getBanned', $access_token, $params);
     }
 
     /**
@@ -336,12 +366,14 @@ class Groups {
      *        work of art.
      *        @see GroupsCreateSubtype
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function create($access_token, $params = array()) {
-        return $this->client->request('groups.create', $access_token, $params);
+        return $this->client->post('groups.create', $access_token, $params);
     }
 
     /**
@@ -430,12 +462,14 @@ class Groups {
      *        – enabled.
      *      - array obscene_words: Keywords for stopwords filter.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('groups.edit', $access_token, $params);
+        return $this->client->post('groups.edit', $access_token, $params);
     }
 
     /**
@@ -451,12 +485,14 @@ class Groups {
      *      - number latitude: Geographical latitude.
      *      - number longitude: Geographical longitude.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editPlace($access_token, $params = array()) {
-        return $this->client->request('groups.editPlace', $access_token, $params);
+        return $this->client->post('groups.editPlace', $access_token, $params);
     }
 
     /**
@@ -466,12 +502,14 @@ class Groups {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSettings($access_token, $params = array()) {
-        return $this->client->request('groups.getSettings', $access_token, $params);
+        return $this->client->post('groups.getSettings', $access_token, $params);
     }
 
     /**
@@ -484,12 +522,14 @@ class Groups {
      *      - integer count: Number of results to return.
      *      - array fields: Profile fields to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getRequests($access_token, $params = array()) {
-        return $this->client->request('groups.getRequests', $access_token, $params);
+        return $this->client->post('groups.getRequests', $access_token, $params);
     }
 
     /**
@@ -507,12 +547,14 @@ class Groups {
      *      - string contact_phone: Contact phone.
      *      - string contact_email: Contact e-mail.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editManager($access_token, $params = array()) {
-        return $this->client->request('groups.editManager', $access_token, $params);
+        return $this->client->post('groups.editManager', $access_token, $params);
     }
 
     /**
@@ -523,12 +565,14 @@ class Groups {
      *      - integer group_id: Community ID.
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function invite($access_token, $params = array()) {
-        return $this->client->request('groups.invite', $access_token, $params);
+        return $this->client->post('groups.invite', $access_token, $params);
     }
 
     /**
@@ -540,12 +584,14 @@ class Groups {
      *      - string link: Link URL.
      *      - string text: Description text for the link.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addLink($access_token, $params = array()) {
-        return $this->client->request('groups.addLink', $access_token, $params);
+        return $this->client->post('groups.addLink', $access_token, $params);
     }
 
     /**
@@ -556,12 +602,14 @@ class Groups {
      *      - integer group_id: Community ID.
      *      - integer link_id: Link ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteLink($access_token, $params = array()) {
-        return $this->client->request('groups.deleteLink', $access_token, $params);
+        return $this->client->post('groups.deleteLink', $access_token, $params);
     }
 
     /**
@@ -573,12 +621,14 @@ class Groups {
      *      - integer link_id: Link ID.
      *      - string text: New description text for the link.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editLink($access_token, $params = array()) {
-        return $this->client->request('groups.editLink', $access_token, $params);
+        return $this->client->post('groups.editLink', $access_token, $params);
     }
 
     /**
@@ -590,12 +640,14 @@ class Groups {
      *      - integer link_id: Link ID.
      *      - integer after: ID of the link after which to place the link with 'link_id'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderLink($access_token, $params = array()) {
-        return $this->client->request('groups.reorderLink', $access_token, $params);
+        return $this->client->post('groups.reorderLink', $access_token, $params);
     }
 
     /**
@@ -606,12 +658,14 @@ class Groups {
      *      - integer group_id: Community ID.
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeUser($access_token, $params = array()) {
-        return $this->client->request('groups.removeUser', $access_token, $params);
+        return $this->client->post('groups.removeUser', $access_token, $params);
     }
 
     /**
@@ -622,12 +676,14 @@ class Groups {
      *      - integer group_id: Community ID.
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function approveRequest($access_token, $params = array()) {
-        return $this->client->request('groups.approveRequest', $access_token, $params);
+        return $this->client->post('groups.approveRequest', $access_token, $params);
     }
 
     /**
@@ -637,12 +693,14 @@ class Groups {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCallbackConfirmationCode($access_token, $params = array()) {
-        return $this->client->request('groups.getCallbackConfirmationCode', $access_token, $params);
+        return $this->client->post('groups.getCallbackConfirmationCode', $access_token, $params);
     }
 
     /**
@@ -653,12 +711,14 @@ class Groups {
      *      - integer group_id: Community ID.
      *      - integer server_id: Server ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCallbackSettings($access_token, $params = array()) {
-        return $this->client->request('groups.getCallbackSettings', $access_token, $params);
+        return $this->client->post('groups.getCallbackSettings', $access_token, $params);
     }
 
     /**
@@ -705,11 +765,13 @@ class Groups {
      *      - boolean user_block: User added to community blacklist
      *      - boolean user_unblock: User removed from community blacklist
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setCallbackSettings($access_token, $params = array()) {
-        return $this->client->request('groups.setCallbackSettings', $access_token, $params);
+        return $this->client->post('groups.setCallbackSettings', $access_token, $params);
     }
 }

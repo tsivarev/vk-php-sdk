@@ -2,9 +2,10 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\LikesGetListType;
 use VK\Actions\Enums\LikesGetListFilter;
 use VK\Actions\Enums\LikesAddType;
@@ -12,8 +13,9 @@ use VK\Actions\Enums\LikesDeleteType;
 use VK\Actions\Enums\LikesIsLikedType;
 
 class Likes {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -54,12 +56,14 @@ class Likes {
      *        set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
      *      - boolean skip_own:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getList($access_token, $params = array()) {
-        return $this->client->request('likes.getList', $access_token, $params);
+        return $this->client->post('likes.getList', $access_token, $params);
     }
 
     /**
@@ -76,12 +80,14 @@ class Likes {
      *      - integer item_id: Object ID.
      *      - string access_key: Access key required for an object owned by a private entity.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('likes.add', $access_token, $params);
+        return $this->client->post('likes.add', $access_token, $params);
     }
 
     /**
@@ -97,12 +103,14 @@ class Likes {
      *      - integer owner_id: ID of the user or community that owns the object.
      *      - integer item_id: Object ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('likes.delete', $access_token, $params);
+        return $this->client->post('likes.delete', $access_token, $params);
     }
 
     /**
@@ -119,11 +127,13 @@ class Likes {
      *      - integer owner_id: ID of the user or community that owns the object.
      *      - integer item_id: Object ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function isLiked($access_token, $params = array()) {
-        return $this->client->request('likes.isLiked', $access_token, $params);
+        return $this->client->post('likes.isLiked', $access_token, $params);
     }
 }

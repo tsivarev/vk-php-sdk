@@ -2,14 +2,16 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\UtilsGetLinkStatsInterval;
 
 class Utils {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -24,12 +26,14 @@ class Utils {
      * @param $params array
      *      - string url: Link to check (e.g., 'http://google.com').
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function checkLink($access_token, $params = array()) {
-        return $this->client->request('utils.checkLink', $access_token, $params);
+        return $this->client->post('utils.checkLink', $access_token, $params);
     }
 
     /**
@@ -39,12 +43,14 @@ class Utils {
      * @param $params array
      *      - string key: Link key (characters after vk.cc/).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteFromLastShortened($access_token, $params = array()) {
-        return $this->client->request('utils.deleteFromLastShortened', $access_token, $params);
+        return $this->client->post('utils.deleteFromLastShortened', $access_token, $params);
     }
 
     /**
@@ -55,12 +61,14 @@ class Utils {
      *      - integer count: Number of links to return.
      *      - integer offset: Offset needed to return a specific subset of links.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLastShortenedLinks($access_token, $params = array()) {
-        return $this->client->request('utils.getLastShortenedLinks', $access_token, $params);
+        return $this->client->post('utils.getLastShortenedLinks', $access_token, $params);
     }
 
     /**
@@ -76,12 +84,14 @@ class Utils {
      *      - boolean extended: 1 — to return extended stats data (sex, age, geo). 0 — to return views number
      *        only.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLinkStats($access_token, $params = array()) {
-        return $this->client->request('utils.getLinkStats', $access_token, $params);
+        return $this->client->post('utils.getLinkStats', $access_token, $params);
     }
 
     /**
@@ -92,12 +102,14 @@ class Utils {
      *      - string url: URL to be shortened.
      *      - boolean private: 1 — private stats, 0 — public stats.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getShortLink($access_token, $params = array()) {
-        return $this->client->request('utils.getShortLink', $access_token, $params);
+        return $this->client->post('utils.getShortLink', $access_token, $params);
     }
 
     /**
@@ -108,12 +120,14 @@ class Utils {
      *      - string screen_name: Screen name of the user, community (e.g., 'apiclub,' 'andrew', or
      *        'rules_of_war'), or application.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function resolveScreenName($access_token, $params = array()) {
-        return $this->client->request('utils.resolveScreenName', $access_token, $params);
+        return $this->client->post('utils.resolveScreenName', $access_token, $params);
     }
 
     /**
@@ -122,11 +136,13 @@ class Utils {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getServerTime($access_token, $params = array()) {
-        return $this->client->request('utils.getServerTime', $access_token, $params);
+        return $this->client->post('utils.getServerTime', $access_token, $params);
     }
 }

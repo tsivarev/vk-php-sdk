@@ -2,14 +2,16 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AuthSignupSex;
 
 class Auth {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -27,12 +29,14 @@ class Auth {
      *      - string client_secret:
      *      - boolean auth_by_phone:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function checkPhone($access_token, $params = array()) {
-        return $this->client->request('auth.checkPhone', $access_token, $params);
+        return $this->client->post('auth.checkPhone', $access_token, $params);
     }
 
     /**
@@ -57,12 +61,14 @@ class Auth {
      *        @see AuthSignupSex
      *      - string sid: Session ID required for method recall when SMS was not delivered.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function signup($access_token, $params = array()) {
-        return $this->client->request('auth.signup', $access_token, $params);
+        return $this->client->post('auth.signup', $access_token, $params);
     }
 
     /**
@@ -79,12 +85,14 @@ class Auth {
      *      - boolean test_mode:
      *      - integer intro:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function confirm($access_token, $params = array()) {
-        return $this->client->request('auth.confirm', $access_token, $params);
+        return $this->client->post('auth.confirm', $access_token, $params);
     }
 
     /**
@@ -96,11 +104,13 @@ class Auth {
      *      - string phone: User phone number.
      *      - string last_name: User last name.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->request('auth.restore', $access_token, $params);
+        return $this->client->post('auth.restore', $access_token, $params);
     }
 }

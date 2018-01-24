@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Storage {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -25,12 +27,14 @@ class Storage {
      *      - array keys:
      *      - integer user_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('storage.get', $access_token, $params);
+        return $this->client->post('storage.get', $access_token, $params);
     }
 
     /**
@@ -42,12 +46,14 @@ class Storage {
      *      - string value:
      *      - integer user_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function set($access_token, $params = array()) {
-        return $this->client->request('storage.set', $access_token, $params);
+        return $this->client->post('storage.set', $access_token, $params);
     }
 
     /**
@@ -59,11 +65,13 @@ class Storage {
      *        method.
      *      - integer count: amount of variable names the info needs to be collected from.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getKeys($access_token, $params = array()) {
-        return $this->client->request('storage.getKeys', $access_token, $params);
+        return $this->client->post('storage.getKeys', $access_token, $params);
     }
 }

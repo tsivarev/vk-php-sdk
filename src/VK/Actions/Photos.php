@@ -2,17 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PhotosGetAlbumId;
 use VK\Actions\Enums\PhotosReportReason;
 use VK\Actions\Enums\PhotosReportCommentReason;
 use VK\Actions\Enums\PhotosGetCommentsSort;
 
 class Photos {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -33,12 +35,14 @@ class Photos {
      *      - boolean upload_by_admins_only:
      *      - boolean comments_disabled:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createAlbum($access_token, $params = array()) {
-        return $this->client->request('photos.createAlbum', $access_token, $params);
+        return $this->client->post('photos.createAlbum', $access_token, $params);
     }
 
     /**
@@ -55,12 +59,14 @@ class Photos {
      *      - boolean upload_by_admins_only:
      *      - boolean comments_disabled:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
-        return $this->client->request('photos.editAlbum', $access_token, $params);
+        return $this->client->post('photos.editAlbum', $access_token, $params);
     }
 
     /**
@@ -76,12 +82,14 @@ class Photos {
      *      - boolean need_covers: '1' — to return an additional 'thumb_src' field, '0' — (default)
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
-        return $this->client->request('photos.getAlbums', $access_token, $params);
+        return $this->client->post('photos.getAlbums', $access_token, $params);
     }
 
     /**
@@ -106,12 +114,14 @@ class Photos {
      *      - integer offset:
      *      - integer count:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('photos.get', $access_token, $params);
+        return $this->client->post('photos.get', $access_token, $params);
     }
 
     /**
@@ -122,12 +132,14 @@ class Photos {
      *      - integer user_id: User ID.
      *      - integer group_id: Community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbumsCount($access_token, $params = array()) {
-        return $this->client->request('photos.getAlbumsCount', $access_token, $params);
+        return $this->client->post('photos.getAlbumsCount', $access_token, $params);
     }
 
     /**
@@ -142,12 +154,14 @@ class Photos {
      *      - boolean extended: '1' — to return additional fields, '0' — (default)
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('photos.getById', $access_token, $params);
+        return $this->client->post('photos.getById', $access_token, $params);
     }
 
     /**
@@ -159,12 +173,14 @@ class Photos {
      *      - integer group_id: ID of community that owns the album (if the photo will be uploaded to a community
      *        album).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getUploadServer', $access_token, $params);
+        return $this->client->post('photos.getUploadServer', $access_token, $params);
     }
 
     /**
@@ -179,12 +195,14 @@ class Photos {
      *      - integer crop_x2: X coordinate of the right-bottom corner
      *      - integer crop_y2: Y coordinate of the right-bottom corner
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getOwnerCoverPhotoUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getOwnerCoverPhotoUploadServer', $access_token, $params);
+        return $this->client->post('photos.getOwnerCoverPhotoUploadServer', $access_token, $params);
     }
 
     /**
@@ -195,12 +213,14 @@ class Photos {
      *      - integer owner_id: identifier of a community or current user. "Note that community id must be
      *        negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getOwnerPhotoUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getOwnerPhotoUploadServer', $access_token, $params);
+        return $this->client->post('photos.getOwnerPhotoUploadServer', $access_token, $params);
     }
 
     /**
@@ -213,12 +233,14 @@ class Photos {
      *      - integer crop_y: 
      *      - integer crop_width: Width (in pixels) of the photo after cropping.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getChatUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getChatUploadServer', $access_token, $params);
+        return $this->client->post('photos.getChatUploadServer', $access_token, $params);
     }
 
     /**
@@ -232,12 +254,14 @@ class Photos {
      *      - integer crop_y: Y coordinate of the crop left upper corner.
      *      - integer crop_width: Width of the cropped photo in px.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getMarketUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getMarketUploadServer', $access_token, $params);
+        return $this->client->post('photos.getMarketUploadServer', $access_token, $params);
     }
 
     /**
@@ -247,12 +271,14 @@ class Photos {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getMarketAlbumUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getMarketAlbumUploadServer', $access_token, $params);
+        return $this->client->post('photos.getMarketAlbumUploadServer', $access_token, $params);
     }
 
     /**
@@ -267,12 +293,14 @@ class Photos {
      *      - string crop_data: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *      - string crop_hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveMarketPhoto($access_token, $params = array()) {
-        return $this->client->request('photos.saveMarketPhoto', $access_token, $params);
+        return $this->client->post('photos.saveMarketPhoto', $access_token, $params);
     }
 
     /**
@@ -283,12 +311,14 @@ class Photos {
      *      - string photo: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveOwnerCoverPhoto($access_token, $params = array()) {
-        return $this->client->request('photos.saveOwnerCoverPhoto', $access_token, $params);
+        return $this->client->post('photos.saveOwnerCoverPhoto', $access_token, $params);
     }
 
     /**
@@ -301,12 +331,14 @@ class Photos {
      *      - integer server: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveMarketAlbumPhoto($access_token, $params = array()) {
-        return $this->client->request('photos.saveMarketAlbumPhoto', $access_token, $params);
+        return $this->client->post('photos.saveMarketAlbumPhoto', $access_token, $params);
     }
 
     /**
@@ -319,12 +351,14 @@ class Photos {
      *      - string hash: parameter returned after [vk.com/dev/upload_files|photo upload].
      *      - string photo: parameter returned after [vk.com/dev/upload_files|photo upload].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveOwnerPhoto($access_token, $params = array()) {
-        return $this->client->request('photos.saveOwnerPhoto', $access_token, $params);
+        return $this->client->post('photos.saveOwnerPhoto', $access_token, $params);
     }
 
     /**
@@ -342,12 +376,14 @@ class Photos {
      *      - number longitude: Geographical longitude, in degrees (from '-180' to '180').
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveWallPhoto($access_token, $params = array()) {
-        return $this->client->request('photos.saveWallPhoto', $access_token, $params);
+        return $this->client->post('photos.saveWallPhoto', $access_token, $params);
     }
 
     /**
@@ -357,12 +393,14 @@ class Photos {
      * @param $params array
      *      - integer group_id: ID of community to whose wall the photo will be uploaded.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getWallUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getWallUploadServer', $access_token, $params);
+        return $this->client->post('photos.getWallUploadServer', $access_token, $params);
     }
 
     /**
@@ -371,12 +409,14 @@ class Photos {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getMessagesUploadServer($access_token, $params = array()) {
-        return $this->client->request('photos.getMessagesUploadServer', $access_token, $params);
+        return $this->client->post('photos.getMessagesUploadServer', $access_token, $params);
     }
 
     /**
@@ -389,12 +429,14 @@ class Photos {
      *      - integer server:
      *      - string hash:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function saveMessagesPhoto($access_token, $params = array()) {
-        return $this->client->request('photos.saveMessagesPhoto', $access_token, $params);
+        return $this->client->post('photos.saveMessagesPhoto', $access_token, $params);
     }
 
     /**
@@ -408,12 +450,14 @@ class Photos {
      *        extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see PhotosReportReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->request('photos.report', $access_token, $params);
+        return $this->client->post('photos.report', $access_token, $params);
     }
 
     /**
@@ -427,12 +471,14 @@ class Photos {
      *        '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see PhotosReportCommentReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->request('photos.reportComment', $access_token, $params);
+        return $this->client->post('photos.reportComment', $access_token, $params);
     }
 
     /**
@@ -451,12 +497,14 @@ class Photos {
      *      - integer radius: Radius of search in meters (works very approximately). Available values: '10', '100',
      *        '800', '6000', '50000'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('photos.search', $access_token, $params);
+        return $this->client->post('photos.search', $access_token, $params);
     }
 
     /**
@@ -473,12 +521,14 @@ class Photos {
      *      - number longitude: Geographical longitude, in degrees (from '-180' to '180').
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->request('photos.save', $access_token, $params);
+        return $this->client->post('photos.save', $access_token, $params);
     }
 
     /**
@@ -490,12 +540,14 @@ class Photos {
      *      - integer photo_id: photo ID
      *      - string access_key: for private photos
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function copy($access_token, $params = array()) {
-        return $this->client->request('photos.copy', $access_token, $params);
+        return $this->client->post('photos.copy', $access_token, $params);
     }
 
     /**
@@ -513,12 +565,14 @@ class Photos {
      *      - string foursquare_id:
      *      - boolean delete_place:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('photos.edit', $access_token, $params);
+        return $this->client->post('photos.edit', $access_token, $params);
     }
 
     /**
@@ -530,12 +584,14 @@ class Photos {
      *      - integer target_album_id: ID of the album to which the photo will be moved.
      *      - integer photo_id: Photo ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function move($access_token, $params = array()) {
-        return $this->client->request('photos.move', $access_token, $params);
+        return $this->client->post('photos.move', $access_token, $params);
     }
 
     /**
@@ -547,12 +603,14 @@ class Photos {
      *      - integer photo_id: Photo ID.
      *      - integer album_id: Album ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function makeCover($access_token, $params = array()) {
-        return $this->client->request('photos.makeCover', $access_token, $params);
+        return $this->client->post('photos.makeCover', $access_token, $params);
     }
 
     /**
@@ -565,12 +623,14 @@ class Photos {
      *      - integer before: ID of the album before which the album in question shall be placed.
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
-        return $this->client->request('photos.reorderAlbums', $access_token, $params);
+        return $this->client->post('photos.reorderAlbums', $access_token, $params);
     }
 
     /**
@@ -583,12 +643,14 @@ class Photos {
      *      - integer before: ID of the photo before which the photo in question shall be placed.
      *      - integer after: ID of the photo after which the photo in question shall be placed.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderPhotos($access_token, $params = array()) {
-        return $this->client->request('photos.reorderPhotos', $access_token, $params);
+        return $this->client->post('photos.reorderPhotos', $access_token, $params);
     }
 
     /**
@@ -609,12 +671,14 @@ class Photos {
      *      - boolean skip_hidden: '1' – not to return photos being hidden from the block above the wall. Works
      *        only with owner_id>0, no_service_albums is ignored.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAll($access_token, $params = array()) {
-        return $this->client->request('photos.getAll', $access_token, $params);
+        return $this->client->post('photos.getAll', $access_token, $params);
     }
 
     /**
@@ -629,12 +693,14 @@ class Photos {
      *      - string sort: Sort order: '1' — by date the tag was added in ascending order, '0' — by date the
      *        tag was added in descending order
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUserPhotos($access_token, $params = array()) {
-        return $this->client->request('photos.getUserPhotos', $access_token, $params);
+        return $this->client->post('photos.getUserPhotos', $access_token, $params);
     }
 
     /**
@@ -645,12 +711,14 @@ class Photos {
      *      - integer album_id: Album ID.
      *      - integer group_id: ID of the community that owns the album.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
-        return $this->client->request('photos.deleteAlbum', $access_token, $params);
+        return $this->client->post('photos.deleteAlbum', $access_token, $params);
     }
 
     /**
@@ -661,12 +729,14 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer photo_id: Photo ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('photos.delete', $access_token, $params);
+        return $this->client->post('photos.delete', $access_token, $params);
     }
 
     /**
@@ -677,12 +747,14 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer photo_id: Photo ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->request('photos.restore', $access_token, $params);
+        return $this->client->post('photos.restore', $access_token, $params);
     }
 
     /**
@@ -694,12 +766,14 @@ class Photos {
      *      - string photo_id: Photo ID.
      *      - integer tag_id: Tag ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function confirmTag($access_token, $params = array()) {
-        return $this->client->request('photos.confirmTag', $access_token, $params);
+        return $this->client->post('photos.confirmTag', $access_token, $params);
     }
 
     /**
@@ -719,12 +793,14 @@ class Photos {
      *      - boolean extended:
      *      - array fields:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('photos.getComments', $access_token, $params);
+        return $this->client->post('photos.getComments', $access_token, $params);
     }
 
     /**
@@ -740,12 +816,14 @@ class Photos {
      *      - integer offset: Offset needed to return a specific subset of comments. By default, '0'.
      *      - integer count: Number of comments to return. By default, '20'. Maximum value, '100'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAllComments($access_token, $params = array()) {
-        return $this->client->request('photos.getAllComments', $access_token, $params);
+        return $this->client->post('photos.getAllComments', $access_token, $params);
     }
 
     /**
@@ -766,12 +844,14 @@ class Photos {
      *      - string access_key:
      *      - string guid:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->request('photos.createComment', $access_token, $params);
+        return $this->client->post('photos.createComment', $access_token, $params);
     }
 
     /**
@@ -782,12 +862,14 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer comment_id: Comment ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->request('photos.deleteComment', $access_token, $params);
+        return $this->client->post('photos.deleteComment', $access_token, $params);
     }
 
     /**
@@ -798,12 +880,14 @@ class Photos {
      *      - integer owner_id: ID of the user or community that owns the photo.
      *      - integer comment_id: ID of the deleted comment.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->request('photos.restoreComment', $access_token, $params);
+        return $this->client->post('photos.restoreComment', $access_token, $params);
     }
 
     /**
@@ -819,12 +903,14 @@ class Photos {
      *        — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner
      *        ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->request('photos.editComment', $access_token, $params);
+        return $this->client->post('photos.editComment', $access_token, $params);
     }
 
     /**
@@ -836,12 +922,14 @@ class Photos {
      *      - integer photo_id: Photo ID.
      *      - string access_key:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTags($access_token, $params = array()) {
-        return $this->client->request('photos.getTags', $access_token, $params);
+        return $this->client->post('photos.getTags', $access_token, $params);
     }
 
     /**
@@ -857,12 +945,14 @@ class Photos {
      *      - number x2: Lower right-corner coordinate of the tagged area (as a percentage of the photo's width).
      *      - number y2: Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function putTag($access_token, $params = array()) {
-        return $this->client->request('photos.putTag', $access_token, $params);
+        return $this->client->post('photos.putTag', $access_token, $params);
     }
 
     /**
@@ -874,12 +964,14 @@ class Photos {
      *      - integer photo_id: Photo ID.
      *      - integer tag_id: Tag ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeTag($access_token, $params = array()) {
-        return $this->client->request('photos.removeTag', $access_token, $params);
+        return $this->client->post('photos.removeTag', $access_token, $params);
     }
 
     /**
@@ -890,11 +982,13 @@ class Photos {
      *      - integer offset: Offset needed to return a specific subset of photos.
      *      - integer count: Number of photos to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getNewTags($access_token, $params = array()) {
-        return $this->client->request('photos.getNewTags', $access_token, $params);
+        return $this->client->post('photos.getNewTags', $access_token, $params);
     }
 }

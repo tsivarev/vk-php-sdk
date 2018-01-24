@@ -2,14 +2,16 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\PlacesSearchRadius;
 
 class Places {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -33,12 +35,14 @@ class Places {
      *        [vk.com/dev/database.getCities|database.getCities] method.
      *      - string address: Street address of the location (e.g., '125 Elm Street').
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('places.add', $access_token, $params);
+        return $this->client->post('places.add', $access_token, $params);
     }
 
     /**
@@ -48,12 +52,14 @@ class Places {
      * @param $params array
      *      - array places: Location IDs.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('places.getById', $access_token, $params);
+        return $this->client->post('places.getById', $access_token, $params);
     }
 
     /**
@@ -72,12 +78,14 @@ class Places {
      *      - integer offset: Offset needed to return a specific subset of locations.
      *      - integer count: Number of locations to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('places.search', $access_token, $params);
+        return $this->client->post('places.search', $access_token, $params);
     }
 
     /**
@@ -94,12 +102,14 @@ class Places {
      *      - array services: List of services or websites (e.g., 'twitter', 'facebook') to which the check-in will
      *        be exported, if the user has set up the respective option.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function checkin($access_token, $params = array()) {
-        return $this->client->request('places.checkin', $access_token, $params);
+        return $this->client->post('places.checkin', $access_token, $params);
     }
 
     /**
@@ -123,12 +133,14 @@ class Places {
      *      - boolean need_places: '1' — to return location information with the check-ins. (Ignored if 'place'
      *        is not set.),
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCheckins($access_token, $params = array()) {
-        return $this->client->request('places.getCheckins', $access_token, $params);
+        return $this->client->post('places.getCheckins', $access_token, $params);
     }
 
     /**
@@ -137,11 +149,13 @@ class Places {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTypes($access_token, $params = array()) {
-        return $this->client->request('places.getTypes', $access_token, $params);
+        return $this->client->post('places.getTypes', $access_token, $params);
     }
 }

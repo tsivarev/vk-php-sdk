@@ -2,14 +2,16 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\OrdersChangeStateAction;
 
 class Orders {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -26,12 +28,14 @@ class Orders {
      *      - boolean test_mode: if this parameter is set to 1, this method returns a list of test mode orders. By
      *        default — 0.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('orders.get', $access_token, $params);
+        return $this->client->post('orders.get', $access_token, $params);
     }
 
     /**
@@ -44,12 +48,14 @@ class Orders {
      *      - boolean test_mode: if this parameter is set to 1, this method returns a list of test mode orders. By
      *        default — 0.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('orders.getById', $access_token, $params);
+        return $this->client->post('orders.getById', $access_token, $params);
     }
 
     /**
@@ -66,12 +72,14 @@ class Orders {
      *      - boolean test_mode: if this parameter is set to 1, this method returns a list of test mode orders. By
      *        default — 0.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function changeState($access_token, $params = array()) {
-        return $this->client->request('orders.changeState', $access_token, $params);
+        return $this->client->post('orders.changeState', $access_token, $params);
     }
 
     /**
@@ -82,11 +90,13 @@ class Orders {
      *      - integer user_id:
      *      - array votes:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAmount($access_token, $params = array()) {
-        return $this->client->request('orders.getAmount', $access_token, $params);
+        return $this->client->post('orders.getAmount', $access_token, $params);
     }
 }

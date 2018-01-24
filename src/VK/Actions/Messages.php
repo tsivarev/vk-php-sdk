@@ -2,17 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\MessagesGetHistoryRev;
 use VK\Actions\Enums\MessagesGetHistoryAttachmentsMediaType;
 use VK\Actions\Enums\MessagesGetChatNameCase;
 use VK\Actions\Enums\MessagesGetChatUsersNameCase;
 
 class Messages {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -38,12 +40,14 @@ class Messages {
      *        (provided that no more than 'count' messages were received before it, otherwise 'offset' parameter shall be
      *        used).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('messages.get', $access_token, $params);
+        return $this->client->post('messages.get', $access_token, $params);
     }
 
     /**
@@ -61,12 +65,14 @@ class Messages {
      *      - boolean important: '1' — return important conversations only.
      *      - boolean unanswered: '1' — return unanswered conversations only.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getDialogs($access_token, $params = array()) {
-        return $this->client->request('messages.getDialogs', $access_token, $params);
+        return $this->client->post('messages.getDialogs', $access_token, $params);
     }
 
     /**
@@ -76,12 +82,14 @@ class Messages {
      * @param $params array
      *      - array message_ids: Message IDs.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('messages.getById', $access_token, $params);
+        return $this->client->post('messages.getById', $access_token, $params);
     }
 
     /**
@@ -99,12 +107,14 @@ class Messages {
      *      - integer offset: Offset needed to return a specific subset of messages.
      *      - integer count: Number of messages to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('messages.search', $access_token, $params);
+        return $this->client->post('messages.search', $access_token, $params);
     }
 
     /**
@@ -121,12 +131,14 @@ class Messages {
      *        messages in reverse chronological order.
      *        @see MessagesGetHistoryRev
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getHistory($access_token, $params = array()) {
-        return $this->client->request('messages.getHistory', $access_token, $params);
+        return $this->client->post('messages.getHistory', $access_token, $params);
     }
 
     /**
@@ -144,12 +156,14 @@ class Messages {
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      *      - array fields: Additional profile [vk.com/dev/fields|fields] to return. 
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getHistoryAttachments($access_token, $params = array()) {
-        return $this->client->request('messages.getHistoryAttachments', $access_token, $params);
+        return $this->client->post('messages.getHistoryAttachments', $access_token, $params);
     }
 
     /**
@@ -177,12 +191,14 @@ class Messages {
      *      - integer sticker_id: Sticker id.
      *      - boolean notification: '1' if the message is a notification (for community messages).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function send($access_token, $params = array()) {
-        return $this->client->request('messages.send', $access_token, $params);
+        return $this->client->post('messages.send', $access_token, $params);
     }
 
     /**
@@ -193,12 +209,14 @@ class Messages {
      *      - array message_ids: Message IDs.
      *      - boolean spam: '1' — to mark message as spam.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('messages.delete', $access_token, $params);
+        return $this->client->post('messages.delete', $access_token, $params);
     }
 
     /**
@@ -213,12 +231,14 @@ class Messages {
      *      - integer count: Number of messages to delete. "NOTE: If the number of messages exceeds the maximum,
      *        the method shall be called several times."
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteDialog($access_token, $params = array()) {
-        return $this->client->request('messages.deleteDialog', $access_token, $params);
+        return $this->client->post('messages.deleteDialog', $access_token, $params);
     }
 
     /**
@@ -228,12 +248,14 @@ class Messages {
      * @param $params array
      *      - integer message_id: ID of a previously-deleted message to restore.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->request('messages.restore', $access_token, $params);
+        return $this->client->post('messages.restore', $access_token, $params);
     }
 
     /**
@@ -246,12 +268,14 @@ class Messages {
      *        'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      *      - integer start_message_id: Message ID to start from.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function markAsRead($access_token, $params = array()) {
-        return $this->client->request('messages.markAsRead', $access_token, $params);
+        return $this->client->post('messages.markAsRead', $access_token, $params);
     }
 
     /**
@@ -262,12 +286,14 @@ class Messages {
      *      - array message_ids: IDs of messages to mark as important.
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function markAsImportant($access_token, $params = array()) {
-        return $this->client->request('messages.markAsImportant', $access_token, $params);
+        return $this->client->post('messages.markAsImportant', $access_token, $params);
     }
 
     /**
@@ -278,12 +304,14 @@ class Messages {
      *      - array peer_id: IDs of messages to mark as important.
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function markAsImportantDialog($access_token, $params = array()) {
-        return $this->client->request('messages.markAsImportantDialog', $access_token, $params);
+        return $this->client->post('messages.markAsImportantDialog', $access_token, $params);
     }
 
     /**
@@ -294,12 +322,14 @@ class Messages {
      *      - array peer_id: IDs of messages to mark as important.
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function markAsUnansweredDialog($access_token, $params = array()) {
-        return $this->client->request('messages.markAsUnansweredDialog', $access_token, $params);
+        return $this->client->post('messages.markAsUnansweredDialog', $access_token, $params);
     }
 
     /**
@@ -311,12 +341,14 @@ class Messages {
      *      - boolean need_pts: '1' — to return the 'pts' field, needed for the
      *        [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLongPollServer($access_token, $params = array()) {
-        return $this->client->request('messages.getLongPollServer', $access_token, $params);
+        return $this->client->post('messages.getLongPollServer', $access_token, $params);
     }
 
     /**
@@ -339,12 +371,14 @@ class Messages {
      *        received with API methods (for example, , ), and data received from a Long Poll server (events with code 4)
      *        are taken into account.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLongPollHistory($access_token, $params = array()) {
-        return $this->client->request('messages.getLongPollHistory', $access_token, $params);
+        return $this->client->post('messages.getLongPollHistory', $access_token, $params);
     }
 
     /**
@@ -360,12 +394,14 @@ class Messages {
      *        prepositional
      *        @see MessagesGetChatNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getChat($access_token, $params = array()) {
-        return $this->client->request('messages.getChat', $access_token, $params);
+        return $this->client->post('messages.getChat', $access_token, $params);
     }
 
     /**
@@ -376,12 +412,14 @@ class Messages {
      *      - array user_ids: IDs of the users to be added to the chat.
      *      - string title: Chat title.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createChat($access_token, $params = array()) {
-        return $this->client->request('messages.createChat', $access_token, $params);
+        return $this->client->post('messages.createChat', $access_token, $params);
     }
 
     /**
@@ -392,12 +430,14 @@ class Messages {
      *      - integer chat_id: Chat ID.
      *      - string title: New title of the chat.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editChat($access_token, $params = array()) {
-        return $this->client->request('messages.editChat', $access_token, $params);
+        return $this->client->post('messages.editChat', $access_token, $params);
     }
 
     /**
@@ -413,12 +453,14 @@ class Messages {
      *        'abl' — prepositional
      *        @see MessagesGetChatUsersNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getChatUsers($access_token, $params = array()) {
-        return $this->client->request('messages.getChatUsers', $access_token, $params);
+        return $this->client->post('messages.getChatUsers', $access_token, $params);
     }
 
     /**
@@ -431,12 +473,14 @@ class Messages {
      *      - integer peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' +
      *        'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setActivity($access_token, $params = array()) {
-        return $this->client->request('messages.setActivity', $access_token, $params);
+        return $this->client->post('messages.setActivity', $access_token, $params);
     }
 
     /**
@@ -448,12 +492,14 @@ class Messages {
      *      - integer limit: Maximum number of results.
      *      - array fields: Profile fields to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function searchDialogs($access_token, $params = array()) {
-        return $this->client->request('messages.searchDialogs', $access_token, $params);
+        return $this->client->post('messages.searchDialogs', $access_token, $params);
     }
 
     /**
@@ -464,12 +510,14 @@ class Messages {
      *      - integer chat_id: Chat ID.
      *      - integer user_id: ID of the user to be added to the chat.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addChatUser($access_token, $params = array()) {
-        return $this->client->request('messages.addChatUser', $access_token, $params);
+        return $this->client->post('messages.addChatUser', $access_token, $params);
     }
 
     /**
@@ -481,12 +529,14 @@ class Messages {
      *      - integer chat_id: Chat ID.
      *      - string user_id: ID of the user to be removed from the chat.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeChatUser($access_token, $params = array()) {
-        return $this->client->request('messages.removeChatUser', $access_token, $params);
+        return $this->client->post('messages.removeChatUser', $access_token, $params);
     }
 
     /**
@@ -496,12 +546,14 @@ class Messages {
      * @param $params array
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLastActivity($access_token, $params = array()) {
-        return $this->client->request('messages.getLastActivity', $access_token, $params);
+        return $this->client->post('messages.getLastActivity', $access_token, $params);
     }
 
     /**
@@ -513,12 +565,14 @@ class Messages {
      *        [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an
      *        image.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function setChatPhoto($access_token, $params = array()) {
-        return $this->client->request('messages.setChatPhoto', $access_token, $params);
+        return $this->client->post('messages.setChatPhoto', $access_token, $params);
     }
 
     /**
@@ -528,12 +582,14 @@ class Messages {
      * @param $params array
      *      - integer chat_id: Chat ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteChatPhoto($access_token, $params = array()) {
-        return $this->client->request('messages.deleteChatPhoto', $access_token, $params);
+        return $this->client->post('messages.deleteChatPhoto', $access_token, $params);
     }
 
     /**
@@ -543,12 +599,14 @@ class Messages {
      * @param $params array
      *      - integer group_id: Group ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function denyMessagesFromGroup($access_token, $params = array()) {
-        return $this->client->request('messages.denyMessagesFromGroup', $access_token, $params);
+        return $this->client->post('messages.denyMessagesFromGroup', $access_token, $params);
     }
 
     /**
@@ -558,12 +616,14 @@ class Messages {
      * @param $params array
      *      - integer group_id: Group ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function allowMessagesFromGroup($access_token, $params = array()) {
-        return $this->client->request('messages.allowMessagesFromGroup', $access_token, $params);
+        return $this->client->post('messages.allowMessagesFromGroup', $access_token, $params);
     }
 
     /**
@@ -574,11 +634,13 @@ class Messages {
      *      - integer group_id: Group ID.
      *      - integer user_id: User ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function isMessagesFromGroupAllowed($access_token, $params = array()) {
-        return $this->client->request('messages.isMessagesFromGroupAllowed', $access_token, $params);
+        return $this->client->post('messages.isMessagesFromGroupAllowed', $access_token, $params);
     }
 }

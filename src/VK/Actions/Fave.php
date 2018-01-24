@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Fave {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -24,12 +26,14 @@ class Fave {
      *      - integer offset: Offset needed to return a specific subset of users.
      *      - integer count: Number of users to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUsers($access_token, $params = array()) {
-        return $this->client->request('fave.getUsers', $access_token, $params);
+        return $this->client->post('fave.getUsers', $access_token, $params);
     }
 
     /**
@@ -41,12 +45,14 @@ class Fave {
      *      - integer count: Number of photos to return.
      *      - boolean photo_sizes: '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getPhotos($access_token, $params = array()) {
-        return $this->client->request('fave.getPhotos', $access_token, $params);
+        return $this->client->post('fave.getPhotos', $access_token, $params);
     }
 
     /**
@@ -59,12 +65,14 @@ class Fave {
      *      - boolean extended: '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default:
      *        '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getPosts($access_token, $params = array()) {
-        return $this->client->request('fave.getPosts', $access_token, $params);
+        return $this->client->post('fave.getPosts', $access_token, $params);
     }
 
     /**
@@ -77,12 +85,14 @@ class Fave {
      *      - boolean extended: Return an additional information about videos. Also returns all owners profiles and
      *        groups.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getVideos($access_token, $params = array()) {
-        return $this->client->request('fave.getVideos', $access_token, $params);
+        return $this->client->post('fave.getVideos', $access_token, $params);
     }
 
     /**
@@ -93,12 +103,14 @@ class Fave {
      *      - integer offset: Offset needed to return a specific subset of users.
      *      - integer count: Number of results to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLinks($access_token, $params = array()) {
-        return $this->client->request('fave.getLinks', $access_token, $params);
+        return $this->client->post('fave.getLinks', $access_token, $params);
     }
 
     /**
@@ -110,12 +122,14 @@ class Fave {
      *      - boolean extended: '1' – to return additional fields 'likes, can_comment, can_repost, photos'. By
      *        default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getMarketItems($access_token, $params = array()) {
-        return $this->client->request('fave.getMarketItems', $access_token, $params);
+        return $this->client->post('fave.getMarketItems', $access_token, $params);
     }
 
     /**
@@ -125,12 +139,14 @@ class Fave {
      * @param $params array
      *      - integer user_id: Profile ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addUser($access_token, $params = array()) {
-        return $this->client->request('fave.addUser', $access_token, $params);
+        return $this->client->post('fave.addUser', $access_token, $params);
     }
 
     /**
@@ -140,12 +156,14 @@ class Fave {
      * @param $params array
      *      - integer user_id: Profile ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeUser($access_token, $params = array()) {
-        return $this->client->request('fave.removeUser', $access_token, $params);
+        return $this->client->post('fave.removeUser', $access_token, $params);
     }
 
     /**
@@ -155,12 +173,14 @@ class Fave {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addGroup($access_token, $params = array()) {
-        return $this->client->request('fave.addGroup', $access_token, $params);
+        return $this->client->post('fave.addGroup', $access_token, $params);
     }
 
     /**
@@ -170,12 +190,14 @@ class Fave {
      * @param $params array
      *      - integer group_id: Community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeGroup($access_token, $params = array()) {
-        return $this->client->request('fave.removeGroup', $access_token, $params);
+        return $this->client->post('fave.removeGroup', $access_token, $params);
     }
 
     /**
@@ -186,12 +208,14 @@ class Fave {
      *      - string link: Link URL.
      *      - string text: Description text.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addLink($access_token, $params = array()) {
-        return $this->client->request('fave.addLink', $access_token, $params);
+        return $this->client->post('fave.addLink', $access_token, $params);
     }
 
     /**
@@ -201,11 +225,13 @@ class Fave {
      * @param $params array
      *      - string link_id: Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeLink($access_token, $params = array()) {
-        return $this->client->request('fave.removeLink', $access_token, $params);
+        return $this->client->post('fave.removeLink', $access_token, $params);
     }
 }

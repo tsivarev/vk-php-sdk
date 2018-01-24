@@ -2,16 +2,18 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\BoardGetTopicsOrder;
 use VK\Actions\Enums\BoardGetTopicsPreview;
 use VK\Actions\Enums\BoardGetCommentsSort;
 
 class Board {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -42,12 +44,14 @@ class Board {
      *      - integer preview_length: Number of characters after which to truncate the previewed comment. To
      *        preview the full comment, specify '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTopics($access_token, $params = array()) {
-        return $this->client->request('board.getTopics', $access_token, $params);
+        return $this->client->post('board.getTopics', $access_token, $params);
     }
 
     /**
@@ -68,12 +72,14 @@ class Board {
      *        by creation date in reverse chronological order,
      *        @see BoardGetCommentsSort
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('board.getComments', $access_token, $params);
+        return $this->client->post('board.getComments', $access_token, $params);
     }
 
     /**
@@ -92,12 +98,14 @@ class Board {
      *        ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one
      *        reference, an error will be thrown.",
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addTopic($access_token, $params = array()) {
-        return $this->client->request('board.addTopic', $access_token, $params);
+        return $this->client->post('board.addTopic', $access_token, $params);
     }
 
     /**
@@ -117,12 +125,14 @@ class Board {
      *      - integer sticker_id: Sticker ID.
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->request('board.createComment', $access_token, $params);
+        return $this->client->post('board.createComment', $access_token, $params);
     }
 
     /**
@@ -133,12 +143,14 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteTopic($access_token, $params = array()) {
-        return $this->client->request('board.deleteTopic', $access_token, $params);
+        return $this->client->post('board.deleteTopic', $access_token, $params);
     }
 
     /**
@@ -150,12 +162,14 @@ class Board {
      *      - integer topic_id: Topic ID.
      *      - string title: New title of the topic.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editTopic($access_token, $params = array()) {
-        return $this->client->request('board.editTopic', $access_token, $params);
+        return $this->client->post('board.editTopic', $access_token, $params);
     }
 
     /**
@@ -172,12 +186,14 @@ class Board {
      *        — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner.
      *        '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->request('board.editComment', $access_token, $params);
+        return $this->client->post('board.editComment', $access_token, $params);
     }
 
     /**
@@ -189,12 +205,14 @@ class Board {
      *      - integer topic_id: Topic ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->request('board.restoreComment', $access_token, $params);
+        return $this->client->post('board.restoreComment', $access_token, $params);
     }
 
     /**
@@ -206,12 +224,14 @@ class Board {
      *      - integer topic_id: Topic ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->request('board.deleteComment', $access_token, $params);
+        return $this->client->post('board.deleteComment', $access_token, $params);
     }
 
     /**
@@ -222,12 +242,14 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function openTopic($access_token, $params = array()) {
-        return $this->client->request('board.openTopic', $access_token, $params);
+        return $this->client->post('board.openTopic', $access_token, $params);
     }
 
     /**
@@ -238,12 +260,14 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function closeTopic($access_token, $params = array()) {
-        return $this->client->request('board.closeTopic', $access_token, $params);
+        return $this->client->post('board.closeTopic', $access_token, $params);
     }
 
     /**
@@ -254,12 +278,14 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function fixTopic($access_token, $params = array()) {
-        return $this->client->request('board.fixTopic', $access_token, $params);
+        return $this->client->post('board.fixTopic', $access_token, $params);
     }
 
     /**
@@ -270,11 +296,13 @@ class Board {
      *      - integer group_id: ID of the community that owns the discussion board.
      *      - integer topic_id: Topic ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function unfixTopic($access_token, $params = array()) {
-        return $this->client->request('board.unfixTopic', $access_token, $params);
+        return $this->client->post('board.unfixTopic', $access_token, $params);
     }
 }

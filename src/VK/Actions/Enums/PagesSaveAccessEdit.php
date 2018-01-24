@@ -3,7 +3,7 @@
 namespace VK\Actions\Enums;
 
 class PagesSaveAccessEdit {
-    const _0 = "0"; // managers
-    const _1 = "1"; // members
-    const _2 = "2"; // all
+    const MANAGERS = '0'; // managers
+    const MEMBERS = '1'; // members
+    const ALL = '2'; // all
 }

@@ -2,9 +2,10 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\AdsCheckLinkLinkType;
 use VK\Actions\Enums\AdsGetStatisticsIdsType;
 use VK\Actions\Enums\AdsGetStatisticsPeriod;
@@ -16,8 +17,9 @@ use VK\Actions\Enums\AdsGetSuggestionsLang;
 use VK\Actions\Enums\AdsGetUploadURLAdFormat;
 
 class Ads {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -31,12 +33,14 @@ class Ads {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAccounts($access_token, $params = array()) {
-        return $this->client->request('ads.getAccounts', $access_token, $params);
+        return $this->client->post('ads.getAccounts', $access_token, $params);
     }
 
     /**
@@ -46,12 +50,14 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getClients($access_token, $params = array()) {
-        return $this->client->request('ads.getClients', $access_token, $params);
+        return $this->client->post('ads.getClients', $access_token, $params);
     }
 
     /**
@@ -63,12 +69,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe created campaigns. Description of
      *        'client_specification' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createClients($access_token, $params = array()) {
-        return $this->client->request('ads.createClients', $access_token, $params);
+        return $this->client->post('ads.createClients', $access_token, $params);
     }
 
     /**
@@ -80,12 +88,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe changes in clients. Description of
      *        'client_mod' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function updateClients($access_token, $params = array()) {
-        return $this->client->request('ads.updateClients', $access_token, $params);
+        return $this->client->post('ads.updateClients', $access_token, $params);
     }
 
     /**
@@ -96,12 +106,14 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with IDs of deleted clients.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteClients($access_token, $params = array()) {
-        return $this->client->request('ads.deleteClients', $access_token, $params);
+        return $this->client->post('ads.deleteClients', $access_token, $params);
     }
 
     /**
@@ -118,12 +130,14 @@ class Ads {
      *        IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be
      *        shown. If the parameter is null, all campaigns will be shown.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCampaigns($access_token, $params = array()) {
-        return $this->client->request('ads.getCampaigns', $access_token, $params);
+        return $this->client->post('ads.getCampaigns', $access_token, $params);
     }
 
     /**
@@ -135,12 +149,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe created campaigns. Description of
      *        'campaign_specification' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createCampaigns($access_token, $params = array()) {
-        return $this->client->request('ads.createCampaigns', $access_token, $params);
+        return $this->client->post('ads.createCampaigns', $access_token, $params);
     }
 
     /**
@@ -152,12 +168,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe changes in campaigns. Description of
      *        'campaign_mod' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function updateCampaigns($access_token, $params = array()) {
-        return $this->client->request('ads.updateCampaigns', $access_token, $params);
+        return $this->client->post('ads.updateCampaigns', $access_token, $params);
     }
 
     /**
@@ -168,12 +186,14 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with IDs of deleted campaigns.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteCampaigns($access_token, $params = array()) {
-        return $this->client->request('ads.deleteCampaigns', $access_token, $params);
+        return $this->client->post('ads.deleteCampaigns', $access_token, $params);
     }
 
     /**
@@ -194,12 +214,14 @@ class Ads {
      *        'campaign_ids' parameter contains ID of only one campaign.
      *      - integer offset: Offset. Used in the same cases as 'limit' parameter.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAds($access_token, $params = array()) {
-        return $this->client->request('ads.getAds', $access_token, $params);
+        return $this->client->post('ads.getAds', $access_token, $params);
     }
 
     /**
@@ -219,12 +241,14 @@ class Ads {
      *        'campaign_ids' parameter contains ID of only one campaign.
      *      - integer offset: Offset. Used in the same cases as 'limit' parameter.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAdsLayout($access_token, $params = array()) {
-        return $this->client->request('ads.getAdsLayout', $access_token, $params);
+        return $this->client->post('ads.getAdsLayout', $access_token, $params);
     }
 
     /**
@@ -244,12 +268,14 @@ class Ads {
      *        'campaign_ids' parameter contains ID of only one campaign.
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAdsTargeting($access_token, $params = array()) {
-        return $this->client->request('ads.getAdsTargeting', $access_token, $params);
+        return $this->client->post('ads.getAdsTargeting', $access_token, $params);
     }
 
     /**
@@ -261,12 +287,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe created ads. Description of
      *        'ad_specification' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createAds($access_token, $params = array()) {
-        return $this->client->request('ads.createAds', $access_token, $params);
+        return $this->client->post('ads.createAds', $access_token, $params);
     }
 
     /**
@@ -278,12 +306,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe changes in ads. Description of
      *        'ad_edit_specification' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function updateAds($access_token, $params = array()) {
-        return $this->client->request('ads.updateAds', $access_token, $params);
+        return $this->client->post('ads.updateAds', $access_token, $params);
     }
 
     /**
@@ -294,12 +324,14 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with ad IDs.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteAds($access_token, $params = array()) {
-        return $this->client->request('ads.deleteAds', $access_token, $params);
+        return $this->client->post('ads.deleteAds', $access_token, $params);
     }
 
     /**
@@ -314,12 +346,14 @@ class Ads {
      *      - string link_url: Object URL.
      *      - integer campaign_id: Campaign ID
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function checkLink($access_token, $params = array()) {
-        return $this->client->request('ads.checkLink', $access_token, $params);
+        return $this->client->post('ads.checkLink', $access_token, $params);
     }
 
     /**
@@ -344,12 +378,14 @@ class Ads {
      *        used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM,
      *        example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getStatistics($access_token, $params = array()) {
-        return $this->client->request('ads.getStatistics', $access_token, $params);
+        return $this->client->post('ads.getStatistics', $access_token, $params);
     }
 
     /**
@@ -374,12 +410,14 @@ class Ads {
      *        used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM,
      *        example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getDemographics($access_token, $params = array()) {
-        return $this->client->request('ads.getDemographics', $access_token, $params);
+        return $this->client->post('ads.getDemographics', $access_token, $params);
     }
 
     /**
@@ -390,12 +428,14 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ads_ids: Ads IDS separated by comma.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAdsPostsReach($access_token, $params = array()) {
-        return $this->client->request('ads.getAdsPostsReach', $access_token, $params);
+        return $this->client->post('ads.getAdsPostsReach', $access_token, $params);
     }
 
     /**
@@ -405,12 +445,14 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getBudget($access_token, $params = array()) {
-        return $this->client->request('ads.getBudget', $access_token, $params);
+        return $this->client->post('ads.getBudget', $access_token, $params);
     }
 
     /**
@@ -420,12 +462,14 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getOfficeUsers($access_token, $params = array()) {
-        return $this->client->request('ads.getOfficeUsers', $access_token, $params);
+        return $this->client->post('ads.getOfficeUsers', $access_token, $params);
     }
 
     /**
@@ -437,12 +481,14 @@ class Ads {
      *      - string data: Serialized JSON array of objects that describe added managers. Description of
      *        'user_specification' objects see below.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addOfficeUsers($access_token, $params = array()) {
-        return $this->client->request('ads.addOfficeUsers', $access_token, $params);
+        return $this->client->post('ads.addOfficeUsers', $access_token, $params);
     }
 
     /**
@@ -453,12 +499,14 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - string ids: Serialized JSON array with IDs of deleted managers.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeOfficeUsers($access_token, $params = array()) {
-        return $this->client->request('ads.removeOfficeUsers', $access_token, $params);
+        return $this->client->post('ads.removeOfficeUsers', $access_token, $params);
     }
 
     /**
@@ -480,12 +528,14 @@ class Ads {
      *      - string link_url: URL for the advertised object.
      *      - string link_domain: Domain of the advertised object.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTargetingStats($access_token, $params = array()) {
-        return $this->client->request('ads.getTargetingStats', $access_token, $params);
+        return $this->client->post('ads.getTargetingStats', $access_token, $params);
     }
 
     /**
@@ -514,12 +564,14 @@ class Ads {
      *        Russian,, *ua — Ukrainian,, *en — English.
      *        @see AdsGetSuggestionsLang
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
-        return $this->client->request('ads.getSuggestions', $access_token, $params);
+        return $this->client->post('ads.getSuggestions', $access_token, $params);
     }
 
     /**
@@ -529,12 +581,14 @@ class Ads {
      * @param $params array
      *      - string lang: Language. The full list of supported languages is [vk.com/dev/api_requests|here].
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCategories($access_token, $params = array()) {
-        return $this->client->request('ads.getCategories', $access_token, $params);
+        return $this->client->post('ads.getCategories', $access_token, $params);
     }
 
     /**
@@ -546,12 +600,14 @@ class Ads {
      *        exclusive format,, *4 — community, square image,, *7 — special app format.
      *        @see AdsGetUploadURLAdFormat
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUploadURL($access_token, $params = array()) {
-        return $this->client->request('ads.getUploadURL', $access_token, $params);
+        return $this->client->post('ads.getUploadURL', $access_token, $params);
     }
 
     /**
@@ -560,12 +616,14 @@ class Ads {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getVideoUploadURL($access_token, $params = array()) {
-        return $this->client->request('ads.getVideoUploadURL', $access_token, $params);
+        return $this->client->post('ads.getVideoUploadURL', $access_token, $params);
     }
 
     /**
@@ -576,12 +634,14 @@ class Ads {
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getFloodStats($access_token, $params = array()) {
-        return $this->client->request('ads.getFloodStats', $access_token, $params);
+        return $this->client->post('ads.getFloodStats', $access_token, $params);
     }
 
     /**
@@ -592,12 +652,14 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      *      - integer ad_id: Ad ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getRejectionReason($access_token, $params = array()) {
-        return $this->client->request('ads.getRejectionReason', $access_token, $params);
+        return $this->client->post('ads.getRejectionReason', $access_token, $params);
     }
 
     /**
@@ -614,12 +676,14 @@ class Ads {
      *      - integer lifetime: 'For groups with auditory created with pixel code only.', , Number of days after
      *        that users will be automatically removed from the group. '0' — not to remove users.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createTargetGroup($access_token, $params = array()) {
-        return $this->client->request('ads.createTargetGroup', $access_token, $params);
+        return $this->client->post('ads.createTargetGroup', $access_token, $params);
     }
 
     /**
@@ -637,12 +701,14 @@ class Ads {
      *        in days when users added to a retarget group will be automatically excluded from it. '0' – automatic
      *        exclusion is off.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function updateTargetGroup($access_token, $params = array()) {
-        return $this->client->request('ads.updateTargetGroup', $access_token, $params);
+        return $this->client->post('ads.updateTargetGroup', $access_token, $params);
     }
 
     /**
@@ -655,12 +721,14 @@ class Ads {
      *        where the group will be created.
      *      - integer target_group_id: Group ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteTargetGroup($access_token, $params = array()) {
-        return $this->client->request('ads.deleteTargetGroup', $access_token, $params);
+        return $this->client->post('ads.deleteTargetGroup', $access_token, $params);
     }
 
     /**
@@ -673,12 +741,14 @@ class Ads {
      *        where the group will be created.
      *      - boolean extended: '1' — to return pixel code.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTargetGroups($access_token, $params = array()) {
-        return $this->client->request('ads.getTargetGroups', $access_token, $params);
+        return $this->client->post('ads.getTargetGroups', $access_token, $params);
     }
 
     /**
@@ -692,11 +762,13 @@ class Ads {
      *      - integer target_group_id: Target group ID.
      *      - string contacts: List of phone numbers, emails or user IDs separated with a comma.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function importTargetContacts($access_token, $params = array()) {
-        return $this->client->request('ads.importTargetContacts', $access_token, $params);
+        return $this->client->post('ads.importTargetContacts', $access_token, $params);
     }
 }

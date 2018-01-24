@@ -3,10 +3,10 @@
 namespace VK\Actions\Enums;
 
 class GroupsSearchSort {
-    const _0 = "0"; // default
-    const _1 = "1"; // growth
-    const _2 = "2"; // attendance
-    const _3 = "3"; // likes
-    const _4 = "4"; // comments
-    const _5 = "5"; // entries
+    const DEFAULT = '0'; // default
+    const GROWTH = '1'; // growth
+    const ATTENDANCE = '2'; // attendance
+    const LIKES = '3'; // likes
+    const COMMENTS = '4'; // comments
+    const ENTRIES = '5'; // entries
 }

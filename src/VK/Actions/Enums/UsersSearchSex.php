@@ -3,7 +3,7 @@
 namespace VK\Actions\Enums;
 
 class UsersSearchSex {
-    const _0 = "0"; // any
-    const _1 = "1"; // female
-    const _2 = "2"; // male
+    const ANY = '0'; // any
+    const FEMALE = '1'; // female
+    const MALE = '2'; // male
 }

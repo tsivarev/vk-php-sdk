@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Widgets {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -28,12 +30,14 @@ class Widgets {
      *      - array fields:
      *      - integer count:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('widgets.getComments', $access_token, $params);
+        return $this->client->post('widgets.getComments', $access_token, $params);
     }
 
     /**
@@ -47,11 +51,13 @@ class Widgets {
      *      - string period:
      *      - integer count:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getPages($access_token, $params = array()) {
-        return $this->client->request('widgets.getPages', $access_token, $params);
+        return $this->client->post('widgets.getPages', $access_token, $params);
     }
 }

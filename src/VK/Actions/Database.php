@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Database {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -27,12 +29,14 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of countries.
      *      - integer count: Number of countries to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCountries($access_token, $params = array()) {
-        return $this->client->request('database.getCountries', $access_token, $params);
+        return $this->client->post('database.getCountries', $access_token, $params);
     }
 
     /**
@@ -46,12 +50,14 @@ class Database {
      *      - integer offset: Offset needed to return specific subset of regions.
      *      - integer count: Number of regions to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getRegions($access_token, $params = array()) {
-        return $this->client->request('database.getRegions', $access_token, $params);
+        return $this->client->post('database.getRegions', $access_token, $params);
     }
 
     /**
@@ -61,12 +67,14 @@ class Database {
      * @param $params array
      *      - array street_ids: Street IDs.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getStreetsById($access_token, $params = array()) {
-        return $this->client->request('database.getStreetsById', $access_token, $params);
+        return $this->client->post('database.getStreetsById', $access_token, $params);
     }
 
     /**
@@ -76,12 +84,14 @@ class Database {
      * @param $params array
      *      - array country_ids: Country IDs.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCountriesById($access_token, $params = array()) {
-        return $this->client->request('database.getCountriesById', $access_token, $params);
+        return $this->client->post('database.getCountriesById', $access_token, $params);
     }
 
     /**
@@ -97,12 +107,14 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of cities.
      *      - integer count: Number of cities to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCities($access_token, $params = array()) {
-        return $this->client->request('database.getCities', $access_token, $params);
+        return $this->client->post('database.getCities', $access_token, $params);
     }
 
     /**
@@ -112,12 +124,14 @@ class Database {
      * @param $params array
      *      - array city_ids: City IDs.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCitiesById($access_token, $params = array()) {
-        return $this->client->request('database.getCitiesById', $access_token, $params);
+        return $this->client->post('database.getCitiesById', $access_token, $params);
     }
 
     /**
@@ -131,12 +145,14 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of universities.
      *      - integer count: Number of universities to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUniversities($access_token, $params = array()) {
-        return $this->client->request('database.getUniversities', $access_token, $params);
+        return $this->client->post('database.getUniversities', $access_token, $params);
     }
 
     /**
@@ -149,12 +165,14 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of schools.
      *      - integer count: Number of schools to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSchools($access_token, $params = array()) {
-        return $this->client->request('database.getSchools', $access_token, $params);
+        return $this->client->post('database.getSchools', $access_token, $params);
     }
 
     /**
@@ -164,12 +182,14 @@ class Database {
      * @param $params array
      *      - integer country_id: Country ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSchoolClasses($access_token, $params = array()) {
-        return $this->client->request('database.getSchoolClasses', $access_token, $params);
+        return $this->client->post('database.getSchoolClasses', $access_token, $params);
     }
 
     /**
@@ -181,12 +201,14 @@ class Database {
      *      - integer offset: Offset needed to return a specific subset of faculties.
      *      - integer count: Number of faculties to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getFaculties($access_token, $params = array()) {
-        return $this->client->request('database.getFaculties', $access_token, $params);
+        return $this->client->post('database.getFaculties', $access_token, $params);
     }
 
     /**
@@ -198,11 +220,13 @@ class Database {
      *      - integer offset: offset required to get a certain subset of chairs
      *      - integer count: amount of chairs to get
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getChairs($access_token, $params = array()) {
-        return $this->client->request('database.getChairs', $access_token, $params);
+        return $this->client->post('database.getChairs', $access_token, $params);
     }
 }

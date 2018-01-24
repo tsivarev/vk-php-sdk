@@ -2,9 +2,10 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\FriendsGetOrder;
 use VK\Actions\Enums\FriendsGetNameCase;
 use VK\Actions\Enums\FriendsGetRequestsSort;
@@ -13,8 +14,9 @@ use VK\Actions\Enums\FriendsGetAvailableForCallNameCase;
 use VK\Actions\Enums\FriendsSearchNameCase;
 
 class Friends {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -45,12 +47,14 @@ class Friends {
      *        — prepositional
      *        @see FriendsGetNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('friends.get', $access_token, $params);
+        return $this->client->post('friends.get', $access_token, $params);
     }
 
     /**
@@ -66,12 +70,14 @@ class Friends {
      *      - integer count: Number of friends to return.
      *      - integer offset: Offset needed to return a specific subset of friends.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getOnline($access_token, $params = array()) {
-        return $this->client->request('friends.getOnline', $access_token, $params);
+        return $this->client->post('friends.getOnline', $access_token, $params);
     }
 
     /**
@@ -89,12 +95,14 @@ class Friends {
      *      - integer count: Number of mutual friends to return.
      *      - integer offset: Offset needed to return a specific subset of mutual friends.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getMutual($access_token, $params = array()) {
-        return $this->client->request('friends.getMutual', $access_token, $params);
+        return $this->client->post('friends.getMutual', $access_token, $params);
     }
 
     /**
@@ -104,12 +112,14 @@ class Friends {
      * @param $params array
      *      - integer count: Number of recently added friends to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getRecent($access_token, $params = array()) {
-        return $this->client->request('friends.getRecent', $access_token, $params);
+        return $this->client->post('friends.getRecent', $access_token, $params);
     }
 
     /**
@@ -128,12 +138,14 @@ class Friends {
      *      - boolean suggested: '1' — to return a list of suggested friends, '0' — to return friend requests
      *        (default)
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getRequests($access_token, $params = array()) {
-        return $this->client->request('friends.getRequests', $access_token, $params);
+        return $this->client->post('friends.getRequests', $access_token, $params);
     }
 
     /**
@@ -146,12 +158,14 @@ class Friends {
      *      - string text: Text of the message (up to 500 characters) for the friend request, if any.
      *      - boolean follow: '1' to pass an incoming request to followers list.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('friends.add', $access_token, $params);
+        return $this->client->post('friends.add', $access_token, $params);
     }
 
     /**
@@ -162,12 +176,14 @@ class Friends {
      *      - integer user_id: ID of the user whose friend list is to be edited.
      *      - array list_ids: IDs of the friend lists to which to add the user.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('friends.edit', $access_token, $params);
+        return $this->client->post('friends.edit', $access_token, $params);
     }
 
     /**
@@ -178,12 +194,14 @@ class Friends {
      *      - integer user_id: ID of the user whose friend request is to be declined or who is to be deleted from
      *        the current user's friend list.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('friends.delete', $access_token, $params);
+        return $this->client->post('friends.delete', $access_token, $params);
     }
 
     /**
@@ -194,12 +212,14 @@ class Friends {
      *      - integer user_id: User ID.
      *      - boolean return_system: '1' — to return system friend lists. By default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getLists($access_token, $params = array()) {
-        return $this->client->request('friends.getLists', $access_token, $params);
+        return $this->client->post('friends.getLists', $access_token, $params);
     }
 
     /**
@@ -210,12 +230,14 @@ class Friends {
      *      - string name: Name of the friend list.
      *      - array user_ids: IDs of users to be added to the friend list.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addList($access_token, $params = array()) {
-        return $this->client->request('friends.addList', $access_token, $params);
+        return $this->client->post('friends.addList', $access_token, $params);
     }
 
     /**
@@ -231,12 +253,14 @@ class Friends {
      *      - array delete_user_ids: (Applies if 'user_ids' parameter is not set.), User IDs to delete from the
      *        friend list.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editList($access_token, $params = array()) {
-        return $this->client->request('friends.editList', $access_token, $params);
+        return $this->client->post('friends.editList', $access_token, $params);
     }
 
     /**
@@ -246,12 +270,14 @@ class Friends {
      * @param $params array
      *      - integer list_id: ID of the friend list to delete.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteList($access_token, $params = array()) {
-        return $this->client->request('friends.deleteList', $access_token, $params);
+        return $this->client->post('friends.deleteList', $access_token, $params);
     }
 
     /**
@@ -260,12 +286,14 @@ class Friends {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAppUsers($access_token, $params = array()) {
-        return $this->client->request('friends.getAppUsers', $access_token, $params);
+        return $this->client->post('friends.getAppUsers', $access_token, $params);
     }
 
     /**
@@ -280,12 +308,14 @@ class Friends {
      *        (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate',
      *        'contacts', 'education', 'online, counters'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getByPhones($access_token, $params = array()) {
-        return $this->client->request('friends.getByPhones', $access_token, $params);
+        return $this->client->post('friends.getByPhones', $access_token, $params);
     }
 
     /**
@@ -294,12 +324,14 @@ class Friends {
      * @param $access_token string
      * @param $params array
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteAllRequests($access_token, $params = array()) {
-        return $this->client->request('friends.deleteAllRequests', $access_token, $params);
+        return $this->client->post('friends.deleteAllRequests', $access_token, $params);
     }
 
     /**
@@ -321,12 +353,14 @@ class Friends {
      *        , 'abl' — prepositional
      *        @see FriendsGetSuggestionsNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
-        return $this->client->request('friends.getSuggestions', $access_token, $params);
+        return $this->client->post('friends.getSuggestions', $access_token, $params);
     }
 
     /**
@@ -339,12 +373,14 @@ class Friends {
      *        md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows
      *        to check that data has not been modified by the client. By default: '0'.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function areFriends($access_token, $params = array()) {
-        return $this->client->request('friends.areFriends', $access_token, $params);
+        return $this->client->post('friends.areFriends', $access_token, $params);
     }
 
     /**
@@ -360,12 +396,14 @@ class Friends {
      *        instrumental , 'abl' — prepositional
      *        @see FriendsGetAvailableForCallNameCase
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAvailableForCall($access_token, $params = array()) {
-        return $this->client->request('friends.getAvailableForCall', $access_token, $params);
+        return $this->client->post('friends.getAvailableForCall', $access_token, $params);
     }
 
     /**
@@ -385,11 +423,13 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of friends.
      *      - integer count: Number of friends to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('friends.search', $access_token, $params);
+        return $this->client->post('friends.search', $access_token, $params);
     }
 }

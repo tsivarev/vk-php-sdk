@@ -2,17 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\WallGetFilter;
 use VK\Actions\Enums\WallGetCommentsSort;
 use VK\Actions\Enums\WallReportPostReason;
 use VK\Actions\Enums\WallReportCommentReason;
 
 class Wall {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -38,12 +40,14 @@ class Wall {
      *        additional fields (default)
      *      - array fields:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('wall.get', $access_token, $params);
+        return $this->client->post('wall.get', $access_token, $params);
     }
 
     /**
@@ -60,12 +64,14 @@ class Wall {
      *      - boolean extended: show extended post info.
      *      - array fields:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('wall.search', $access_token, $params);
+        return $this->client->post('wall.search', $access_token, $params);
     }
 
     /**
@@ -81,12 +87,14 @@ class Wall {
      *        that is returned if the post is a repost from another wall.
      *      - array fields:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('wall.getById', $access_token, $params);
+        return $this->client->post('wall.getById', $access_token, $params);
     }
 
     /**
@@ -120,12 +128,14 @@ class Wall {
      *      - string guid:
      *      - boolean mark_as_ads:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function post($access_token, $params = array()) {
-        return $this->client->request('wall.post', $access_token, $params);
+        return $this->client->post('wall.post', $access_token, $params);
     }
 
     /**
@@ -138,12 +148,14 @@ class Wall {
      *      - integer group_id: Target community ID when reposting to a community.
      *      - boolean mark_as_ads:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function repost($access_token, $params = array()) {
-        return $this->client->request('wall.repost', $access_token, $params);
+        return $this->client->post('wall.repost', $access_token, $params);
     }
 
     /**
@@ -157,12 +169,14 @@ class Wall {
      *      - integer offset: Offset needed to return a specific subset of reposts.
      *      - integer count: Number of reposts to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getReposts($access_token, $params = array()) {
-        return $this->client->request('wall.getReposts', $access_token, $params);
+        return $this->client->post('wall.getReposts', $access_token, $params);
     }
 
     /**
@@ -193,12 +207,14 @@ class Wall {
      *      - integer place_id: ID of the location where the user was tagged.
      *      - boolean mark_as_ads:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('wall.edit', $access_token, $params);
+        return $this->client->post('wall.edit', $access_token, $params);
     }
 
     /**
@@ -209,12 +225,14 @@ class Wall {
      *      - integer owner_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer post_id: ID of the post to be deleted.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('wall.delete', $access_token, $params);
+        return $this->client->post('wall.delete', $access_token, $params);
     }
 
     /**
@@ -226,12 +244,14 @@ class Wall {
      *        to designate a community ID.
      *      - integer post_id: ID of the post to be restored.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->request('wall.restore', $access_token, $params);
+        return $this->client->post('wall.restore', $access_token, $params);
     }
 
     /**
@@ -243,12 +263,14 @@ class Wall {
      *        negative value to designate a community ID.
      *      - integer post_id: Post ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function pin($access_token, $params = array()) {
-        return $this->client->request('wall.pin', $access_token, $params);
+        return $this->client->post('wall.pin', $access_token, $params);
     }
 
     /**
@@ -260,12 +282,14 @@ class Wall {
      *        negative value to designate a community ID.
      *      - integer post_id: Post ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function unpin($access_token, $params = array()) {
-        return $this->client->request('wall.unpin', $access_token, $params);
+        return $this->client->post('wall.unpin', $access_token, $params);
     }
 
     /**
@@ -286,12 +310,14 @@ class Wall {
      *        default, '90'. Specify '0' if you do not want to truncate comments.
      *      - boolean extended:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('wall.getComments', $access_token, $params);
+        return $this->client->post('wall.getComments', $access_token, $params);
     }
 
     /**
@@ -311,12 +337,14 @@ class Wall {
      *      - integer sticker_id: Sticker ID.
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->request('wall.createComment', $access_token, $params);
+        return $this->client->post('wall.createComment', $access_token, $params);
     }
 
     /**
@@ -332,12 +360,14 @@ class Wall {
      *        — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner.
      *        '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->request('wall.editComment', $access_token, $params);
+        return $this->client->post('wall.editComment', $access_token, $params);
     }
 
     /**
@@ -348,12 +378,14 @@ class Wall {
      *      - integer owner_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->request('wall.deleteComment', $access_token, $params);
+        return $this->client->post('wall.deleteComment', $access_token, $params);
     }
 
     /**
@@ -364,12 +396,14 @@ class Wall {
      *      - integer owner_id: User ID or community ID. Use a negative value to designate a community ID.
      *      - integer comment_id: Comment ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->request('wall.restoreComment', $access_token, $params);
+        return $this->client->post('wall.restoreComment', $access_token, $params);
     }
 
     /**
@@ -383,12 +417,14 @@ class Wall {
      *        – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see WallReportPostReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reportPost($access_token, $params = array()) {
-        return $this->client->request('wall.reportPost', $access_token, $params);
+        return $this->client->post('wall.reportPost', $access_token, $params);
     }
 
     /**
@@ -402,11 +438,13 @@ class Wall {
      *        '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *        @see WallReportCommentReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->request('wall.reportComment', $access_token, $params);
+        return $this->client->post('wall.reportComment', $access_token, $params);
     }
 }

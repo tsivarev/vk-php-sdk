@@ -2,13 +2,15 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 
 class Docs {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -26,12 +28,14 @@ class Docs {
      *      - integer owner_id: ID of the user or community that owns the documents. Use a negative value to
      *        designate a community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('docs.get', $access_token, $params);
+        return $this->client->post('docs.get', $access_token, $params);
     }
 
     /**
@@ -41,12 +45,14 @@ class Docs {
      * @param $params array
      *      - array docs: Document IDs. Example: , "66748_91488,66748_91455",
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->request('docs.getById', $access_token, $params);
+        return $this->client->post('docs.getById', $access_token, $params);
     }
 
     /**
@@ -56,12 +62,14 @@ class Docs {
      * @param $params array
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUploadServer($access_token, $params = array()) {
-        return $this->client->request('docs.getUploadServer', $access_token, $params);
+        return $this->client->post('docs.getUploadServer', $access_token, $params);
     }
 
     /**
@@ -71,12 +79,14 @@ class Docs {
      * @param $params array
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getWallUploadServer($access_token, $params = array()) {
-        return $this->client->request('docs.getWallUploadServer', $access_token, $params);
+        return $this->client->post('docs.getWallUploadServer', $access_token, $params);
     }
 
     /**
@@ -89,12 +99,14 @@ class Docs {
      *      - string title: Document title.
      *      - string tags: Document tags.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->request('docs.save', $access_token, $params);
+        return $this->client->post('docs.save', $access_token, $params);
     }
 
     /**
@@ -106,12 +118,14 @@ class Docs {
      *        designate a community ID.
      *      - integer doc_id: Document ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('docs.delete', $access_token, $params);
+        return $this->client->post('docs.delete', $access_token, $params);
     }
 
     /**
@@ -125,12 +139,14 @@ class Docs {
      *      - string access_key: Access key. This parameter is required if 'access_key' was returned with the
      *        document's data.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('docs.add', $access_token, $params);
+        return $this->client->post('docs.add', $access_token, $params);
     }
 
     /**
@@ -141,12 +157,14 @@ class Docs {
      *      - integer owner_id: ID of the user or community that owns the documents. Use a negative value to
      *        designate a community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTypes($access_token, $params = array()) {
-        return $this->client->request('docs.getTypes', $access_token, $params);
+        return $this->client->post('docs.getTypes', $access_token, $params);
     }
 
     /**
@@ -158,12 +176,14 @@ class Docs {
      *      - integer count: Number of results to return.
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('docs.search', $access_token, $params);
+        return $this->client->post('docs.search', $access_token, $params);
     }
 
     /**
@@ -176,11 +196,13 @@ class Docs {
      *      - string title: Document title.
      *      - array tags: Document tags.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('docs.edit', $access_token, $params);
+        return $this->client->post('docs.edit', $access_token, $params);
     }
 }

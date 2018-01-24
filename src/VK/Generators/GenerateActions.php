@@ -33,16 +33,16 @@ class GenerateActions {
     const METHODS_LINK = self::SCHEMA_LINK . 'methods.json';
 
     const ACTION_CLASS_NAMESPACE = 'VK\Actions';
-    const USE_API_CLIENT = 'use VK\VKAPIClient;';
+    const USE_VK_API_REQUEST = 'use VK\VKAPIRequest;';
     const USE_VK_CLIENT_EXCEPTION = 'use VK\Exceptions\VKClientException;';
-    const USE_VK_RESPONSE = 'use VK\VKResponse;';
-
+    const USE_VK_API_EXCEPTION = 'use VK\Exceptions\VKAPIException;';
+    const USE_HTTP_REQUEST_EXCEPTION = 'use VK\Exceptions\HttpRequestException;';
     private $response = null;
     private $api_client_use = '';
     private $api_client_members = '';
     private $api_client_construct_code = '';
     private $api_client_gets = '';
-    private $api_client_member = null;
+    private $api_request_member = null;
 
     protected function getSchemaResponse() {
         $curl = curl_init(static::METHODS_LINK);
@@ -64,9 +64,12 @@ class GenerateActions {
         $mapped_methods = $this->mapMethods();
         ksort($mapped_methods);
 
-        $this->api_client_member = $this->wrapClassMember('VKAPIClient', 'client', '');
-        $this->api_client_members .= $this->api_client_member;
-        $this->api_client_construct_code = $this->wrapConstructAssignment('client', 'new VKAPIClient()');
+        $this->api_request_member = $this->wrapClassMember('VKAPIRequest', 'client');
+
+        $this->api_client_members .= $this->wrapConstant('VK_API_HOST', 'https://api.vk.com/method', '');
+        $this->api_client_members .= $this->api_request_member;
+        $this->api_client_construct_code = $this->wrapConstructAssignment('client',
+            'new VKAPIRequest(static::VK_API_HOST)');
 
         foreach ($mapped_methods as $action_name => &$action_methods) {
             $class_name = ucwords($action_name);
@@ -78,11 +81,12 @@ class GenerateActions {
                 $action_class_code .= $this->wrapActionMethod($method, $action_name);
             }
 
-            $action_class_use = PHP_EOL . static::USE_API_CLIENT;
+            $action_class_use = PHP_EOL . static::USE_VK_API_REQUEST;
             $action_class_use .= PHP_EOL . static::USE_VK_CLIENT_EXCEPTION;
-            $action_class_use .= PHP_EOL . static::USE_VK_RESPONSE;
+            $action_class_use .= PHP_EOL . static::USE_VK_API_EXCEPTION;
+            $action_class_use .= PHP_EOL . static::USE_HTTP_REQUEST_EXCEPTION;
             $action_class_use .= $this->addActionEnumsToUse($action_methods, $action_name);
-            $action_class_members = $this->api_client_member;
+            $action_class_members = $this->api_request_member;
             $action_class_construct = $this->wrapConstruct('$client',
                 $this->wrapConstructAssignment('client', '$client'));
 
@@ -93,7 +97,7 @@ class GenerateActions {
             file_put_contents($file_name, $action_class);
         }
 
-        $api_client_class_name = 'VKAPIActionClient';
+        $api_client_class_name = 'VKAPIClient';
         $api_client_construct = $this->wrapConstruct('', $this->api_client_construct_code);
 
         $api_client_class = $this->wrapClass($api_client_class_name, static::VK_NAMESPACE,
@@ -120,7 +124,7 @@ class GenerateActions {
     protected function updateAPIActionClientProperties($class_name, $action_name) {
         $this->api_client_use .= $this->wrapActionClassUse($class_name);
 
-        $this->api_client_members .= $this->wrapClassMember($class_name, $action_name, PHP_EOL);
+        $this->api_client_members .= $this->wrapClassMember($class_name, $action_name);
 
         $value = 'new ' . $class_name . '(' . static::DOLLAR . 'this->client)';
         $this->api_client_construct_code .= $this->wrapConstructAssignment($action_name, $value);
@@ -207,13 +211,13 @@ class GenerateActions {
         $method_description_array = explode(PHP_EOL, $method_description);
 
         $result .= $this->wrapComment(array_merge($method_description_array, array('', '@param $access_token string',
-                '@param $params array'), $params, array('', '@return VKResponse',
-                '@throws VKClientException', ''))) . PHP_EOL;
+                '@param $params array'), $params, array('', '@return array',
+                '@throws VKClientException', '@throws VKAPIException', '@throws HttpRequestException', ''))) . PHP_EOL;
 
         $result .= $this->tab(1) . 'public function ' . $method_name . '(' . static::DOLLAR . 'access_token'
             . ', ' . static::DOLLAR . 'params = array()) {' . PHP_EOL;
 
-        $result .= $this->tab(2) . 'return ' . static::DOLLAR . 'this->client->request('
+        $result .= $this->tab(2) . 'return ' . static::DOLLAR . 'this->client->post('
             . static::QUOTE . $action_name . static::METHOD_NAME_DELIMITER . $method['name'] . static::QUOTE
             . ', ' . static::DOLLAR . 'access_token, ' . static::DOLLAR . 'params);' . PHP_EOL;
 
@@ -249,16 +253,16 @@ class GenerateActions {
         for ($i = 0; $i < count($enum); $i++) {
             $value = $enum[$i];
             $description = $enum_names ? $enum_names[$i] : null;
-            $members .= $this->createConstant(strtoupper($value), $value, $description);
+            $members .= $this->wrapConstant(strtoupper($value), $value, $description);
         }
         return $members;
     }
 
-    protected function createConstant($name, $value, $description) {
+    protected function wrapConstant($name, $value, $description) {
         if (is_numeric($name[0])) {
-            $name = static::UNDERSCORE . $name;
+            $name = str_replace(static::SPACE, static::UNDERSCORE, strtoupper($description));
         }
-        $result = PHP_EOL . $this->tab(1) . 'const ' . $name . ' = "' . $value . '";';
+        $result = PHP_EOL . $this->tab(1) . 'const ' . $name . ' = \'' . $value . '\';';
         if ($description){
             $result .= ' // ' . $description;
         }
@@ -272,8 +276,8 @@ class GenerateActions {
         return $result;
     }
 
-    protected function wrapClassMember($type, $var_name, $beginning) {
-        $result = $beginning . PHP_EOL . $this->wrapComment(array('@var ' . $type));
+    protected function wrapClassMember($type, $var_name) {
+        $result = PHP_EOL . PHP_EOL . $this->wrapComment(array('@var ' . $type));
         $result .= PHP_EOL;
         $result .= $this->tab(1) . 'private ' . static::DOLLAR . $var_name . ';';
         return $result;

@@ -3,6 +3,6 @@
 namespace VK\Actions\Enums;
 
 class MarketSearchRev {
-    const _0 = "0"; // normal
-    const _1 = "1"; // reverse
+    const NORMAL = '0'; // normal
+    const REVERSE = '1'; // reverse
 }

@@ -3,9 +3,9 @@
 namespace VK\Actions\Enums;
 
 class GroupsBanUserReason {
-    const _0 = "0"; // other
-    const _1 = "1"; // spam
-    const _2 = "2"; // verbal abuse
-    const _3 = "3"; // strong language
-    const _4 = "4"; // irrelevant messages
+    const OTHER = '0'; // other
+    const SPAM = '1'; // spam
+    const VERBAL_ABUSE = '2'; // verbal abuse
+    const STRONG_LANGUAGE = '3'; // strong language
+    const IRRELEVANT_MESSAGES = '4'; // irrelevant messages
 }

@@ -3,8 +3,8 @@
 namespace VK\Actions\Enums;
 
 class PlacesSearchRadius {
-    const _1 = "1"; // 100 m
-    const _2 = "2"; // 800 m
-    const _3 = "3"; // 6 km
-    const _4 = "4"; // 50 km
+    const 100_M = '1'; // 100 m
+    const 800_M = '2'; // 800 m
+    const 6_KM = '3'; // 6 km
+    const 50_KM = '4'; // 50 km
 }

@@ -2,17 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIClient;
+use VK\VKAPIRequest;
 use VK\Exceptions\VKClientException;
-use VK\VKResponse;
+use VK\Exceptions\VKAPIException;
+use VK\Exceptions\HttpRequestException;
 use VK\Actions\Enums\VideoSearchSort;
 use VK\Actions\Enums\VideoGetCommentsSort;
 use VK\Actions\Enums\VideoReportReason;
 use VK\Actions\Enums\VideoReportCommentReason;
 
 class Video {
+
     /**
-     * @var VKAPIClient
+     * @var VKAPIRequest
      **/
     private $client;
 
@@ -33,12 +35,14 @@ class Video {
      *      - integer offset: Offset needed to return a specific subset of videos.
      *      - boolean extended: '1' — to return an extended response with additional fields
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->request('video.get', $access_token, $params);
+        return $this->client->post('video.get', $access_token, $params);
     }
 
     /**
@@ -57,12 +61,14 @@ class Video {
      *      - boolean no_comments: Disable comments for the group video.
      *      - boolean repeat: '1' — to repeat the playback of the video, '0' — to play the video once,
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->request('video.edit', $access_token, $params);
+        return $this->client->post('video.edit', $access_token, $params);
     }
 
     /**
@@ -76,12 +82,14 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video. Use a negative value to designate
      *        a community ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->request('video.add', $access_token, $params);
+        return $this->client->post('video.add', $access_token, $params);
     }
 
     /**
@@ -105,12 +113,14 @@ class Video {
      *      - boolean no_comments:
      *      - boolean repeat: '1' — to repeat the playback of the video, '0' — to play the video once,
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->request('video.save', $access_token, $params);
+        return $this->client->post('video.save', $access_token, $params);
     }
 
     /**
@@ -122,12 +132,14 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      *      - integer target_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->request('video.delete', $access_token, $params);
+        return $this->client->post('video.delete', $access_token, $params);
     }
 
     /**
@@ -138,12 +150,14 @@ class Video {
      *      - integer video_id: Video ID.
      *      - integer owner_id: ID of the user or community that owns the video.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->request('video.restore', $access_token, $params);
+        return $this->client->post('video.restore', $access_token, $params);
     }
 
     /**
@@ -165,12 +179,14 @@ class Video {
      *      - integer count: Number of videos to return.
      *      - boolean extended: 
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->request('video.search', $access_token, $params);
+        return $this->client->post('video.search', $access_token, $params);
     }
 
     /**
@@ -183,12 +199,14 @@ class Video {
      *      - integer count: Number of videos to return.
      *      - boolean extended: 
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getUserVideos($access_token, $params = array()) {
-        return $this->client->request('video.getUserVideos', $access_token, $params);
+        return $this->client->post('video.getUserVideos', $access_token, $params);
     }
 
     /**
@@ -202,12 +220,14 @@ class Video {
      *      - boolean extended: '1' — to return additional information about album privacy settings for the
      *        current user
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
-        return $this->client->request('video.getAlbums', $access_token, $params);
+        return $this->client->post('video.getAlbums', $access_token, $params);
     }
 
     /**
@@ -219,12 +239,14 @@ class Video {
      *        designate a community ID.
      *      - integer album_id: Album ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbumById($access_token, $params = array()) {
-        return $this->client->request('video.getAlbumById', $access_token, $params);
+        return $this->client->post('video.getAlbumById', $access_token, $params);
     }
 
     /**
@@ -237,12 +259,14 @@ class Video {
      *      - array privacy: new access permissions for the album. Possible values: , *'0' – all users,, *'1' –
      *        friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addAlbum($access_token, $params = array()) {
-        return $this->client->request('video.addAlbum', $access_token, $params);
+        return $this->client->post('video.addAlbum', $access_token, $params);
     }
 
     /**
@@ -256,12 +280,14 @@ class Video {
      *      - array privacy: new access permissions for the album. Possible values: , *'0' – all users,, *'1' –
      *        friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
-        return $this->client->request('video.editAlbum', $access_token, $params);
+        return $this->client->post('video.editAlbum', $access_token, $params);
     }
 
     /**
@@ -272,12 +298,14 @@ class Video {
      *      - integer group_id: Community ID (if the album is owned by a community).
      *      - integer album_id: Album ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
-        return $this->client->request('video.deleteAlbum', $access_token, $params);
+        return $this->client->post('video.deleteAlbum', $access_token, $params);
     }
 
     /**
@@ -290,12 +318,14 @@ class Video {
      *      - integer before: ID of the album before which the album in question shall be placed.
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
-        return $this->client->request('video.reorderAlbums', $access_token, $params);
+        return $this->client->post('video.reorderAlbums', $access_token, $params);
     }
 
     /**
@@ -314,12 +344,14 @@ class Video {
      *        question shall be placed.
      *      - integer after_video_id: ID of the video after which the photo in question shall be placed.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reorderVideos($access_token, $params = array()) {
-        return $this->client->request('video.reorderVideos', $access_token, $params);
+        return $this->client->post('video.reorderVideos', $access_token, $params);
     }
 
     /**
@@ -333,12 +365,14 @@ class Video {
      *      - integer owner_id:
      *      - integer video_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function addToAlbum($access_token, $params = array()) {
-        return $this->client->request('video.addToAlbum', $access_token, $params);
+        return $this->client->post('video.addToAlbum', $access_token, $params);
     }
 
     /**
@@ -352,12 +386,14 @@ class Video {
      *      - integer owner_id:
      *      - integer video_id:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeFromAlbum($access_token, $params = array()) {
-        return $this->client->request('video.removeFromAlbum', $access_token, $params);
+        return $this->client->post('video.removeFromAlbum', $access_token, $params);
     }
 
     /**
@@ -370,12 +406,14 @@ class Video {
      *      - integer video_id:
      *      - boolean extended: 
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getAlbumsByVideo($access_token, $params = array()) {
-        return $this->client->request('video.getAlbumsByVideo', $access_token, $params);
+        return $this->client->post('video.getAlbumsByVideo', $access_token, $params);
     }
 
     /**
@@ -394,12 +432,14 @@ class Video {
      *        @see VideoGetCommentsSort
      *      - boolean extended:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->request('video.getComments', $access_token, $params);
+        return $this->client->post('video.getComments', $access_token, $params);
     }
 
     /**
@@ -419,12 +459,14 @@ class Video {
      *      - integer sticker_id:
      *      - string guid:
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->request('video.createComment', $access_token, $params);
+        return $this->client->post('video.createComment', $access_token, $params);
     }
 
     /**
@@ -435,12 +477,14 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      *      - integer comment_id: ID of the comment to be deleted.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->request('video.deleteComment', $access_token, $params);
+        return $this->client->post('video.deleteComment', $access_token, $params);
     }
 
     /**
@@ -451,12 +495,14 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      *      - integer comment_id: ID of the deleted comment.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->request('video.restoreComment', $access_token, $params);
+        return $this->client->post('video.restoreComment', $access_token, $params);
     }
 
     /**
@@ -472,12 +518,14 @@ class Video {
      *        — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner.
      *        '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->request('video.editComment', $access_token, $params);
+        return $this->client->post('video.editComment', $access_token, $params);
     }
 
     /**
@@ -488,12 +536,14 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      *      - integer video_id: Video ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getTags($access_token, $params = array()) {
-        return $this->client->request('video.getTags', $access_token, $params);
+        return $this->client->post('video.getTags', $access_token, $params);
     }
 
     /**
@@ -506,12 +556,14 @@ class Video {
      *      - integer video_id: Video ID.
      *      - string tagged_name: Tag text.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function putTag($access_token, $params = array()) {
-        return $this->client->request('video.putTag', $access_token, $params);
+        return $this->client->post('video.putTag', $access_token, $params);
     }
 
     /**
@@ -523,12 +575,14 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      *      - integer video_id: Video ID.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function removeTag($access_token, $params = array()) {
-        return $this->client->request('video.removeTag', $access_token, $params);
+        return $this->client->post('video.removeTag', $access_token, $params);
     }
 
     /**
@@ -539,12 +593,14 @@ class Video {
      *      - integer offset: Offset needed to return a specific subset of videos.
      *      - integer count: Number of videos to return.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getNewTags($access_token, $params = array()) {
-        return $this->client->request('video.getNewTags', $access_token, $params);
+        return $this->client->post('video.getNewTags', $access_token, $params);
     }
 
     /**
@@ -560,12 +616,14 @@ class Video {
      *      - string comment: Comment describing the complaint.
      *      - string search_query: (If the video was found in search results.) Search query string.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->request('video.report', $access_token, $params);
+        return $this->client->post('video.report', $access_token, $params);
     }
 
     /**
@@ -579,12 +637,14 @@ class Video {
      *        – extremism , 3 – violence , 4 – drug propaganda , 5 – adult material , 6 – insult, abuse
      *        @see VideoReportCommentReason
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->request('video.reportComment', $access_token, $params);
+        return $this->client->post('video.reportComment', $access_token, $params);
     }
 
     /**
@@ -600,12 +660,14 @@ class Video {
      *      - boolean extended: 1 – return additional infor about users and communities in profiles and groups
      *        fields.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
-        return $this->client->request('video.getCatalog', $access_token, $params);
+        return $this->client->post('video.getCatalog', $access_token, $params);
     }
 
     /**
@@ -619,12 +681,14 @@ class Video {
      *      - boolean extended: 1 – return additional infor about users and communities in profiles and groups
      *        fields.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function getCatalogSection($access_token, $params = array()) {
-        return $this->client->request('video.getCatalogSection', $access_token, $params);
+        return $this->client->post('video.getCatalogSection', $access_token, $params);
     }
 
     /**
@@ -634,11 +698,13 @@ class Video {
      * @param $params array
      *      - integer section_id: 'id' value returned with a block to hide by the '' method.
      * 
-     * @return VKResponse
+     * @return array
      * @throws VKClientException
+     * @throws VKAPIException
+     * @throws HttpRequestException
      * 
      **/
     public function hideCatalogSection($access_token, $params = array()) {
-        return $this->client->request('video.hideCatalogSection', $access_token, $params);
+        return $this->client->post('video.hideCatalogSection', $access_token, $params);
     }
 }
