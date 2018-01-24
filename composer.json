@@ -3,6 +3,7 @@
     "description": "VK SDK for PHP",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0",
         "vkcom/vk-api-schema": "dev-master"
