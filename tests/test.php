@@ -11,12 +11,12 @@ $access_token = '';
 $vk = new \VK\VKAPIClient();
 try {
 //    $vk->wall()->post($access_token);
-    $response = $vk->users()->get($access_token, array('user_ids' => '1,2'));
+    $response = $vk->users()->get($access_token, array('user_ids' => array(1, 2), 'fields' => array('city', 'sex')));
     var_dump($response);
 } catch (\VK\Exceptions\VKClientException $e) {
+    error_log($e);
     echo '1';
-} catch (\VK\Exceptions\HttpRequestException $e) {
-    echo '2';
 } catch (\VK\Exceptions\VKAPIException $e) {
+    error_log($e);
     echo '3';
 }
