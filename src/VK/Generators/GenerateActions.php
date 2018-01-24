@@ -23,11 +23,11 @@ class GenerateActions {
     const COMMENT_START = '/**';
     const COMMENT_END = '**/';
 
-    const USE = 'use';
+    const USE_KEYWORD = 'use';
     const VK_NAMESPACE = 'VK';
     const VK_ACTIONS = 'VK\Actions';
     const VK_ENUMS = 'VK\Actions\Enums';
-    const PATH_ENUMS = '../Actions/Enums/';
+    private $enums_path = null;
 
     const SCHEMA_LINK = 'https://raw.githubusercontent.com/VKCOM/vk-api-schema/master/';
     const METHODS_LINK = self::SCHEMA_LINK . 'methods.json';
@@ -53,12 +53,40 @@ class GenerateActions {
         $this->response = json_decode($raw_response, true);
     }
 
+    protected function getSchemaFromFile($path) {
+        $methods = file_get_contents($path);
+        $this->response = json_decode($methods, true);
+    }
+
     private static function tab($count) {
         return str_repeat(' ', static::TAB_SIZE * $count);
     }
 
-    public function generate($actions_output_path = '../Actions/', $api_client_output_path = '../') {
-        $this->getSchemaResponse();
+    private function checkDirPath($path) {
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+    }
+
+    public function generate($methods_path = null, $actions_output_path = null, $api_client_output_path = null) {
+        if ($methods_path == null) {
+            $methods_path = dirname(dirname(dirname(__DIR__))) .
+                '/vendor/vkcom/vk-api-schema/methods.json';
+        }
+        $this->getSchemaFromFile($methods_path);
+
+        if ($actions_output_path == null) {
+            $actions_output_path = dirname(__DIR__) . '/Actions/';
+            $this->checkDirPath($actions_output_path);
+        }
+
+        if ($api_client_output_path == null) {
+            $api_client_output_path = dirname(__DIR__) . '/';
+            $this->checkDirPath($api_client_output_path);
+        }
+
+        $this->enums_path = dirname(__DIR__) . '/Actions/Enums/';
+        $this->checkDirPath($this->enums_path);
 
         $mapped_methods = $this->mapMethods();
         ksort($mapped_methods);
@@ -105,6 +133,8 @@ class GenerateActions {
         $file_name = $api_client_output_path . $api_client_class_name . '.php';
 
         file_put_contents($file_name, $api_client_class);
+
+        echo 'SDK is generated.' . PHP_EOL;
     }
 
     protected function mapMethods() {
@@ -233,7 +263,7 @@ class GenerateActions {
         $enum_class = $this->wrapClass($enum_name, static::VK_ENUMS, null, $enum_members,
             null, null);
 
-        $filename = static::PATH_ENUMS . $enum_name . '.php';
+        $filename = $this->enums_path . $enum_name . '.php';
         file_put_contents($filename, $enum_class);
 
         return $enum_name;
@@ -249,7 +279,10 @@ class GenerateActions {
     protected function createEnumClassMembers($param) {
         $members = '';
         $enum = $param['enum'];
-        $enum_names = $param['enumNames'];
+        $enum_names = array();
+        if (isset($param['enumNames'])) {
+            $enum_names = $param['enumNames'];
+        }
         for ($i = 0; $i < count($enum); $i++) {
             $value = $enum[$i];
             $description = $enum_names ? $enum_names[$i] : null;
@@ -300,7 +333,7 @@ class GenerateActions {
     }
 
     protected function wrapActionClassUse($class_name) {
-        return PHP_EOL . static::USE . static::SPACE . static::VK_ACTIONS . static::SLASH . $class_name . ';';
+        return PHP_EOL . static::USE_KEYWORD . static::SPACE . static::VK_ACTIONS . static::SLASH . $class_name . ';';
     }
 
     protected function wrapConstructAssignment($varName, $value) {
@@ -322,7 +355,7 @@ class GenerateActions {
                 $params = $method['parameters'];
                 foreach ($params as &$param) {
                     if (isset($param['enum'])) {
-                        $result .= PHP_EOL . static::USE . static::SPACE . static::VK_ENUMS . static::SLASH .
+                        $result .= PHP_EOL . static::USE_KEYWORD . static::SPACE . static::VK_ENUMS . static::SLASH .
                             $this->buildEnumName($param['name'], $method['name'], $action_name) . ';';
                     }
                 }

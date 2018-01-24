@@ -1,5 +1,6 @@
 <?php
-require_once(getcwd() . '/GenerateActions.php');
+
+require_once (dirname(dirname(__DIR__)) . '/autoload.php');
 
 use VK\Generators\GenerateActions;
 
