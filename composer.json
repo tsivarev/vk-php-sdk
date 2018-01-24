@@ -3,6 +3,7 @@
     "description": "VK SDK for PHP",
     "type": "library",
     "homepage": "https://github.com/erokhinav/vk-php-sdk",
+    "version":"1.0.0",
     "license": "MIT",
     "minimum-stability": "dev",
     "require": {
