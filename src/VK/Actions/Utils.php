@@ -26,8 +26,8 @@ class Utils {
      *      - string url: Link to check (e.g., 'http://google.com').
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function checkLink($access_token, $params = array()) {
@@ -42,8 +42,8 @@ class Utils {
      *      - string key: Link key (characters after vk.cc/).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteFromLastShortened($access_token, $params = array()) {
@@ -59,8 +59,8 @@ class Utils {
      *      - integer offset: Offset needed to return a specific subset of links.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getLastShortenedLinks($access_token, $params = array()) {
@@ -81,8 +81,8 @@ class Utils {
      *        only.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getLinkStats($access_token, $params = array()) {
@@ -98,8 +98,8 @@ class Utils {
      *      - boolean private: 1 — private stats, 0 — public stats.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getShortLink($access_token, $params = array()) {
@@ -115,8 +115,8 @@ class Utils {
      *        'rules_of_war'), or application.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function resolveScreenName($access_token, $params = array()) {
@@ -130,8 +130,8 @@ class Utils {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getServerTime($access_token, $params = array()) {

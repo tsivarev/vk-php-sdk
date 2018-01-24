@@ -29,8 +29,8 @@ class Search {
      *      - boolean search_global: 
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getHints($access_token, $params = array()) {

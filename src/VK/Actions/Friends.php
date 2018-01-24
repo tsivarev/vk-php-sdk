@@ -47,8 +47,8 @@ class Friends {
      *        @see FriendsGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -69,8 +69,8 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of friends.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getOnline($access_token, $params = array()) {
@@ -93,8 +93,8 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of mutual friends.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getMutual($access_token, $params = array()) {
@@ -109,8 +109,8 @@ class Friends {
      *      - integer count: Number of recently added friends to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getRecent($access_token, $params = array()) {
@@ -134,8 +134,8 @@ class Friends {
      *        (default)
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getRequests($access_token, $params = array()) {
@@ -153,8 +153,8 @@ class Friends {
      *      - boolean follow: '1' to pass an incoming request to followers list.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function add($access_token, $params = array()) {
@@ -170,8 +170,8 @@ class Friends {
      *      - array list_ids: IDs of the friend lists to which to add the user.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -187,8 +187,8 @@ class Friends {
      *        the current user's friend list.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -204,8 +204,8 @@ class Friends {
      *      - boolean return_system: '1' — to return system friend lists. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getLists($access_token, $params = array()) {
@@ -221,8 +221,8 @@ class Friends {
      *      - array user_ids: IDs of users to be added to the friend list.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addList($access_token, $params = array()) {
@@ -243,8 +243,8 @@ class Friends {
      *        friend list.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editList($access_token, $params = array()) {
@@ -259,8 +259,8 @@ class Friends {
      *      - integer list_id: ID of the friend list to delete.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteList($access_token, $params = array()) {
@@ -274,8 +274,8 @@ class Friends {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getAppUsers($access_token, $params = array()) {
@@ -295,8 +295,8 @@ class Friends {
      *        'contacts', 'education', 'online, counters'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getByPhones($access_token, $params = array()) {
@@ -310,8 +310,8 @@ class Friends {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteAllRequests($access_token, $params = array()) {
@@ -338,8 +338,8 @@ class Friends {
      *        @see FriendsGetSuggestionsNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
@@ -357,8 +357,8 @@ class Friends {
      *        to check that data has not been modified by the client. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function areFriends($access_token, $params = array()) {
@@ -379,8 +379,8 @@ class Friends {
      *        @see FriendsGetAvailableForCallNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getAvailableForCall($access_token, $params = array()) {
@@ -405,8 +405,8 @@ class Friends {
      *      - integer count: Number of friends to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function search($access_token, $params = array()) {

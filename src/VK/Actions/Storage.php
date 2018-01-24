@@ -27,8 +27,8 @@ class Storage {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -45,8 +45,8 @@ class Storage {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function set($access_token, $params = array()) {
@@ -63,8 +63,8 @@ class Storage {
      *      - integer count: amount of variable names the info needs to be collected from.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getKeys($access_token, $params = array()) {

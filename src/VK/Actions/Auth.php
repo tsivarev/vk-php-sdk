@@ -29,8 +29,8 @@ class Auth {
      *      - boolean auth_by_phone:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function checkPhone($access_token, $params = array()) {
@@ -60,8 +60,8 @@ class Auth {
      *      - string sid: Session ID required for method recall when SMS was not delivered.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function signup($access_token, $params = array()) {
@@ -83,8 +83,8 @@ class Auth {
      *      - integer intro:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function confirm($access_token, $params = array()) {
@@ -101,8 +101,8 @@ class Auth {
      *      - string last_name: User last name.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function restore($access_token, $params = array()) {

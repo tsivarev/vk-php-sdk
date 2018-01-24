@@ -28,8 +28,8 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -47,8 +47,8 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -70,8 +70,8 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function changeState($access_token, $params = array()) {
@@ -87,8 +87,8 @@ class Orders {
      *      - array votes:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getAmount($access_token, $params = array()) {

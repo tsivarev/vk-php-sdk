@@ -39,6 +39,7 @@ use VK\Actions\Widgets;
 
 class VKAPIClient {
     const VK_API_HOST = 'https://api.vk.com/method';
+    const VK_API_VERSION = '5.69';
 
     /**
      * @var VKAPIRequest
@@ -216,7 +217,7 @@ class VKAPIClient {
     private $widgets;
 
     public function __construct() {
-        $this->client = new VKAPIRequest(static::VK_API_HOST);
+        $this->client = new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION);
         $this->account = new Account($this->client);
         $this->ads = new Ads($this->client);
         $this->apps = new Apps($this->client);

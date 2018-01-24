@@ -27,8 +27,8 @@ class Notes {
      *      - integer count: Number of notes to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -44,8 +44,8 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -63,8 +63,8 @@ class Notes {
      *      - array privacy_comment:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function add($access_token, $params = array()) {
@@ -83,8 +83,8 @@ class Notes {
      *      - array privacy_comment:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -99,8 +99,8 @@ class Notes {
      *      - integer note_id: Note ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -117,8 +117,8 @@ class Notes {
      *      - integer count: Number of comments to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -138,8 +138,8 @@ class Notes {
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function createComment($access_token, $params = array()) {
@@ -156,8 +156,8 @@ class Notes {
      *      - string message: New comment text.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editComment($access_token, $params = array()) {
@@ -173,8 +173,8 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
@@ -190,8 +190,8 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function restoreComment($access_token, $params = array()) {

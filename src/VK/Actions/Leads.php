@@ -28,8 +28,8 @@ class Leads {
      *      - string comment: Comment text.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function complete($access_token, $params = array()) {
@@ -45,8 +45,8 @@ class Leads {
      *      - string secret: Secret key from the lead testing interface.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function start($access_token, $params = array()) {
@@ -64,8 +64,8 @@ class Leads {
      *      - string date_end: Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getStats($access_token, $params = array()) {
@@ -88,8 +88,8 @@ class Leads {
      *        chronological.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getUsers($access_token, $params = array()) {
@@ -107,8 +107,8 @@ class Leads {
      *      - string country: User country code.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function checkUser($access_token, $params = array()) {
@@ -123,8 +123,8 @@ class Leads {
      *      - string data: Metric data obtained in the lead interface.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function metricHit($access_token, $params = array()) {

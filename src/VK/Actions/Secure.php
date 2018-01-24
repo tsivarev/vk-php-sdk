@@ -24,8 +24,8 @@ class Secure {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getAppBalance($access_token, $params = array()) {
@@ -39,8 +39,8 @@ class Secure {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getTransactionsHistory($access_token, $params = array()) {
@@ -59,8 +59,8 @@ class Secure {
      *      - integer limit: number of returned posts. By default — 1000.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSMSHistory($access_token, $params = array()) {
@@ -78,8 +78,8 @@ class Secure {
      *        allowed. Maximum size is '160' characters.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function sendSMSNotification($access_token, $params = array()) {
@@ -97,8 +97,8 @@ class Secure {
      *        maximum).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function sendNotification($access_token, $params = array()) {
@@ -115,8 +115,8 @@ class Secure {
      *      - integer counter: counter value.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function setCounter($access_token, $params = array()) {
@@ -133,8 +133,8 @@ class Secure {
      *      - integer level: level value.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function setUserLevel($access_token, $params = array()) {
@@ -149,8 +149,8 @@ class Secure {
      *      - array user_ids:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getUserLevel($access_token, $params = array()) {
@@ -169,8 +169,8 @@ class Secure {
      *        user's points amount, , Any other value is ignored
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addAppEvent($access_token, $params = array()) {
@@ -187,8 +187,8 @@ class Secure {
      *        required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function checkToken($access_token, $params = array()) {

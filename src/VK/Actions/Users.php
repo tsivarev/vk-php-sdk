@@ -41,8 +41,8 @@ class Users {
      *        @see UsersGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -95,8 +95,8 @@ class Users {
      *      - array from_list:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -111,8 +111,8 @@ class Users {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function isAppUser($access_token, $params = array()) {
@@ -132,8 +132,8 @@ class Users {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSubscriptions($access_token, $params = array()) {
@@ -157,8 +157,8 @@ class Users {
      *        @see UsersGetFollowersNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getFollowers($access_token, $params = array()) {
@@ -177,8 +177,8 @@ class Users {
      *      - string comment: Comment describing the complaint.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function report($access_token, $params = array()) {
@@ -208,8 +208,8 @@ class Users {
      *        @see UsersGetNearbyNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getNearby($access_token, $params = array()) {

@@ -9,23 +9,24 @@ use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
 class VKAPIRequest {
-    const VERSION_PARAM = 'v';
-    const ACCESS_TOKEN_PARAM = 'access_token';
+    const API_PARAM_VERSION = 'v';
+    const API_PARAM_ACCESS_TOKEN = 'access_token';
 
     const CONNECTION_TIMEOUT = 10;
-    const STATUS_CODE_OK = 200;
+    const HTTP_STATUS_CODE_OK = 200;
 
     const ERROR_KEY = 'error';
     const ERROR_CODE_KEY = 'error_code';
     const ERROR_MSG_KEY = 'error_msg';
 
-    protected $api_version = '5.69';
     protected $http_client;
     protected $host;
+    protected $api_version;
 
-    public function __construct($host) {
+    public function __construct($host, $api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->host = $host;
+        $this->api_version = $api_version;
     }
 
     /**
@@ -41,8 +42,9 @@ class VKAPIRequest {
      * @throws VKApiException
      */
     public function post($method, $access_token, $params = array()) {
-        $params[static::VERSION_PARAM] = $this->api_version;
-        $params[static::ACCESS_TOKEN_PARAM] = $access_token;
+        $params = $this->formatParams($params);
+        $params[static::API_PARAM_VERSION] = $this->api_version;
+        $params[static::API_PARAM_ACCESS_TOKEN] = $access_token;
 
         $url = $this->host . '/' . $method;
 
@@ -88,8 +90,8 @@ class VKAPIRequest {
      * @throws VKClientException
      */
     private function checkResponse($response) {
-        if ($response->getHttpStatus() != static::STATUS_CODE_OK) {
-            throw new VKClientException('Invalid http status.');
+        if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
+            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
         }
 
         $body = $response->getBody();
@@ -101,6 +103,22 @@ class VKAPIRequest {
         }
 
         return $decode_body['response'];
+    }
+
+    /**
+     * Formats given array of parameters for making the request.
+     *
+     * @param array $params
+     *
+     * @return array
+     */
+    private function formatParams($params) {
+        foreach ($params as $key => $value) {
+            if (is_array($value)) {
+                $params[$key] = implode(', ', $value);
+            }
+        }
+        return $params;
     }
 
     /**

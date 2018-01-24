@@ -34,8 +34,8 @@ class Market {
      *        photos'. These parameters are not returned by default.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -53,8 +53,8 @@ class Market {
      *        default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -79,8 +79,8 @@ class Market {
      *        default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -97,8 +97,8 @@ class Market {
      *      - integer count: Number of items to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
@@ -116,8 +116,8 @@ class Market {
      *      - array album_ids: collections identifiers to obtain data from
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getAlbumById($access_token, $params = array()) {
@@ -143,8 +143,8 @@ class Market {
      *      - string guid: Random value to avoid resending one comment.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function createComment($access_token, $params = array()) {
@@ -168,8 +168,8 @@ class Market {
      *      - array fields: List of additional profile fields to return. See the [vk.com/dev/fields|details]
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -187,8 +187,8 @@ class Market {
      *      - integer comment_id: comment id
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
@@ -206,8 +206,8 @@ class Market {
      *      - integer comment_id: deleted comment id
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
@@ -229,8 +229,8 @@ class Market {
      *        media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editComment($access_token, $params = array()) {
@@ -250,8 +250,8 @@ class Market {
      *        @see MarketReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function reportComment($access_token, $params = array()) {
@@ -267,8 +267,8 @@ class Market {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCategories($access_token, $params = array()) {
@@ -288,8 +288,8 @@ class Market {
      *        @see MarketReportReason
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function report($access_token, $params = array()) {
@@ -311,8 +311,8 @@ class Market {
      *      - array photo_ids: IDs of additional photos.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function add($access_token, $params = array()) {
@@ -335,8 +335,8 @@ class Market {
      *      - array photo_ids: IDs of additional photos.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -352,8 +352,8 @@ class Market {
      *      - integer item_id: Item ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -369,8 +369,8 @@ class Market {
      *      - integer item_id: Deleted item ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function restore($access_token, $params = array()) {
@@ -389,8 +389,8 @@ class Market {
      *      - integer after: ID of an item to place current item after it.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function reorderItems($access_token, $params = array()) {
@@ -408,8 +408,8 @@ class Market {
      *      - integer after: ID of a collection to place current collection after it.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
@@ -427,8 +427,8 @@ class Market {
      *      - boolean main_album: Set as main ('1' – set, '0' – no).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addAlbum($access_token, $params = array()) {
@@ -447,8 +447,8 @@ class Market {
      *      - boolean main_album: Set as main ('1' – set, '0' – no).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
@@ -464,8 +464,8 @@ class Market {
      *      - integer album_id: Collection ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
@@ -482,8 +482,8 @@ class Market {
      *      - array album_ids: Collections IDs to remove item from.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function removeFromAlbum($access_token, $params = array()) {
@@ -500,8 +500,8 @@ class Market {
      *      - array album_ids: Collections IDs to add item to.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addToAlbum($access_token, $params = array()) {

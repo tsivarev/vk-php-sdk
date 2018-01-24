@@ -48,8 +48,8 @@ class Groups {
      *      - boolean extended: '1' — to return an extended response with additional fields. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function isMember($access_token, $params = array()) {
@@ -66,8 +66,8 @@ class Groups {
      *      - array fields: Group fields to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -91,8 +91,8 @@ class Groups {
      *      - integer count: Number of communities to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -121,8 +121,8 @@ class Groups {
      *        @see GroupsGetMembersFilter
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getMembers($access_token, $params = array()) {
@@ -139,8 +139,8 @@ class Groups {
      *        — Perhaps I will attend, '0' — I will be there for sure (default), ,
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function join($access_token, $params = array()) {
@@ -155,8 +155,8 @@ class Groups {
      *      - integer group_id: ID or screen name of the community.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function leave($access_token, $params = array()) {
@@ -185,8 +185,8 @@ class Groups {
      *        thousand of results, regardless of 'count' and 'offset' values."
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -204,8 +204,8 @@ class Groups {
      *        [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
@@ -221,8 +221,8 @@ class Groups {
      *      - boolean subcategories: 1 – to return subcategories info. By default: 0.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCatalogInfo($access_token, $params = array()) {
@@ -239,8 +239,8 @@ class Groups {
      *      - boolean extended: '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getInvites($access_token, $params = array()) {
@@ -266,8 +266,8 @@ class Groups {
      *        @see GroupsGetInvitedUsersNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getInvitedUsers($access_token, $params = array()) {
@@ -290,8 +290,8 @@ class Groups {
      *        comment will be invisible to the user. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function banUser($access_token, $params = array()) {
@@ -307,8 +307,8 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function unbanUser($access_token, $params = array()) {
@@ -327,8 +327,8 @@ class Groups {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getBanned($access_token, $params = array()) {
@@ -352,8 +352,8 @@ class Groups {
      *        @see GroupsCreateSubtype
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function create($access_token, $params = array()) {
@@ -447,8 +447,8 @@ class Groups {
      *      - array obscene_words: Keywords for stopwords filter.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -469,8 +469,8 @@ class Groups {
      *      - number longitude: Geographical longitude.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editPlace($access_token, $params = array()) {
@@ -485,8 +485,8 @@ class Groups {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSettings($access_token, $params = array()) {
@@ -504,8 +504,8 @@ class Groups {
      *      - array fields: Profile fields to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getRequests($access_token, $params = array()) {
@@ -528,8 +528,8 @@ class Groups {
      *      - string contact_email: Contact e-mail.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editManager($access_token, $params = array()) {
@@ -545,8 +545,8 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function invite($access_token, $params = array()) {
@@ -563,8 +563,8 @@ class Groups {
      *      - string text: Description text for the link.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addLink($access_token, $params = array()) {
@@ -580,8 +580,8 @@ class Groups {
      *      - integer link_id: Link ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteLink($access_token, $params = array()) {
@@ -598,8 +598,8 @@ class Groups {
      *      - string text: New description text for the link.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editLink($access_token, $params = array()) {
@@ -616,8 +616,8 @@ class Groups {
      *      - integer after: ID of the link after which to place the link with 'link_id'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function reorderLink($access_token, $params = array()) {
@@ -633,8 +633,8 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function removeUser($access_token, $params = array()) {
@@ -650,8 +650,8 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function approveRequest($access_token, $params = array()) {
@@ -666,8 +666,8 @@ class Groups {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCallbackConfirmationCode($access_token, $params = array()) {
@@ -683,8 +683,8 @@ class Groups {
      *      - integer server_id: Server ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCallbackSettings($access_token, $params = array()) {
@@ -736,8 +736,8 @@ class Groups {
      *      - boolean user_unblock: User removed from community blacklist
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function setCallbackSettings($access_token, $params = array()) {

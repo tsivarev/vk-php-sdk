@@ -29,8 +29,8 @@ class Database {
      *      - integer count: Number of countries to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCountries($access_token, $params = array()) {
@@ -49,8 +49,8 @@ class Database {
      *      - integer count: Number of regions to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getRegions($access_token, $params = array()) {
@@ -65,8 +65,8 @@ class Database {
      *      - array street_ids: Street IDs.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getStreetsById($access_token, $params = array()) {
@@ -81,8 +81,8 @@ class Database {
      *      - array country_ids: Country IDs.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCountriesById($access_token, $params = array()) {
@@ -103,8 +103,8 @@ class Database {
      *      - integer count: Number of cities to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCities($access_token, $params = array()) {
@@ -119,8 +119,8 @@ class Database {
      *      - array city_ids: City IDs.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCitiesById($access_token, $params = array()) {
@@ -139,8 +139,8 @@ class Database {
      *      - integer count: Number of universities to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getUniversities($access_token, $params = array()) {
@@ -158,8 +158,8 @@ class Database {
      *      - integer count: Number of schools to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSchools($access_token, $params = array()) {
@@ -174,8 +174,8 @@ class Database {
      *      - integer country_id: Country ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSchoolClasses($access_token, $params = array()) {
@@ -192,8 +192,8 @@ class Database {
      *      - integer count: Number of faculties to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getFaculties($access_token, $params = array()) {
@@ -210,8 +210,8 @@ class Database {
      *      - integer count: amount of chairs to get
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getChairs($access_token, $params = array()) {

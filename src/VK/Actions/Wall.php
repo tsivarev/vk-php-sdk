@@ -40,8 +40,8 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -63,8 +63,8 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -85,8 +85,8 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -125,8 +125,8 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function post($access_token, $params = array()) {
@@ -144,8 +144,8 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function repost($access_token, $params = array()) {
@@ -164,8 +164,8 @@ class Wall {
      *      - integer count: Number of reposts to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getReposts($access_token, $params = array()) {
@@ -201,8 +201,8 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function edit($access_token, $params = array()) {
@@ -218,8 +218,8 @@ class Wall {
      *      - integer post_id: ID of the post to be deleted.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function delete($access_token, $params = array()) {
@@ -236,8 +236,8 @@ class Wall {
      *      - integer post_id: ID of the post to be restored.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function restore($access_token, $params = array()) {
@@ -254,8 +254,8 @@ class Wall {
      *      - integer post_id: Post ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function pin($access_token, $params = array()) {
@@ -272,8 +272,8 @@ class Wall {
      *      - integer post_id: Post ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function unpin($access_token, $params = array()) {
@@ -299,8 +299,8 @@ class Wall {
      *      - boolean extended:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -325,8 +325,8 @@ class Wall {
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function createComment($access_token, $params = array()) {
@@ -347,8 +347,8 @@ class Wall {
      *        '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function editComment($access_token, $params = array()) {
@@ -364,8 +364,8 @@ class Wall {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
@@ -381,8 +381,8 @@ class Wall {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
@@ -401,8 +401,8 @@ class Wall {
      *        @see WallReportPostReason
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function reportPost($access_token, $params = array()) {
@@ -421,8 +421,8 @@ class Wall {
      *        @see WallReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function reportComment($access_token, $params = array()) {

@@ -26,8 +26,8 @@ class Fave {
      *      - integer count: Number of users to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getUsers($access_token, $params = array()) {
@@ -44,8 +44,8 @@ class Fave {
      *      - boolean photo_sizes: '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format].
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getPhotos($access_token, $params = array()) {
@@ -63,8 +63,8 @@ class Fave {
      *        '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getPosts($access_token, $params = array()) {
@@ -82,8 +82,8 @@ class Fave {
      *        groups.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getVideos($access_token, $params = array()) {
@@ -99,8 +99,8 @@ class Fave {
      *      - integer count: Number of results to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getLinks($access_token, $params = array()) {
@@ -117,8 +117,8 @@ class Fave {
      *        default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getMarketItems($access_token, $params = array()) {
@@ -133,8 +133,8 @@ class Fave {
      *      - integer user_id: Profile ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addUser($access_token, $params = array()) {
@@ -149,8 +149,8 @@ class Fave {
      *      - integer user_id: Profile ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function removeUser($access_token, $params = array()) {
@@ -165,8 +165,8 @@ class Fave {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addGroup($access_token, $params = array()) {
@@ -181,8 +181,8 @@ class Fave {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function removeGroup($access_token, $params = array()) {
@@ -198,8 +198,8 @@ class Fave {
      *      - string text: Description text.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addLink($access_token, $params = array()) {
@@ -214,8 +214,8 @@ class Fave {
      *      - string link_id: Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function removeLink($access_token, $params = array()) {

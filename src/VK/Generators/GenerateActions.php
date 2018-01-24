@@ -66,9 +66,10 @@ class GenerateActions {
         $this->api_request_member = $this->wrapClassMember('VKAPIRequest', 'client');
 
         $this->api_client_members .= $this->wrapConstant('VK_API_HOST', 'https://api.vk.com/method', '');
+        $this->api_client_members .= $this->wrapConstant('VK_API_VERSION', '5.69', '');
         $this->api_client_members .= $this->api_request_member;
         $this->api_client_construct_code = $this->wrapConstructAssignment('client',
-            'new VKAPIRequest(static::VK_API_HOST)');
+            'new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION)');
 
         foreach ($mapped_methods as $action_name => &$action_methods) {
             $class_name = ucwords($action_name);
@@ -210,7 +211,8 @@ class GenerateActions {
 
         $result .= $this->wrapComment(array_merge($method_description_array, array('', '@param $access_token string',
                 '@param $params array'), $params, array('', '@return mixed',
-                '@throws VKClientException error on the API side', '@throws VKAPIException network error', ''))) . PHP_EOL;
+                '@throws VKClientException in case of error on the API side',
+                '@throws VKAPIException in case of network error', ''))) . PHP_EOL;
 
         $result .= $this->tab(1) . 'public function ' . $method_name . '(' . static::DOLLAR . 'access_token'
             . ', ' . static::DOLLAR . 'params = array()) {' . PHP_EOL;

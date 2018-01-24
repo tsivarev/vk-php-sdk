@@ -46,8 +46,8 @@ class Apps {
      *      - string filter: 'installed' — to return list of installed apps (only for mobile platform).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
@@ -74,8 +74,8 @@ class Apps {
      *        @see AppsGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -97,8 +97,8 @@ class Apps {
      *      - boolean separate:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function sendRequest($access_token, $params = array()) {
@@ -112,8 +112,8 @@ class Apps {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteAppRequests($access_token, $params = array()) {
@@ -132,8 +132,8 @@ class Apps {
      *      - array fields: Additional profile fields, see [vk.com/dev/fields|description].
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getFriendsList($access_token, $params = array()) {
@@ -153,8 +153,8 @@ class Apps {
      *      - boolean extended: 1 — to return additional info about users
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getLeaderboard($access_token, $params = array()) {
@@ -169,8 +169,8 @@ class Apps {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getScore($access_token, $params = array()) {

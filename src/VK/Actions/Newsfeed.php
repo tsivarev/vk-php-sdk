@@ -47,8 +47,8 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function get($access_token, $params = array()) {
@@ -71,8 +71,8 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getRecommended($access_token, $params = array()) {
@@ -101,8 +101,8 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getComments($access_token, $params = array()) {
@@ -121,8 +121,8 @@ class Newsfeed {
      *      - integer count: Number of posts to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getMentions($access_token, $params = array()) {
@@ -142,8 +142,8 @@ class Newsfeed {
      *        @see NewsfeedGetBannedNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getBanned($access_token, $params = array()) {
@@ -159,8 +159,8 @@ class Newsfeed {
      *      - array group_ids:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addBan($access_token, $params = array()) {
@@ -176,8 +176,8 @@ class Newsfeed {
      *      - array group_ids:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteBan($access_token, $params = array()) {
@@ -197,8 +197,8 @@ class Newsfeed {
      *      - integer item_id: Item identifier
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function ignoreItem($access_token, $params = array()) {
@@ -218,8 +218,8 @@ class Newsfeed {
      *      - integer item_id: Item identifier
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function unignoreItem($access_token, $params = array()) {
@@ -246,8 +246,8 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function search($access_token, $params = array()) {
@@ -263,8 +263,8 @@ class Newsfeed {
      *      - boolean extended: Return additional list info
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getLists($access_token, $params = array()) {
@@ -283,8 +283,8 @@ class Newsfeed {
      *      - boolean no_reposts: reposts display on and off ('1' is for off).
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function saveList($access_token, $params = array()) {
@@ -299,8 +299,8 @@ class Newsfeed {
      *      - integer list_id:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteList($access_token, $params = array()) {
@@ -319,8 +319,8 @@ class Newsfeed {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function unsubscribe($access_token, $params = array()) {
@@ -339,8 +339,8 @@ class Newsfeed {
      *        and [vk.com/dev/fields_groups|communities].
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getSuggestedSources($access_token, $params = array()) {

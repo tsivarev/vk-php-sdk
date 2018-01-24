@@ -81,7 +81,14 @@ class CurlHttpClient implements TransportClient {
         curl_close($curl);
 
         if ($curl_error || $curl_error_code) {
-            throw new HttpRequestException("Failed curl request. Error {$curl_error_code}: {$curl_error}");
+            $error_msg = "Failed curl request. Curl error {$curl_error_code}";
+            if ($curl_error) {
+                $error_msg .= ": {$curl_error}";
+            }
+
+            $error_msg .= '.';
+
+            throw new HttpRequestException($error_msg);
         }
 
         return $this->parseRawResponse($response);

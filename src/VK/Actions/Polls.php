@@ -29,8 +29,8 @@ class Polls {
      *      - integer poll_id: Poll ID.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getById($access_token, $params = array()) {
@@ -49,8 +49,8 @@ class Polls {
      *      - boolean is_board:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function addVote($access_token, $params = array()) {
@@ -69,8 +69,8 @@ class Polls {
      *      - boolean is_board:
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function deleteVote($access_token, $params = array()) {
@@ -101,8 +101,8 @@ class Polls {
      *        @see PollsGetVotersNameCase
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function getVoters($access_token, $params = array()) {
@@ -123,8 +123,8 @@ class Polls {
      *        to 10 answers.
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function create($access_token, $params = array()) {
@@ -145,8 +145,8 @@ class Polls {
      *      - string delete_answers: list of answer ids to be deleted. For example: "[382967099, 382967103]"
      * 
      * @return mixed
-     * @throws VKClientException error on the API side
-     * @throws VKAPIException network error
+     * @throws VKClientException in case of error on the API side
+     * @throws VKAPIException in case of network error
      * 
      **/
     public function edit($access_token, $params = array()) {
