@@ -1,22 +1,14 @@
 <?php
-//require(dirname(getcwd()) . '/src/VK/TransportClient/CurlHttpClient.php');
-////require(dirname(getcwd()) . '/src/VK/TransportClient/TransportClient.php');
-////require(dirname(getcwd()) . '/src/VK/TransportClient/TransportClientResponse.php');
-//require(dirname(getcwd()) . '/src/VK/VKAPIClient.php');
-//require(dirname(getcwd()) . '/src/VK/VKAPIRequest.php');
-require_once dirname(getcwd()) . '/src/autoload.php';
+require_once dirname(getcwd()) . '/vendor/autoload.php';
 
 $access_token = '';
 
 $vk = new \VK\VKAPIClient();
 try {
-//    $vk->wall()->post($access_token);
     $response = $vk->users()->get($access_token, array('user_ids' => array(1, 2), 'fields' => array('city', 'sex')));
     var_dump($response);
 } catch (\VK\Exceptions\VKClientException $e) {
     error_log($e);
-    echo '1';
 } catch (\VK\Exceptions\VKAPIException $e) {
     error_log($e);
-    echo '3';
 }
