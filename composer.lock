@@ -1,0 +1,38 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f26c8e973caf8fdc1e14cf44488b9f4c",
+    "packages": [
+        {
+            "name": "vkcom/vk-api-schema",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/VKCOM/vk-api-schema",
+                "reference": "d01167c132c1b5fe3d531a9f694053ca7a4b1bca"
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "description": "VK API JSON Schema",
+            "homepage": "https://vk.com/dev",
+            "time": "2018-01-09T15:09:57+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "vkcom/vk-api-schema": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": []
+}

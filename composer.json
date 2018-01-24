@@ -1,0 +1,21 @@
+{
+    "name": "vk/php-sdk",
+    "description": "VK SDK for PHP",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0",
+        "vkcom/vk-api-schema": "dev-master"
+    },
+    "repositories":[
+        {
+            "type": "git",
+            "url": "https://github.com/VKCOM/vk-api-schema"
+        }
+    ],
+    "scripts": {
+      "generate-sdk": [
+        "@php src/VK/Generators/generate_actions.php"
+      ]
+    }
+}
