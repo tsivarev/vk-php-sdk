@@ -20,5 +20,8 @@
       "generate-sdk": [
         "@php src/VK/Generators/generate_actions.php"
       ]
+    },
+    "autoload": {
+      "psr-4": { "VK\\": "src/VK" }
     }
 }
