@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^5.4|^7.0",
-        "vkcom/vk-api-schema": "dev-master"
+        "vkcom/vk-api-schema": "@dev"
     },
     "require-dev": {
       "phpunit/phpunit": "~4.0"
