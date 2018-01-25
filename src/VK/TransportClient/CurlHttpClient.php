@@ -3,7 +3,6 @@
 namespace VK\TransportClient;
 
 use VK\Exceptions\HttpRequestException;
-use VK\Exceptions\VKClientException;
 
 class CurlHttpClient implements TransportClient {
     const UPLOAD_CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
