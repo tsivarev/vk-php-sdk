@@ -28,12 +28,14 @@ class GenerateActions {
     const VK_ACTIONS = 'VK\Actions';
     const VK_ENUMS = 'VK\Actions\Enums';
     const API_REQUEST_CLASS_NAME = 'request';
+    const AUTH_CLASS_NAME = 'oauth';
 
     const SCHEMA_LINK = 'https://raw.githubusercontent.com/VKCOM/vk-api-schema/master/';
     const METHODS_LINK = self::SCHEMA_LINK . 'methods.json';
 
     const ACTION_CLASS_NAMESPACE = 'VK\Actions';
     const USE_VK_API_REQUEST = 'use VK\VKAPIRequest;';
+    const USE_OAUTH_CLIENT = 'use VK\OAuth\OAuthClient;';
     const USE_VK_CLIENT_EXCEPTION = 'use VK\Exceptions\VKClientException;';
     const USE_VK_API_EXCEPTION = 'use VK\Exceptions\VKAPIException;';
     private $response = null;
@@ -92,14 +94,20 @@ class GenerateActions {
         $mapped_methods = $this->mapMethods();
         ksort($mapped_methods);
 
+        $this->api_client_use = static::USE_OAUTH_CLIENT;
+
         $this->api_request_member = $this->wrapClassMember('VKAPIRequest', static::API_REQUEST_CLASS_NAME);
 
         $this->api_client_members .= $this->wrapConstant('VK_API_HOST', 'https://api.vk.com/method', '');
         $this->api_client_members .= $this->wrapConstant('VK_API_VERSION', '5.69', '');
         $this->api_client_members .= $this->api_request_member;
+        $this->api_client_members .= $this->wrapClassMember('OAuthClient', static::AUTH_CLASS_NAME);
         $this->api_client_construct_code = $this->wrapConstructAssignment(static::API_REQUEST_CLASS_NAME,
             'new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION)');
+        $this->api_client_construct_code .= $this->wrapConstructAssignment(static::AUTH_CLASS_NAME,
+            'new OAuthClient(static::VK_API_VERSION)');
         $this->api_client_gets = $this->wrapGetActionMethod(static::API_REQUEST_CLASS_NAME);
+        $this->api_client_gets .= $this->wrapGetActionMethod(static::AUTH_CLASS_NAME);
 
         foreach ($mapped_methods as $action_name => &$action_methods) {
             $class_name = ucwords($action_name);

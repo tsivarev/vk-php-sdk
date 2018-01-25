@@ -1,7 +1,7 @@
 <?php
 
 namespace VK;
-
+use VK\OAuth\OAuthClient;
 use VK\Actions\Account;
 use VK\Actions\Ads;
 use VK\Actions\Apps;
@@ -45,6 +45,11 @@ class VKAPIClient {
      * @var VKAPIRequest
      **/
     private $request;
+
+    /**
+     * @var OAuthClient
+     **/
+    private $oauth;
 
     /**
      * @var Account
@@ -218,6 +223,7 @@ class VKAPIClient {
 
     public function __construct() {
         $this->request = new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION);
+        $this->oauth = new OAuthClient(static::VK_API_VERSION);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);
         $this->apps = new Apps($this->request);
@@ -256,6 +262,10 @@ class VKAPIClient {
 
     public function request() {
         return $this->request;
+    }
+
+    public function oauth() {
+        return $this->oauth;
     }
 
     public function account() {

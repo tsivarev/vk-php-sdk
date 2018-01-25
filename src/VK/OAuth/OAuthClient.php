@@ -10,8 +10,9 @@ use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKOAuthException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
+use VK\VKClientBase;
 
-class OAuthClient {
+class OAuthClient extends VKClientBase {
     const API_PARAM_VERSION = 'v';
     const API_PARAM_CLIENT_ID = 'client_id';
     const API_PARAM_REDIRECT_URI = 'redirect_uri';
@@ -22,14 +23,10 @@ class OAuthClient {
     const API_PARAM_CLIENT_SECRET = 'client_secret';
     const API_PARAM_CODE = 'code';
 
-    const CONNECTION_TIMEOUT = 10;
-    const HTTP_STATUS_CODE_OK = 200;
-
     const ERROR_KEY = 'error';
     const ERROR_DESCRIPTION_KEY = 'error_description';
 
     protected $http_client;
-    protected $api_version;
 
     public function __construct($api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
@@ -49,7 +46,7 @@ class OAuthClient {
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    public function authorization($client_id, $redirect_uri, $display, $scope, $state = '', $response_type = 'code') {
+    public function authorize($client_id, $redirect_uri, $display, $scope, $state = '', $response_type = 'code') {
         $scope_value = 0;
         foreach ($scope as $value) {
             $scope_value += $value;
@@ -131,34 +128,6 @@ class OAuthClient {
             return $decode_body['access_token'];
         } else {
             return $decode_body;
-        }
-    }
-
-    /**
-     * Decodes body.
-     *
-     * @param string
-     *
-     * @return mixed
-     */
-    private function decodeBody($body) {
-        $decoded_body = json_decode($body, true);
-
-        if ($decoded_body === null || !is_array($decoded_body)) {
-            $decoded_body = [];
-        }
-
-        return $decoded_body;
-    }
-
-    /**
-     * @param TransportClientResponse $response
-     *
-     * @throws VKClientException
-     */
-    private function checkHttpStatus($response) {
-        if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
-            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
         }
     }
 }

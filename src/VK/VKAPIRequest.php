@@ -8,12 +8,9 @@ use VK\Exceptions\VKClientException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
-class VKAPIRequest {
+class VKAPIRequest extends VKClientBase {
     const API_PARAM_VERSION = 'v';
     const API_PARAM_ACCESS_TOKEN = 'access_token';
-
-    const CONNECTION_TIMEOUT = 10;
-    const HTTP_STATUS_CODE_OK = 200;
 
     const ERROR_KEY = 'error';
     const ERROR_CODE_KEY = 'error_code';
@@ -22,7 +19,6 @@ class VKAPIRequest {
 
     protected $http_client;
     protected $host;
-    protected $api_version;
 
     public function __construct($host, $api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
@@ -105,17 +101,6 @@ class VKAPIRequest {
     }
 
     /**
-     * @param TransportClientResponse $response
-     *
-     * @throws VKClientException
-     */
-    private function checkHttpStatus($response) {
-        if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
-            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
-        }
-    }
-
-    /**
      * Formats given array of parameters for making the request.
      *
      * @param array $params
@@ -129,31 +114,5 @@ class VKAPIRequest {
             }
         }
         return $params;
-    }
-
-    /**
-     * Decodes body.
-     *
-     * @param string
-     *
-     * @return mixed
-     */
-    private function decodeBody($body) {
-        $decoded_body = json_decode($body, true);
-
-        if ($decoded_body === null || !is_array($decoded_body)) {
-            $decoded_body = [];
-        }
-
-        return $decoded_body;
-    }
-
-    /**
-     * Sets API version.
-     *
-     * @param string
-     */
-    public function setApiVersion($api_version) {
-        $this->api_version = $api_version;
     }
 }
