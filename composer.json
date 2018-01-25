@@ -4,6 +4,7 @@
     "type": "library",
     "homepage": "https://github.com/erokhinav/vk-php-sdk",
     "license": "MIT",
+    "minimum-stability": "stable",
     "require": {
         "php": "^5.4|^7.0",
         "vkcom/vk-api-schema": "@dev"
