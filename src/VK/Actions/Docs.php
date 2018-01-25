@@ -11,10 +11,10 @@ class Docs {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -33,7 +33,7 @@ class Docs {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('docs.get', $access_token, $params);
+        return $this->request->post('docs.get', $access_token, $params);
     }
 
     /**
@@ -49,7 +49,7 @@ class Docs {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('docs.getById', $access_token, $params);
+        return $this->request->post('docs.getById', $access_token, $params);
     }
 
     /**
@@ -65,7 +65,7 @@ class Docs {
      * 
      **/
     public function getUploadServer($access_token, $params = array()) {
-        return $this->client->post('docs.getUploadServer', $access_token, $params);
+        return $this->request->post('docs.getUploadServer', $access_token, $params);
     }
 
     /**
@@ -81,7 +81,7 @@ class Docs {
      * 
      **/
     public function getWallUploadServer($access_token, $params = array()) {
-        return $this->client->post('docs.getWallUploadServer', $access_token, $params);
+        return $this->request->post('docs.getWallUploadServer', $access_token, $params);
     }
 
     /**
@@ -100,7 +100,7 @@ class Docs {
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->post('docs.save', $access_token, $params);
+        return $this->request->post('docs.save', $access_token, $params);
     }
 
     /**
@@ -118,7 +118,7 @@ class Docs {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('docs.delete', $access_token, $params);
+        return $this->request->post('docs.delete', $access_token, $params);
     }
 
     /**
@@ -138,7 +138,7 @@ class Docs {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('docs.add', $access_token, $params);
+        return $this->request->post('docs.add', $access_token, $params);
     }
 
     /**
@@ -155,7 +155,7 @@ class Docs {
      * 
      **/
     public function getTypes($access_token, $params = array()) {
-        return $this->client->post('docs.getTypes', $access_token, $params);
+        return $this->request->post('docs.getTypes', $access_token, $params);
     }
 
     /**
@@ -173,7 +173,7 @@ class Docs {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('docs.search', $access_token, $params);
+        return $this->request->post('docs.search', $access_token, $params);
     }
 
     /**
@@ -192,6 +192,6 @@ class Docs {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('docs.edit', $access_token, $params);
+        return $this->request->post('docs.edit', $access_token, $params);
     }
 }

@@ -15,10 +15,10 @@ class Market {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -39,7 +39,7 @@ class Market {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('market.get', $access_token, $params);
+        return $this->request->post('market.get', $access_token, $params);
     }
 
     /**
@@ -58,7 +58,7 @@ class Market {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('market.getById', $access_token, $params);
+        return $this->request->post('market.getById', $access_token, $params);
     }
 
     /**
@@ -84,7 +84,7 @@ class Market {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('market.search', $access_token, $params);
+        return $this->request->post('market.search', $access_token, $params);
     }
 
     /**
@@ -102,7 +102,7 @@ class Market {
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
-        return $this->client->post('market.getAlbums', $access_token, $params);
+        return $this->request->post('market.getAlbums', $access_token, $params);
     }
 
     /**
@@ -121,7 +121,7 @@ class Market {
      * 
      **/
     public function getAlbumById($access_token, $params = array()) {
-        return $this->client->post('market.getAlbumById', $access_token, $params);
+        return $this->request->post('market.getAlbumById', $access_token, $params);
     }
 
     /**
@@ -148,7 +148,7 @@ class Market {
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->post('market.createComment', $access_token, $params);
+        return $this->request->post('market.createComment', $access_token, $params);
     }
 
     /**
@@ -173,7 +173,7 @@ class Market {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('market.getComments', $access_token, $params);
+        return $this->request->post('market.getComments', $access_token, $params);
     }
 
     /**
@@ -192,7 +192,7 @@ class Market {
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->post('market.deleteComment', $access_token, $params);
+        return $this->request->post('market.deleteComment', $access_token, $params);
     }
 
     /**
@@ -211,7 +211,7 @@ class Market {
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->post('market.restoreComment', $access_token, $params);
+        return $this->request->post('market.restoreComment', $access_token, $params);
     }
 
     /**
@@ -234,7 +234,7 @@ class Market {
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->post('market.editComment', $access_token, $params);
+        return $this->request->post('market.editComment', $access_token, $params);
     }
 
     /**
@@ -255,7 +255,7 @@ class Market {
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->post('market.reportComment', $access_token, $params);
+        return $this->request->post('market.reportComment', $access_token, $params);
     }
 
     /**
@@ -272,7 +272,7 @@ class Market {
      * 
      **/
     public function getCategories($access_token, $params = array()) {
-        return $this->client->post('market.getCategories', $access_token, $params);
+        return $this->request->post('market.getCategories', $access_token, $params);
     }
 
     /**
@@ -293,7 +293,7 @@ class Market {
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->post('market.report', $access_token, $params);
+        return $this->request->post('market.report', $access_token, $params);
     }
 
     /**
@@ -316,7 +316,7 @@ class Market {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('market.add', $access_token, $params);
+        return $this->request->post('market.add', $access_token, $params);
     }
 
     /**
@@ -340,7 +340,7 @@ class Market {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('market.edit', $access_token, $params);
+        return $this->request->post('market.edit', $access_token, $params);
     }
 
     /**
@@ -357,7 +357,7 @@ class Market {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('market.delete', $access_token, $params);
+        return $this->request->post('market.delete', $access_token, $params);
     }
 
     /**
@@ -374,7 +374,7 @@ class Market {
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->post('market.restore', $access_token, $params);
+        return $this->request->post('market.restore', $access_token, $params);
     }
 
     /**
@@ -394,7 +394,7 @@ class Market {
      * 
      **/
     public function reorderItems($access_token, $params = array()) {
-        return $this->client->post('market.reorderItems', $access_token, $params);
+        return $this->request->post('market.reorderItems', $access_token, $params);
     }
 
     /**
@@ -413,7 +413,7 @@ class Market {
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
-        return $this->client->post('market.reorderAlbums', $access_token, $params);
+        return $this->request->post('market.reorderAlbums', $access_token, $params);
     }
 
     /**
@@ -432,7 +432,7 @@ class Market {
      * 
      **/
     public function addAlbum($access_token, $params = array()) {
-        return $this->client->post('market.addAlbum', $access_token, $params);
+        return $this->request->post('market.addAlbum', $access_token, $params);
     }
 
     /**
@@ -452,7 +452,7 @@ class Market {
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
-        return $this->client->post('market.editAlbum', $access_token, $params);
+        return $this->request->post('market.editAlbum', $access_token, $params);
     }
 
     /**
@@ -469,7 +469,7 @@ class Market {
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
-        return $this->client->post('market.deleteAlbum', $access_token, $params);
+        return $this->request->post('market.deleteAlbum', $access_token, $params);
     }
 
     /**
@@ -487,7 +487,7 @@ class Market {
      * 
      **/
     public function removeFromAlbum($access_token, $params = array()) {
-        return $this->client->post('market.removeFromAlbum', $access_token, $params);
+        return $this->request->post('market.removeFromAlbum', $access_token, $params);
     }
 
     /**
@@ -505,6 +505,6 @@ class Market {
      * 
      **/
     public function addToAlbum($access_token, $params = array()) {
-        return $this->client->post('market.addToAlbum', $access_token, $params);
+        return $this->request->post('market.addToAlbum', $access_token, $params);
     }
 }

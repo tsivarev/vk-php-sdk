@@ -11,10 +11,10 @@ class Database {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -34,7 +34,7 @@ class Database {
      * 
      **/
     public function getCountries($access_token, $params = array()) {
-        return $this->client->post('database.getCountries', $access_token, $params);
+        return $this->request->post('database.getCountries', $access_token, $params);
     }
 
     /**
@@ -54,7 +54,7 @@ class Database {
      * 
      **/
     public function getRegions($access_token, $params = array()) {
-        return $this->client->post('database.getRegions', $access_token, $params);
+        return $this->request->post('database.getRegions', $access_token, $params);
     }
 
     /**
@@ -70,7 +70,7 @@ class Database {
      * 
      **/
     public function getStreetsById($access_token, $params = array()) {
-        return $this->client->post('database.getStreetsById', $access_token, $params);
+        return $this->request->post('database.getStreetsById', $access_token, $params);
     }
 
     /**
@@ -86,7 +86,7 @@ class Database {
      * 
      **/
     public function getCountriesById($access_token, $params = array()) {
-        return $this->client->post('database.getCountriesById', $access_token, $params);
+        return $this->request->post('database.getCountriesById', $access_token, $params);
     }
 
     /**
@@ -108,7 +108,7 @@ class Database {
      * 
      **/
     public function getCities($access_token, $params = array()) {
-        return $this->client->post('database.getCities', $access_token, $params);
+        return $this->request->post('database.getCities', $access_token, $params);
     }
 
     /**
@@ -124,7 +124,7 @@ class Database {
      * 
      **/
     public function getCitiesById($access_token, $params = array()) {
-        return $this->client->post('database.getCitiesById', $access_token, $params);
+        return $this->request->post('database.getCitiesById', $access_token, $params);
     }
 
     /**
@@ -144,7 +144,7 @@ class Database {
      * 
      **/
     public function getUniversities($access_token, $params = array()) {
-        return $this->client->post('database.getUniversities', $access_token, $params);
+        return $this->request->post('database.getUniversities', $access_token, $params);
     }
 
     /**
@@ -163,7 +163,7 @@ class Database {
      * 
      **/
     public function getSchools($access_token, $params = array()) {
-        return $this->client->post('database.getSchools', $access_token, $params);
+        return $this->request->post('database.getSchools', $access_token, $params);
     }
 
     /**
@@ -179,7 +179,7 @@ class Database {
      * 
      **/
     public function getSchoolClasses($access_token, $params = array()) {
-        return $this->client->post('database.getSchoolClasses', $access_token, $params);
+        return $this->request->post('database.getSchoolClasses', $access_token, $params);
     }
 
     /**
@@ -197,7 +197,7 @@ class Database {
      * 
      **/
     public function getFaculties($access_token, $params = array()) {
-        return $this->client->post('database.getFaculties', $access_token, $params);
+        return $this->request->post('database.getFaculties', $access_token, $params);
     }
 
     /**
@@ -215,6 +215,6 @@ class Database {
      * 
      **/
     public function getChairs($access_token, $params = array()) {
-        return $this->client->post('database.getChairs', $access_token, $params);
+        return $this->request->post('database.getChairs', $access_token, $params);
     }
 }

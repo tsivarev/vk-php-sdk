@@ -12,10 +12,10 @@ class Polls {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -34,7 +34,7 @@ class Polls {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('polls.getById', $access_token, $params);
+        return $this->request->post('polls.getById', $access_token, $params);
     }
 
     /**
@@ -54,7 +54,7 @@ class Polls {
      * 
      **/
     public function addVote($access_token, $params = array()) {
-        return $this->client->post('polls.addVote', $access_token, $params);
+        return $this->request->post('polls.addVote', $access_token, $params);
     }
 
     /**
@@ -74,7 +74,7 @@ class Polls {
      * 
      **/
     public function deleteVote($access_token, $params = array()) {
-        return $this->client->post('polls.deleteVote', $access_token, $params);
+        return $this->request->post('polls.deleteVote', $access_token, $params);
     }
 
     /**
@@ -106,7 +106,7 @@ class Polls {
      * 
      **/
     public function getVoters($access_token, $params = array()) {
-        return $this->client->post('polls.getVoters', $access_token, $params);
+        return $this->request->post('polls.getVoters', $access_token, $params);
     }
 
     /**
@@ -128,7 +128,7 @@ class Polls {
      * 
      **/
     public function create($access_token, $params = array()) {
-        return $this->client->post('polls.create', $access_token, $params);
+        return $this->request->post('polls.create', $access_token, $params);
     }
 
     /**
@@ -150,6 +150,6 @@ class Polls {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('polls.edit', $access_token, $params);
+        return $this->request->post('polls.edit', $access_token, $params);
     }
 }

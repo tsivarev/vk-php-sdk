@@ -15,10 +15,10 @@ class Account {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -34,7 +34,7 @@ class Account {
      * 
      **/
     public function getCounters($access_token, $params = array()) {
-        return $this->client->post('account.getCounters', $access_token, $params);
+        return $this->request->post('account.getCounters', $access_token, $params);
     }
 
     /**
@@ -51,7 +51,7 @@ class Account {
      * 
      **/
     public function setNameInMenu($access_token, $params = array()) {
-        return $this->client->post('account.setNameInMenu', $access_token, $params);
+        return $this->request->post('account.setNameInMenu', $access_token, $params);
     }
 
     /**
@@ -67,7 +67,7 @@ class Account {
      * 
      **/
     public function setOnline($access_token, $params = array()) {
-        return $this->client->post('account.setOnline', $access_token, $params);
+        return $this->request->post('account.setOnline', $access_token, $params);
     }
 
     /**
@@ -82,7 +82,7 @@ class Account {
      * 
      **/
     public function setOffline($access_token, $params = array()) {
-        return $this->client->post('account.setOffline', $access_token, $params);
+        return $this->request->post('account.setOffline', $access_token, $params);
     }
 
     /**
@@ -108,7 +108,7 @@ class Account {
      * 
      **/
     public function lookupContacts($access_token, $params = array()) {
-        return $this->client->post('account.lookupContacts', $access_token, $params);
+        return $this->request->post('account.lookupContacts', $access_token, $params);
     }
 
     /**
@@ -130,7 +130,7 @@ class Account {
      * 
      **/
     public function registerDevice($access_token, $params = array()) {
-        return $this->client->post('account.registerDevice', $access_token, $params);
+        return $this->request->post('account.registerDevice', $access_token, $params);
     }
 
     /**
@@ -146,7 +146,7 @@ class Account {
      * 
      **/
     public function unregisterDevice($access_token, $params = array()) {
-        return $this->client->post('account.unregisterDevice', $access_token, $params);
+        return $this->request->post('account.unregisterDevice', $access_token, $params);
     }
 
     /**
@@ -167,7 +167,7 @@ class Account {
      * 
      **/
     public function setSilenceMode($access_token, $params = array()) {
-        return $this->client->post('account.setSilenceMode', $access_token, $params);
+        return $this->request->post('account.setSilenceMode', $access_token, $params);
     }
 
     /**
@@ -183,7 +183,7 @@ class Account {
      * 
      **/
     public function getPushSettings($access_token, $params = array()) {
-        return $this->client->post('account.getPushSettings', $access_token, $params);
+        return $this->request->post('account.getPushSettings', $access_token, $params);
     }
 
     /**
@@ -202,7 +202,7 @@ class Account {
      * 
      **/
     public function setPushSettings($access_token, $params = array()) {
-        return $this->client->post('account.setPushSettings', $access_token, $params);
+        return $this->request->post('account.setPushSettings', $access_token, $params);
     }
 
     /**
@@ -218,7 +218,7 @@ class Account {
      * 
      **/
     public function getAppPermissions($access_token, $params = array()) {
-        return $this->client->post('account.getAppPermissions', $access_token, $params);
+        return $this->request->post('account.getAppPermissions', $access_token, $params);
     }
 
     /**
@@ -235,7 +235,7 @@ class Account {
      * 
      **/
     public function getActiveOffers($access_token, $params = array()) {
-        return $this->client->post('account.getActiveOffers', $access_token, $params);
+        return $this->request->post('account.getActiveOffers', $access_token, $params);
     }
 
     /**
@@ -251,7 +251,7 @@ class Account {
      * 
      **/
     public function banUser($access_token, $params = array()) {
-        return $this->client->post('account.banUser', $access_token, $params);
+        return $this->request->post('account.banUser', $access_token, $params);
     }
 
     /**
@@ -267,7 +267,7 @@ class Account {
      * 
      **/
     public function unbanUser($access_token, $params = array()) {
-        return $this->client->post('account.unbanUser', $access_token, $params);
+        return $this->request->post('account.unbanUser', $access_token, $params);
     }
 
     /**
@@ -284,7 +284,7 @@ class Account {
      * 
      **/
     public function getBanned($access_token, $params = array()) {
-        return $this->client->post('account.getBanned', $access_token, $params);
+        return $this->request->post('account.getBanned', $access_token, $params);
     }
 
     /**
@@ -303,7 +303,7 @@ class Account {
      * 
      **/
     public function getInfo($access_token, $params = array()) {
-        return $this->client->post('account.getInfo', $access_token, $params);
+        return $this->request->post('account.getInfo', $access_token, $params);
     }
 
     /**
@@ -320,7 +320,7 @@ class Account {
      * 
      **/
     public function setInfo($access_token, $params = array()) {
-        return $this->client->post('account.setInfo', $access_token, $params);
+        return $this->request->post('account.setInfo', $access_token, $params);
     }
 
     /**
@@ -342,7 +342,7 @@ class Account {
      * 
      **/
     public function changePassword($access_token, $params = array()) {
-        return $this->client->post('account.changePassword', $access_token, $params);
+        return $this->request->post('account.changePassword', $access_token, $params);
     }
 
     /**
@@ -357,7 +357,7 @@ class Account {
      * 
      **/
     public function getProfileInfo($access_token, $params = array()) {
-        return $this->client->post('account.getProfileInfo', $access_token, $params);
+        return $this->request->post('account.getProfileInfo', $access_token, $params);
     }
 
     /**
@@ -393,6 +393,6 @@ class Account {
      * 
      **/
     public function saveProfileInfo($access_token, $params = array()) {
-        return $this->client->post('account.saveProfileInfo', $access_token, $params);
+        return $this->request->post('account.saveProfileInfo', $access_token, $params);
     }
 }

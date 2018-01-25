@@ -11,10 +11,10 @@ class Fave {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -31,7 +31,7 @@ class Fave {
      * 
      **/
     public function getUsers($access_token, $params = array()) {
-        return $this->client->post('fave.getUsers', $access_token, $params);
+        return $this->request->post('fave.getUsers', $access_token, $params);
     }
 
     /**
@@ -49,7 +49,7 @@ class Fave {
      * 
      **/
     public function getPhotos($access_token, $params = array()) {
-        return $this->client->post('fave.getPhotos', $access_token, $params);
+        return $this->request->post('fave.getPhotos', $access_token, $params);
     }
 
     /**
@@ -68,7 +68,7 @@ class Fave {
      * 
      **/
     public function getPosts($access_token, $params = array()) {
-        return $this->client->post('fave.getPosts', $access_token, $params);
+        return $this->request->post('fave.getPosts', $access_token, $params);
     }
 
     /**
@@ -87,7 +87,7 @@ class Fave {
      * 
      **/
     public function getVideos($access_token, $params = array()) {
-        return $this->client->post('fave.getVideos', $access_token, $params);
+        return $this->request->post('fave.getVideos', $access_token, $params);
     }
 
     /**
@@ -104,7 +104,7 @@ class Fave {
      * 
      **/
     public function getLinks($access_token, $params = array()) {
-        return $this->client->post('fave.getLinks', $access_token, $params);
+        return $this->request->post('fave.getLinks', $access_token, $params);
     }
 
     /**
@@ -122,7 +122,7 @@ class Fave {
      * 
      **/
     public function getMarketItems($access_token, $params = array()) {
-        return $this->client->post('fave.getMarketItems', $access_token, $params);
+        return $this->request->post('fave.getMarketItems', $access_token, $params);
     }
 
     /**
@@ -138,7 +138,7 @@ class Fave {
      * 
      **/
     public function addUser($access_token, $params = array()) {
-        return $this->client->post('fave.addUser', $access_token, $params);
+        return $this->request->post('fave.addUser', $access_token, $params);
     }
 
     /**
@@ -154,7 +154,7 @@ class Fave {
      * 
      **/
     public function removeUser($access_token, $params = array()) {
-        return $this->client->post('fave.removeUser', $access_token, $params);
+        return $this->request->post('fave.removeUser', $access_token, $params);
     }
 
     /**
@@ -170,7 +170,7 @@ class Fave {
      * 
      **/
     public function addGroup($access_token, $params = array()) {
-        return $this->client->post('fave.addGroup', $access_token, $params);
+        return $this->request->post('fave.addGroup', $access_token, $params);
     }
 
     /**
@@ -186,7 +186,7 @@ class Fave {
      * 
      **/
     public function removeGroup($access_token, $params = array()) {
-        return $this->client->post('fave.removeGroup', $access_token, $params);
+        return $this->request->post('fave.removeGroup', $access_token, $params);
     }
 
     /**
@@ -203,7 +203,7 @@ class Fave {
      * 
      **/
     public function addLink($access_token, $params = array()) {
-        return $this->client->post('fave.addLink', $access_token, $params);
+        return $this->request->post('fave.addLink', $access_token, $params);
     }
 
     /**
@@ -219,6 +219,6 @@ class Fave {
      * 
      **/
     public function removeLink($access_token, $params = array()) {
-        return $this->client->post('fave.removeLink', $access_token, $params);
+        return $this->request->post('fave.removeLink', $access_token, $params);
     }
 }

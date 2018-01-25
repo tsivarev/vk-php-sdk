@@ -15,10 +15,10 @@ class Wall {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -45,7 +45,7 @@ class Wall {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('wall.get', $access_token, $params);
+        return $this->request->post('wall.get', $access_token, $params);
     }
 
     /**
@@ -68,7 +68,7 @@ class Wall {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('wall.search', $access_token, $params);
+        return $this->request->post('wall.search', $access_token, $params);
     }
 
     /**
@@ -90,7 +90,7 @@ class Wall {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('wall.getById', $access_token, $params);
+        return $this->request->post('wall.getById', $access_token, $params);
     }
 
     /**
@@ -130,7 +130,7 @@ class Wall {
      * 
      **/
     public function post($access_token, $params = array()) {
-        return $this->client->post('wall.post', $access_token, $params);
+        return $this->request->post('wall.post', $access_token, $params);
     }
 
     /**
@@ -149,7 +149,7 @@ class Wall {
      * 
      **/
     public function repost($access_token, $params = array()) {
-        return $this->client->post('wall.repost', $access_token, $params);
+        return $this->request->post('wall.repost', $access_token, $params);
     }
 
     /**
@@ -169,7 +169,7 @@ class Wall {
      * 
      **/
     public function getReposts($access_token, $params = array()) {
-        return $this->client->post('wall.getReposts', $access_token, $params);
+        return $this->request->post('wall.getReposts', $access_token, $params);
     }
 
     /**
@@ -206,7 +206,7 @@ class Wall {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('wall.edit', $access_token, $params);
+        return $this->request->post('wall.edit', $access_token, $params);
     }
 
     /**
@@ -223,7 +223,7 @@ class Wall {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('wall.delete', $access_token, $params);
+        return $this->request->post('wall.delete', $access_token, $params);
     }
 
     /**
@@ -241,7 +241,7 @@ class Wall {
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->post('wall.restore', $access_token, $params);
+        return $this->request->post('wall.restore', $access_token, $params);
     }
 
     /**
@@ -259,7 +259,7 @@ class Wall {
      * 
      **/
     public function pin($access_token, $params = array()) {
-        return $this->client->post('wall.pin', $access_token, $params);
+        return $this->request->post('wall.pin', $access_token, $params);
     }
 
     /**
@@ -277,7 +277,7 @@ class Wall {
      * 
      **/
     public function unpin($access_token, $params = array()) {
-        return $this->client->post('wall.unpin', $access_token, $params);
+        return $this->request->post('wall.unpin', $access_token, $params);
     }
 
     /**
@@ -304,7 +304,7 @@ class Wall {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('wall.getComments', $access_token, $params);
+        return $this->request->post('wall.getComments', $access_token, $params);
     }
 
     /**
@@ -330,7 +330,7 @@ class Wall {
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->post('wall.createComment', $access_token, $params);
+        return $this->request->post('wall.createComment', $access_token, $params);
     }
 
     /**
@@ -352,7 +352,7 @@ class Wall {
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->post('wall.editComment', $access_token, $params);
+        return $this->request->post('wall.editComment', $access_token, $params);
     }
 
     /**
@@ -369,7 +369,7 @@ class Wall {
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->post('wall.deleteComment', $access_token, $params);
+        return $this->request->post('wall.deleteComment', $access_token, $params);
     }
 
     /**
@@ -386,7 +386,7 @@ class Wall {
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->post('wall.restoreComment', $access_token, $params);
+        return $this->request->post('wall.restoreComment', $access_token, $params);
     }
 
     /**
@@ -406,7 +406,7 @@ class Wall {
      * 
      **/
     public function reportPost($access_token, $params = array()) {
-        return $this->client->post('wall.reportPost', $access_token, $params);
+        return $this->request->post('wall.reportPost', $access_token, $params);
     }
 
     /**
@@ -426,6 +426,6 @@ class Wall {
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->post('wall.reportComment', $access_token, $params);
+        return $this->request->post('wall.reportComment', $access_token, $params);
     }
 }

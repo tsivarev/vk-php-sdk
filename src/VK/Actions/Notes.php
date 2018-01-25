@@ -11,10 +11,10 @@ class Notes {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -32,7 +32,7 @@ class Notes {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('notes.get', $access_token, $params);
+        return $this->request->post('notes.get', $access_token, $params);
     }
 
     /**
@@ -49,7 +49,7 @@ class Notes {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('notes.getById', $access_token, $params);
+        return $this->request->post('notes.getById', $access_token, $params);
     }
 
     /**
@@ -68,7 +68,7 @@ class Notes {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('notes.add', $access_token, $params);
+        return $this->request->post('notes.add', $access_token, $params);
     }
 
     /**
@@ -88,7 +88,7 @@ class Notes {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('notes.edit', $access_token, $params);
+        return $this->request->post('notes.edit', $access_token, $params);
     }
 
     /**
@@ -104,7 +104,7 @@ class Notes {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('notes.delete', $access_token, $params);
+        return $this->request->post('notes.delete', $access_token, $params);
     }
 
     /**
@@ -122,7 +122,7 @@ class Notes {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('notes.getComments', $access_token, $params);
+        return $this->request->post('notes.getComments', $access_token, $params);
     }
 
     /**
@@ -143,7 +143,7 @@ class Notes {
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->post('notes.createComment', $access_token, $params);
+        return $this->request->post('notes.createComment', $access_token, $params);
     }
 
     /**
@@ -161,7 +161,7 @@ class Notes {
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->post('notes.editComment', $access_token, $params);
+        return $this->request->post('notes.editComment', $access_token, $params);
     }
 
     /**
@@ -178,7 +178,7 @@ class Notes {
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->post('notes.deleteComment', $access_token, $params);
+        return $this->request->post('notes.deleteComment', $access_token, $params);
     }
 
     /**
@@ -195,6 +195,6 @@ class Notes {
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->post('notes.restoreComment', $access_token, $params);
+        return $this->request->post('notes.restoreComment', $access_token, $params);
     }
 }

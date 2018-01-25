@@ -11,10 +11,10 @@ class Notifications {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -39,7 +39,7 @@ class Notifications {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('notifications.get', $access_token, $params);
+        return $this->request->post('notifications.get', $access_token, $params);
     }
 
     /**
@@ -54,6 +54,6 @@ class Notifications {
      * 
      **/
     public function markAsViewed($access_token, $params = array()) {
-        return $this->client->post('notifications.markAsViewed', $access_token, $params);
+        return $this->request->post('notifications.markAsViewed', $access_token, $params);
     }
 }

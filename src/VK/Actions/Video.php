@@ -15,10 +15,10 @@ class Video {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -40,7 +40,7 @@ class Video {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('video.get', $access_token, $params);
+        return $this->request->post('video.get', $access_token, $params);
     }
 
     /**
@@ -65,7 +65,7 @@ class Video {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('video.edit', $access_token, $params);
+        return $this->request->post('video.edit', $access_token, $params);
     }
 
     /**
@@ -85,7 +85,7 @@ class Video {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('video.add', $access_token, $params);
+        return $this->request->post('video.add', $access_token, $params);
     }
 
     /**
@@ -115,7 +115,7 @@ class Video {
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->post('video.save', $access_token, $params);
+        return $this->request->post('video.save', $access_token, $params);
     }
 
     /**
@@ -133,7 +133,7 @@ class Video {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('video.delete', $access_token, $params);
+        return $this->request->post('video.delete', $access_token, $params);
     }
 
     /**
@@ -150,7 +150,7 @@ class Video {
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->post('video.restore', $access_token, $params);
+        return $this->request->post('video.restore', $access_token, $params);
     }
 
     /**
@@ -178,7 +178,7 @@ class Video {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('video.search', $access_token, $params);
+        return $this->request->post('video.search', $access_token, $params);
     }
 
     /**
@@ -197,7 +197,7 @@ class Video {
      * 
      **/
     public function getUserVideos($access_token, $params = array()) {
-        return $this->client->post('video.getUserVideos', $access_token, $params);
+        return $this->request->post('video.getUserVideos', $access_token, $params);
     }
 
     /**
@@ -217,7 +217,7 @@ class Video {
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
-        return $this->client->post('video.getAlbums', $access_token, $params);
+        return $this->request->post('video.getAlbums', $access_token, $params);
     }
 
     /**
@@ -235,7 +235,7 @@ class Video {
      * 
      **/
     public function getAlbumById($access_token, $params = array()) {
-        return $this->client->post('video.getAlbumById', $access_token, $params);
+        return $this->request->post('video.getAlbumById', $access_token, $params);
     }
 
     /**
@@ -254,7 +254,7 @@ class Video {
      * 
      **/
     public function addAlbum($access_token, $params = array()) {
-        return $this->client->post('video.addAlbum', $access_token, $params);
+        return $this->request->post('video.addAlbum', $access_token, $params);
     }
 
     /**
@@ -274,7 +274,7 @@ class Video {
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
-        return $this->client->post('video.editAlbum', $access_token, $params);
+        return $this->request->post('video.editAlbum', $access_token, $params);
     }
 
     /**
@@ -291,7 +291,7 @@ class Video {
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
-        return $this->client->post('video.deleteAlbum', $access_token, $params);
+        return $this->request->post('video.deleteAlbum', $access_token, $params);
     }
 
     /**
@@ -310,7 +310,7 @@ class Video {
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
-        return $this->client->post('video.reorderAlbums', $access_token, $params);
+        return $this->request->post('video.reorderAlbums', $access_token, $params);
     }
 
     /**
@@ -335,7 +335,7 @@ class Video {
      * 
      **/
     public function reorderVideos($access_token, $params = array()) {
-        return $this->client->post('video.reorderVideos', $access_token, $params);
+        return $this->request->post('video.reorderVideos', $access_token, $params);
     }
 
     /**
@@ -355,7 +355,7 @@ class Video {
      * 
      **/
     public function addToAlbum($access_token, $params = array()) {
-        return $this->client->post('video.addToAlbum', $access_token, $params);
+        return $this->request->post('video.addToAlbum', $access_token, $params);
     }
 
     /**
@@ -375,7 +375,7 @@ class Video {
      * 
      **/
     public function removeFromAlbum($access_token, $params = array()) {
-        return $this->client->post('video.removeFromAlbum', $access_token, $params);
+        return $this->request->post('video.removeFromAlbum', $access_token, $params);
     }
 
     /**
@@ -394,7 +394,7 @@ class Video {
      * 
      **/
     public function getAlbumsByVideo($access_token, $params = array()) {
-        return $this->client->post('video.getAlbumsByVideo', $access_token, $params);
+        return $this->request->post('video.getAlbumsByVideo', $access_token, $params);
     }
 
     /**
@@ -419,7 +419,7 @@ class Video {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('video.getComments', $access_token, $params);
+        return $this->request->post('video.getComments', $access_token, $params);
     }
 
     /**
@@ -445,7 +445,7 @@ class Video {
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->post('video.createComment', $access_token, $params);
+        return $this->request->post('video.createComment', $access_token, $params);
     }
 
     /**
@@ -462,7 +462,7 @@ class Video {
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->post('video.deleteComment', $access_token, $params);
+        return $this->request->post('video.deleteComment', $access_token, $params);
     }
 
     /**
@@ -479,7 +479,7 @@ class Video {
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->post('video.restoreComment', $access_token, $params);
+        return $this->request->post('video.restoreComment', $access_token, $params);
     }
 
     /**
@@ -501,7 +501,7 @@ class Video {
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->post('video.editComment', $access_token, $params);
+        return $this->request->post('video.editComment', $access_token, $params);
     }
 
     /**
@@ -518,7 +518,7 @@ class Video {
      * 
      **/
     public function getTags($access_token, $params = array()) {
-        return $this->client->post('video.getTags', $access_token, $params);
+        return $this->request->post('video.getTags', $access_token, $params);
     }
 
     /**
@@ -537,7 +537,7 @@ class Video {
      * 
      **/
     public function putTag($access_token, $params = array()) {
-        return $this->client->post('video.putTag', $access_token, $params);
+        return $this->request->post('video.putTag', $access_token, $params);
     }
 
     /**
@@ -555,7 +555,7 @@ class Video {
      * 
      **/
     public function removeTag($access_token, $params = array()) {
-        return $this->client->post('video.removeTag', $access_token, $params);
+        return $this->request->post('video.removeTag', $access_token, $params);
     }
 
     /**
@@ -572,7 +572,7 @@ class Video {
      * 
      **/
     public function getNewTags($access_token, $params = array()) {
-        return $this->client->post('video.getNewTags', $access_token, $params);
+        return $this->request->post('video.getNewTags', $access_token, $params);
     }
 
     /**
@@ -594,7 +594,7 @@ class Video {
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->post('video.report', $access_token, $params);
+        return $this->request->post('video.report', $access_token, $params);
     }
 
     /**
@@ -614,7 +614,7 @@ class Video {
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->post('video.reportComment', $access_token, $params);
+        return $this->request->post('video.reportComment', $access_token, $params);
     }
 
     /**
@@ -636,7 +636,7 @@ class Video {
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
-        return $this->client->post('video.getCatalog', $access_token, $params);
+        return $this->request->post('video.getCatalog', $access_token, $params);
     }
 
     /**
@@ -656,7 +656,7 @@ class Video {
      * 
      **/
     public function getCatalogSection($access_token, $params = array()) {
-        return $this->client->post('video.getCatalogSection', $access_token, $params);
+        return $this->request->post('video.getCatalogSection', $access_token, $params);
     }
 
     /**
@@ -672,6 +672,6 @@ class Video {
      * 
      **/
     public function hideCatalogSection($access_token, $params = array()) {
-        return $this->client->post('video.hideCatalogSection', $access_token, $params);
+        return $this->request->post('video.hideCatalogSection', $access_token, $params);
     }
 }

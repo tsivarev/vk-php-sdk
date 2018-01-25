@@ -15,10 +15,10 @@ class Messages {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -45,7 +45,7 @@ class Messages {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('messages.get', $access_token, $params);
+        return $this->request->post('messages.get', $access_token, $params);
     }
 
     /**
@@ -69,7 +69,7 @@ class Messages {
      * 
      **/
     public function getDialogs($access_token, $params = array()) {
-        return $this->client->post('messages.getDialogs', $access_token, $params);
+        return $this->request->post('messages.getDialogs', $access_token, $params);
     }
 
     /**
@@ -85,7 +85,7 @@ class Messages {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('messages.getById', $access_token, $params);
+        return $this->request->post('messages.getById', $access_token, $params);
     }
 
     /**
@@ -109,7 +109,7 @@ class Messages {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('messages.search', $access_token, $params);
+        return $this->request->post('messages.search', $access_token, $params);
     }
 
     /**
@@ -132,7 +132,7 @@ class Messages {
      * 
      **/
     public function getHistory($access_token, $params = array()) {
-        return $this->client->post('messages.getHistory', $access_token, $params);
+        return $this->request->post('messages.getHistory', $access_token, $params);
     }
 
     /**
@@ -156,7 +156,7 @@ class Messages {
      * 
      **/
     public function getHistoryAttachments($access_token, $params = array()) {
-        return $this->client->post('messages.getHistoryAttachments', $access_token, $params);
+        return $this->request->post('messages.getHistoryAttachments', $access_token, $params);
     }
 
     /**
@@ -190,7 +190,7 @@ class Messages {
      * 
      **/
     public function send($access_token, $params = array()) {
-        return $this->client->post('messages.send', $access_token, $params);
+        return $this->request->post('messages.send', $access_token, $params);
     }
 
     /**
@@ -207,7 +207,7 @@ class Messages {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('messages.delete', $access_token, $params);
+        return $this->request->post('messages.delete', $access_token, $params);
     }
 
     /**
@@ -228,7 +228,7 @@ class Messages {
      * 
      **/
     public function deleteDialog($access_token, $params = array()) {
-        return $this->client->post('messages.deleteDialog', $access_token, $params);
+        return $this->request->post('messages.deleteDialog', $access_token, $params);
     }
 
     /**
@@ -244,7 +244,7 @@ class Messages {
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->post('messages.restore', $access_token, $params);
+        return $this->request->post('messages.restore', $access_token, $params);
     }
 
     /**
@@ -263,7 +263,7 @@ class Messages {
      * 
      **/
     public function markAsRead($access_token, $params = array()) {
-        return $this->client->post('messages.markAsRead', $access_token, $params);
+        return $this->request->post('messages.markAsRead', $access_token, $params);
     }
 
     /**
@@ -280,7 +280,7 @@ class Messages {
      * 
      **/
     public function markAsImportant($access_token, $params = array()) {
-        return $this->client->post('messages.markAsImportant', $access_token, $params);
+        return $this->request->post('messages.markAsImportant', $access_token, $params);
     }
 
     /**
@@ -297,7 +297,7 @@ class Messages {
      * 
      **/
     public function markAsImportantDialog($access_token, $params = array()) {
-        return $this->client->post('messages.markAsImportantDialog', $access_token, $params);
+        return $this->request->post('messages.markAsImportantDialog', $access_token, $params);
     }
 
     /**
@@ -314,7 +314,7 @@ class Messages {
      * 
      **/
     public function markAsUnansweredDialog($access_token, $params = array()) {
-        return $this->client->post('messages.markAsUnansweredDialog', $access_token, $params);
+        return $this->request->post('messages.markAsUnansweredDialog', $access_token, $params);
     }
 
     /**
@@ -332,7 +332,7 @@ class Messages {
      * 
      **/
     public function getLongPollServer($access_token, $params = array()) {
-        return $this->client->post('messages.getLongPollServer', $access_token, $params);
+        return $this->request->post('messages.getLongPollServer', $access_token, $params);
     }
 
     /**
@@ -361,7 +361,7 @@ class Messages {
      * 
      **/
     public function getLongPollHistory($access_token, $params = array()) {
-        return $this->client->post('messages.getLongPollHistory', $access_token, $params);
+        return $this->request->post('messages.getLongPollHistory', $access_token, $params);
     }
 
     /**
@@ -383,7 +383,7 @@ class Messages {
      * 
      **/
     public function getChat($access_token, $params = array()) {
-        return $this->client->post('messages.getChat', $access_token, $params);
+        return $this->request->post('messages.getChat', $access_token, $params);
     }
 
     /**
@@ -400,7 +400,7 @@ class Messages {
      * 
      **/
     public function createChat($access_token, $params = array()) {
-        return $this->client->post('messages.createChat', $access_token, $params);
+        return $this->request->post('messages.createChat', $access_token, $params);
     }
 
     /**
@@ -417,7 +417,7 @@ class Messages {
      * 
      **/
     public function editChat($access_token, $params = array()) {
-        return $this->client->post('messages.editChat', $access_token, $params);
+        return $this->request->post('messages.editChat', $access_token, $params);
     }
 
     /**
@@ -439,7 +439,7 @@ class Messages {
      * 
      **/
     public function getChatUsers($access_token, $params = array()) {
-        return $this->client->post('messages.getChatUsers', $access_token, $params);
+        return $this->request->post('messages.getChatUsers', $access_token, $params);
     }
 
     /**
@@ -458,7 +458,7 @@ class Messages {
      * 
      **/
     public function setActivity($access_token, $params = array()) {
-        return $this->client->post('messages.setActivity', $access_token, $params);
+        return $this->request->post('messages.setActivity', $access_token, $params);
     }
 
     /**
@@ -476,7 +476,7 @@ class Messages {
      * 
      **/
     public function searchDialogs($access_token, $params = array()) {
-        return $this->client->post('messages.searchDialogs', $access_token, $params);
+        return $this->request->post('messages.searchDialogs', $access_token, $params);
     }
 
     /**
@@ -493,7 +493,7 @@ class Messages {
      * 
      **/
     public function addChatUser($access_token, $params = array()) {
-        return $this->client->post('messages.addChatUser', $access_token, $params);
+        return $this->request->post('messages.addChatUser', $access_token, $params);
     }
 
     /**
@@ -511,7 +511,7 @@ class Messages {
      * 
      **/
     public function removeChatUser($access_token, $params = array()) {
-        return $this->client->post('messages.removeChatUser', $access_token, $params);
+        return $this->request->post('messages.removeChatUser', $access_token, $params);
     }
 
     /**
@@ -527,7 +527,7 @@ class Messages {
      * 
      **/
     public function getLastActivity($access_token, $params = array()) {
-        return $this->client->post('messages.getLastActivity', $access_token, $params);
+        return $this->request->post('messages.getLastActivity', $access_token, $params);
     }
 
     /**
@@ -545,7 +545,7 @@ class Messages {
      * 
      **/
     public function setChatPhoto($access_token, $params = array()) {
-        return $this->client->post('messages.setChatPhoto', $access_token, $params);
+        return $this->request->post('messages.setChatPhoto', $access_token, $params);
     }
 
     /**
@@ -561,7 +561,7 @@ class Messages {
      * 
      **/
     public function deleteChatPhoto($access_token, $params = array()) {
-        return $this->client->post('messages.deleteChatPhoto', $access_token, $params);
+        return $this->request->post('messages.deleteChatPhoto', $access_token, $params);
     }
 
     /**
@@ -577,7 +577,7 @@ class Messages {
      * 
      **/
     public function denyMessagesFromGroup($access_token, $params = array()) {
-        return $this->client->post('messages.denyMessagesFromGroup', $access_token, $params);
+        return $this->request->post('messages.denyMessagesFromGroup', $access_token, $params);
     }
 
     /**
@@ -593,7 +593,7 @@ class Messages {
      * 
      **/
     public function allowMessagesFromGroup($access_token, $params = array()) {
-        return $this->client->post('messages.allowMessagesFromGroup', $access_token, $params);
+        return $this->request->post('messages.allowMessagesFromGroup', $access_token, $params);
     }
 
     /**
@@ -610,6 +610,6 @@ class Messages {
      * 
      **/
     public function isMessagesFromGroupAllowed($access_token, $params = array()) {
-        return $this->client->post('messages.isMessagesFromGroupAllowed', $access_token, $params);
+        return $this->request->post('messages.isMessagesFromGroupAllowed', $access_token, $params);
     }
 }

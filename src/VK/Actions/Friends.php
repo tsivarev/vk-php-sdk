@@ -17,10 +17,10 @@ class Friends {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -52,7 +52,7 @@ class Friends {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('friends.get', $access_token, $params);
+        return $this->request->post('friends.get', $access_token, $params);
     }
 
     /**
@@ -74,7 +74,7 @@ class Friends {
      * 
      **/
     public function getOnline($access_token, $params = array()) {
-        return $this->client->post('friends.getOnline', $access_token, $params);
+        return $this->request->post('friends.getOnline', $access_token, $params);
     }
 
     /**
@@ -98,7 +98,7 @@ class Friends {
      * 
      **/
     public function getMutual($access_token, $params = array()) {
-        return $this->client->post('friends.getMutual', $access_token, $params);
+        return $this->request->post('friends.getMutual', $access_token, $params);
     }
 
     /**
@@ -114,7 +114,7 @@ class Friends {
      * 
      **/
     public function getRecent($access_token, $params = array()) {
-        return $this->client->post('friends.getRecent', $access_token, $params);
+        return $this->request->post('friends.getRecent', $access_token, $params);
     }
 
     /**
@@ -139,7 +139,7 @@ class Friends {
      * 
      **/
     public function getRequests($access_token, $params = array()) {
-        return $this->client->post('friends.getRequests', $access_token, $params);
+        return $this->request->post('friends.getRequests', $access_token, $params);
     }
 
     /**
@@ -158,7 +158,7 @@ class Friends {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('friends.add', $access_token, $params);
+        return $this->request->post('friends.add', $access_token, $params);
     }
 
     /**
@@ -175,7 +175,7 @@ class Friends {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('friends.edit', $access_token, $params);
+        return $this->request->post('friends.edit', $access_token, $params);
     }
 
     /**
@@ -192,7 +192,7 @@ class Friends {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('friends.delete', $access_token, $params);
+        return $this->request->post('friends.delete', $access_token, $params);
     }
 
     /**
@@ -209,7 +209,7 @@ class Friends {
      * 
      **/
     public function getLists($access_token, $params = array()) {
-        return $this->client->post('friends.getLists', $access_token, $params);
+        return $this->request->post('friends.getLists', $access_token, $params);
     }
 
     /**
@@ -226,7 +226,7 @@ class Friends {
      * 
      **/
     public function addList($access_token, $params = array()) {
-        return $this->client->post('friends.addList', $access_token, $params);
+        return $this->request->post('friends.addList', $access_token, $params);
     }
 
     /**
@@ -248,7 +248,7 @@ class Friends {
      * 
      **/
     public function editList($access_token, $params = array()) {
-        return $this->client->post('friends.editList', $access_token, $params);
+        return $this->request->post('friends.editList', $access_token, $params);
     }
 
     /**
@@ -264,7 +264,7 @@ class Friends {
      * 
      **/
     public function deleteList($access_token, $params = array()) {
-        return $this->client->post('friends.deleteList', $access_token, $params);
+        return $this->request->post('friends.deleteList', $access_token, $params);
     }
 
     /**
@@ -279,7 +279,7 @@ class Friends {
      * 
      **/
     public function getAppUsers($access_token, $params = array()) {
-        return $this->client->post('friends.getAppUsers', $access_token, $params);
+        return $this->request->post('friends.getAppUsers', $access_token, $params);
     }
 
     /**
@@ -300,7 +300,7 @@ class Friends {
      * 
      **/
     public function getByPhones($access_token, $params = array()) {
-        return $this->client->post('friends.getByPhones', $access_token, $params);
+        return $this->request->post('friends.getByPhones', $access_token, $params);
     }
 
     /**
@@ -315,7 +315,7 @@ class Friends {
      * 
      **/
     public function deleteAllRequests($access_token, $params = array()) {
-        return $this->client->post('friends.deleteAllRequests', $access_token, $params);
+        return $this->request->post('friends.deleteAllRequests', $access_token, $params);
     }
 
     /**
@@ -343,7 +343,7 @@ class Friends {
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
-        return $this->client->post('friends.getSuggestions', $access_token, $params);
+        return $this->request->post('friends.getSuggestions', $access_token, $params);
     }
 
     /**
@@ -362,7 +362,7 @@ class Friends {
      * 
      **/
     public function areFriends($access_token, $params = array()) {
-        return $this->client->post('friends.areFriends', $access_token, $params);
+        return $this->request->post('friends.areFriends', $access_token, $params);
     }
 
     /**
@@ -384,7 +384,7 @@ class Friends {
      * 
      **/
     public function getAvailableForCall($access_token, $params = array()) {
-        return $this->client->post('friends.getAvailableForCall', $access_token, $params);
+        return $this->request->post('friends.getAvailableForCall', $access_token, $params);
     }
 
     /**
@@ -410,6 +410,6 @@ class Friends {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('friends.search', $access_token, $params);
+        return $this->request->post('friends.search', $access_token, $params);
     }
 }

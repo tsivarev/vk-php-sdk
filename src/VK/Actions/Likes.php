@@ -16,10 +16,10 @@ class Likes {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -61,7 +61,7 @@ class Likes {
      * 
      **/
     public function getList($access_token, $params = array()) {
-        return $this->client->post('likes.getList', $access_token, $params);
+        return $this->request->post('likes.getList', $access_token, $params);
     }
 
     /**
@@ -84,7 +84,7 @@ class Likes {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('likes.add', $access_token, $params);
+        return $this->request->post('likes.add', $access_token, $params);
     }
 
     /**
@@ -106,7 +106,7 @@ class Likes {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('likes.delete', $access_token, $params);
+        return $this->request->post('likes.delete', $access_token, $params);
     }
 
     /**
@@ -129,6 +129,6 @@ class Likes {
      * 
      **/
     public function isLiked($access_token, $params = array()) {
-        return $this->client->post('likes.isLiked', $access_token, $params);
+        return $this->request->post('likes.isLiked', $access_token, $params);
     }
 }

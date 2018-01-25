@@ -12,10 +12,10 @@ class Utils {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -31,7 +31,7 @@ class Utils {
      * 
      **/
     public function checkLink($access_token, $params = array()) {
-        return $this->client->post('utils.checkLink', $access_token, $params);
+        return $this->request->post('utils.checkLink', $access_token, $params);
     }
 
     /**
@@ -47,7 +47,7 @@ class Utils {
      * 
      **/
     public function deleteFromLastShortened($access_token, $params = array()) {
-        return $this->client->post('utils.deleteFromLastShortened', $access_token, $params);
+        return $this->request->post('utils.deleteFromLastShortened', $access_token, $params);
     }
 
     /**
@@ -64,7 +64,7 @@ class Utils {
      * 
      **/
     public function getLastShortenedLinks($access_token, $params = array()) {
-        return $this->client->post('utils.getLastShortenedLinks', $access_token, $params);
+        return $this->request->post('utils.getLastShortenedLinks', $access_token, $params);
     }
 
     /**
@@ -86,7 +86,7 @@ class Utils {
      * 
      **/
     public function getLinkStats($access_token, $params = array()) {
-        return $this->client->post('utils.getLinkStats', $access_token, $params);
+        return $this->request->post('utils.getLinkStats', $access_token, $params);
     }
 
     /**
@@ -103,7 +103,7 @@ class Utils {
      * 
      **/
     public function getShortLink($access_token, $params = array()) {
-        return $this->client->post('utils.getShortLink', $access_token, $params);
+        return $this->request->post('utils.getShortLink', $access_token, $params);
     }
 
     /**
@@ -120,7 +120,7 @@ class Utils {
      * 
      **/
     public function resolveScreenName($access_token, $params = array()) {
-        return $this->client->post('utils.resolveScreenName', $access_token, $params);
+        return $this->request->post('utils.resolveScreenName', $access_token, $params);
     }
 
     /**
@@ -135,6 +135,6 @@ class Utils {
      * 
      **/
     public function getServerTime($access_token, $params = array()) {
-        return $this->client->post('utils.getServerTime', $access_token, $params);
+        return $this->request->post('utils.getServerTime', $access_token, $params);
     }
 }

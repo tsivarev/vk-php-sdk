@@ -27,7 +27,7 @@ class GenerateActions {
     const VK_NAMESPACE = 'VK';
     const VK_ACTIONS = 'VK\Actions';
     const VK_ENUMS = 'VK\Actions\Enums';
-    private $enums_path = null;
+    const API_REQUEST_CLASS_NAME = 'request';
 
     const SCHEMA_LINK = 'https://raw.githubusercontent.com/VKCOM/vk-api-schema/master/';
     const METHODS_LINK = self::SCHEMA_LINK . 'methods.json';
@@ -37,6 +37,7 @@ class GenerateActions {
     const USE_VK_CLIENT_EXCEPTION = 'use VK\Exceptions\VKClientException;';
     const USE_VK_API_EXCEPTION = 'use VK\Exceptions\VKAPIException;';
     private $response = null;
+    private $enums_path = null;
     private $api_client_use = '';
     private $api_client_members = '';
     private $api_client_construct_code = '';
@@ -91,13 +92,14 @@ class GenerateActions {
         $mapped_methods = $this->mapMethods();
         ksort($mapped_methods);
 
-        $this->api_request_member = $this->wrapClassMember('VKAPIRequest', 'client');
+        $this->api_request_member = $this->wrapClassMember('VKAPIRequest', static::API_REQUEST_CLASS_NAME);
 
         $this->api_client_members .= $this->wrapConstant('VK_API_HOST', 'https://api.vk.com/method', '');
         $this->api_client_members .= $this->wrapConstant('VK_API_VERSION', '5.69', '');
         $this->api_client_members .= $this->api_request_member;
-        $this->api_client_construct_code = $this->wrapConstructAssignment('client',
+        $this->api_client_construct_code = $this->wrapConstructAssignment(static::API_REQUEST_CLASS_NAME,
             'new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION)');
+        $this->api_client_gets = $this->wrapGetActionMethod(static::API_REQUEST_CLASS_NAME);
 
         foreach ($mapped_methods as $action_name => &$action_methods) {
             $class_name = ucwords($action_name);
@@ -114,8 +116,9 @@ class GenerateActions {
             $action_class_use .= PHP_EOL . static::USE_VK_API_EXCEPTION;
             $action_class_use .= $this->addActionEnumsToUse($action_methods, $action_name);
             $action_class_members = $this->api_request_member;
-            $action_class_construct = $this->wrapConstruct('$client',
-                $this->wrapConstructAssignment('client', '$client'));
+            $action_class_construct = $this->wrapConstruct(static::DOLLAR . static::API_REQUEST_CLASS_NAME,
+                $this->wrapConstructAssignment(static::API_REQUEST_CLASS_NAME,
+                    static::DOLLAR . static::API_REQUEST_CLASS_NAME));
 
             $action_class = $this->wrapClass($class_name, static::VK_ACTIONS, $action_class_use,
                 $action_class_members, $action_class_construct, $action_class_code);
@@ -155,7 +158,7 @@ class GenerateActions {
 
         $this->api_client_members .= $this->wrapClassMember($class_name, $action_name);
 
-        $value = 'new ' . $class_name . '(' . static::DOLLAR . 'this->client)';
+        $value = 'new ' . $class_name . '(' . static::DOLLAR . 'this->' . static::API_REQUEST_CLASS_NAME .')';
         $this->api_client_construct_code .= $this->wrapConstructAssignment($action_name, $value);
 
         $this->api_client_gets .= $this->wrapGetActionMethod($action_name);
@@ -247,7 +250,7 @@ class GenerateActions {
         $result .= $this->tab(1) . 'public function ' . $method_name . '(' . static::DOLLAR . 'access_token'
             . ', ' . static::DOLLAR . 'params = array()) {' . PHP_EOL;
 
-        $result .= $this->tab(2) . 'return ' . static::DOLLAR . 'this->client->post('
+        $result .= $this->tab(2) . 'return ' . static::DOLLAR . 'this->' . static::API_REQUEST_CLASS_NAME . '->post('
             . static::QUOTE . $action_name . static::METHOD_NAME_DELIMITER . $method['name'] . static::QUOTE
             . ', ' . static::DOLLAR . 'access_token, ' . static::DOLLAR . 'params);' . PHP_EOL;
 

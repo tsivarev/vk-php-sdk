@@ -11,10 +11,10 @@ class Storage {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -32,7 +32,7 @@ class Storage {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('storage.get', $access_token, $params);
+        return $this->request->post('storage.get', $access_token, $params);
     }
 
     /**
@@ -50,7 +50,7 @@ class Storage {
      * 
      **/
     public function set($access_token, $params = array()) {
-        return $this->client->post('storage.set', $access_token, $params);
+        return $this->request->post('storage.set', $access_token, $params);
     }
 
     /**
@@ -68,6 +68,6 @@ class Storage {
      * 
      **/
     public function getKeys($access_token, $params = array()) {
-        return $this->client->post('storage.getKeys', $access_token, $params);
+        return $this->request->post('storage.getKeys', $access_token, $params);
     }
 }

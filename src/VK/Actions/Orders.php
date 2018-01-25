@@ -12,10 +12,10 @@ class Orders {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -33,7 +33,7 @@ class Orders {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('orders.get', $access_token, $params);
+        return $this->request->post('orders.get', $access_token, $params);
     }
 
     /**
@@ -52,7 +52,7 @@ class Orders {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('orders.getById', $access_token, $params);
+        return $this->request->post('orders.getById', $access_token, $params);
     }
 
     /**
@@ -75,7 +75,7 @@ class Orders {
      * 
      **/
     public function changeState($access_token, $params = array()) {
-        return $this->client->post('orders.changeState', $access_token, $params);
+        return $this->request->post('orders.changeState', $access_token, $params);
     }
 
     /**
@@ -92,6 +92,6 @@ class Orders {
      * 
      **/
     public function getAmount($access_token, $params = array()) {
-        return $this->client->post('orders.getAmount', $access_token, $params);
+        return $this->request->post('orders.getAmount', $access_token, $params);
     }
 }

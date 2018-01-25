@@ -2,6 +2,9 @@
 
 namespace VK;
 
+use VK\Enums\OAuthDisplay;
+use VK\Enums\OAuthGroupScope;
+use VK\Enums\OAuthUserScope;
 use VK\Exceptions\HttpRequestException;
 use VK\Exceptions\VKApiException;
 use VK\Exceptions\VKClientException;
@@ -23,9 +26,6 @@ class VKAPIRequest {
 
     const CONNECTION_TIMEOUT = 10;
     const HTTP_STATUS_CODE_OK = 200;
-
-    const RESPONSE_TYPE_API = 0;
-    const RESPONSE_TYPE_OAUTH = 1;
 
     const ERROR_KEY = 'error';
     const ERROR_CODE_KEY = 'error_code';
@@ -53,7 +53,6 @@ class VKAPIRequest {
      *
      * @throws VKClientException
      * @throws VKApiException
-     * @throws VKOAuthException
      */
     public function post($method, $access_token, $params = array()) {
         $params = $this->formatParams($params);
@@ -82,7 +81,6 @@ class VKAPIRequest {
      *
      * @throws VKClientException
      * @throws VKApiException
-     * @throws VKOAuthException
      */
     public function upload($upload_url, $parameter_name, $path) {
         try {
@@ -95,25 +93,29 @@ class VKAPIRequest {
     }
 
     /**
-     * Redirects user's browser to the given URI and opens the authorization dialog.
+     * Opens the authorization dialog.
      *
-     * @param $client_id
-     * @param $redirect_uri
-     * @param $display
-     * @param $scope
+     * @param string $client_id
+     * @param string $redirect_uri
+     * @param OAuthDisplay $display
+     * @param OAuthUserScope[]|OAuthGroupScope[] $scope
      * @param string $state
      * @param string $response_type
      *
      * @throws VKClientException
-     * @throws VKApiException
      * @throws VKOAuthException
      */
     public function authorization($client_id, $redirect_uri, $display, $scope, $state = '', $response_type = 'code') {
+        $scope_value = 0;
+        foreach ($scope as $value) {
+            $scope_value += $value;
+        }
+
         $params = array(
             static::API_PARAM_CLIENT_ID => $client_id,
             static::API_PARAM_REDIRECT_URI => $redirect_uri,
             static::API_PARAM_DISPLAY => $display,
-            static::API_PARAM_SCOPE => $scope,
+            static::API_PARAM_SCOPE => $scope_value,
             static::API_PARAM_STATE => $state,
             static::API_PARAM_RESPONSE_TYPE => $response_type,
             static::API_PARAM_VERSION => $this->api_version
@@ -127,18 +129,19 @@ class VKAPIRequest {
             throw new VKClientException($e);
         }
 
-        $this->checkResponse($response, static::RESPONSE_TYPE_OAUTH);
+        $this->checkOAuthResponse($response);
     }
 
     /**
-     * @param $client_id
-     * @param $client_secret
-     * @param $redirect_uri
-     * @param $code
+     * Returns an access token.
+     *
+     * @param string $client_id
+     * @param string $client_secret
+     * @param string $redirect_uri
+     * @param string $code
      *
      * @return string
      * @throws VKClientException
-     * @throws VKApiException
      * @throws VKOAuthException
      */
     public function getAccessToken($client_id, $client_secret, $redirect_uri, $code) {
@@ -157,7 +160,7 @@ class VKAPIRequest {
             throw new VKClientException($e);
         }
 
-        return $this->checkResponse($response, static::RESPONSE_TYPE_OAUTH);
+        return $this->checkOAuthResponse($response);
     }
 
     /**
@@ -169,34 +172,45 @@ class VKAPIRequest {
      *
      * @throws VKApiException
      * @throws VKClientException
-     * @throws VKOAuthException
      */
-    private function checkResponse($response, $type = 0) {
+    private function checkResponse($response) {
         $this->checkHttpStatus($response);
 
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
         if ($decode_body[static::ERROR_KEY]) {
-            switch ($type) {
-                case static::RESPONSE_TYPE_API:
-                    throw new VKApiException($decode_body[static::ERROR_KEY][static::ERROR_CODE_KEY],
-                        $decode_body[static::ERROR_KEY][static::ERROR_MSG_KEY]);
-                case static::RESPONSE_TYPE_OAUTH:
-                    throw new VKOAuthException($decode_body[static::ERROR_KEY],
-                        $decode_body[static::ERROR_DESCRIPTION_KEY]);
-            }
+            throw new VKApiException($decode_body[static::ERROR_KEY][static::ERROR_CODE_KEY],
+                $decode_body[static::ERROR_KEY][static::ERROR_MSG_KEY]);
         }
 
-        switch ($type) {
-            case static::RESPONSE_TYPE_API:
-                return $decode_body['response'];
-                break;
-            case static::RESPONSE_TYPE_OAUTH:
-                if (isset($decode_body['access_token'])) {
-                    return $decode_body['access_token'];
-                }
-                break;
+        return $decode_body['response'];
+    }
+
+    /**
+     * Decodes the authorization response and checks its status code and whether it has an error.
+     *
+     * @param TransportClientResponse $response
+     *
+     * @return mixed
+     *
+     * @throws VKClientException
+     * @throws VKOAuthException
+     */
+    private function checkOAuthResponse($response) {
+        $this->checkHttpStatus($response);
+
+        $body = $response->getBody();
+        $decode_body = $this->decodeBody($body);
+
+        if ($decode_body[static::ERROR_KEY]) {
+            throw new VKOAuthException($decode_body[static::ERROR_KEY], $decode_body[static::ERROR_DESCRIPTION_KEY]);
+        }
+
+        if (isset($decode_body['access_token'])) {
+            return $decode_body['access_token'];
+        } else {
+           return $decode_body;
         }
     }
 

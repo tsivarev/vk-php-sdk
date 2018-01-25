@@ -44,7 +44,7 @@ class VKAPIClient {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
     /**
      * @var Account
@@ -217,41 +217,45 @@ class VKAPIClient {
     private $widgets;
 
     public function __construct() {
-        $this->client = new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION);
-        $this->account = new Account($this->client);
-        $this->ads = new Ads($this->client);
-        $this->apps = new Apps($this->client);
-        $this->auth = new Auth($this->client);
-        $this->board = new Board($this->client);
-        $this->database = new Database($this->client);
-        $this->docs = new Docs($this->client);
-        $this->fave = new Fave($this->client);
-        $this->friends = new Friends($this->client);
-        $this->gifts = new Gifts($this->client);
-        $this->groups = new Groups($this->client);
-        $this->leads = new Leads($this->client);
-        $this->likes = new Likes($this->client);
-        $this->market = new Market($this->client);
-        $this->messages = new Messages($this->client);
-        $this->newsfeed = new Newsfeed($this->client);
-        $this->notes = new Notes($this->client);
-        $this->notifications = new Notifications($this->client);
-        $this->orders = new Orders($this->client);
-        $this->pages = new Pages($this->client);
-        $this->photos = new Photos($this->client);
-        $this->places = new Places($this->client);
-        $this->polls = new Polls($this->client);
-        $this->search = new Search($this->client);
-        $this->secure = new Secure($this->client);
-        $this->stats = new Stats($this->client);
-        $this->status = new Status($this->client);
-        $this->storage = new Storage($this->client);
-        $this->streaming = new Streaming($this->client);
-        $this->users = new Users($this->client);
-        $this->utils = new Utils($this->client);
-        $this->video = new Video($this->client);
-        $this->wall = new Wall($this->client);
-        $this->widgets = new Widgets($this->client);
+        $this->request = new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION);
+        $this->account = new Account($this->request);
+        $this->ads = new Ads($this->request);
+        $this->apps = new Apps($this->request);
+        $this->auth = new Auth($this->request);
+        $this->board = new Board($this->request);
+        $this->database = new Database($this->request);
+        $this->docs = new Docs($this->request);
+        $this->fave = new Fave($this->request);
+        $this->friends = new Friends($this->request);
+        $this->gifts = new Gifts($this->request);
+        $this->groups = new Groups($this->request);
+        $this->leads = new Leads($this->request);
+        $this->likes = new Likes($this->request);
+        $this->market = new Market($this->request);
+        $this->messages = new Messages($this->request);
+        $this->newsfeed = new Newsfeed($this->request);
+        $this->notes = new Notes($this->request);
+        $this->notifications = new Notifications($this->request);
+        $this->orders = new Orders($this->request);
+        $this->pages = new Pages($this->request);
+        $this->photos = new Photos($this->request);
+        $this->places = new Places($this->request);
+        $this->polls = new Polls($this->request);
+        $this->search = new Search($this->request);
+        $this->secure = new Secure($this->request);
+        $this->stats = new Stats($this->request);
+        $this->status = new Status($this->request);
+        $this->storage = new Storage($this->request);
+        $this->streaming = new Streaming($this->request);
+        $this->users = new Users($this->request);
+        $this->utils = new Utils($this->request);
+        $this->video = new Video($this->request);
+        $this->wall = new Wall($this->request);
+        $this->widgets = new Widgets($this->request);
+    }
+
+    public function request() {
+        return $this->request;
     }
 
     public function account() {
