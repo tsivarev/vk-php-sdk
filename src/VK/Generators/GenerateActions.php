@@ -76,7 +76,7 @@ class GenerateActions {
             $methods_path = dirname(dirname(dirname(__DIR__))) .
                 '/vendor/vkcom/vk-api-schema/methods.json';
         }
-        $this->getSchemaFromFile($methods_path);
+        $this->getSchemaResponse();
 
         if ($actions_output_path == null) {
             $actions_output_path = dirname(__DIR__) . '/Actions/';
