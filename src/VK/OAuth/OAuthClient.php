@@ -4,6 +4,7 @@ namespace VK\OAuth;
 
 use VK\Enums\OAuthDisplay;
 use VK\Enums\OAuthGroupScope;
+use VK\Enums\OAuthResponseType;
 use VK\Enums\OAuthUserScope;
 use VK\Exceptions\HttpRequestException;
 use VK\Exceptions\VKClientException;
@@ -43,13 +44,13 @@ class OAuthClient extends VKClientBase {
      * @param string $redirect_uri
      * @param OAuthDisplay $display
      * @param OAuthUserScope[]|OAuthGroupScope[] $scope
+     * @param OAuthResponseType $response_type
      * @param string $state
-     * @param string $response_type
      *
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    public function authorize($client_id, $redirect_uri, $display, $scope, $state = '', $response_type = 'code') {
+    public function authorize($client_id, $redirect_uri, $display, $scope, $response_type, $state = null) {
         $scope_value = 0;
         foreach ($scope as $value) {
             $scope_value |= $value;
