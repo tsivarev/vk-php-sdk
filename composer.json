@@ -12,12 +12,12 @@
     "require-dev": {
         "phpunit/phpunit": "5.2.*"
     },
-  "repositories":[
-    {
-        "type": "git",
-        "url": "https://github.com/VKCOM/vk-api-schema"
-    }
-  ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/VKCOM/vk-api-schema"
+        }
+    ],
     "scripts": {
         "generate-sdk": [
           "@php src/VK/Generators/generate_actions.php"
