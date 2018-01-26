@@ -5,13 +5,11 @@
     "homepage": "https://github.com/erokhinav/vk-php-sdk",
     "license": "MIT",
     "require": {
-        "php": "^5.4|^7.0"
+        "php": "^5.4|^7.0",
+        "vkcom/vk-api-schema": "1.4.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"
-    },
-    "provide": {
-        "vkcom/vk-api-schema": "1.4.*"
     },
     "scripts": {
         "generate-sdk": [
