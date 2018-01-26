@@ -26,6 +26,9 @@ class OAuthClient extends VKClientBase {
     const ERROR_KEY = 'error';
     const ERROR_DESCRIPTION_KEY = 'error_description';
 
+    const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
+    const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
+
     protected $http_client;
 
     public function __construct($api_version) {
@@ -36,7 +39,7 @@ class OAuthClient extends VKClientBase {
     /**
      * Opens the authorization dialog.
      *
-     * @param string $client_id
+     * @param int $client_id
      * @param string $redirect_uri
      * @param OAuthDisplay $display
      * @param OAuthUserScope[]|OAuthGroupScope[] $scope
@@ -49,7 +52,7 @@ class OAuthClient extends VKClientBase {
     public function authorize($client_id, $redirect_uri, $display, $scope, $state = '', $response_type = 'code') {
         $scope_value = 0;
         foreach ($scope as $value) {
-            $scope_value += $value;
+            $scope_value |= $value;
         }
 
         $params = array(
@@ -62,10 +65,8 @@ class OAuthClient extends VKClientBase {
             static::API_PARAM_VERSION => $this->api_version
         );
 
-        $url = 'https://oauth.vk.com/authorize';
-
         try {
-            $response = $this->http_client->post($url, $params);
+            $response = $this->http_client->post(static::AUTHORIZE_URL, $params);
         } catch (HttpRequestException $e) {
             throw new VKClientException($e);
         }
@@ -76,7 +77,7 @@ class OAuthClient extends VKClientBase {
     /**
      * Returns an access token.
      *
-     * @param string $client_id
+     * @param int $client_id
      * @param string $client_secret
      * @param string $redirect_uri
      * @param string $code
@@ -93,10 +94,8 @@ class OAuthClient extends VKClientBase {
             static::API_PARAM_CODE => $code
         );
 
-        $url = 'https://oauth.vk.com/access_token';
-
         try {
-            $response = $this->http_client->post($url, $params);
+            $response = $this->http_client->post(static::ACCESS_TOKEN_URL, $params);
         } catch (HttpRequestException $e) {
             throw new VKClientException($e);
         }
