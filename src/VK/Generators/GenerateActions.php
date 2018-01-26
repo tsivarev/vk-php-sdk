@@ -73,10 +73,10 @@ class GenerateActions {
 
     public function generate($methods_path = null, $actions_output_path = null, $api_client_output_path = null) {
         if ($methods_path == null) {
-            $methods_path = dirname(dirname(dirname(__DIR__))) .
-                '/vendor/vkcom/vk-api-schema/methods.json';
+            $methods_path = dirname(dirname(dirname(dirname(dirname(__DIR__))))) .
+                '/vkcom/vk-api-schema/methods.json';
         }
-        $this->getSchemaResponse();
+        $this->getSchemaFromFile($methods_path);
 
         if ($actions_output_path == null) {
             $actions_output_path = dirname(__DIR__) . '/Actions/';
