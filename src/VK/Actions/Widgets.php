@@ -11,10 +11,10 @@ class Widgets {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -35,7 +35,7 @@ class Widgets {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('widgets.getComments', $access_token, $params);
+        return $this->request->post('widgets.getComments', $access_token, $params);
     }
 
     /**
@@ -55,6 +55,6 @@ class Widgets {
      * 
      **/
     public function getPages($access_token, $params = array()) {
-        return $this->client->post('widgets.getPages', $access_token, $params);
+        return $this->request->post('widgets.getPages', $access_token, $params);
     }
 }

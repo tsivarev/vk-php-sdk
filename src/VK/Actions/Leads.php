@@ -12,10 +12,10 @@ class Leads {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -33,7 +33,7 @@ class Leads {
      * 
      **/
     public function complete($access_token, $params = array()) {
-        return $this->client->post('leads.complete', $access_token, $params);
+        return $this->request->post('leads.complete', $access_token, $params);
     }
 
     /**
@@ -50,7 +50,7 @@ class Leads {
      * 
      **/
     public function start($access_token, $params = array()) {
-        return $this->client->post('leads.start', $access_token, $params);
+        return $this->request->post('leads.start', $access_token, $params);
     }
 
     /**
@@ -69,7 +69,7 @@ class Leads {
      * 
      **/
     public function getStats($access_token, $params = array()) {
-        return $this->client->post('leads.getStats', $access_token, $params);
+        return $this->request->post('leads.getStats', $access_token, $params);
     }
 
     /**
@@ -93,7 +93,7 @@ class Leads {
      * 
      **/
     public function getUsers($access_token, $params = array()) {
-        return $this->client->post('leads.getUsers', $access_token, $params);
+        return $this->request->post('leads.getUsers', $access_token, $params);
     }
 
     /**
@@ -112,7 +112,7 @@ class Leads {
      * 
      **/
     public function checkUser($access_token, $params = array()) {
-        return $this->client->post('leads.checkUser', $access_token, $params);
+        return $this->request->post('leads.checkUser', $access_token, $params);
     }
 
     /**
@@ -128,6 +128,6 @@ class Leads {
      * 
      **/
     public function metricHit($access_token, $params = array()) {
-        return $this->client->post('leads.metricHit', $access_token, $params);
+        return $this->request->post('leads.metricHit', $access_token, $params);
     }
 }

@@ -11,10 +11,10 @@ class Search {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -34,6 +34,6 @@ class Search {
      * 
      **/
     public function getHints($access_token, $params = array()) {
-        return $this->client->post('search.getHints', $access_token, $params);
+        return $this->request->post('search.getHints', $access_token, $params);
     }
 }

@@ -19,10 +19,10 @@ class Users {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -46,7 +46,7 @@ class Users {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('users.get', $access_token, $params);
+        return $this->request->post('users.get', $access_token, $params);
     }
 
     /**
@@ -100,7 +100,7 @@ class Users {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('users.search', $access_token, $params);
+        return $this->request->post('users.search', $access_token, $params);
     }
 
     /**
@@ -116,7 +116,7 @@ class Users {
      * 
      **/
     public function isAppUser($access_token, $params = array()) {
-        return $this->client->post('users.isAppUser', $access_token, $params);
+        return $this->request->post('users.isAppUser', $access_token, $params);
     }
 
     /**
@@ -137,7 +137,7 @@ class Users {
      * 
      **/
     public function getSubscriptions($access_token, $params = array()) {
-        return $this->client->post('users.getSubscriptions', $access_token, $params);
+        return $this->request->post('users.getSubscriptions', $access_token, $params);
     }
 
     /**
@@ -162,7 +162,7 @@ class Users {
      * 
      **/
     public function getFollowers($access_token, $params = array()) {
-        return $this->client->post('users.getFollowers', $access_token, $params);
+        return $this->request->post('users.getFollowers', $access_token, $params);
     }
 
     /**
@@ -182,7 +182,7 @@ class Users {
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->post('users.report', $access_token, $params);
+        return $this->request->post('users.report', $access_token, $params);
     }
 
     /**
@@ -213,6 +213,6 @@ class Users {
      * 
      **/
     public function getNearby($access_token, $params = array()) {
-        return $this->client->post('users.getNearby', $access_token, $params);
+        return $this->request->post('users.getNearby', $access_token, $params);
     }
 }

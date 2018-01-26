@@ -13,10 +13,10 @@ class Pages {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -38,7 +38,7 @@ class Pages {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('pages.get', $access_token, $params);
+        return $this->request->post('pages.get', $access_token, $params);
     }
 
     /**
@@ -58,7 +58,7 @@ class Pages {
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->post('pages.save', $access_token, $params);
+        return $this->request->post('pages.save', $access_token, $params);
     }
 
     /**
@@ -82,7 +82,7 @@ class Pages {
      * 
      **/
     public function saveAccess($access_token, $params = array()) {
-        return $this->client->post('pages.saveAccess', $access_token, $params);
+        return $this->request->post('pages.saveAccess', $access_token, $params);
     }
 
     /**
@@ -100,7 +100,7 @@ class Pages {
      * 
      **/
     public function getHistory($access_token, $params = array()) {
-        return $this->client->post('pages.getHistory', $access_token, $params);
+        return $this->request->post('pages.getHistory', $access_token, $params);
     }
 
     /**
@@ -116,7 +116,7 @@ class Pages {
      * 
      **/
     public function getTitles($access_token, $params = array()) {
-        return $this->client->post('pages.getTitles', $access_token, $params);
+        return $this->request->post('pages.getTitles', $access_token, $params);
     }
 
     /**
@@ -135,7 +135,7 @@ class Pages {
      * 
      **/
     public function getVersion($access_token, $params = array()) {
-        return $this->client->post('pages.getVersion', $access_token, $params);
+        return $this->request->post('pages.getVersion', $access_token, $params);
     }
 
     /**
@@ -152,7 +152,7 @@ class Pages {
      * 
      **/
     public function parseWiki($access_token, $params = array()) {
-        return $this->client->post('pages.parseWiki', $access_token, $params);
+        return $this->request->post('pages.parseWiki', $access_token, $params);
     }
 
     /**
@@ -168,6 +168,6 @@ class Pages {
      * 
      **/
     public function clearCache($access_token, $params = array()) {
-        return $this->client->post('pages.clearCache', $access_token, $params);
+        return $this->request->post('pages.clearCache', $access_token, $params);
     }
 }

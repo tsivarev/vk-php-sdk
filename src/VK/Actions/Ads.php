@@ -20,10 +20,10 @@ class Ads {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -38,7 +38,7 @@ class Ads {
      * 
      **/
     public function getAccounts($access_token, $params = array()) {
-        return $this->client->post('ads.getAccounts', $access_token, $params);
+        return $this->request->post('ads.getAccounts', $access_token, $params);
     }
 
     /**
@@ -54,7 +54,7 @@ class Ads {
      * 
      **/
     public function getClients($access_token, $params = array()) {
-        return $this->client->post('ads.getClients', $access_token, $params);
+        return $this->request->post('ads.getClients', $access_token, $params);
     }
 
     /**
@@ -72,7 +72,7 @@ class Ads {
      * 
      **/
     public function createClients($access_token, $params = array()) {
-        return $this->client->post('ads.createClients', $access_token, $params);
+        return $this->request->post('ads.createClients', $access_token, $params);
     }
 
     /**
@@ -90,7 +90,7 @@ class Ads {
      * 
      **/
     public function updateClients($access_token, $params = array()) {
-        return $this->client->post('ads.updateClients', $access_token, $params);
+        return $this->request->post('ads.updateClients', $access_token, $params);
     }
 
     /**
@@ -107,7 +107,7 @@ class Ads {
      * 
      **/
     public function deleteClients($access_token, $params = array()) {
-        return $this->client->post('ads.deleteClients', $access_token, $params);
+        return $this->request->post('ads.deleteClients', $access_token, $params);
     }
 
     /**
@@ -130,7 +130,7 @@ class Ads {
      * 
      **/
     public function getCampaigns($access_token, $params = array()) {
-        return $this->client->post('ads.getCampaigns', $access_token, $params);
+        return $this->request->post('ads.getCampaigns', $access_token, $params);
     }
 
     /**
@@ -148,7 +148,7 @@ class Ads {
      * 
      **/
     public function createCampaigns($access_token, $params = array()) {
-        return $this->client->post('ads.createCampaigns', $access_token, $params);
+        return $this->request->post('ads.createCampaigns', $access_token, $params);
     }
 
     /**
@@ -166,7 +166,7 @@ class Ads {
      * 
      **/
     public function updateCampaigns($access_token, $params = array()) {
-        return $this->client->post('ads.updateCampaigns', $access_token, $params);
+        return $this->request->post('ads.updateCampaigns', $access_token, $params);
     }
 
     /**
@@ -183,7 +183,7 @@ class Ads {
      * 
      **/
     public function deleteCampaigns($access_token, $params = array()) {
-        return $this->client->post('ads.deleteCampaigns', $access_token, $params);
+        return $this->request->post('ads.deleteCampaigns', $access_token, $params);
     }
 
     /**
@@ -210,7 +210,7 @@ class Ads {
      * 
      **/
     public function getAds($access_token, $params = array()) {
-        return $this->client->post('ads.getAds', $access_token, $params);
+        return $this->request->post('ads.getAds', $access_token, $params);
     }
 
     /**
@@ -236,7 +236,7 @@ class Ads {
      * 
      **/
     public function getAdsLayout($access_token, $params = array()) {
-        return $this->client->post('ads.getAdsLayout', $access_token, $params);
+        return $this->request->post('ads.getAdsLayout', $access_token, $params);
     }
 
     /**
@@ -262,7 +262,7 @@ class Ads {
      * 
      **/
     public function getAdsTargeting($access_token, $params = array()) {
-        return $this->client->post('ads.getAdsTargeting', $access_token, $params);
+        return $this->request->post('ads.getAdsTargeting', $access_token, $params);
     }
 
     /**
@@ -280,7 +280,7 @@ class Ads {
      * 
      **/
     public function createAds($access_token, $params = array()) {
-        return $this->client->post('ads.createAds', $access_token, $params);
+        return $this->request->post('ads.createAds', $access_token, $params);
     }
 
     /**
@@ -298,7 +298,7 @@ class Ads {
      * 
      **/
     public function updateAds($access_token, $params = array()) {
-        return $this->client->post('ads.updateAds', $access_token, $params);
+        return $this->request->post('ads.updateAds', $access_token, $params);
     }
 
     /**
@@ -315,7 +315,7 @@ class Ads {
      * 
      **/
     public function deleteAds($access_token, $params = array()) {
-        return $this->client->post('ads.deleteAds', $access_token, $params);
+        return $this->request->post('ads.deleteAds', $access_token, $params);
     }
 
     /**
@@ -336,7 +336,7 @@ class Ads {
      * 
      **/
     public function checkLink($access_token, $params = array()) {
-        return $this->client->post('ads.checkLink', $access_token, $params);
+        return $this->request->post('ads.checkLink', $access_token, $params);
     }
 
     /**
@@ -367,7 +367,7 @@ class Ads {
      * 
      **/
     public function getStatistics($access_token, $params = array()) {
-        return $this->client->post('ads.getStatistics', $access_token, $params);
+        return $this->request->post('ads.getStatistics', $access_token, $params);
     }
 
     /**
@@ -398,7 +398,7 @@ class Ads {
      * 
      **/
     public function getDemographics($access_token, $params = array()) {
-        return $this->client->post('ads.getDemographics', $access_token, $params);
+        return $this->request->post('ads.getDemographics', $access_token, $params);
     }
 
     /**
@@ -415,7 +415,7 @@ class Ads {
      * 
      **/
     public function getAdsPostsReach($access_token, $params = array()) {
-        return $this->client->post('ads.getAdsPostsReach', $access_token, $params);
+        return $this->request->post('ads.getAdsPostsReach', $access_token, $params);
     }
 
     /**
@@ -431,7 +431,7 @@ class Ads {
      * 
      **/
     public function getBudget($access_token, $params = array()) {
-        return $this->client->post('ads.getBudget', $access_token, $params);
+        return $this->request->post('ads.getBudget', $access_token, $params);
     }
 
     /**
@@ -447,7 +447,7 @@ class Ads {
      * 
      **/
     public function getOfficeUsers($access_token, $params = array()) {
-        return $this->client->post('ads.getOfficeUsers', $access_token, $params);
+        return $this->request->post('ads.getOfficeUsers', $access_token, $params);
     }
 
     /**
@@ -465,7 +465,7 @@ class Ads {
      * 
      **/
     public function addOfficeUsers($access_token, $params = array()) {
-        return $this->client->post('ads.addOfficeUsers', $access_token, $params);
+        return $this->request->post('ads.addOfficeUsers', $access_token, $params);
     }
 
     /**
@@ -482,7 +482,7 @@ class Ads {
      * 
      **/
     public function removeOfficeUsers($access_token, $params = array()) {
-        return $this->client->post('ads.removeOfficeUsers', $access_token, $params);
+        return $this->request->post('ads.removeOfficeUsers', $access_token, $params);
     }
 
     /**
@@ -510,7 +510,7 @@ class Ads {
      * 
      **/
     public function getTargetingStats($access_token, $params = array()) {
-        return $this->client->post('ads.getTargetingStats', $access_token, $params);
+        return $this->request->post('ads.getTargetingStats', $access_token, $params);
     }
 
     /**
@@ -545,7 +545,7 @@ class Ads {
      * 
      **/
     public function getSuggestions($access_token, $params = array()) {
-        return $this->client->post('ads.getSuggestions', $access_token, $params);
+        return $this->request->post('ads.getSuggestions', $access_token, $params);
     }
 
     /**
@@ -561,7 +561,7 @@ class Ads {
      * 
      **/
     public function getCategories($access_token, $params = array()) {
-        return $this->client->post('ads.getCategories', $access_token, $params);
+        return $this->request->post('ads.getCategories', $access_token, $params);
     }
 
     /**
@@ -579,7 +579,7 @@ class Ads {
      * 
      **/
     public function getUploadURL($access_token, $params = array()) {
-        return $this->client->post('ads.getUploadURL', $access_token, $params);
+        return $this->request->post('ads.getUploadURL', $access_token, $params);
     }
 
     /**
@@ -594,7 +594,7 @@ class Ads {
      * 
      **/
     public function getVideoUploadURL($access_token, $params = array()) {
-        return $this->client->post('ads.getVideoUploadURL', $access_token, $params);
+        return $this->request->post('ads.getVideoUploadURL', $access_token, $params);
     }
 
     /**
@@ -611,7 +611,7 @@ class Ads {
      * 
      **/
     public function getFloodStats($access_token, $params = array()) {
-        return $this->client->post('ads.getFloodStats', $access_token, $params);
+        return $this->request->post('ads.getFloodStats', $access_token, $params);
     }
 
     /**
@@ -628,7 +628,7 @@ class Ads {
      * 
      **/
     public function getRejectionReason($access_token, $params = array()) {
-        return $this->client->post('ads.getRejectionReason', $access_token, $params);
+        return $this->request->post('ads.getRejectionReason', $access_token, $params);
     }
 
     /**
@@ -651,7 +651,7 @@ class Ads {
      * 
      **/
     public function createTargetGroup($access_token, $params = array()) {
-        return $this->client->post('ads.createTargetGroup', $access_token, $params);
+        return $this->request->post('ads.createTargetGroup', $access_token, $params);
     }
 
     /**
@@ -675,7 +675,7 @@ class Ads {
      * 
      **/
     public function updateTargetGroup($access_token, $params = array()) {
-        return $this->client->post('ads.updateTargetGroup', $access_token, $params);
+        return $this->request->post('ads.updateTargetGroup', $access_token, $params);
     }
 
     /**
@@ -694,7 +694,7 @@ class Ads {
      * 
      **/
     public function deleteTargetGroup($access_token, $params = array()) {
-        return $this->client->post('ads.deleteTargetGroup', $access_token, $params);
+        return $this->request->post('ads.deleteTargetGroup', $access_token, $params);
     }
 
     /**
@@ -713,7 +713,7 @@ class Ads {
      * 
      **/
     public function getTargetGroups($access_token, $params = array()) {
-        return $this->client->post('ads.getTargetGroups', $access_token, $params);
+        return $this->request->post('ads.getTargetGroups', $access_token, $params);
     }
 
     /**
@@ -733,6 +733,6 @@ class Ads {
      * 
      **/
     public function importTargetContacts($access_token, $params = array()) {
-        return $this->client->post('ads.importTargetContacts', $access_token, $params);
+        return $this->request->post('ads.importTargetContacts', $access_token, $params);
     }
 }

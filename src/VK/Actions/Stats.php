@@ -11,10 +11,10 @@ class Stats {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -33,7 +33,7 @@ class Stats {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('stats.get', $access_token, $params);
+        return $this->request->post('stats.get', $access_token, $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class Stats {
      * 
      **/
     public function trackVisitor($access_token, $params = array()) {
-        return $this->client->post('stats.trackVisitor', $access_token, $params);
+        return $this->request->post('stats.trackVisitor', $access_token, $params);
     }
 
     /**
@@ -66,6 +66,6 @@ class Stats {
      * 
      **/
     public function getPostReach($access_token, $params = array()) {
-        return $this->client->post('stats.getPostReach', $access_token, $params);
+        return $this->request->post('stats.getPostReach', $access_token, $params);
     }
 }

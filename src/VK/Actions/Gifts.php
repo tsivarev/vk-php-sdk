@@ -11,10 +11,10 @@ class Gifts {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -32,6 +32,6 @@ class Gifts {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('gifts.get', $access_token, $params);
+        return $this->request->post('gifts.get', $access_token, $params);
     }
 }

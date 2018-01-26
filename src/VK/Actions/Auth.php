@@ -12,10 +12,10 @@ class Auth {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -34,7 +34,7 @@ class Auth {
      * 
      **/
     public function checkPhone($access_token, $params = array()) {
-        return $this->client->post('auth.checkPhone', $access_token, $params);
+        return $this->request->post('auth.checkPhone', $access_token, $params);
     }
 
     /**
@@ -65,7 +65,7 @@ class Auth {
      * 
      **/
     public function signup($access_token, $params = array()) {
-        return $this->client->post('auth.signup', $access_token, $params);
+        return $this->request->post('auth.signup', $access_token, $params);
     }
 
     /**
@@ -88,7 +88,7 @@ class Auth {
      * 
      **/
     public function confirm($access_token, $params = array()) {
-        return $this->client->post('auth.confirm', $access_token, $params);
+        return $this->request->post('auth.confirm', $access_token, $params);
     }
 
     /**
@@ -106,6 +106,6 @@ class Auth {
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->post('auth.restore', $access_token, $params);
+        return $this->request->post('auth.restore', $access_token, $params);
     }
 }

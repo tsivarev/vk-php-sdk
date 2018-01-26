@@ -15,10 +15,10 @@ class Photos {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -40,7 +40,7 @@ class Photos {
      * 
      **/
     public function createAlbum($access_token, $params = array()) {
-        return $this->client->post('photos.createAlbum', $access_token, $params);
+        return $this->request->post('photos.createAlbum', $access_token, $params);
     }
 
     /**
@@ -63,7 +63,7 @@ class Photos {
      * 
      **/
     public function editAlbum($access_token, $params = array()) {
-        return $this->client->post('photos.editAlbum', $access_token, $params);
+        return $this->request->post('photos.editAlbum', $access_token, $params);
     }
 
     /**
@@ -85,7 +85,7 @@ class Photos {
      * 
      **/
     public function getAlbums($access_token, $params = array()) {
-        return $this->client->post('photos.getAlbums', $access_token, $params);
+        return $this->request->post('photos.getAlbums', $access_token, $params);
     }
 
     /**
@@ -116,7 +116,7 @@ class Photos {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('photos.get', $access_token, $params);
+        return $this->request->post('photos.get', $access_token, $params);
     }
 
     /**
@@ -133,7 +133,7 @@ class Photos {
      * 
      **/
     public function getAlbumsCount($access_token, $params = array()) {
-        return $this->client->post('photos.getAlbumsCount', $access_token, $params);
+        return $this->request->post('photos.getAlbumsCount', $access_token, $params);
     }
 
     /**
@@ -154,7 +154,7 @@ class Photos {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('photos.getById', $access_token, $params);
+        return $this->request->post('photos.getById', $access_token, $params);
     }
 
     /**
@@ -172,7 +172,7 @@ class Photos {
      * 
      **/
     public function getUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getUploadServer', $access_token, $params);
+        return $this->request->post('photos.getUploadServer', $access_token, $params);
     }
 
     /**
@@ -193,7 +193,7 @@ class Photos {
      * 
      **/
     public function getOwnerCoverPhotoUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getOwnerCoverPhotoUploadServer', $access_token, $params);
+        return $this->request->post('photos.getOwnerCoverPhotoUploadServer', $access_token, $params);
     }
 
     /**
@@ -210,7 +210,7 @@ class Photos {
      * 
      **/
     public function getOwnerPhotoUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getOwnerPhotoUploadServer', $access_token, $params);
+        return $this->request->post('photos.getOwnerPhotoUploadServer', $access_token, $params);
     }
 
     /**
@@ -229,7 +229,7 @@ class Photos {
      * 
      **/
     public function getChatUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getChatUploadServer', $access_token, $params);
+        return $this->request->post('photos.getChatUploadServer', $access_token, $params);
     }
 
     /**
@@ -249,7 +249,7 @@ class Photos {
      * 
      **/
     public function getMarketUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getMarketUploadServer', $access_token, $params);
+        return $this->request->post('photos.getMarketUploadServer', $access_token, $params);
     }
 
     /**
@@ -265,7 +265,7 @@ class Photos {
      * 
      **/
     public function getMarketAlbumUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getMarketAlbumUploadServer', $access_token, $params);
+        return $this->request->post('photos.getMarketAlbumUploadServer', $access_token, $params);
     }
 
     /**
@@ -286,7 +286,7 @@ class Photos {
      * 
      **/
     public function saveMarketPhoto($access_token, $params = array()) {
-        return $this->client->post('photos.saveMarketPhoto', $access_token, $params);
+        return $this->request->post('photos.saveMarketPhoto', $access_token, $params);
     }
 
     /**
@@ -303,7 +303,7 @@ class Photos {
      * 
      **/
     public function saveOwnerCoverPhoto($access_token, $params = array()) {
-        return $this->client->post('photos.saveOwnerCoverPhoto', $access_token, $params);
+        return $this->request->post('photos.saveOwnerCoverPhoto', $access_token, $params);
     }
 
     /**
@@ -322,7 +322,7 @@ class Photos {
      * 
      **/
     public function saveMarketAlbumPhoto($access_token, $params = array()) {
-        return $this->client->post('photos.saveMarketAlbumPhoto', $access_token, $params);
+        return $this->request->post('photos.saveMarketAlbumPhoto', $access_token, $params);
     }
 
     /**
@@ -341,7 +341,7 @@ class Photos {
      * 
      **/
     public function saveOwnerPhoto($access_token, $params = array()) {
-        return $this->client->post('photos.saveOwnerPhoto', $access_token, $params);
+        return $this->request->post('photos.saveOwnerPhoto', $access_token, $params);
     }
 
     /**
@@ -365,7 +365,7 @@ class Photos {
      * 
      **/
     public function saveWallPhoto($access_token, $params = array()) {
-        return $this->client->post('photos.saveWallPhoto', $access_token, $params);
+        return $this->request->post('photos.saveWallPhoto', $access_token, $params);
     }
 
     /**
@@ -381,7 +381,7 @@ class Photos {
      * 
      **/
     public function getWallUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getWallUploadServer', $access_token, $params);
+        return $this->request->post('photos.getWallUploadServer', $access_token, $params);
     }
 
     /**
@@ -396,7 +396,7 @@ class Photos {
      * 
      **/
     public function getMessagesUploadServer($access_token, $params = array()) {
-        return $this->client->post('photos.getMessagesUploadServer', $access_token, $params);
+        return $this->request->post('photos.getMessagesUploadServer', $access_token, $params);
     }
 
     /**
@@ -415,7 +415,7 @@ class Photos {
      * 
      **/
     public function saveMessagesPhoto($access_token, $params = array()) {
-        return $this->client->post('photos.saveMessagesPhoto', $access_token, $params);
+        return $this->request->post('photos.saveMessagesPhoto', $access_token, $params);
     }
 
     /**
@@ -435,7 +435,7 @@ class Photos {
      * 
      **/
     public function report($access_token, $params = array()) {
-        return $this->client->post('photos.report', $access_token, $params);
+        return $this->request->post('photos.report', $access_token, $params);
     }
 
     /**
@@ -455,7 +455,7 @@ class Photos {
      * 
      **/
     public function reportComment($access_token, $params = array()) {
-        return $this->client->post('photos.reportComment', $access_token, $params);
+        return $this->request->post('photos.reportComment', $access_token, $params);
     }
 
     /**
@@ -480,7 +480,7 @@ class Photos {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('photos.search', $access_token, $params);
+        return $this->request->post('photos.search', $access_token, $params);
     }
 
     /**
@@ -503,7 +503,7 @@ class Photos {
      * 
      **/
     public function save($access_token, $params = array()) {
-        return $this->client->post('photos.save', $access_token, $params);
+        return $this->request->post('photos.save', $access_token, $params);
     }
 
     /**
@@ -521,7 +521,7 @@ class Photos {
      * 
      **/
     public function copy($access_token, $params = array()) {
-        return $this->client->post('photos.copy', $access_token, $params);
+        return $this->request->post('photos.copy', $access_token, $params);
     }
 
     /**
@@ -545,7 +545,7 @@ class Photos {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('photos.edit', $access_token, $params);
+        return $this->request->post('photos.edit', $access_token, $params);
     }
 
     /**
@@ -563,7 +563,7 @@ class Photos {
      * 
      **/
     public function move($access_token, $params = array()) {
-        return $this->client->post('photos.move', $access_token, $params);
+        return $this->request->post('photos.move', $access_token, $params);
     }
 
     /**
@@ -581,7 +581,7 @@ class Photos {
      * 
      **/
     public function makeCover($access_token, $params = array()) {
-        return $this->client->post('photos.makeCover', $access_token, $params);
+        return $this->request->post('photos.makeCover', $access_token, $params);
     }
 
     /**
@@ -600,7 +600,7 @@ class Photos {
      * 
      **/
     public function reorderAlbums($access_token, $params = array()) {
-        return $this->client->post('photos.reorderAlbums', $access_token, $params);
+        return $this->request->post('photos.reorderAlbums', $access_token, $params);
     }
 
     /**
@@ -619,7 +619,7 @@ class Photos {
      * 
      **/
     public function reorderPhotos($access_token, $params = array()) {
-        return $this->client->post('photos.reorderPhotos', $access_token, $params);
+        return $this->request->post('photos.reorderPhotos', $access_token, $params);
     }
 
     /**
@@ -646,7 +646,7 @@ class Photos {
      * 
      **/
     public function getAll($access_token, $params = array()) {
-        return $this->client->post('photos.getAll', $access_token, $params);
+        return $this->request->post('photos.getAll', $access_token, $params);
     }
 
     /**
@@ -667,7 +667,7 @@ class Photos {
      * 
      **/
     public function getUserPhotos($access_token, $params = array()) {
-        return $this->client->post('photos.getUserPhotos', $access_token, $params);
+        return $this->request->post('photos.getUserPhotos', $access_token, $params);
     }
 
     /**
@@ -684,7 +684,7 @@ class Photos {
      * 
      **/
     public function deleteAlbum($access_token, $params = array()) {
-        return $this->client->post('photos.deleteAlbum', $access_token, $params);
+        return $this->request->post('photos.deleteAlbum', $access_token, $params);
     }
 
     /**
@@ -701,7 +701,7 @@ class Photos {
      * 
      **/
     public function delete($access_token, $params = array()) {
-        return $this->client->post('photos.delete', $access_token, $params);
+        return $this->request->post('photos.delete', $access_token, $params);
     }
 
     /**
@@ -718,7 +718,7 @@ class Photos {
      * 
      **/
     public function restore($access_token, $params = array()) {
-        return $this->client->post('photos.restore', $access_token, $params);
+        return $this->request->post('photos.restore', $access_token, $params);
     }
 
     /**
@@ -736,7 +736,7 @@ class Photos {
      * 
      **/
     public function confirmTag($access_token, $params = array()) {
-        return $this->client->post('photos.confirmTag', $access_token, $params);
+        return $this->request->post('photos.confirmTag', $access_token, $params);
     }
 
     /**
@@ -762,7 +762,7 @@ class Photos {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('photos.getComments', $access_token, $params);
+        return $this->request->post('photos.getComments', $access_token, $params);
     }
 
     /**
@@ -784,7 +784,7 @@ class Photos {
      * 
      **/
     public function getAllComments($access_token, $params = array()) {
-        return $this->client->post('photos.getAllComments', $access_token, $params);
+        return $this->request->post('photos.getAllComments', $access_token, $params);
     }
 
     /**
@@ -811,7 +811,7 @@ class Photos {
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->post('photos.createComment', $access_token, $params);
+        return $this->request->post('photos.createComment', $access_token, $params);
     }
 
     /**
@@ -828,7 +828,7 @@ class Photos {
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->post('photos.deleteComment', $access_token, $params);
+        return $this->request->post('photos.deleteComment', $access_token, $params);
     }
 
     /**
@@ -845,7 +845,7 @@ class Photos {
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->post('photos.restoreComment', $access_token, $params);
+        return $this->request->post('photos.restoreComment', $access_token, $params);
     }
 
     /**
@@ -867,7 +867,7 @@ class Photos {
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->post('photos.editComment', $access_token, $params);
+        return $this->request->post('photos.editComment', $access_token, $params);
     }
 
     /**
@@ -885,7 +885,7 @@ class Photos {
      * 
      **/
     public function getTags($access_token, $params = array()) {
-        return $this->client->post('photos.getTags', $access_token, $params);
+        return $this->request->post('photos.getTags', $access_token, $params);
     }
 
     /**
@@ -907,7 +907,7 @@ class Photos {
      * 
      **/
     public function putTag($access_token, $params = array()) {
-        return $this->client->post('photos.putTag', $access_token, $params);
+        return $this->request->post('photos.putTag', $access_token, $params);
     }
 
     /**
@@ -925,7 +925,7 @@ class Photos {
      * 
      **/
     public function removeTag($access_token, $params = array()) {
-        return $this->client->post('photos.removeTag', $access_token, $params);
+        return $this->request->post('photos.removeTag', $access_token, $params);
     }
 
     /**
@@ -942,6 +942,6 @@ class Photos {
      * 
      **/
     public function getNewTags($access_token, $params = array()) {
-        return $this->client->post('photos.getNewTags', $access_token, $params);
+        return $this->request->post('photos.getNewTags', $access_token, $params);
     }
 }

@@ -12,10 +12,10 @@ class Places {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -40,7 +40,7 @@ class Places {
      * 
      **/
     public function add($access_token, $params = array()) {
-        return $this->client->post('places.add', $access_token, $params);
+        return $this->request->post('places.add', $access_token, $params);
     }
 
     /**
@@ -56,7 +56,7 @@ class Places {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('places.getById', $access_token, $params);
+        return $this->request->post('places.getById', $access_token, $params);
     }
 
     /**
@@ -81,7 +81,7 @@ class Places {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('places.search', $access_token, $params);
+        return $this->request->post('places.search', $access_token, $params);
     }
 
     /**
@@ -104,7 +104,7 @@ class Places {
      * 
      **/
     public function checkin($access_token, $params = array()) {
-        return $this->client->post('places.checkin', $access_token, $params);
+        return $this->request->post('places.checkin', $access_token, $params);
     }
 
     /**
@@ -134,7 +134,7 @@ class Places {
      * 
      **/
     public function getCheckins($access_token, $params = array()) {
-        return $this->client->post('places.getCheckins', $access_token, $params);
+        return $this->request->post('places.getCheckins', $access_token, $params);
     }
 
     /**
@@ -149,6 +149,6 @@ class Places {
      * 
      **/
     public function getTypes($access_token, $params = array()) {
-        return $this->client->post('places.getTypes', $access_token, $params);
+        return $this->request->post('places.getTypes', $access_token, $params);
     }
 }

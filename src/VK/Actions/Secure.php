@@ -11,10 +11,10 @@ class Secure {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -29,7 +29,7 @@ class Secure {
      * 
      **/
     public function getAppBalance($access_token, $params = array()) {
-        return $this->client->post('secure.getAppBalance', $access_token, $params);
+        return $this->request->post('secure.getAppBalance', $access_token, $params);
     }
 
     /**
@@ -44,7 +44,7 @@ class Secure {
      * 
      **/
     public function getTransactionsHistory($access_token, $params = array()) {
-        return $this->client->post('secure.getTransactionsHistory', $access_token, $params);
+        return $this->request->post('secure.getTransactionsHistory', $access_token, $params);
     }
 
     /**
@@ -64,7 +64,7 @@ class Secure {
      * 
      **/
     public function getSMSHistory($access_token, $params = array()) {
-        return $this->client->post('secure.getSMSHistory', $access_token, $params);
+        return $this->request->post('secure.getSMSHistory', $access_token, $params);
     }
 
     /**
@@ -83,7 +83,7 @@ class Secure {
      * 
      **/
     public function sendSMSNotification($access_token, $params = array()) {
-        return $this->client->post('secure.sendSMSNotification', $access_token, $params);
+        return $this->request->post('secure.sendSMSNotification', $access_token, $params);
     }
 
     /**
@@ -102,7 +102,7 @@ class Secure {
      * 
      **/
     public function sendNotification($access_token, $params = array()) {
-        return $this->client->post('secure.sendNotification', $access_token, $params);
+        return $this->request->post('secure.sendNotification', $access_token, $params);
     }
 
     /**
@@ -120,7 +120,7 @@ class Secure {
      * 
      **/
     public function setCounter($access_token, $params = array()) {
-        return $this->client->post('secure.setCounter', $access_token, $params);
+        return $this->request->post('secure.setCounter', $access_token, $params);
     }
 
     /**
@@ -138,7 +138,7 @@ class Secure {
      * 
      **/
     public function setUserLevel($access_token, $params = array()) {
-        return $this->client->post('secure.setUserLevel', $access_token, $params);
+        return $this->request->post('secure.setUserLevel', $access_token, $params);
     }
 
     /**
@@ -154,7 +154,7 @@ class Secure {
      * 
      **/
     public function getUserLevel($access_token, $params = array()) {
-        return $this->client->post('secure.getUserLevel', $access_token, $params);
+        return $this->request->post('secure.getUserLevel', $access_token, $params);
     }
 
     /**
@@ -174,7 +174,7 @@ class Secure {
      * 
      **/
     public function addAppEvent($access_token, $params = array()) {
-        return $this->client->post('secure.addAppEvent', $access_token, $params);
+        return $this->request->post('secure.addAppEvent', $access_token, $params);
     }
 
     /**
@@ -192,6 +192,6 @@ class Secure {
      * 
      **/
     public function checkToken($access_token, $params = array()) {
-        return $this->client->post('secure.checkToken', $access_token, $params);
+        return $this->request->post('secure.checkToken', $access_token, $params);
     }
 }

@@ -11,10 +11,10 @@ class Status {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -31,7 +31,7 @@ class Status {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('status.get', $access_token, $params);
+        return $this->request->post('status.get', $access_token, $params);
     }
 
     /**
@@ -49,6 +49,6 @@ class Status {
      * 
      **/
     public function set($access_token, $params = array()) {
-        return $this->client->post('status.set', $access_token, $params);
+        return $this->request->post('status.set', $access_token, $params);
     }
 }

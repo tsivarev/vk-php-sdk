@@ -14,10 +14,10 @@ class Board {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -49,7 +49,7 @@ class Board {
      * 
      **/
     public function getTopics($access_token, $params = array()) {
-        return $this->client->post('board.getTopics', $access_token, $params);
+        return $this->request->post('board.getTopics', $access_token, $params);
     }
 
     /**
@@ -76,7 +76,7 @@ class Board {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('board.getComments', $access_token, $params);
+        return $this->request->post('board.getComments', $access_token, $params);
     }
 
     /**
@@ -101,7 +101,7 @@ class Board {
      * 
      **/
     public function addTopic($access_token, $params = array()) {
-        return $this->client->post('board.addTopic', $access_token, $params);
+        return $this->request->post('board.addTopic', $access_token, $params);
     }
 
     /**
@@ -127,7 +127,7 @@ class Board {
      * 
      **/
     public function createComment($access_token, $params = array()) {
-        return $this->client->post('board.createComment', $access_token, $params);
+        return $this->request->post('board.createComment', $access_token, $params);
     }
 
     /**
@@ -144,7 +144,7 @@ class Board {
      * 
      **/
     public function deleteTopic($access_token, $params = array()) {
-        return $this->client->post('board.deleteTopic', $access_token, $params);
+        return $this->request->post('board.deleteTopic', $access_token, $params);
     }
 
     /**
@@ -162,7 +162,7 @@ class Board {
      * 
      **/
     public function editTopic($access_token, $params = array()) {
-        return $this->client->post('board.editTopic', $access_token, $params);
+        return $this->request->post('board.editTopic', $access_token, $params);
     }
 
     /**
@@ -185,7 +185,7 @@ class Board {
      * 
      **/
     public function editComment($access_token, $params = array()) {
-        return $this->client->post('board.editComment', $access_token, $params);
+        return $this->request->post('board.editComment', $access_token, $params);
     }
 
     /**
@@ -203,7 +203,7 @@ class Board {
      * 
      **/
     public function restoreComment($access_token, $params = array()) {
-        return $this->client->post('board.restoreComment', $access_token, $params);
+        return $this->request->post('board.restoreComment', $access_token, $params);
     }
 
     /**
@@ -221,7 +221,7 @@ class Board {
      * 
      **/
     public function deleteComment($access_token, $params = array()) {
-        return $this->client->post('board.deleteComment', $access_token, $params);
+        return $this->request->post('board.deleteComment', $access_token, $params);
     }
 
     /**
@@ -238,7 +238,7 @@ class Board {
      * 
      **/
     public function openTopic($access_token, $params = array()) {
-        return $this->client->post('board.openTopic', $access_token, $params);
+        return $this->request->post('board.openTopic', $access_token, $params);
     }
 
     /**
@@ -255,7 +255,7 @@ class Board {
      * 
      **/
     public function closeTopic($access_token, $params = array()) {
-        return $this->client->post('board.closeTopic', $access_token, $params);
+        return $this->request->post('board.closeTopic', $access_token, $params);
     }
 
     /**
@@ -272,7 +272,7 @@ class Board {
      * 
      **/
     public function fixTopic($access_token, $params = array()) {
-        return $this->client->post('board.fixTopic', $access_token, $params);
+        return $this->request->post('board.fixTopic', $access_token, $params);
     }
 
     /**
@@ -289,6 +289,6 @@ class Board {
      * 
      **/
     public function unfixTopic($access_token, $params = array()) {
-        return $this->client->post('board.unfixTopic', $access_token, $params);
+        return $this->request->post('board.unfixTopic', $access_token, $params);
     }
 }

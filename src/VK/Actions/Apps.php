@@ -17,10 +17,10 @@ class Apps {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -51,7 +51,7 @@ class Apps {
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
-        return $this->client->post('apps.getCatalog', $access_token, $params);
+        return $this->request->post('apps.getCatalog', $access_token, $params);
     }
 
     /**
@@ -79,7 +79,7 @@ class Apps {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('apps.get', $access_token, $params);
+        return $this->request->post('apps.get', $access_token, $params);
     }
 
     /**
@@ -102,7 +102,7 @@ class Apps {
      * 
      **/
     public function sendRequest($access_token, $params = array()) {
-        return $this->client->post('apps.sendRequest', $access_token, $params);
+        return $this->request->post('apps.sendRequest', $access_token, $params);
     }
 
     /**
@@ -117,7 +117,7 @@ class Apps {
      * 
      **/
     public function deleteAppRequests($access_token, $params = array()) {
-        return $this->client->post('apps.deleteAppRequests', $access_token, $params);
+        return $this->request->post('apps.deleteAppRequests', $access_token, $params);
     }
 
     /**
@@ -137,7 +137,7 @@ class Apps {
      * 
      **/
     public function getFriendsList($access_token, $params = array()) {
-        return $this->client->post('apps.getFriendsList', $access_token, $params);
+        return $this->request->post('apps.getFriendsList', $access_token, $params);
     }
 
     /**
@@ -158,7 +158,7 @@ class Apps {
      * 
      **/
     public function getLeaderboard($access_token, $params = array()) {
-        return $this->client->post('apps.getLeaderboard', $access_token, $params);
+        return $this->request->post('apps.getLeaderboard', $access_token, $params);
     }
 
     /**
@@ -174,6 +174,6 @@ class Apps {
      * 
      **/
     public function getScore($access_token, $params = array()) {
-        return $this->client->post('apps.getScore', $access_token, $params);
+        return $this->request->post('apps.getScore', $access_token, $params);
     }
 }

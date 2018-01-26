@@ -15,10 +15,10 @@ class Newsfeed {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -52,7 +52,7 @@ class Newsfeed {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('newsfeed.get', $access_token, $params);
+        return $this->request->post('newsfeed.get', $access_token, $params);
     }
 
     /**
@@ -76,7 +76,7 @@ class Newsfeed {
      * 
      **/
     public function getRecommended($access_token, $params = array()) {
-        return $this->client->post('newsfeed.getRecommended', $access_token, $params);
+        return $this->request->post('newsfeed.getRecommended', $access_token, $params);
     }
 
     /**
@@ -106,7 +106,7 @@ class Newsfeed {
      * 
      **/
     public function getComments($access_token, $params = array()) {
-        return $this->client->post('newsfeed.getComments', $access_token, $params);
+        return $this->request->post('newsfeed.getComments', $access_token, $params);
     }
 
     /**
@@ -126,7 +126,7 @@ class Newsfeed {
      * 
      **/
     public function getMentions($access_token, $params = array()) {
-        return $this->client->post('newsfeed.getMentions', $access_token, $params);
+        return $this->request->post('newsfeed.getMentions', $access_token, $params);
     }
 
     /**
@@ -147,7 +147,7 @@ class Newsfeed {
      * 
      **/
     public function getBanned($access_token, $params = array()) {
-        return $this->client->post('newsfeed.getBanned', $access_token, $params);
+        return $this->request->post('newsfeed.getBanned', $access_token, $params);
     }
 
     /**
@@ -164,7 +164,7 @@ class Newsfeed {
      * 
      **/
     public function addBan($access_token, $params = array()) {
-        return $this->client->post('newsfeed.addBan', $access_token, $params);
+        return $this->request->post('newsfeed.addBan', $access_token, $params);
     }
 
     /**
@@ -181,7 +181,7 @@ class Newsfeed {
      * 
      **/
     public function deleteBan($access_token, $params = array()) {
-        return $this->client->post('newsfeed.deleteBan', $access_token, $params);
+        return $this->request->post('newsfeed.deleteBan', $access_token, $params);
     }
 
     /**
@@ -202,7 +202,7 @@ class Newsfeed {
      * 
      **/
     public function ignoreItem($access_token, $params = array()) {
-        return $this->client->post('newsfeed.ignoreItem', $access_token, $params);
+        return $this->request->post('newsfeed.ignoreItem', $access_token, $params);
     }
 
     /**
@@ -223,7 +223,7 @@ class Newsfeed {
      * 
      **/
     public function unignoreItem($access_token, $params = array()) {
-        return $this->client->post('newsfeed.unignoreItem', $access_token, $params);
+        return $this->request->post('newsfeed.unignoreItem', $access_token, $params);
     }
 
     /**
@@ -251,7 +251,7 @@ class Newsfeed {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('newsfeed.search', $access_token, $params);
+        return $this->request->post('newsfeed.search', $access_token, $params);
     }
 
     /**
@@ -268,7 +268,7 @@ class Newsfeed {
      * 
      **/
     public function getLists($access_token, $params = array()) {
-        return $this->client->post('newsfeed.getLists', $access_token, $params);
+        return $this->request->post('newsfeed.getLists', $access_token, $params);
     }
 
     /**
@@ -288,7 +288,7 @@ class Newsfeed {
      * 
      **/
     public function saveList($access_token, $params = array()) {
-        return $this->client->post('newsfeed.saveList', $access_token, $params);
+        return $this->request->post('newsfeed.saveList', $access_token, $params);
     }
 
     /**
@@ -304,7 +304,7 @@ class Newsfeed {
      * 
      **/
     public function deleteList($access_token, $params = array()) {
-        return $this->client->post('newsfeed.deleteList', $access_token, $params);
+        return $this->request->post('newsfeed.deleteList', $access_token, $params);
     }
 
     /**
@@ -324,7 +324,7 @@ class Newsfeed {
      * 
      **/
     public function unsubscribe($access_token, $params = array()) {
-        return $this->client->post('newsfeed.unsubscribe', $access_token, $params);
+        return $this->request->post('newsfeed.unsubscribe', $access_token, $params);
     }
 
     /**
@@ -344,6 +344,6 @@ class Newsfeed {
      * 
      **/
     public function getSuggestedSources($access_token, $params = array()) {
-        return $this->client->post('newsfeed.getSuggestedSources', $access_token, $params);
+        return $this->request->post('newsfeed.getSuggestedSources', $access_token, $params);
     }
 }

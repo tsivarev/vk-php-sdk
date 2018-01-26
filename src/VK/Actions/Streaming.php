@@ -11,10 +11,10 @@ class Streaming {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -29,6 +29,6 @@ class Streaming {
      * 
      **/
     public function getServerUrl($access_token, $params = array()) {
-        return $this->client->post('streaming.getServerUrl', $access_token, $params);
+        return $this->request->post('streaming.getServerUrl', $access_token, $params);
     }
 }

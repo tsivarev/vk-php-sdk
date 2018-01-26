@@ -31,10 +31,10 @@ class Groups {
     /**
      * @var VKAPIRequest
      **/
-    private $client;
+    private $request;
 
-    public function __construct($client) {
-        $this->client = $client;
+    public function __construct($request) {
+        $this->request = $request;
     }
 
     /**
@@ -53,7 +53,7 @@ class Groups {
      * 
      **/
     public function isMember($access_token, $params = array()) {
-        return $this->client->post('groups.isMember', $access_token, $params);
+        return $this->request->post('groups.isMember', $access_token, $params);
     }
 
     /**
@@ -71,7 +71,7 @@ class Groups {
      * 
      **/
     public function getById($access_token, $params = array()) {
-        return $this->client->post('groups.getById', $access_token, $params);
+        return $this->request->post('groups.getById', $access_token, $params);
     }
 
     /**
@@ -96,7 +96,7 @@ class Groups {
      * 
      **/
     public function get($access_token, $params = array()) {
-        return $this->client->post('groups.get', $access_token, $params);
+        return $this->request->post('groups.get', $access_token, $params);
     }
 
     /**
@@ -126,7 +126,7 @@ class Groups {
      * 
      **/
     public function getMembers($access_token, $params = array()) {
-        return $this->client->post('groups.getMembers', $access_token, $params);
+        return $this->request->post('groups.getMembers', $access_token, $params);
     }
 
     /**
@@ -144,7 +144,7 @@ class Groups {
      * 
      **/
     public function join($access_token, $params = array()) {
-        return $this->client->post('groups.join', $access_token, $params);
+        return $this->request->post('groups.join', $access_token, $params);
     }
 
     /**
@@ -160,7 +160,7 @@ class Groups {
      * 
      **/
     public function leave($access_token, $params = array()) {
-        return $this->client->post('groups.leave', $access_token, $params);
+        return $this->request->post('groups.leave', $access_token, $params);
     }
 
     /**
@@ -190,7 +190,7 @@ class Groups {
      * 
      **/
     public function search($access_token, $params = array()) {
-        return $this->client->post('groups.search', $access_token, $params);
+        return $this->request->post('groups.search', $access_token, $params);
     }
 
     /**
@@ -209,7 +209,7 @@ class Groups {
      * 
      **/
     public function getCatalog($access_token, $params = array()) {
-        return $this->client->post('groups.getCatalog', $access_token, $params);
+        return $this->request->post('groups.getCatalog', $access_token, $params);
     }
 
     /**
@@ -226,7 +226,7 @@ class Groups {
      * 
      **/
     public function getCatalogInfo($access_token, $params = array()) {
-        return $this->client->post('groups.getCatalogInfo', $access_token, $params);
+        return $this->request->post('groups.getCatalogInfo', $access_token, $params);
     }
 
     /**
@@ -244,7 +244,7 @@ class Groups {
      * 
      **/
     public function getInvites($access_token, $params = array()) {
-        return $this->client->post('groups.getInvites', $access_token, $params);
+        return $this->request->post('groups.getInvites', $access_token, $params);
     }
 
     /**
@@ -271,7 +271,7 @@ class Groups {
      * 
      **/
     public function getInvitedUsers($access_token, $params = array()) {
-        return $this->client->post('groups.getInvitedUsers', $access_token, $params);
+        return $this->request->post('groups.getInvitedUsers', $access_token, $params);
     }
 
     /**
@@ -295,7 +295,7 @@ class Groups {
      * 
      **/
     public function banUser($access_token, $params = array()) {
-        return $this->client->post('groups.banUser', $access_token, $params);
+        return $this->request->post('groups.banUser', $access_token, $params);
     }
 
     /**
@@ -312,7 +312,7 @@ class Groups {
      * 
      **/
     public function unbanUser($access_token, $params = array()) {
-        return $this->client->post('groups.unbanUser', $access_token, $params);
+        return $this->request->post('groups.unbanUser', $access_token, $params);
     }
 
     /**
@@ -332,7 +332,7 @@ class Groups {
      * 
      **/
     public function getBanned($access_token, $params = array()) {
-        return $this->client->post('groups.getBanned', $access_token, $params);
+        return $this->request->post('groups.getBanned', $access_token, $params);
     }
 
     /**
@@ -357,7 +357,7 @@ class Groups {
      * 
      **/
     public function create($access_token, $params = array()) {
-        return $this->client->post('groups.create', $access_token, $params);
+        return $this->request->post('groups.create', $access_token, $params);
     }
 
     /**
@@ -452,7 +452,7 @@ class Groups {
      * 
      **/
     public function edit($access_token, $params = array()) {
-        return $this->client->post('groups.edit', $access_token, $params);
+        return $this->request->post('groups.edit', $access_token, $params);
     }
 
     /**
@@ -474,7 +474,7 @@ class Groups {
      * 
      **/
     public function editPlace($access_token, $params = array()) {
-        return $this->client->post('groups.editPlace', $access_token, $params);
+        return $this->request->post('groups.editPlace', $access_token, $params);
     }
 
     /**
@@ -490,7 +490,7 @@ class Groups {
      * 
      **/
     public function getSettings($access_token, $params = array()) {
-        return $this->client->post('groups.getSettings', $access_token, $params);
+        return $this->request->post('groups.getSettings', $access_token, $params);
     }
 
     /**
@@ -509,7 +509,7 @@ class Groups {
      * 
      **/
     public function getRequests($access_token, $params = array()) {
-        return $this->client->post('groups.getRequests', $access_token, $params);
+        return $this->request->post('groups.getRequests', $access_token, $params);
     }
 
     /**
@@ -533,7 +533,7 @@ class Groups {
      * 
      **/
     public function editManager($access_token, $params = array()) {
-        return $this->client->post('groups.editManager', $access_token, $params);
+        return $this->request->post('groups.editManager', $access_token, $params);
     }
 
     /**
@@ -550,7 +550,7 @@ class Groups {
      * 
      **/
     public function invite($access_token, $params = array()) {
-        return $this->client->post('groups.invite', $access_token, $params);
+        return $this->request->post('groups.invite', $access_token, $params);
     }
 
     /**
@@ -568,7 +568,7 @@ class Groups {
      * 
      **/
     public function addLink($access_token, $params = array()) {
-        return $this->client->post('groups.addLink', $access_token, $params);
+        return $this->request->post('groups.addLink', $access_token, $params);
     }
 
     /**
@@ -585,7 +585,7 @@ class Groups {
      * 
      **/
     public function deleteLink($access_token, $params = array()) {
-        return $this->client->post('groups.deleteLink', $access_token, $params);
+        return $this->request->post('groups.deleteLink', $access_token, $params);
     }
 
     /**
@@ -603,7 +603,7 @@ class Groups {
      * 
      **/
     public function editLink($access_token, $params = array()) {
-        return $this->client->post('groups.editLink', $access_token, $params);
+        return $this->request->post('groups.editLink', $access_token, $params);
     }
 
     /**
@@ -621,7 +621,7 @@ class Groups {
      * 
      **/
     public function reorderLink($access_token, $params = array()) {
-        return $this->client->post('groups.reorderLink', $access_token, $params);
+        return $this->request->post('groups.reorderLink', $access_token, $params);
     }
 
     /**
@@ -638,7 +638,7 @@ class Groups {
      * 
      **/
     public function removeUser($access_token, $params = array()) {
-        return $this->client->post('groups.removeUser', $access_token, $params);
+        return $this->request->post('groups.removeUser', $access_token, $params);
     }
 
     /**
@@ -655,7 +655,7 @@ class Groups {
      * 
      **/
     public function approveRequest($access_token, $params = array()) {
-        return $this->client->post('groups.approveRequest', $access_token, $params);
+        return $this->request->post('groups.approveRequest', $access_token, $params);
     }
 
     /**
@@ -671,7 +671,7 @@ class Groups {
      * 
      **/
     public function getCallbackConfirmationCode($access_token, $params = array()) {
-        return $this->client->post('groups.getCallbackConfirmationCode', $access_token, $params);
+        return $this->request->post('groups.getCallbackConfirmationCode', $access_token, $params);
     }
 
     /**
@@ -688,7 +688,7 @@ class Groups {
      * 
      **/
     public function getCallbackSettings($access_token, $params = array()) {
-        return $this->client->post('groups.getCallbackSettings', $access_token, $params);
+        return $this->request->post('groups.getCallbackSettings', $access_token, $params);
     }
 
     /**
@@ -741,6 +741,6 @@ class Groups {
      * 
      **/
     public function setCallbackSettings($access_token, $params = array()) {
-        return $this->client->post('groups.setCallbackSettings', $access_token, $params);
+        return $this->request->post('groups.setCallbackSettings', $access_token, $params);
     }
 }
