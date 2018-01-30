@@ -2,7 +2,7 @@
 
 namespace VK\Actions;
 
-use VK\VKAPIRequest;
+use VK\Client\VKAPIRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
 use VK\Actions\Enums\BoardGetTopicsOrder;

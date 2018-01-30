@@ -4,8 +4,14 @@ PHP library for VK API interaction, includes OAuth 2.0 authorization and API met
 
 This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.69.
 
+## 1. Installation
 
 The VK PHP SDK can be installed using Composer by running the following command:
+
 ```sh
 composer require vk/php-sdk
 ```
+
+## 2. Initialization
+
+Create VKAPIClient object using the following code:

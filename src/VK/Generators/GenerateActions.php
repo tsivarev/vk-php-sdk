@@ -32,9 +32,11 @@ class GenerateActions {
     const VK_NAMESPACE = 'VK';
     const ACTIONS_KEYWORD = 'Actions';
     const ENUMS_KEYWORD = 'Enums';
+    const CLIENT_KEYWORD = 'Client';
     const USE_VK = self::USE_KEYWORD . self::SPACE . self::VK_NAMESPACE . self::BACKSLASH;
     const VK_ACTIONS = self::VK_NAMESPACE . self::BACKSLASH . self::ACTIONS_KEYWORD;
     const VK_ENUMS = self::VK_ACTIONS . self::BACKSLASH. self::ENUMS_KEYWORD;
+    const VK_CLIENT = self::VK_NAMESPACE . self::BACKSLASH. self::CLIENT_KEYWORD;
     const API_REQUEST_VAR_NAME = 'request';
     const API_REQUEST_CLASS_NAME = 'VKAPIRequest';
     const AUTH_VAR_NAME = 'oauth';
@@ -59,7 +61,7 @@ class GenerateActions {
 
     const SCHEMA_METHODS_PATH = '/vendor/vkcom/vk-api-schema/methods.json';
 
-    const USE_VK_API_REQUEST = self::USE_VK . self::API_REQUEST_CLASS_NAME . ';';
+    const USE_VK_API_REQUEST = self::USE_VK . self::CLIENT_KEYWORD . self::BACKSLASH . self::API_REQUEST_CLASS_NAME . ';';
     const USE_OAUTH_CLIENT = self::USE_VK .'OAuth' . self::BACKSLASH . self::AUTH_CLASS_NAME . ';';
     const USE_VK_CLIENT_EXCEPTION = self::USE_VK . 'Exceptions\VKClientException;';
     const USE_VK_API_EXCEPTION = self::USE_VK . 'Exceptions\VKAPIException;';
@@ -110,7 +112,7 @@ class GenerateActions {
         }
 
         if ($api_client_output_path == null) {
-            $api_client_output_path = dirname(__DIR__) . static::SLASH;
+            $api_client_output_path = dirname(__DIR__) . static::SLASH . static::CLIENT_KEYWORD . static::SLASH;
             $this->checkDirPath($api_client_output_path);
         }
 
@@ -121,7 +123,7 @@ class GenerateActions {
         $mapped_methods = $this->mapMethods();
         ksort($mapped_methods);
 
-        $this->api_client_use = static::USE_OAUTH_CLIENT;
+        $this->api_client_use = PHP_EOL . static::USE_OAUTH_CLIENT;
 
         $this->api_request_member = $this->wrapClassMember(self::API_REQUEST_CLASS_NAME, static::API_REQUEST_VAR_NAME);
 
@@ -166,7 +168,7 @@ class GenerateActions {
         $api_client_class_name = 'VKAPIClient';
         $api_client_construct = $this->wrapConstruct('', $this->api_client_construct_code);
 
-        $api_client_class = $this->wrapClass($api_client_class_name, static::VK_NAMESPACE,
+        $api_client_class = $this->wrapClass($api_client_class_name, static::VK_CLIENT,
             $this->api_client_use, $this->api_client_members, $api_client_construct, $this->api_client_gets);
 
         $file_name = $api_client_output_path . $api_client_class_name . static::PHP_EXPANSION;
