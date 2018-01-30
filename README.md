@@ -15,3 +15,7 @@ composer require vk/php-sdk
 ## 2. Initialization
 
 Create VKAPIClient object using the following code:
+
+```php
+$vk = new VKAPIClient();
+```
