@@ -2,7 +2,7 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
 use VK\Actions\Enums\AppsGetCatalogSort;
@@ -15,7 +15,7 @@ use VK\Actions\Enums\AppsGetLeaderboardType;
 class Apps {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 

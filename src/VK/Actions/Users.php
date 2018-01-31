@@ -2,7 +2,7 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
 use VK\Actions\Enums\UsersGetNameCase;
@@ -17,7 +17,7 @@ use VK\Actions\Enums\UsersGetNearbyNameCase;
 class Users {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 

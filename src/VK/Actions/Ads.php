@@ -2,7 +2,7 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
 use VK\Actions\Enums\AdsCheckLinkLinkType;
@@ -18,7 +18,7 @@ use VK\Actions\Enums\AdsGetUploadURLAdFormat;
 class Ads {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 

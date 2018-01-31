@@ -2,7 +2,7 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
 use VK\Actions\Enums\MarketSearchRev;
@@ -13,7 +13,7 @@ use VK\Actions\Enums\MarketReportReason;
 class Market {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 

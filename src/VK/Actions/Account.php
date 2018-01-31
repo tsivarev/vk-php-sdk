@@ -2,7 +2,7 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKAPIException;
 use VK\Actions\Enums\AccountLookupContactsService;
@@ -13,7 +13,7 @@ use VK\Actions\Enums\AccountSaveProfileInfoBdateVisibility;
 class Account {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 

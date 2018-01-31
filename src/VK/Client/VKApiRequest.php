@@ -8,15 +8,15 @@ use VK\Exceptions\VKClientException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
-class VKAPIRequest extends VKClientBase {
-    const API_PARAM_VERSION = 'v';
-    const API_PARAM_ACCESS_TOKEN = 'access_token';
+class VKApiRequest extends VKClientBase {
+    protected const API_PARAM_VERSION = 'v';
+    protected const API_PARAM_ACCESS_TOKEN = 'access_token';
 
-    const ERROR_KEY = 'error';
-    const ERROR_CODE_KEY = 'error_code';
-    const ERROR_MSG_KEY = 'error_msg';
-    const ERROR_DESCRIPTION_KEY = 'error_description';
-    const RESPONSE_KEY = 'response';
+    protected const ERROR_KEY = 'error';
+    protected const ERROR_CODE_KEY = 'error_code';
+    protected const ERROR_MSG_KEY = 'error_msg';
+    protected const ERROR_DESCRIPTION_KEY = 'error_description';
+    protected const RESPONSE_KEY = 'response';
 
     protected $host;
 

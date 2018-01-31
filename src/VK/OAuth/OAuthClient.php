@@ -14,21 +14,21 @@ use VK\TransportClient\TransportClientResponse;
 use VK\Client\VKClientBase;
 
 class OAuthClient extends VKClientBase {
-    const API_PARAM_VERSION = 'v';
-    const API_PARAM_CLIENT_ID = 'client_id';
-    const API_PARAM_REDIRECT_URI = 'redirect_uri';
-    const API_PARAM_DISPLAY = 'display';
-    const API_PARAM_SCOPE = 'scope';
-    const API_PARAM_RESPONSE_TYPE = 'response_type';
-    const API_PARAM_STATE = 'state';
-    const API_PARAM_CLIENT_SECRET = 'client_secret';
-    const API_PARAM_CODE = 'code';
+    protected const API_PARAM_VERSION = 'v';
+    protected const API_PARAM_CLIENT_ID = 'client_id';
+    protected const API_PARAM_REDIRECT_URI = 'redirect_uri';
+    protected const API_PARAM_DISPLAY = 'display';
+    protected const API_PARAM_SCOPE = 'scope';
+    protected const API_PARAM_RESPONSE_TYPE = 'response_type';
+    protected const API_PARAM_STATE = 'state';
+    protected const API_PARAM_CLIENT_SECRET = 'client_secret';
+    protected const API_PARAM_CODE = 'code';
 
-    const ERROR_KEY = 'error';
-    const ERROR_DESCRIPTION_KEY = 'error_description';
+    protected const ERROR_KEY = 'error';
+    protected const ERROR_DESCRIPTION_KEY = 'error_description';
 
-    const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
-    const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
+    protected const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
+    protected const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
 
     public function __construct($api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);

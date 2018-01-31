@@ -38,12 +38,12 @@ use VK\Actions\Video;
 use VK\Actions\Wall;
 use VK\Actions\Widgets;
 
-class VKAPIClient {
-    const VK_API_HOST = 'https://api.vk.com/method';
-    const VK_API_VERSION = '5.69';
+class VKApiClient {
+    protected const VK_API_HOST = 'https://api.vk.com/method';
+    protected const VK_API_VERSION = '5.69';
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
@@ -223,7 +223,7 @@ class VKAPIClient {
     private $widgets;
 
     public function __construct() {
-        $this->request = new VKAPIRequest(static::VK_API_HOST, static::VK_API_VERSION);
+        $this->request = new VKApiRequest(static::VK_API_HOST, static::VK_API_VERSION);
         $this->oauth = new OAuthClient(static::VK_API_VERSION);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);

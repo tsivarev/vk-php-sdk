@@ -4,67 +4,67 @@ namespace VK\Generators;
 
 class GenerateActions {
 
-    const DOLLAR = '$';
-    const ASTERISK = '*';
-    const SPACE = ' ';
-    const SPACE3 = '   ';
-    const QUOTE = '\'';
-    const BACKSLASH = '\\';
-    const SLASH = '/';
-    const METHOD_NAME_DELIMITER = '.';
-    const DASH = '-';
-    const COLON = ':';
-    const UNDERSCORE = '_';
+    protected const DOLLAR = '$';
+    protected const ASTERISK = '*';
+    protected const SPACE = ' ';
+    protected const SPACE3 = '   ';
+    protected const QUOTE = '\'';
+    protected const BACKSLASH = '\\';
+    protected const SLASH = '/';
+    protected const METHOD_NAME_DELIMITER = '.';
+    protected const DASH = '-';
+    protected const COLON = ':';
+    protected const UNDERSCORE = '_';
 
-    const TAB_SIZE = 4;
-    const CONNECTION_TIMEOUT = 10;
-    const LINE_LENGTH_PARAMETER = 108;
-    const LINE_LENGTH_DESCRIPTION = 112;
+    protected const TAB_SIZE = 4;
+    protected const CONNECTION_TIMEOUT = 10;
+    protected const LINE_LENGTH_PARAMETER = 108;
+    protected const LINE_LENGTH_DESCRIPTION = 112;
 
-    const COMMENT_START = '/**';
-    const COMMENT_END = '**/';
+    protected const COMMENT_START = '/**';
+    protected const COMMENT_END = '**/';
 
-    const USE_KEYWORD = 'use';
-    const NEW_KEYWORD = 'new ';
-    const STATIC_KEYWORD = 'static::';
-    const THIS_KEYWORD = 'this->';
-    const RETURN_KEYWORD = 'return ';
-    const VK_NAMESPACE = 'VK';
-    const ACTIONS_KEYWORD = 'Actions';
-    const ENUMS_KEYWORD = 'Enums';
-    const CLIENT_KEYWORD = 'Client';
-    const USE_VK = self::USE_KEYWORD . self::SPACE . self::VK_NAMESPACE . self::BACKSLASH;
-    const VK_ACTIONS = self::VK_NAMESPACE . self::BACKSLASH . self::ACTIONS_KEYWORD;
-    const VK_ENUMS = self::VK_ACTIONS . self::BACKSLASH. self::ENUMS_KEYWORD;
-    const VK_CLIENT = self::VK_NAMESPACE . self::BACKSLASH. self::CLIENT_KEYWORD;
-    const API_REQUEST_VAR_NAME = 'request';
-    const API_REQUEST_CLASS_NAME = 'VKAPIRequest';
-    const AUTH_VAR_NAME = 'oauth';
-    const AUTH_CLASS_NAME = 'OAuthClient';
-    const VK_API_HOST = 'VK_API_HOST';
-    const VK_API_VERSION = 'VK_API_VERSION';
-    const VK_API_VERSION_VALUE = '5.69';
-    const PHP_EXPANSION = '.php';
-    const ACCESS_TOKEN_ARG_NAME = 'access_token';
-    const PARAMS_ARG_NAME = 'params';
+    protected const USE_KEYWORD = 'use';
+    protected const NEW_KEYWORD = 'new ';
+    protected const STATIC_KEYWORD = 'static::';
+    protected const THIS_KEYWORD = 'this->';
+    protected const RETURN_KEYWORD = 'return ';
+    protected const VK_NAMESPACE = 'VK';
+    protected const ACTIONS_KEYWORD = 'Actions';
+    protected const ENUMS_KEYWORD = 'Enums';
+    protected const CLIENT_KEYWORD = 'Client';
+    protected const USE_VK = self::USE_KEYWORD . self::SPACE . self::VK_NAMESPACE . self::BACKSLASH;
+    protected const VK_ACTIONS = self::VK_NAMESPACE . self::BACKSLASH . self::ACTIONS_KEYWORD;
+    protected const VK_ENUMS = self::VK_ACTIONS . self::BACKSLASH. self::ENUMS_KEYWORD;
+    protected const VK_CLIENT = self::VK_NAMESPACE . self::BACKSLASH. self::CLIENT_KEYWORD;
+    protected const API_REQUEST_VAR_NAME = 'request';
+    protected const API_REQUEST_CLASS_NAME = 'VKApiRequest';
+    protected const AUTH_VAR_NAME = 'oauth';
+    protected const AUTH_CLASS_NAME = 'OAuthClient';
+    protected const VK_API_HOST = 'VK_API_HOST';
+    protected const VK_API_VERSION = 'VK_API_VERSION';
+    protected const VK_API_VERSION_VALUE = '5.69';
+    protected const PHP_EXPANSION = '.php';
+    protected const ACCESS_TOKEN_ARG_NAME = 'access_token';
+    protected const PARAMS_ARG_NAME = 'params';
 
-    const PARAM_NAME = 'name';
-    const PARAM_DESCRIPTION = 'description';
-    const PARAM_PARAMETERS = 'parameters';
-    const PARAM_ENUM = 'enum';
-    const PARAM_ENUM_NAMES = 'enumNames';
-    const PARAM_TYPE = 'type';
+    protected const PARAM_NAME = 'name';
+    protected const PARAM_DESCRIPTION = 'description';
+    protected const PARAM_PARAMETERS = 'parameters';
+    protected const PARAM_ENUM = 'enum';
+    protected const PARAM_ENUM_NAMES = 'enumNames';
+    protected const PARAM_TYPE = 'type';
 
-    const SCHEMA_LINK = 'https://raw.githubusercontent.com/VKCOM/vk-api-schema/master/';
-    const METHODS_LINK = self::SCHEMA_LINK . 'methods.json';
-    const VK_API_HOST_LINK = 'https://api.vk.com/method';
+    protected const SCHEMA_LINK = 'https://raw.githubusercontent.com/VKCOM/vk-api-schema/master/';
+    protected const METHODS_LINK = self::SCHEMA_LINK . 'methods.json';
+    protected const VK_API_HOST_LINK = 'https://api.vk.com/method';
 
-    const SCHEMA_METHODS_PATH = '/vendor/vkcom/vk-api-schema/methods.json';
+    protected const SCHEMA_METHODS_PATH = '/vendor/vkcom/vk-api-schema/methods.json';
 
-    const USE_VK_API_REQUEST = self::USE_VK . self::CLIENT_KEYWORD . self::BACKSLASH . self::API_REQUEST_CLASS_NAME . ';';
-    const USE_OAUTH_CLIENT = self::USE_VK .'OAuth' . self::BACKSLASH . self::AUTH_CLASS_NAME . ';';
-    const USE_VK_CLIENT_EXCEPTION = self::USE_VK . 'Exceptions\VKClientException;';
-    const USE_VK_API_EXCEPTION = self::USE_VK . 'Exceptions\VKAPIException;';
+    protected const USE_VK_API_REQUEST = self::USE_VK . self::CLIENT_KEYWORD . self::BACKSLASH . self::API_REQUEST_CLASS_NAME . ';';
+    protected const USE_OAUTH_CLIENT = self::USE_VK .'OAuth' . self::BACKSLASH . self::AUTH_CLASS_NAME . ';';
+    protected const USE_VK_CLIENT_EXCEPTION = self::USE_VK . 'Exceptions\VKClientException;';
+    protected const USE_VK_API_EXCEPTION = self::USE_VK . 'Exceptions\VKApiException;';
 
     private $response = null;
     private $enums_path = null;
@@ -127,8 +127,10 @@ class GenerateActions {
 
         $this->api_request_member = $this->wrapClassMember(self::API_REQUEST_CLASS_NAME, static::API_REQUEST_VAR_NAME);
 
-        $this->api_client_members .= $this->wrapConstant(static::VK_API_HOST, static::VK_API_HOST_LINK, '');
-        $this->api_client_members .= $this->wrapConstant(static::VK_API_VERSION, static::VK_API_VERSION_VALUE, '');
+        $this->api_client_members .= $this->wrapConstant(static::VK_API_HOST, static::VK_API_HOST_LINK,
+            '', 'protected ');
+        $this->api_client_members .= $this->wrapConstant(static::VK_API_VERSION, static::VK_API_VERSION_VALUE,
+            '', 'protected ');
         $this->api_client_members .= $this->api_request_member;
         $this->api_client_members .= $this->wrapClassMember(self::AUTH_CLASS_NAME, static::AUTH_VAR_NAME);
         $this->api_client_construct_code = $this->wrapConstructAssignment(static::API_REQUEST_VAR_NAME,
@@ -142,7 +144,7 @@ class GenerateActions {
         foreach ($mapped_methods as $action_name => &$action_methods) {
             $class_name = ucwords($action_name);
 
-            $this->updateAPIActionClientProperties($class_name, $action_name);
+            $this->updateApiActionClientProperties($class_name, $action_name);
 
             $action_class_code = '';
             foreach ($action_methods as &$method) {
@@ -165,7 +167,7 @@ class GenerateActions {
             file_put_contents($file_name, $action_class);
         }
 
-        $api_client_class_name = 'VKAPIClient';
+        $api_client_class_name = 'VKApiClient';
         $api_client_construct = $this->wrapConstruct('', $this->api_client_construct_code);
 
         $api_client_class = $this->wrapClass($api_client_class_name, static::VK_CLIENT,
@@ -191,7 +193,7 @@ class GenerateActions {
         return $mapped_methods;
     }
 
-    protected function updateAPIActionClientProperties($class_name, $action_name) {
+    protected function updateApiActionClientProperties($class_name, $action_name) {
         $this->api_client_use .= $this->wrapActionClassUse($class_name);
 
         $this->api_client_members .= $this->wrapClassMember($class_name, $action_name);
@@ -284,7 +286,7 @@ class GenerateActions {
         static::ACCESS_TOKEN_ARG_NAME . ' string', '@param ' . static::DOLLAR .
             static::PARAMS_ARG_NAME . ' array'), $params, array('', '@return mixed',
                 '@throws VKClientException in case of error on the API side',
-                '@throws VKAPIException in case of network error', ''))) . PHP_EOL;
+                '@throws VKApiException in case of network error', ''))) . PHP_EOL;
 
         $result .= $this->tab(1) . 'public function ' . $method_name . '(' . static::DOLLAR . static::ACCESS_TOKEN_ARG_NAME
             . ', ' . static::DOLLAR . static::PARAMS_ARG_NAME . ' = array()) {' . PHP_EOL;
@@ -334,11 +336,11 @@ class GenerateActions {
         return $members;
     }
 
-    protected function wrapConstant($name, $value, $description) {
+    protected function wrapConstant($name, $value, $description, $type = '') {
         if (is_numeric($name[0])) {
             $name = str_replace(static::SPACE, static::UNDERSCORE, strtoupper($description));
         }
-        $result = PHP_EOL . $this->tab(1) . 'const ' . $name . ' = ' . static::QUOTE . $value . static::QUOTE . ';';
+        $result = PHP_EOL . $this->tab(1) . $type . 'const ' . $name . ' = ' . static::QUOTE . $value . static::QUOTE . ';';
         if ($description) {
             $result .= ' // ' . $description;
         }

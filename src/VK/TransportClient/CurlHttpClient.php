@@ -5,8 +5,8 @@ namespace VK\TransportClient;
 use VK\Exceptions\HttpRequestException;
 
 class CurlHttpClient implements TransportClient {
-    const UPLOAD_CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
-    const QUESTION_MARK = '?';
+    protected const UPLOAD_CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
+    protected const QUESTION_MARK = '?';
 
     protected $initial_opts;
 

@@ -11,16 +11,16 @@ use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
 class LongpollRequest extends VKClientBase {
-    const API_PARAM_ACT = 'act';
-    const API_PARAM_KEY = 'key';
-    const API_PARAM_TS = 'ts';
-    const API_PARAM_WAIT = 'wait';
-    const VALUE_ACT = 'a_check';
+    protected const API_PARAM_ACT = 'act';
+    protected const API_PARAM_KEY = 'key';
+    protected const API_PARAM_TS = 'ts';
+    protected const API_PARAM_WAIT = 'wait';
+    protected const VALUE_ACT = 'a_check';
 
-    const FAILED_KEY = 'failed';
+    protected const FAILED_KEY = 'failed';
 
-    const INCORRECT_TS_VALUE_ERROR_CODE = 1;
-    const TOKEN_EXPIRED_ERROR_CODE = 2;
+    protected const INCORRECT_TS_VALUE_ERROR_CODE = 1;
+    protected const TOKEN_EXPIRED_ERROR_CODE = 2;
 
 
     public function __construct() {

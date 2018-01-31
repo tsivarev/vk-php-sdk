@@ -5,24 +5,24 @@ namespace VK\Longpoll;
 use VK\Exceptions\VKClientException;
 use VK\Longpoll\Exceptions\LongPollServerKeyExpiredException;
 use VK\Longpoll\Exceptions\LongPollServerTsException;
-use VK\Client\VKAPIClient;
+use VK\Client\VKApiClient;
 use VK\Exceptions\VKApiException;
 
-class CallbackAPILongPoll extends CallbackAPI {
-    const API_PARAM_GROUP_ID = 'group_id';
+class CallbackApiLongPoll extends CallbackApi {
+    protected const API_PARAM_GROUP_ID = 'group_id';
 
-    const TS_KEY = 'ts';
-    const TIMESTAMP_KEY = 'timestamp';
-    const SERVER_KEY = 'server';
-    const KEY_KEY = 'key';
-    const UPDATES_KEY = 'updates';
+    protected const TS_KEY = 'ts';
+    protected const TIMESTAMP_KEY = 'timestamp';
+    protected const SERVER_KEY = 'server';
+    protected const KEY_KEY = 'key';
+    protected const UPDATES_KEY = 'updates';
 
     protected $api_client;
     protected $access_token;
     protected $group_id;
 
     public function __construct($access_token, $group_id) {
-        $this->api_client = new VKAPIClient();
+        $this->api_client = new VKApiClient();
         $this->access_token = $access_token;
         $this->group_id = $group_id;
     }
@@ -30,7 +30,7 @@ class CallbackAPILongPoll extends CallbackAPI {
     /**
      * Starts listening to LongPoll events.
      *
-     * @throws VKAPIException
+     * @throws VKApiException
      * @throws VKClientException
      * @throws LongPollServerTsException
      */
@@ -56,7 +56,7 @@ class CallbackAPILongPoll extends CallbackAPI {
 
     /**
      * @return mixed
-     * @throws VKAPIException
+     * @throws VKApiException
      * @throws VKClientException
      */
     protected function getLongPollServer() {

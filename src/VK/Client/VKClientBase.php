@@ -6,8 +6,8 @@ use VK\Exceptions\VKClientException;
 use VK\TransportClient\TransportClientResponse;
 
 class VKClientBase {
-    const CONNECTION_TIMEOUT = 10;
-    const HTTP_STATUS_CODE_OK = 200;
+    protected const CONNECTION_TIMEOUT = 10;
+    protected const HTTP_STATUS_CODE_OK = 200;
 
     protected $http_client;
     protected $api_version;
