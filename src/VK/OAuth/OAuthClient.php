@@ -119,7 +119,7 @@ class OAuthClient extends VKClientBase {
         $decode_body = $this->decodeBody($body);
 
         if ($decode_body[static::ERROR_KEY]) {
-            throw new VKOAuthException($decode_body[static::ERROR_KEY], $decode_body[static::ERROR_DESCRIPTION_KEY]);
+            throw new VKOAuthException("{$decode_body[static::ERROR_DESCRIPTION_KEY]}. OAuth error {$decode_body[static::ERROR_KEY]}");
         }
 
         if (isset($decode_body['access_token'])) {

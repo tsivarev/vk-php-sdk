@@ -16,6 +16,7 @@ class VKAPIRequest extends VKClientBase {
     const ERROR_CODE_KEY = 'error_code';
     const ERROR_MSG_KEY = 'error_msg';
     const ERROR_DESCRIPTION_KEY = 'error_description';
+    const RESPONSE_KEY = 'response';
 
     protected $host;
 
@@ -92,11 +93,16 @@ class VKAPIRequest extends VKClientBase {
         $decode_body = $this->decodeBody($body);
 
         if ($decode_body[static::ERROR_KEY]) {
-            throw new VKApiException($decode_body[static::ERROR_KEY][static::ERROR_CODE_KEY],
-                $decode_body[static::ERROR_KEY][static::ERROR_MSG_KEY]);
+            $error_msg = $decode_body[static::ERROR_KEY][static::ERROR_MSG_KEY];
+            $error_code = $decode_body[static::ERROR_KEY][static::ERROR_CODE_KEY];
+            throw new VKApiException("API error {$error_code}: {$error_msg}");
         }
 
-        return $decode_body['response'];
+        if (isset($decode_body[static::RESPONSE_KEY])) {
+            return $decode_body[static::RESPONSE_KEY];
+        } else {
+            return $decode_body;
+        }
     }
 
     /**
@@ -109,7 +115,7 @@ class VKAPIRequest extends VKClientBase {
     private function formatParams($params) {
         foreach ($params as $key => $value) {
             if (is_array($value)) {
-                $params[$key] = implode(', ', $value);
+                $params[$key] = implode(',', $value);
             }
         }
         return $params;
