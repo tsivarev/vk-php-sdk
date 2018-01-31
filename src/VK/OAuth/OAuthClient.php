@@ -11,7 +11,7 @@ use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKOAuthException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
-use VK\VKClientBase;
+use VK\Client\VKClientBase;
 
 class OAuthClient extends VKClientBase {
     const API_PARAM_VERSION = 'v';
@@ -29,8 +29,6 @@ class OAuthClient extends VKClientBase {
 
     const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
     const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
-
-    protected $http_client;
 
     public function __construct($api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
@@ -121,7 +119,7 @@ class OAuthClient extends VKClientBase {
         $decode_body = $this->decodeBody($body);
 
         if ($decode_body[static::ERROR_KEY]) {
-            throw new VKOAuthException($decode_body[static::ERROR_KEY], $decode_body[static::ERROR_DESCRIPTION_KEY]);
+            throw new VKOAuthException("{$decode_body[static::ERROR_DESCRIPTION_KEY]}. OAuth error {$decode_body[static::ERROR_KEY]}");
         }
 
         if (isset($decode_body['access_token'])) {

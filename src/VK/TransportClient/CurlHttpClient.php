@@ -6,16 +6,14 @@ use VK\Exceptions\HttpRequestException;
 
 class CurlHttpClient implements TransportClient {
     const UPLOAD_CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
+    const QUESTION_MARK = '?';
 
-    protected $connection_timeout;
     protected $initial_opts;
 
     public function __construct($connection_timeout) {
-        $this->connection_timeout = $connection_timeout;
         $this->initial_opts = array(
-            CURLOPT_POST => 1,
             CURLOPT_HEADER => true,
-            CURLOPT_CONNECTTIMEOUT => $this->connection_timeout,
+            CURLOPT_CONNECTTIMEOUT => $connection_timeout,
             CURLOPT_RETURNTRANSFER => true,
         );
     }
@@ -31,8 +29,22 @@ class CurlHttpClient implements TransportClient {
      */
     public function post($url, $payload = null) {
         return $this->sendRequest($url, array(
+            CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => $payload
         ));
+    }
+
+    /**
+     * Makes get request.
+     *
+     * @param string $url
+     * @param array $payload
+     *
+     * @return TransportClientResponse
+     * @throws HttpRequestException
+     */
+    public function get($url, $payload = null) {
+        return $this->sendRequest($url . static::QUESTION_MARK . http_build_query($payload), array());
     }
 
     /**
@@ -51,6 +63,7 @@ class CurlHttpClient implements TransportClient {
             new \CURLFile($path) : '@' . $path;
 
         return $this->sendRequest($url, array(
+            CURLOPT_POST => 1,
             CURLOPT_HTTPHEADER => array(
                 static::UPLOAD_CONTENT_TYPE_HEADER,
             ),

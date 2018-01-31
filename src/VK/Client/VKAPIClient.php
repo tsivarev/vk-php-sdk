@@ -1,6 +1,7 @@
 <?php
 
-namespace VK;
+namespace VK\Client;
+
 use VK\OAuth\OAuthClient;
 use VK\Actions\Account;
 use VK\Actions\Ads;
