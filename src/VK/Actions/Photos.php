@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\PhotosGetAlbumId;
 use VK\Actions\Enums\PhotosReportReason;
 use VK\Actions\Enums\PhotosReportCommentReason;
@@ -17,7 +17,7 @@ class Photos {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -35,11 +35,11 @@ class Photos {
      *      - boolean comments_disabled:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function createAlbum($access_token, $params = array()) {
+    public function createAlbum(string $access_token, array $params = array()) {
         return $this->request->post('photos.createAlbum', $access_token, $params);
     }
 
@@ -58,11 +58,11 @@ class Photos {
      *      - boolean comments_disabled:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editAlbum($access_token, $params = array()) {
+    public function editAlbum(string $access_token, array $params = array()) {
         return $this->request->post('photos.editAlbum', $access_token, $params);
     }
 
@@ -80,11 +80,11 @@ class Photos {
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getAlbums($access_token, $params = array()) {
+    public function getAlbums(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAlbums', $access_token, $params);
     }
 
@@ -111,11 +111,11 @@ class Photos {
      *      - integer count:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('photos.get', $access_token, $params);
     }
 
@@ -128,11 +128,11 @@ class Photos {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getAlbumsCount($access_token, $params = array()) {
+    public function getAlbumsCount(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAlbumsCount', $access_token, $params);
     }
 
@@ -149,11 +149,11 @@ class Photos {
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('photos.getById', $access_token, $params);
     }
 
@@ -167,11 +167,11 @@ class Photos {
      *        album).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getUploadServer($access_token, $params = array()) {
+    public function getUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getUploadServer', $access_token, $params);
     }
 
@@ -188,11 +188,11 @@ class Photos {
      *      - integer crop_y2: Y coordinate of the right-bottom corner
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getOwnerCoverPhotoUploadServer($access_token, $params = array()) {
+    public function getOwnerCoverPhotoUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getOwnerCoverPhotoUploadServer', $access_token, $params);
     }
 
@@ -205,11 +205,11 @@ class Photos {
      *        negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getOwnerPhotoUploadServer($access_token, $params = array()) {
+    public function getOwnerPhotoUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getOwnerPhotoUploadServer', $access_token, $params);
     }
 
@@ -224,11 +224,11 @@ class Photos {
      *      - integer crop_width: Width (in pixels) of the photo after cropping.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getChatUploadServer($access_token, $params = array()) {
+    public function getChatUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getChatUploadServer', $access_token, $params);
     }
 
@@ -244,11 +244,11 @@ class Photos {
      *      - integer crop_width: Width of the cropped photo in px.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getMarketUploadServer($access_token, $params = array()) {
+    public function getMarketUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getMarketUploadServer', $access_token, $params);
     }
 
@@ -260,11 +260,11 @@ class Photos {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getMarketAlbumUploadServer($access_token, $params = array()) {
+    public function getMarketAlbumUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getMarketAlbumUploadServer', $access_token, $params);
     }
 
@@ -281,11 +281,11 @@ class Photos {
      *      - string crop_hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function saveMarketPhoto($access_token, $params = array()) {
+    public function saveMarketPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveMarketPhoto', $access_token, $params);
     }
 
@@ -298,11 +298,11 @@ class Photos {
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function saveOwnerCoverPhoto($access_token, $params = array()) {
+    public function saveOwnerCoverPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveOwnerCoverPhoto', $access_token, $params);
     }
 
@@ -317,11 +317,11 @@ class Photos {
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function saveMarketAlbumPhoto($access_token, $params = array()) {
+    public function saveMarketAlbumPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveMarketAlbumPhoto', $access_token, $params);
     }
 
@@ -336,11 +336,11 @@ class Photos {
      *      - string photo: parameter returned after [vk.com/dev/upload_files|photo upload].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function saveOwnerPhoto($access_token, $params = array()) {
+    public function saveOwnerPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveOwnerPhoto', $access_token, $params);
     }
 
@@ -360,11 +360,11 @@ class Photos {
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function saveWallPhoto($access_token, $params = array()) {
+    public function saveWallPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveWallPhoto', $access_token, $params);
     }
 
@@ -376,11 +376,11 @@ class Photos {
      *      - integer group_id: ID of community to whose wall the photo will be uploaded.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getWallUploadServer($access_token, $params = array()) {
+    public function getWallUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getWallUploadServer', $access_token, $params);
     }
 
@@ -391,11 +391,11 @@ class Photos {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getMessagesUploadServer($access_token, $params = array()) {
+    public function getMessagesUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getMessagesUploadServer', $access_token, $params);
     }
 
@@ -410,11 +410,11 @@ class Photos {
      *      - string hash:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function saveMessagesPhoto($access_token, $params = array()) {
+    public function saveMessagesPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveMessagesPhoto', $access_token, $params);
     }
 
@@ -430,11 +430,11 @@ class Photos {
      *        @see PhotosReportReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function report($access_token, $params = array()) {
+    public function report(string $access_token, array $params = array()) {
         return $this->request->post('photos.report', $access_token, $params);
     }
 
@@ -450,11 +450,11 @@ class Photos {
      *        @see PhotosReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function reportComment($access_token, $params = array()) {
+    public function reportComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.reportComment', $access_token, $params);
     }
 
@@ -475,11 +475,11 @@ class Photos {
      *        '800', '6000', '50000'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function search($access_token, $params = array()) {
+    public function search(string $access_token, array $params = array()) {
         return $this->request->post('photos.search', $access_token, $params);
     }
 
@@ -498,11 +498,11 @@ class Photos {
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function save($access_token, $params = array()) {
+    public function save(string $access_token, array $params = array()) {
         return $this->request->post('photos.save', $access_token, $params);
     }
 
@@ -516,11 +516,11 @@ class Photos {
      *      - string access_key: for private photos
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function copy($access_token, $params = array()) {
+    public function copy(string $access_token, array $params = array()) {
         return $this->request->post('photos.copy', $access_token, $params);
     }
 
@@ -540,11 +540,11 @@ class Photos {
      *      - boolean delete_place:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function edit($access_token, $params = array()) {
+    public function edit(string $access_token, array $params = array()) {
         return $this->request->post('photos.edit', $access_token, $params);
     }
 
@@ -558,11 +558,11 @@ class Photos {
      *      - integer photo_id: Photo ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function move($access_token, $params = array()) {
+    public function move(string $access_token, array $params = array()) {
         return $this->request->post('photos.move', $access_token, $params);
     }
 
@@ -576,11 +576,11 @@ class Photos {
      *      - integer album_id: Album ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function makeCover($access_token, $params = array()) {
+    public function makeCover(string $access_token, array $params = array()) {
         return $this->request->post('photos.makeCover', $access_token, $params);
     }
 
@@ -595,11 +595,11 @@ class Photos {
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function reorderAlbums($access_token, $params = array()) {
+    public function reorderAlbums(string $access_token, array $params = array()) {
         return $this->request->post('photos.reorderAlbums', $access_token, $params);
     }
 
@@ -614,11 +614,11 @@ class Photos {
      *      - integer after: ID of the photo after which the photo in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function reorderPhotos($access_token, $params = array()) {
+    public function reorderPhotos(string $access_token, array $params = array()) {
         return $this->request->post('photos.reorderPhotos', $access_token, $params);
     }
 
@@ -641,11 +641,11 @@ class Photos {
      *        only with owner_id>0, no_service_albums is ignored.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getAll($access_token, $params = array()) {
+    public function getAll(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAll', $access_token, $params);
     }
 
@@ -662,11 +662,11 @@ class Photos {
      *        tag was added in descending order
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getUserPhotos($access_token, $params = array()) {
+    public function getUserPhotos(string $access_token, array $params = array()) {
         return $this->request->post('photos.getUserPhotos', $access_token, $params);
     }
 
@@ -679,11 +679,11 @@ class Photos {
      *      - integer group_id: ID of the community that owns the album.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteAlbum($access_token, $params = array()) {
+    public function deleteAlbum(string $access_token, array $params = array()) {
         return $this->request->post('photos.deleteAlbum', $access_token, $params);
     }
 
@@ -696,11 +696,11 @@ class Photos {
      *      - integer photo_id: Photo ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function delete($access_token, $params = array()) {
+    public function delete(string $access_token, array $params = array()) {
         return $this->request->post('photos.delete', $access_token, $params);
     }
 
@@ -713,11 +713,11 @@ class Photos {
      *      - integer photo_id: Photo ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restore($access_token, $params = array()) {
+    public function restore(string $access_token, array $params = array()) {
         return $this->request->post('photos.restore', $access_token, $params);
     }
 
@@ -731,11 +731,11 @@ class Photos {
      *      - integer tag_id: Tag ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function confirmTag($access_token, $params = array()) {
+    public function confirmTag(string $access_token, array $params = array()) {
         return $this->request->post('photos.confirmTag', $access_token, $params);
     }
 
@@ -757,11 +757,11 @@ class Photos {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getComments($access_token, $params = array()) {
+    public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('photos.getComments', $access_token, $params);
     }
 
@@ -779,11 +779,11 @@ class Photos {
      *      - integer count: Number of comments to return. By default, '20'. Maximum value, '100'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getAllComments($access_token, $params = array()) {
+    public function getAllComments(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAllComments', $access_token, $params);
     }
 
@@ -806,11 +806,11 @@ class Photos {
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function createComment($access_token, $params = array()) {
+    public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.createComment', $access_token, $params);
     }
 
@@ -823,11 +823,11 @@ class Photos {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteComment($access_token, $params = array()) {
+    public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.deleteComment', $access_token, $params);
     }
 
@@ -840,11 +840,11 @@ class Photos {
      *      - integer comment_id: ID of the deleted comment.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restoreComment($access_token, $params = array()) {
+    public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.restoreComment', $access_token, $params);
     }
 
@@ -862,11 +862,11 @@ class Photos {
      *        ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editComment($access_token, $params = array()) {
+    public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.editComment', $access_token, $params);
     }
 
@@ -880,11 +880,11 @@ class Photos {
      *      - string access_key:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getTags($access_token, $params = array()) {
+    public function getTags(string $access_token, array $params = array()) {
         return $this->request->post('photos.getTags', $access_token, $params);
     }
 
@@ -902,11 +902,11 @@ class Photos {
      *      - number y2: Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function putTag($access_token, $params = array()) {
+    public function putTag(string $access_token, array $params = array()) {
         return $this->request->post('photos.putTag', $access_token, $params);
     }
 
@@ -920,11 +920,11 @@ class Photos {
      *      - integer tag_id: Tag ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function removeTag($access_token, $params = array()) {
+    public function removeTag(string $access_token, array $params = array()) {
         return $this->request->post('photos.removeTag', $access_token, $params);
     }
 
@@ -937,11 +937,11 @@ class Photos {
      *      - integer count: Number of photos to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getNewTags($access_token, $params = array()) {
+    public function getNewTags(string $access_token, array $params = array()) {
         return $this->request->post('photos.getNewTags', $access_token, $params);
     }
 }

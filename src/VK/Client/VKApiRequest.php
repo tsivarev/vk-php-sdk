@@ -2,43 +2,48 @@
 
 namespace VK\Client;
 
+use VK\Exceptions\Api\ExceptionMapper;
 use VK\Exceptions\HttpRequestException;
-use VK\Exceptions\VKApiException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Exceptions\VKClientException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
-class VKApiRequest extends VKClientBase {
+class VKApiRequest {
     protected const API_PARAM_VERSION = 'v';
     protected const API_PARAM_ACCESS_TOKEN = 'access_token';
 
     protected const ERROR_KEY = 'error';
-    protected const ERROR_CODE_KEY = 'error_code';
-    protected const ERROR_MSG_KEY = 'error_msg';
-    protected const ERROR_DESCRIPTION_KEY = 'error_description';
     protected const RESPONSE_KEY = 'response';
 
-    protected $host;
+    protected const CONNECTION_TIMEOUT = 10;
+    protected const HTTP_STATUS_CODE_OK = 200;
 
-    public function __construct($host, $api_version) {
+    protected $host;
+    protected $exception_mapper;
+    protected $http_client;
+    protected $api_version;
+
+    public function __construct(string $host, string $api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->host = $host;
         $this->api_version = $api_version;
+        $this->exception_mapper = new ExceptionMapper();
     }
 
     /**
      * Makes post request.
      *
      * @param string $method
-     * @param string|null $access_token
-     * @param array|null $params
+     * @param string $access_token
+     * @param array $params
      *
      * @return mixed
      *
      * @throws VKClientException
      * @throws VKApiException
      */
-    public function post($method, $access_token, $params = array()) {
+    public function post(string $method, string $access_token, array $params = array()) {
         $params = $this->formatParams($params);
         $params[static::API_PARAM_VERSION] = $this->api_version;
         $params[static::API_PARAM_ACCESS_TOKEN] = $access_token;
@@ -51,7 +56,7 @@ class VKApiRequest extends VKClientBase {
             throw new VKClientException($e);
         }
 
-        return $this->checkResponse($response);
+        return $this->parseResponse($response);
     }
 
     /**
@@ -66,18 +71,18 @@ class VKApiRequest extends VKClientBase {
      * @throws VKClientException
      * @throws VKApiException
      */
-    public function upload($upload_url, $parameter_name, $path) {
+    public function upload(string $upload_url, string $parameter_name, string $path) {
         try {
             $response = $this->http_client->upload($upload_url, $parameter_name, $path);
         } catch (HttpRequestException $e) {
             throw new VKClientException($e);
         }
 
-        return $this->checkResponse($response);
+        return $this->parseResponse($response);
     }
 
     /**
-     * Decodes the response and checks its status code and whether it has an API error. Returns decoded response.
+     * Decodes the response and checks its status code and whether it has an Api error. Returns decoded response.
      *
      * @param TransportClientResponse $response
      *
@@ -86,16 +91,16 @@ class VKApiRequest extends VKClientBase {
      * @throws VKApiException
      * @throws VKClientException
      */
-    private function checkResponse($response) {
+    private function parseResponse(TransportClientResponse $response) {
         $this->checkHttpStatus($response);
 
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
         if ($decode_body[static::ERROR_KEY]) {
-            $error_msg = $decode_body[static::ERROR_KEY][static::ERROR_MSG_KEY];
-            $error_code = $decode_body[static::ERROR_KEY][static::ERROR_CODE_KEY];
-            throw new VKApiException("API error {$error_code}: {$error_msg}");
+            $error = $decode_body[static::ERROR_KEY];
+            $api_error = new VKApiError($error);
+            throw $this->exception_mapper->parse($api_error);
         }
 
         if (isset($decode_body[static::RESPONSE_KEY])) {
@@ -112,12 +117,42 @@ class VKApiRequest extends VKClientBase {
      *
      * @return array
      */
-    private function formatParams($params) {
+    private function formatParams(array $params) {
         foreach ($params as $key => $value) {
             if (is_array($value)) {
                 $params[$key] = implode(',', $value);
+            } else if (is_bool($value)) {
+                $params[$key] = $value ? 1 : 0;
             }
         }
         return $params;
+    }
+
+    /**
+     * Decodes body.
+     *
+     * @param string $body
+     *
+     * @return mixed
+     */
+    protected function decodeBody(string $body) {
+        $decoded_body = json_decode($body, true);
+
+        if ($decoded_body === null || !is_array($decoded_body)) {
+            $decoded_body = [];
+        }
+
+        return $decoded_body;
+    }
+
+    /**
+     * @param TransportClientResponse $response
+     *
+     * @throws VKClientException
+     */
+    protected function checkHttpStatus(TransportClientResponse $response) {
+        if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
+            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Notes {
 
@@ -13,7 +13,7 @@ class Notes {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -27,11 +27,11 @@ class Notes {
      *      - integer count: Number of notes to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('notes.get', $access_token, $params);
     }
 
@@ -44,11 +44,11 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('notes.getById', $access_token, $params);
     }
 
@@ -63,11 +63,11 @@ class Notes {
      *      - array privacy_comment:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function add($access_token, $params = array()) {
+    public function add(string $access_token, array $params = array()) {
         return $this->request->post('notes.add', $access_token, $params);
     }
 
@@ -83,11 +83,11 @@ class Notes {
      *      - array privacy_comment:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function edit($access_token, $params = array()) {
+    public function edit(string $access_token, array $params = array()) {
         return $this->request->post('notes.edit', $access_token, $params);
     }
 
@@ -99,11 +99,11 @@ class Notes {
      *      - integer note_id: Note ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function delete($access_token, $params = array()) {
+    public function delete(string $access_token, array $params = array()) {
         return $this->request->post('notes.delete', $access_token, $params);
     }
 
@@ -117,11 +117,11 @@ class Notes {
      *      - integer count: Number of comments to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getComments($access_token, $params = array()) {
+    public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('notes.getComments', $access_token, $params);
     }
 
@@ -138,11 +138,11 @@ class Notes {
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function createComment($access_token, $params = array()) {
+    public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.createComment', $access_token, $params);
     }
 
@@ -156,11 +156,11 @@ class Notes {
      *      - string message: New comment text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editComment($access_token, $params = array()) {
+    public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.editComment', $access_token, $params);
     }
 
@@ -173,11 +173,11 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteComment($access_token, $params = array()) {
+    public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.deleteComment', $access_token, $params);
     }
 
@@ -190,11 +190,11 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restoreComment($access_token, $params = array()) {
+    public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.restoreComment', $access_token, $params);
     }
 }

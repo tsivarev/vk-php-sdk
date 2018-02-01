@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\WallGetFilter;
 use VK\Actions\Enums\WallGetCommentsSort;
 use VK\Actions\Enums\WallReportPostReason;
@@ -17,7 +17,7 @@ class Wall {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -40,11 +40,11 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('wall.get', $access_token, $params);
     }
 
@@ -63,11 +63,11 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function search($access_token, $params = array()) {
+    public function search(string $access_token, array $params = array()) {
         return $this->request->post('wall.search', $access_token, $params);
     }
 
@@ -85,11 +85,11 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('wall.getById', $access_token, $params);
     }
 
@@ -125,11 +125,11 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function post($access_token, $params = array()) {
+    public function post(string $access_token, array $params = array()) {
         return $this->request->post('wall.post', $access_token, $params);
     }
 
@@ -144,11 +144,11 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function repost($access_token, $params = array()) {
+    public function repost(string $access_token, array $params = array()) {
         return $this->request->post('wall.repost', $access_token, $params);
     }
 
@@ -164,11 +164,11 @@ class Wall {
      *      - integer count: Number of reposts to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getReposts($access_token, $params = array()) {
+    public function getReposts(string $access_token, array $params = array()) {
         return $this->request->post('wall.getReposts', $access_token, $params);
     }
 
@@ -201,11 +201,11 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function edit($access_token, $params = array()) {
+    public function edit(string $access_token, array $params = array()) {
         return $this->request->post('wall.edit', $access_token, $params);
     }
 
@@ -218,11 +218,11 @@ class Wall {
      *      - integer post_id: ID of the post to be deleted.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function delete($access_token, $params = array()) {
+    public function delete(string $access_token, array $params = array()) {
         return $this->request->post('wall.delete', $access_token, $params);
     }
 
@@ -236,11 +236,11 @@ class Wall {
      *      - integer post_id: ID of the post to be restored.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restore($access_token, $params = array()) {
+    public function restore(string $access_token, array $params = array()) {
         return $this->request->post('wall.restore', $access_token, $params);
     }
 
@@ -254,11 +254,11 @@ class Wall {
      *      - integer post_id: Post ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function pin($access_token, $params = array()) {
+    public function pin(string $access_token, array $params = array()) {
         return $this->request->post('wall.pin', $access_token, $params);
     }
 
@@ -272,11 +272,11 @@ class Wall {
      *      - integer post_id: Post ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function unpin($access_token, $params = array()) {
+    public function unpin(string $access_token, array $params = array()) {
         return $this->request->post('wall.unpin', $access_token, $params);
     }
 
@@ -299,11 +299,11 @@ class Wall {
      *      - boolean extended:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getComments($access_token, $params = array()) {
+    public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('wall.getComments', $access_token, $params);
     }
 
@@ -325,11 +325,11 @@ class Wall {
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function createComment($access_token, $params = array()) {
+    public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.createComment', $access_token, $params);
     }
 
@@ -347,11 +347,11 @@ class Wall {
      *        '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editComment($access_token, $params = array()) {
+    public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.editComment', $access_token, $params);
     }
 
@@ -364,11 +364,11 @@ class Wall {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteComment($access_token, $params = array()) {
+    public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.deleteComment', $access_token, $params);
     }
 
@@ -381,11 +381,11 @@ class Wall {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restoreComment($access_token, $params = array()) {
+    public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.restoreComment', $access_token, $params);
     }
 
@@ -401,11 +401,11 @@ class Wall {
      *        @see WallReportPostReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function reportPost($access_token, $params = array()) {
+    public function reportPost(string $access_token, array $params = array()) {
         return $this->request->post('wall.reportPost', $access_token, $params);
     }
 
@@ -421,11 +421,11 @@ class Wall {
      *        @see WallReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function reportComment($access_token, $params = array()) {
+    public function reportComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.reportComment', $access_token, $params);
     }
 }

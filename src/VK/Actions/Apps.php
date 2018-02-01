@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\AppsGetCatalogSort;
 use VK\Actions\Enums\AppsGetPlatform;
 use VK\Actions\Enums\AppsGetNameCase;
@@ -19,7 +19,7 @@ class Apps {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -46,11 +46,11 @@ class Apps {
      *      - string filter: 'installed' — to return list of installed apps (only for mobile platform).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getCatalog($access_token, $params = array()) {
+    public function getCatalog(string $access_token, array $params = array()) {
         return $this->request->post('apps.getCatalog', $access_token, $params);
     }
 
@@ -74,11 +74,11 @@ class Apps {
      *        @see AppsGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('apps.get', $access_token, $params);
     }
 
@@ -97,11 +97,11 @@ class Apps {
      *      - boolean separate:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function sendRequest($access_token, $params = array()) {
+    public function sendRequest(string $access_token, array $params = array()) {
         return $this->request->post('apps.sendRequest', $access_token, $params);
     }
 
@@ -112,11 +112,11 @@ class Apps {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteAppRequests($access_token, $params = array()) {
+    public function deleteAppRequests(string $access_token, array $params = array()) {
         return $this->request->post('apps.deleteAppRequests', $access_token, $params);
     }
 
@@ -132,11 +132,11 @@ class Apps {
      *      - array fields: Additional profile fields, see [vk.com/dev/fields|description].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getFriendsList($access_token, $params = array()) {
+    public function getFriendsList(string $access_token, array $params = array()) {
         return $this->request->post('apps.getFriendsList', $access_token, $params);
     }
 
@@ -153,11 +153,11 @@ class Apps {
      *      - boolean extended: 1 — to return additional info about users
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getLeaderboard($access_token, $params = array()) {
+    public function getLeaderboard(string $access_token, array $params = array()) {
         return $this->request->post('apps.getLeaderboard', $access_token, $params);
     }
 
@@ -169,11 +169,11 @@ class Apps {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getScore($access_token, $params = array()) {
+    public function getScore(string $access_token, array $params = array()) {
         return $this->request->post('apps.getScore', $access_token, $params);
     }
 }

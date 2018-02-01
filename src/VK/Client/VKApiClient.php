@@ -222,8 +222,8 @@ class VKApiClient {
      **/
     private $widgets;
 
-    public function __construct() {
-        $this->request = new VKApiRequest(static::VK_API_HOST, static::VK_API_VERSION);
+    public function __construct(string $api_version = self::VK_API_VERSION) {
+        $this->request = new VKApiRequest(static::VK_API_HOST, $api_version);
         $this->oauth = new OAuthClient(static::VK_API_VERSION);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);

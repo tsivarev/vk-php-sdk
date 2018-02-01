@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Search {
 
@@ -13,7 +13,7 @@ class Search {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -29,11 +29,11 @@ class Search {
      *      - boolean search_global: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getHints($access_token, $params = array()) {
+    public function getHints(string $access_token, array $params = array()) {
         return $this->request->post('search.getHints', $access_token, $params);
     }
 }

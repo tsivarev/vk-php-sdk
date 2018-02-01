@@ -9,7 +9,7 @@ class TransportClientResponse {
 
     private $body;
 
-    public function __construct($http_status, $headers, $body) {
+    public function __construct(?int $http_status, ?array $headers, ?string $body) {
         $this->http_status = $http_status;
         $this->headers = $headers;
         $this->body = $body;

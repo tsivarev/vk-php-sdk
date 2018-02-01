@@ -3,9 +3,9 @@
 namespace VK\TransportClient;
 
 interface TransportClient {
-    public function post($url, $payload = null);
+    public function post(string $url, ?array $payload = null);
 
-    public function get($url, $payload = null);
+    public function get(string $url, ?array $payload = null);
 
-    public function upload($url, $parameter_name, $path);
+    public function upload(string $url, string $parameter_name, string $path);
 }

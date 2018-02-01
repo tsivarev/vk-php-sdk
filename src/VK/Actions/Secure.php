@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Secure {
 
@@ -13,7 +13,7 @@ class Secure {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -24,11 +24,11 @@ class Secure {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getAppBalance($access_token, $params = array()) {
+    public function getAppBalance(string $access_token, array $params = array()) {
         return $this->request->post('secure.getAppBalance', $access_token, $params);
     }
 
@@ -39,11 +39,11 @@ class Secure {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getTransactionsHistory($access_token, $params = array()) {
+    public function getTransactionsHistory(string $access_token, array $params = array()) {
         return $this->request->post('secure.getTransactionsHistory', $access_token, $params);
     }
 
@@ -59,11 +59,11 @@ class Secure {
      *      - integer limit: number of returned posts. By default — 1000.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getSMSHistory($access_token, $params = array()) {
+    public function getSMSHistory(string $access_token, array $params = array()) {
         return $this->request->post('secure.getSMSHistory', $access_token, $params);
     }
 
@@ -78,11 +78,11 @@ class Secure {
      *        allowed. Maximum size is '160' characters.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function sendSMSNotification($access_token, $params = array()) {
+    public function sendSMSNotification(string $access_token, array $params = array()) {
         return $this->request->post('secure.sendSMSNotification', $access_token, $params);
     }
 
@@ -97,11 +97,11 @@ class Secure {
      *        maximum).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function sendNotification($access_token, $params = array()) {
+    public function sendNotification(string $access_token, array $params = array()) {
         return $this->request->post('secure.sendNotification', $access_token, $params);
     }
 
@@ -115,11 +115,11 @@ class Secure {
      *      - integer counter: counter value.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function setCounter($access_token, $params = array()) {
+    public function setCounter(string $access_token, array $params = array()) {
         return $this->request->post('secure.setCounter', $access_token, $params);
     }
 
@@ -133,11 +133,11 @@ class Secure {
      *      - integer level: level value.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function setUserLevel($access_token, $params = array()) {
+    public function setUserLevel(string $access_token, array $params = array()) {
         return $this->request->post('secure.setUserLevel', $access_token, $params);
     }
 
@@ -149,11 +149,11 @@ class Secure {
      *      - array user_ids:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getUserLevel($access_token, $params = array()) {
+    public function getUserLevel(string $access_token, array $params = array()) {
         return $this->request->post('secure.getUserLevel', $access_token, $params);
     }
 
@@ -169,11 +169,11 @@ class Secure {
      *        user's points amount, , Any other value is ignored
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function addAppEvent($access_token, $params = array()) {
+    public function addAppEvent(string $access_token, array $params = array()) {
         return $this->request->post('secure.addAppEvent', $access_token, $params);
     }
 
@@ -187,11 +187,11 @@ class Secure {
      *        required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function checkToken($access_token, $params = array()) {
+    public function checkToken(string $access_token, array $params = array()) {
         return $this->request->post('secure.checkToken', $access_token, $params);
     }
 }

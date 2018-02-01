@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Notifications {
 
@@ -13,7 +13,7 @@ class Notifications {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -34,11 +34,11 @@ class Notifications {
      *        current time.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('notifications.get', $access_token, $params);
     }
 
@@ -49,11 +49,11 @@ class Notifications {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function markAsViewed($access_token, $params = array()) {
+    public function markAsViewed(string $access_token, array $params = array()) {
         return $this->request->post('notifications.markAsViewed', $access_token, $params);
     }
 }

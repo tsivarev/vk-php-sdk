@@ -1,6 +1,6 @@
 <?php
 
-namespace VK\Longpoll\Exceptions;
+namespace VK\CallbackApi\Longpoll\Exceptions;
 
 class LongPollServerTsException extends \Exception {
 

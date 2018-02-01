@@ -4,7 +4,7 @@ namespace VK\Actions;
 
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\PlacesSearchRadius;
 
 class Places {
@@ -14,7 +14,7 @@ class Places {
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -35,11 +35,11 @@ class Places {
      *      - string address: Street address of the location (e.g., '125 Elm Street').
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function add($access_token, $params = array()) {
+    public function add(string $access_token, array $params = array()) {
         return $this->request->post('places.add', $access_token, $params);
     }
 
@@ -51,11 +51,11 @@ class Places {
      *      - array places: Location IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('places.getById', $access_token, $params);
     }
 
@@ -76,11 +76,11 @@ class Places {
      *      - integer count: Number of locations to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function search($access_token, $params = array()) {
+    public function search(string $access_token, array $params = array()) {
         return $this->request->post('places.search', $access_token, $params);
     }
 
@@ -99,11 +99,11 @@ class Places {
      *        be exported, if the user has set up the respective option.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function checkin($access_token, $params = array()) {
+    public function checkin(string $access_token, array $params = array()) {
         return $this->request->post('places.checkin', $access_token, $params);
     }
 
@@ -129,11 +129,11 @@ class Places {
      *        is not set.),
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getCheckins($access_token, $params = array()) {
+    public function getCheckins(string $access_token, array $params = array()) {
         return $this->request->post('places.getCheckins', $access_token, $params);
     }
 
@@ -144,11 +144,11 @@ class Places {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getTypes($access_token, $params = array()) {
+    public function getTypes(string $access_token, array $params = array()) {
         return $this->request->post('places.getTypes', $access_token, $params);
     }
 }
