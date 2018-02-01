@@ -1,6 +1,6 @@
 <?php
 
-namespace VK\Enums;
+namespace VK\OAuth\Enums;
 
 class OAuthUserScope {
     const NOTIFY = 1;
