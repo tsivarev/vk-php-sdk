@@ -2,18 +2,18 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Docs {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -28,11 +28,11 @@ class Docs {
      *        designate a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('docs.get', $access_token, $params);
     }
 
@@ -44,11 +44,11 @@ class Docs {
      *      - array docs: Document IDs. Example: , "66748_91488,66748_91455",
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('docs.getById', $access_token, $params);
     }
 
@@ -60,11 +60,11 @@ class Docs {
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getUploadServer($access_token, $params = array()) {
+    public function getUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('docs.getUploadServer', $access_token, $params);
     }
 
@@ -76,11 +76,11 @@ class Docs {
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getWallUploadServer($access_token, $params = array()) {
+    public function getWallUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('docs.getWallUploadServer', $access_token, $params);
     }
 
@@ -95,11 +95,11 @@ class Docs {
      *      - string tags: Document tags.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function save($access_token, $params = array()) {
+    public function save(string $access_token, array $params = array()) {
         return $this->request->post('docs.save', $access_token, $params);
     }
 
@@ -113,11 +113,11 @@ class Docs {
      *      - integer doc_id: Document ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function delete($access_token, $params = array()) {
+    public function delete(string $access_token, array $params = array()) {
         return $this->request->post('docs.delete', $access_token, $params);
     }
 
@@ -133,11 +133,11 @@ class Docs {
      *        document's data.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function add($access_token, $params = array()) {
+    public function add(string $access_token, array $params = array()) {
         return $this->request->post('docs.add', $access_token, $params);
     }
 
@@ -150,11 +150,11 @@ class Docs {
      *        designate a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getTypes($access_token, $params = array()) {
+    public function getTypes(string $access_token, array $params = array()) {
         return $this->request->post('docs.getTypes', $access_token, $params);
     }
 
@@ -168,11 +168,11 @@ class Docs {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function search($access_token, $params = array()) {
+    public function search(string $access_token, array $params = array()) {
         return $this->request->post('docs.search', $access_token, $params);
     }
 
@@ -187,11 +187,11 @@ class Docs {
      *      - array tags: Document tags.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function edit($access_token, $params = array()) {
+    public function edit(string $access_token, array $params = array()) {
         return $this->request->post('docs.edit', $access_token, $params);
     }
 }

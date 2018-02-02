@@ -2,9 +2,9 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\LikesGetListType;
 use VK\Actions\Enums\LikesGetListFilter;
 use VK\Actions\Enums\LikesAddType;
@@ -14,11 +14,11 @@ use VK\Actions\Enums\LikesIsLikedType;
 class Likes {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -56,11 +56,11 @@ class Likes {
      *      - boolean skip_own:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getList($access_token, $params = array()) {
+    public function getList(string $access_token, array $params = array()) {
         return $this->request->post('likes.getList', $access_token, $params);
     }
 
@@ -79,11 +79,11 @@ class Likes {
      *      - string access_key: Access key required for an object owned by a private entity.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function add($access_token, $params = array()) {
+    public function add(string $access_token, array $params = array()) {
         return $this->request->post('likes.add', $access_token, $params);
     }
 
@@ -101,11 +101,11 @@ class Likes {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function delete($access_token, $params = array()) {
+    public function delete(string $access_token, array $params = array()) {
         return $this->request->post('likes.delete', $access_token, $params);
     }
 
@@ -124,11 +124,11 @@ class Likes {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function isLiked($access_token, $params = array()) {
+    public function isLiked(string $access_token, array $params = array()) {
         return $this->request->post('likes.isLiked', $access_token, $params);
     }
 }

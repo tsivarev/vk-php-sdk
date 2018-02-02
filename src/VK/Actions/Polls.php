@@ -2,19 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\PollsGetVotersNameCase;
 
 class Polls {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -29,11 +29,11 @@ class Polls {
      *      - integer poll_id: Poll ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('polls.getById', $access_token, $params);
     }
 
@@ -49,11 +49,11 @@ class Polls {
      *      - boolean is_board:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function addVote($access_token, $params = array()) {
+    public function addVote(string $access_token, array $params = array()) {
         return $this->request->post('polls.addVote', $access_token, $params);
     }
 
@@ -69,11 +69,11 @@ class Polls {
      *      - boolean is_board:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteVote($access_token, $params = array()) {
+    public function deleteVote(string $access_token, array $params = array()) {
         return $this->request->post('polls.deleteVote', $access_token, $params);
     }
 
@@ -101,11 +101,11 @@ class Polls {
      *        @see PollsGetVotersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getVoters($access_token, $params = array()) {
+    public function getVoters(string $access_token, array $params = array()) {
         return $this->request->post('polls.getVoters', $access_token, $params);
     }
 
@@ -123,11 +123,11 @@ class Polls {
      *        to 10 answers.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function create($access_token, $params = array()) {
+    public function create(string $access_token, array $params = array()) {
         return $this->request->post('polls.create', $access_token, $params);
     }
 
@@ -145,11 +145,11 @@ class Polls {
      *      - string delete_answers: list of answer ids to be deleted. For example: "[382967099, 382967103]"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function edit($access_token, $params = array()) {
+    public function edit(string $access_token, array $params = array()) {
         return $this->request->post('polls.edit', $access_token, $params);
     }
 }

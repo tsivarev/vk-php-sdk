@@ -20,7 +20,7 @@
     ],
     "scripts": {
         "generate-sdk": [
-          "@php src/VK/generate_actions.php"
+          "@php scripts/generate.php"
         ]
     },
     "autoload": {

@@ -2,9 +2,9 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\MessagesGetHistoryRev;
 use VK\Actions\Enums\MessagesGetHistoryAttachmentsMediaType;
 use VK\Actions\Enums\MessagesGetChatNameCase;
@@ -13,11 +13,11 @@ use VK\Actions\Enums\MessagesGetChatUsersNameCase;
 class Messages {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -40,11 +40,11 @@ class Messages {
      *        used).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('messages.get', $access_token, $params);
     }
 
@@ -64,11 +64,11 @@ class Messages {
      *      - boolean unanswered: '1' — return unanswered conversations only.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getDialogs($access_token, $params = array()) {
+    public function getDialogs(string $access_token, array $params = array()) {
         return $this->request->post('messages.getDialogs', $access_token, $params);
     }
 
@@ -80,11 +80,11 @@ class Messages {
      *      - array message_ids: Message IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('messages.getById', $access_token, $params);
     }
 
@@ -104,11 +104,11 @@ class Messages {
      *      - integer count: Number of messages to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function search($access_token, $params = array()) {
+    public function search(string $access_token, array $params = array()) {
         return $this->request->post('messages.search', $access_token, $params);
     }
 
@@ -127,11 +127,11 @@ class Messages {
      *        @see MessagesGetHistoryRev
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getHistory($access_token, $params = array()) {
+    public function getHistory(string $access_token, array $params = array()) {
         return $this->request->post('messages.getHistory', $access_token, $params);
     }
 
@@ -151,11 +151,11 @@ class Messages {
      *      - array fields: Additional profile [vk.com/dev/fields|fields] to return. 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getHistoryAttachments($access_token, $params = array()) {
+    public function getHistoryAttachments(string $access_token, array $params = array()) {
         return $this->request->post('messages.getHistoryAttachments', $access_token, $params);
     }
 
@@ -185,11 +185,11 @@ class Messages {
      *      - boolean notification: '1' if the message is a notification (for community messages).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function send($access_token, $params = array()) {
+    public function send(string $access_token, array $params = array()) {
         return $this->request->post('messages.send', $access_token, $params);
     }
 
@@ -202,11 +202,11 @@ class Messages {
      *      - boolean spam: '1' — to mark message as spam.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function delete($access_token, $params = array()) {
+    public function delete(string $access_token, array $params = array()) {
         return $this->request->post('messages.delete', $access_token, $params);
     }
 
@@ -223,11 +223,11 @@ class Messages {
      *        the method shall be called several times."
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteDialog($access_token, $params = array()) {
+    public function deleteDialog(string $access_token, array $params = array()) {
         return $this->request->post('messages.deleteDialog', $access_token, $params);
     }
 
@@ -239,11 +239,11 @@ class Messages {
      *      - integer message_id: ID of a previously-deleted message to restore.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restore($access_token, $params = array()) {
+    public function restore(string $access_token, array $params = array()) {
         return $this->request->post('messages.restore', $access_token, $params);
     }
 
@@ -258,11 +258,11 @@ class Messages {
      *      - integer start_message_id: Message ID to start from.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function markAsRead($access_token, $params = array()) {
+    public function markAsRead(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsRead', $access_token, $params);
     }
 
@@ -275,11 +275,11 @@ class Messages {
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function markAsImportant($access_token, $params = array()) {
+    public function markAsImportant(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsImportant', $access_token, $params);
     }
 
@@ -292,11 +292,11 @@ class Messages {
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function markAsImportantDialog($access_token, $params = array()) {
+    public function markAsImportantDialog(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsImportantDialog', $access_token, $params);
     }
 
@@ -309,11 +309,11 @@ class Messages {
      *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function markAsUnansweredDialog($access_token, $params = array()) {
+    public function markAsUnansweredDialog(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsUnansweredDialog', $access_token, $params);
     }
 
@@ -327,11 +327,11 @@ class Messages {
      *        [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getLongPollServer($access_token, $params = array()) {
+    public function getLongPollServer(string $access_token, array $params = array()) {
         return $this->request->post('messages.getLongPollServer', $access_token, $params);
     }
 
@@ -356,11 +356,11 @@ class Messages {
      *        are taken into account.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getLongPollHistory($access_token, $params = array()) {
+    public function getLongPollHistory(string $access_token, array $params = array()) {
         return $this->request->post('messages.getLongPollHistory', $access_token, $params);
     }
 
@@ -378,11 +378,11 @@ class Messages {
      *        @see MessagesGetChatNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getChat($access_token, $params = array()) {
+    public function getChat(string $access_token, array $params = array()) {
         return $this->request->post('messages.getChat', $access_token, $params);
     }
 
@@ -395,11 +395,11 @@ class Messages {
      *      - string title: Chat title.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function createChat($access_token, $params = array()) {
+    public function createChat(string $access_token, array $params = array()) {
         return $this->request->post('messages.createChat', $access_token, $params);
     }
 
@@ -412,11 +412,11 @@ class Messages {
      *      - string title: New title of the chat.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editChat($access_token, $params = array()) {
+    public function editChat(string $access_token, array $params = array()) {
         return $this->request->post('messages.editChat', $access_token, $params);
     }
 
@@ -434,11 +434,11 @@ class Messages {
      *        @see MessagesGetChatUsersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getChatUsers($access_token, $params = array()) {
+    public function getChatUsers(string $access_token, array $params = array()) {
         return $this->request->post('messages.getChatUsers', $access_token, $params);
     }
 
@@ -453,11 +453,11 @@ class Messages {
      *        'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function setActivity($access_token, $params = array()) {
+    public function setActivity(string $access_token, array $params = array()) {
         return $this->request->post('messages.setActivity', $access_token, $params);
     }
 
@@ -471,11 +471,11 @@ class Messages {
      *      - array fields: Profile fields to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function searchDialogs($access_token, $params = array()) {
+    public function searchDialogs(string $access_token, array $params = array()) {
         return $this->request->post('messages.searchDialogs', $access_token, $params);
     }
 
@@ -488,11 +488,11 @@ class Messages {
      *      - integer user_id: ID of the user to be added to the chat.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function addChatUser($access_token, $params = array()) {
+    public function addChatUser(string $access_token, array $params = array()) {
         return $this->request->post('messages.addChatUser', $access_token, $params);
     }
 
@@ -506,11 +506,11 @@ class Messages {
      *      - string user_id: ID of the user to be removed from the chat.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function removeChatUser($access_token, $params = array()) {
+    public function removeChatUser(string $access_token, array $params = array()) {
         return $this->request->post('messages.removeChatUser', $access_token, $params);
     }
 
@@ -522,11 +522,11 @@ class Messages {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getLastActivity($access_token, $params = array()) {
+    public function getLastActivity(string $access_token, array $params = array()) {
         return $this->request->post('messages.getLastActivity', $access_token, $params);
     }
 
@@ -540,11 +540,11 @@ class Messages {
      *        image.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function setChatPhoto($access_token, $params = array()) {
+    public function setChatPhoto(string $access_token, array $params = array()) {
         return $this->request->post('messages.setChatPhoto', $access_token, $params);
     }
 
@@ -556,11 +556,11 @@ class Messages {
      *      - integer chat_id: Chat ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteChatPhoto($access_token, $params = array()) {
+    public function deleteChatPhoto(string $access_token, array $params = array()) {
         return $this->request->post('messages.deleteChatPhoto', $access_token, $params);
     }
 
@@ -572,11 +572,11 @@ class Messages {
      *      - integer group_id: Group ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function denyMessagesFromGroup($access_token, $params = array()) {
+    public function denyMessagesFromGroup(string $access_token, array $params = array()) {
         return $this->request->post('messages.denyMessagesFromGroup', $access_token, $params);
     }
 
@@ -588,11 +588,11 @@ class Messages {
      *      - integer group_id: Group ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function allowMessagesFromGroup($access_token, $params = array()) {
+    public function allowMessagesFromGroup(string $access_token, array $params = array()) {
         return $this->request->post('messages.allowMessagesFromGroup', $access_token, $params);
     }
 
@@ -605,11 +605,11 @@ class Messages {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function isMessagesFromGroupAllowed($access_token, $params = array()) {
+    public function isMessagesFromGroupAllowed(string $access_token, array $params = array()) {
         return $this->request->post('messages.isMessagesFromGroupAllowed', $access_token, $params);
     }
 }

@@ -2,33 +2,38 @@
 
 namespace VK\OAuth;
 
-use VK\Enums\OAuthDisplay;
-use VK\Enums\OAuthGroupScope;
-use VK\Enums\OAuthResponseType;
-use VK\Enums\OAuthUserScope;
+use VK\OAuth\Enums\OAuthDisplay;
+use VK\OAuth\Enums\OAuthGroupScope;
+use VK\OAuth\Enums\OAuthResponseType;
+use VK\OAuth\Enums\OAuthUserScope;
 use VK\Exceptions\HttpRequestException;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKOAuthException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
-use VK\Client\VKClientBase;
 
-class OAuthClient extends VKClientBase {
-    const API_PARAM_VERSION = 'v';
-    const API_PARAM_CLIENT_ID = 'client_id';
-    const API_PARAM_REDIRECT_URI = 'redirect_uri';
-    const API_PARAM_DISPLAY = 'display';
-    const API_PARAM_SCOPE = 'scope';
-    const API_PARAM_RESPONSE_TYPE = 'response_type';
-    const API_PARAM_STATE = 'state';
-    const API_PARAM_CLIENT_SECRET = 'client_secret';
-    const API_PARAM_CODE = 'code';
+class OAuthClient {
+    protected const API_PARAM_VERSION = 'v';
+    protected const API_PARAM_CLIENT_ID = 'client_id';
+    protected const API_PARAM_REDIRECT_URI = 'redirect_uri';
+    protected const API_PARAM_DISPLAY = 'display';
+    protected const API_PARAM_SCOPE = 'scope';
+    protected const API_PARAM_RESPONSE_TYPE = 'response_type';
+    protected const API_PARAM_STATE = 'state';
+    protected const API_PARAM_CLIENT_SECRET = 'client_secret';
+    protected const API_PARAM_CODE = 'code';
 
-    const ERROR_KEY = 'error';
-    const ERROR_DESCRIPTION_KEY = 'error_description';
+    protected const ERROR_KEY = 'error';
+    protected const ERROR_DESCRIPTION_KEY = 'error_description';
 
-    const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
-    const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
+    protected const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
+    protected const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
+
+    protected const CONNECTION_TIMEOUT = 10;
+    protected const HTTP_STATUS_CODE_OK = 200;
+
+    protected $http_client;
+    protected $api_version;
 
     public function __construct($api_version) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
@@ -48,7 +53,8 @@ class OAuthClient extends VKClientBase {
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    public function authorize($client_id, $redirect_uri, $display, $scope, $response_type, $state = null) {
+    public function authorize(int $client_id, string $redirect_uri, string $display, array $scope,
+                              string $response_type = OAuthResponseType::CODE, ?string $state = null) {
         $scope_value = 0;
         foreach ($scope as $value) {
             $scope_value |= $value;
@@ -85,7 +91,7 @@ class OAuthClient extends VKClientBase {
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    public function getAccessToken($client_id, $client_secret, $redirect_uri, $code) {
+    public function getAccessToken(int $client_id, string $client_secret, string $redirect_uri, string $code) {
         $params = array(
             static::API_PARAM_CLIENT_ID => $client_id,
             static::API_PARAM_CLIENT_SECRET => $client_secret,
@@ -112,7 +118,7 @@ class OAuthClient extends VKClientBase {
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    private function checkOAuthResponse($response) {
+    private function checkOAuthResponse(TransportClientResponse $response) {
         $this->checkHttpStatus($response);
 
         $body = $response->getBody();
@@ -126,6 +132,34 @@ class OAuthClient extends VKClientBase {
             return $decode_body['access_token'];
         } else {
             return $decode_body;
+        }
+    }
+
+    /**
+     * Decodes body.
+     *
+     * @param string $body
+     *
+     * @return mixed
+     */
+    protected function decodeBody(string $body) {
+        $decoded_body = json_decode($body, true);
+
+        if ($decoded_body === null || !is_array($decoded_body)) {
+            $decoded_body = [];
+        }
+
+        return $decoded_body;
+    }
+
+    /**
+     * @param TransportClientResponse $response
+     *
+     * @throws VKClientException
+     */
+    protected function checkHttpStatus(TransportClientResponse $response) {
+        if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
+            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
         }
     }
 }

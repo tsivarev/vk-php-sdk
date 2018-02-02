@@ -2,18 +2,18 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Storage {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -27,11 +27,11 @@ class Storage {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('storage.get', $access_token, $params);
     }
 
@@ -45,11 +45,11 @@ class Storage {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function set($access_token, $params = array()) {
+    public function set(string $access_token, array $params = array()) {
         return $this->request->post('storage.set', $access_token, $params);
     }
 
@@ -63,11 +63,11 @@ class Storage {
      *      - integer count: amount of variable names the info needs to be collected from.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getKeys($access_token, $params = array()) {
+    public function getKeys(string $access_token, array $params = array()) {
         return $this->request->post('storage.getKeys', $access_token, $params);
     }
 }

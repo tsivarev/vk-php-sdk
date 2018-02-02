@@ -2,9 +2,9 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\BoardGetTopicsOrder;
 use VK\Actions\Enums\BoardGetTopicsPreview;
 use VK\Actions\Enums\BoardGetCommentsSort;
@@ -12,11 +12,11 @@ use VK\Actions\Enums\BoardGetCommentsSort;
 class Board {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -44,11 +44,11 @@ class Board {
      *        preview the full comment, specify '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getTopics($access_token, $params = array()) {
+    public function getTopics(string $access_token, array $params = array()) {
         return $this->request->post('board.getTopics', $access_token, $params);
     }
 
@@ -71,11 +71,11 @@ class Board {
      *        @see BoardGetCommentsSort
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getComments($access_token, $params = array()) {
+    public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('board.getComments', $access_token, $params);
     }
 
@@ -96,11 +96,11 @@ class Board {
      *        reference, an error will be thrown.",
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function addTopic($access_token, $params = array()) {
+    public function addTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.addTopic', $access_token, $params);
     }
 
@@ -122,11 +122,11 @@ class Board {
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function createComment($access_token, $params = array()) {
+    public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('board.createComment', $access_token, $params);
     }
 
@@ -139,11 +139,11 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteTopic($access_token, $params = array()) {
+    public function deleteTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.deleteTopic', $access_token, $params);
     }
 
@@ -157,11 +157,11 @@ class Board {
      *      - string title: New title of the topic.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editTopic($access_token, $params = array()) {
+    public function editTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.editTopic', $access_token, $params);
     }
 
@@ -180,11 +180,11 @@ class Board {
      *        '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function editComment($access_token, $params = array()) {
+    public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('board.editComment', $access_token, $params);
     }
 
@@ -198,11 +198,11 @@ class Board {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restoreComment($access_token, $params = array()) {
+    public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('board.restoreComment', $access_token, $params);
     }
 
@@ -216,11 +216,11 @@ class Board {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function deleteComment($access_token, $params = array()) {
+    public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('board.deleteComment', $access_token, $params);
     }
 
@@ -233,11 +233,11 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function openTopic($access_token, $params = array()) {
+    public function openTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.openTopic', $access_token, $params);
     }
 
@@ -250,11 +250,11 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function closeTopic($access_token, $params = array()) {
+    public function closeTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.closeTopic', $access_token, $params);
     }
 
@@ -267,11 +267,11 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function fixTopic($access_token, $params = array()) {
+    public function fixTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.fixTopic', $access_token, $params);
     }
 
@@ -284,11 +284,11 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function unfixTopic($access_token, $params = array()) {
+    public function unfixTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.unfixTopic', $access_token, $params);
     }
 }

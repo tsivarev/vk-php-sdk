@@ -2,18 +2,18 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 
 class Stats {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -28,11 +28,11 @@ class Stats {
      *      - string date_to: End datestamp (in Unix time) of statistics to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('stats.get', $access_token, $params);
     }
 
@@ -43,11 +43,11 @@ class Stats {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function trackVisitor($access_token, $params = array()) {
+    public function trackVisitor(string $access_token, array $params = array()) {
         return $this->request->post('stats.trackVisitor', $access_token, $params);
     }
 
@@ -61,11 +61,11 @@ class Stats {
      *        community wall.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getPostReach($access_token, $params = array()) {
+    public function getPostReach(string $access_token, array $params = array()) {
         return $this->request->post('stats.getPostReach', $access_token, $params);
     }
 }

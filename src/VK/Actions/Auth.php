@@ -2,19 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\AuthSignupSex;
 
 class Auth {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -29,11 +29,11 @@ class Auth {
      *      - boolean auth_by_phone:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function checkPhone($access_token, $params = array()) {
+    public function checkPhone(string $access_token, array $params = array()) {
         return $this->request->post('auth.checkPhone', $access_token, $params);
     }
 
@@ -60,11 +60,11 @@ class Auth {
      *      - string sid: Session ID required for method recall when SMS was not delivered.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function signup($access_token, $params = array()) {
+    public function signup(string $access_token, array $params = array()) {
         return $this->request->post('auth.signup', $access_token, $params);
     }
 
@@ -83,11 +83,11 @@ class Auth {
      *      - integer intro:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function confirm($access_token, $params = array()) {
+    public function confirm(string $access_token, array $params = array()) {
         return $this->request->post('auth.confirm', $access_token, $params);
     }
 
@@ -101,11 +101,11 @@ class Auth {
      *      - string last_name: User last name.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function restore($access_token, $params = array()) {
+    public function restore(string $access_token, array $params = array()) {
         return $this->request->post('auth.restore', $access_token, $params);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\UsersGetNameCase;
 use VK\Actions\Enums\UsersSearchSort;
 use VK\Actions\Enums\UsersSearchSex;
@@ -17,11 +17,11 @@ use VK\Actions\Enums\UsersGetNearbyNameCase;
 class Users {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -41,11 +41,11 @@ class Users {
      *        @see UsersGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('users.get', $access_token, $params);
     }
 
@@ -95,11 +95,11 @@ class Users {
      *      - array from_list:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function search($access_token, $params = array()) {
+    public function search(string $access_token, array $params = array()) {
         return $this->request->post('users.search', $access_token, $params);
     }
 
@@ -111,11 +111,11 @@ class Users {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function isAppUser($access_token, $params = array()) {
+    public function isAppUser(string $access_token, array $params = array()) {
         return $this->request->post('users.isAppUser', $access_token, $params);
     }
 
@@ -132,11 +132,11 @@ class Users {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getSubscriptions($access_token, $params = array()) {
+    public function getSubscriptions(string $access_token, array $params = array()) {
         return $this->request->post('users.getSubscriptions', $access_token, $params);
     }
 
@@ -157,11 +157,11 @@ class Users {
      *        @see UsersGetFollowersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getFollowers($access_token, $params = array()) {
+    public function getFollowers(string $access_token, array $params = array()) {
         return $this->request->post('users.getFollowers', $access_token, $params);
     }
 
@@ -177,11 +177,11 @@ class Users {
      *      - string comment: Comment describing the complaint.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function report($access_token, $params = array()) {
+    public function report(string $access_token, array $params = array()) {
         return $this->request->post('users.report', $access_token, $params);
     }
 
@@ -208,11 +208,11 @@ class Users {
      *        @see UsersGetNearbyNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getNearby($access_token, $params = array()) {
+    public function getNearby(string $access_token, array $params = array()) {
         return $this->request->post('users.getNearby', $access_token, $params);
     }
 }

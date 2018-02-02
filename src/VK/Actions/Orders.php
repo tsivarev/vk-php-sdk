@@ -2,19 +2,19 @@
 
 namespace VK\Actions;
 
-use VK\Client\VKAPIRequest;
+use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
-use VK\Exceptions\VKAPIException;
+use VK\Exceptions\Api\VKApiException;
 use VK\Actions\Enums\OrdersChangeStateAction;
 
 class Orders {
 
     /**
-     * @var VKAPIRequest
+     * @var VKApiRequest
      **/
     private $request;
 
-    public function __construct($request) {
+    public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
 
@@ -28,11 +28,11 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function get($access_token, $params = array()) {
+    public function get(string $access_token, array $params = array()) {
         return $this->request->post('orders.get', $access_token, $params);
     }
 
@@ -47,11 +47,11 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getById($access_token, $params = array()) {
+    public function getById(string $access_token, array $params = array()) {
         return $this->request->post('orders.getById', $access_token, $params);
     }
 
@@ -70,11 +70,11 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function changeState($access_token, $params = array()) {
+    public function changeState(string $access_token, array $params = array()) {
         return $this->request->post('orders.changeState', $access_token, $params);
     }
 
@@ -87,11 +87,11 @@ class Orders {
      *      - array votes:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKAPIException in case of network error
+     * @throws VKClientException in case of error on the Api side
+     * @throws VKApiException in case of network error
      * 
      **/
-    public function getAmount($access_token, $params = array()) {
+    public function getAmount(string $access_token, array $params = array()) {
         return $this->request->post('orders.getAmount', $access_token, $params);
     }
 }

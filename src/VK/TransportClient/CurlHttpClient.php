@@ -5,12 +5,12 @@ namespace VK\TransportClient;
 use VK\Exceptions\HttpRequestException;
 
 class CurlHttpClient implements TransportClient {
-    const UPLOAD_CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
-    const QUESTION_MARK = '?';
+    protected const UPLOAD_CONTENT_TYPE_HEADER = 'Content-Type: multipart/form-data';
+    protected const QUESTION_MARK = '?';
 
     protected $initial_opts;
 
-    public function __construct($connection_timeout) {
+    public function __construct(int $connection_timeout) {
         $this->initial_opts = array(
             CURLOPT_HEADER => true,
             CURLOPT_CONNECTTIMEOUT => $connection_timeout,
@@ -27,7 +27,7 @@ class CurlHttpClient implements TransportClient {
      * @return TransportClientResponse
      * @throws HttpRequestException
      */
-    public function post($url, $payload = null) {
+    public function post(string $url, ?array $payload = null) {
         return $this->sendRequest($url, array(
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => $payload
@@ -43,7 +43,7 @@ class CurlHttpClient implements TransportClient {
      * @return TransportClientResponse
      * @throws HttpRequestException
      */
-    public function get($url, $payload = null) {
+    public function get(string $url, ?array $payload = null) {
         return $this->sendRequest($url . static::QUESTION_MARK . http_build_query($payload), array());
     }
 
@@ -57,7 +57,7 @@ class CurlHttpClient implements TransportClient {
      * @return TransportClientResponse
      * @throws HttpRequestException
      */
-    public function upload($url, $parameter_name, $path) {
+    public function upload(string $url, string $parameter_name, string $path) {
         $payload = array();
         $payload[$parameter_name] = (class_exists('CURLFile', false)) ?
             new \CURLFile($path) : '@' . $path;
@@ -80,7 +80,7 @@ class CurlHttpClient implements TransportClient {
      * @return TransportClientResponse
      * @throws HttpRequestException
      */
-    public function sendRequest($url, $opts) {
+    public function sendRequest(string $url, array $opts) {
         $curl = curl_init($url);
 
         curl_setopt_array($curl, $this->initial_opts + $opts);
@@ -113,7 +113,7 @@ class CurlHttpClient implements TransportClient {
      *
      * @return TransportClientResponse
      */
-    protected function parseRawResponse($response) {
+    protected function parseRawResponse(string $response) {
         list($raw_headers, $body) = $this->extractResponseHeadersAndBody($response);
         list($http_status, $headers) = $this->getHeaders($raw_headers);
         return new TransportClientResponse($http_status, $headers, $body);
@@ -122,9 +122,11 @@ class CurlHttpClient implements TransportClient {
     /**
      * Extracts the headers and the body into a two-part array.
      *
+     * @param string $response
+     *
      * @return array
      */
-    protected function extractResponseHeadersAndBody($response) {
+    protected function extractResponseHeadersAndBody(string $response) {
         $parts = explode("\r\n\r\n", $response);
         $raw_body = array_pop($parts);
         $raw_headers = implode("\r\n\r\n", $parts);
@@ -139,7 +141,7 @@ class CurlHttpClient implements TransportClient {
      *
      * @return array
      */
-    protected function getHeaders($raw_headers) {
+    protected function getHeaders(string $raw_headers) {
         // Normalize line breaks
         $raw_headers = str_replace("\r\n", "\n", $raw_headers);
 
@@ -167,11 +169,11 @@ class CurlHttpClient implements TransportClient {
     /**
      * Sets the HTTP response code from a raw header.
      *
-     * @param string
+     * @param string $raw_response_header
      *
      * @return int
      */
-    protected function getHttpStatus($raw_response_header) {
+    protected function getHttpStatus(string $raw_response_header) {
         preg_match('|HTTP/\d\.\d\s+(\d+)\s+.*|', $raw_response_header, $match);
         return (int)$match[1];
     }
