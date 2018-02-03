@@ -3,13 +3,13 @@
 namespace VK\Client;
 
 class VKApiError {
-    protected const ERROR_CODE_KEY = 'error_code';
-    protected const ERROR_MSG_KEY = 'error_msg';
-    protected const CAPTCHA_SID_KEY = '$captcha_sid';
-    protected const CAPTCHA_IMG_KEY = '$captcha_img';
-    protected const CONFIRMATION_TEXT_KEY = '$confirmation_text';
-    protected const REDIRECT_URI_KEY = '$redirect_uri';
-    protected const REQUEST_PARAMS_KEY = '$request_params';
+    protected const KEY_ERROR_CODE = 'error_code';
+    protected const KEY_ERROR_MSG = 'error_msg';
+    protected const KEY_CAPTCHA_SID = '$captcha_sid';
+    protected const KEY_CAPTCHA_IMG = '$captcha_img';
+    protected const KEY_CONFIRMATION_TEXT = '$confirmation_text';
+    protected const KEY_REDIRECT_URI = '$redirect_uri';
+    protected const KEY_REQUEST_PARAMS = '$request_params';
 
     protected $error_code;
     protected $error_msg;
@@ -20,13 +20,13 @@ class VKApiError {
     protected $request_params;
 
     public function __construct(array $error) {
-        $this->error_code = $error[static::ERROR_CODE_KEY];
-        $this->error_msg = $error[static::ERROR_MSG_KEY];
-        $this->captcha_sid = $error[static::CAPTCHA_SID_KEY];
-        $this->captcha_img = $error[static::CAPTCHA_IMG_KEY];
-        $this->confirmation_text = $error[static::CONFIRMATION_TEXT_KEY];
-        $this->redirect_uri = $error[static::REDIRECT_URI_KEY];
-        $this->request_params = $error[static::REQUEST_PARAMS_KEY];
+        $this->error_code = $error[static::KEY_ERROR_CODE];
+        $this->error_msg = $error[static::KEY_ERROR_MSG];
+        $this->captcha_sid = $error[static::KEY_CAPTCHA_SID];
+        $this->captcha_img = $error[static::KEY_CAPTCHA_IMG];
+        $this->confirmation_text = $error[static::KEY_CONFIRMATION_TEXT];
+        $this->redirect_uri = $error[static::KEY_REDIRECT_URI];
+        $this->request_params = $error[static::KEY_REQUEST_PARAMS];
     }
 
     public function getErrorCode() {

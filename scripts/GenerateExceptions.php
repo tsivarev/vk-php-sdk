@@ -11,18 +11,18 @@ class GenerateExceptions {
 
     protected const TAB_SIZE = 4;
 
-    protected const ERRORS_KEY = 'errors';
-    protected const NAME_KEY = 'name';
-    protected const CODE_KEY = 'code';
-    protected const DESCRIPTION_KEY = 'description';
+    protected const KEY_ERRORS = 'errors';
+    protected const KEY_NAME = 'name';
+    protected const KEY_CODE = 'code';
+    protected const KEY_DESCRIPTION = 'description';
     protected const PHP = '.php';
     protected const EXCEPTION_MAPPER = 'ExceptionMapper';
 
     protected const VK_API_EXCEPTION = 'VKApiException';
     protected const NAMESPACE_API = 'VK\Exceptions\Api';
 
-    protected const SCHEMA_PATH = '/vendor/vkcom/vk-api-schema/methods.json';
-    protected const EXCEPTIONS_PATH = '/src/VK/Exceptions/Api/';
+    protected const PATH_SCHEMA = '/vendor/vkcom/vk-api-schema/methods.json';
+    protected const PATH_EXCEPTIONS = '/src/VK/Exceptions/Api/';
 
     protected $response = null;
 
@@ -38,11 +38,11 @@ class GenerateExceptions {
     public function generate(string $schema_path = null, string $exceptions_path = null, string $mapper_path = null) {
         if ($schema_path == null) {
             $schema_path = (dirname(__DIR__)) .
-                static::SCHEMA_PATH;
+                static::PATH_SCHEMA;
         }
 
         if ($exceptions_path == null) {
-            $exceptions_path = dirname(__DIR__) . static::EXCEPTIONS_PATH;
+            $exceptions_path = dirname(__DIR__) . static::PATH_EXCEPTIONS;
         }
 
         if ($mapper_path == null) {
@@ -51,14 +51,14 @@ class GenerateExceptions {
 
         $this->getSchemaFromFile($schema_path);
 
-        $errors = $this->response[static::ERRORS_KEY];
+        $errors = $this->response[static::KEY_ERRORS];
 
         $switch_content = '';
 
         foreach ($errors as $error) {
-            $name = $error[static::NAME_KEY];
-            $code = $error[static::CODE_KEY];
-            $description = $error[static::DESCRIPTION_KEY];
+            $name = $error[static::KEY_NAME];
+            $code = $error[static::KEY_CODE];
+            $description = $error[static::KEY_DESCRIPTION];
 
             $class_name = str_replace(static::SPACE, '',
                 ucwords(str_replace(static::UNDERSCORE, static::SPACE, strtolower($name))));
@@ -124,7 +124,7 @@ class GenerateExceptions {
     }
 
     protected function buildParseFunction($switch_content) {
-        $result = $this->tab(1) . 'public function parse(VKApiError $error) {';
+        $result = $this->tab(1) . 'public static function parse(VKApiError $error) {';
         $result .= PHP_EOL . $this->tab(2) . 'switch($error->getErrorCode()) {';
         $result .= PHP_EOL . $switch_content;
         $result .= PHP_EOL . $this->tab(2) . static::CLOSING_BRACKET;

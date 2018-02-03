@@ -5,7 +5,7 @@ namespace VK\Exceptions\Api;
 use VK\CLient\VKApiError;
 
 class ExceptionMapper {
-    public function parse(VKApiError $error) {
+    public static function parse(VKApiError $error) {
         switch($error->getErrorCode()) {
             case 1:
                 return new ApiUnknownException($error->getErrorMsg());
