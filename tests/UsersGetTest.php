@@ -9,7 +9,7 @@ final class UsersGetTest extends TestCase {
     const USER_ID_2 = '1';
 
     public function testCheckResponse() {
-        $users = array(static::USER_ID_1, static::USER_ID_2);
+        $users = array(static::USER_ID_2, static::USER_ID_1);
         $fields = array('city', 'photo');
 
         $vk = new VKApiClient();
