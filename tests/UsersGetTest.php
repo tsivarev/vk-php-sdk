@@ -22,7 +22,7 @@ final class UsersGetTest extends TestCase {
 
         $this->assertEquals($response[0]['first_name'], 'Lindsey');
         $this->assertEquals($response[0]['city']['title'], 'Los Angeles');
-        $this->assertEquals($response[1]['first_name'], 'Pavel2');
+        $this->assertEquals($response[1]['first_name'], 'Pavel1');
         $this->assertNotNull($response[1]['photo']);
     }
 }
