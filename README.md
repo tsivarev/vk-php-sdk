@@ -31,7 +31,9 @@ OAuth 2.0 Authorization Code Flow allows calling methods from the server side.
 This flow includes two steps — obtaining an authorization code and exchanging the code for an access token. Primarily you should obtain the "code" ([manual](https://vk.com/dev/authcode_flow_user)) by redirecting the user to the authorization page using the following method:
 
 ```php
-$vk = $vk->oauth()->authorize('{client_id}', '{redirect_uri}', '{display}', '{scope_array}', 
+$oauth = new VKOAuth();
+
+$oauth->authorize('{client_id}', '{redirect_uri}', '{display}', '{scope_array}', 
     OAuthResponseType::CODE, '{api_version}', '{state}');
 ```
 
@@ -46,7 +48,7 @@ REDIRECT_URI?code=CODE
 Then use this method to get the access token:
 
 ```php
-$access_token = $vk->oauth()->getAccessToken('{client_id}', '{client_secret}', '{redirect_uri}', '{code}');
+$access_token = $oauth->getAccessToken('{client_id}', '{client_secret}', '{redirect_uri}', '{code}');
 ```
 
 The '{redirect_uri}' should be the URL that was used to get a code at the first step.
@@ -60,7 +62,7 @@ You can find the full list of VK API methods [here](https://vk.com/dev/methods).
 Example of calling method **users.get**:
  
 ```php
-$users = array('{user_id_1}', '{user_id_2}');
+$users = array(1, 210700286);
 $fields = array('city', 'photo');
 
 $response = $vk->users()->get($access_token, array(
@@ -134,10 +136,10 @@ $vk->groups()->setLongPollSettings($access_token, array(
 ));
 ```
 
-Override methods from CallbackAPILongPoll class for handling events:
+Override methods from CallbackApiHandler class for handling events:
 
 ```php
-class CallbackAPIHandler extends CallbackAPILongPoll {
+class CallbackAPIMyHandler extends CallbackApiHandler {
     public function messageNew($object) {
         var_dump('New message: ' . $object['body']);
     }
@@ -148,9 +150,10 @@ class CallbackAPIHandler extends CallbackAPILongPoll {
 }
 ```
 
-To start listening to LongPoll events, create an instance of your CallbackAPIHandler class and call its method run():
+To start listening to LongPoll events, create an instance of your CallbackAPIMyHandler class, instance of CallbackApiLongPollExecutor class and call method run():
 
 ```php
-$handler = new CallbackAPIHandler('{access_token}', '{group_id}');
-$handler->run();
+$handler = new CallbackApiMyHandler();
+$executor = new CallbackApiLongPollExecutor($vk, $access_token, $group_id, $handler);
+$executor->run();
 ```

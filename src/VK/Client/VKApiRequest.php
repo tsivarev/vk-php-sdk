@@ -10,6 +10,8 @@ use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
 class VKApiRequest {
+    protected const VK_API_VERSION = '5.69';
+
     protected const API_PARAM_VERSION = 'v';
     protected const API_PARAM_ACCESS_TOKEN = 'access_token';
 
@@ -25,7 +27,7 @@ class VKApiRequest {
     protected $http_client;
     protected $api_version;
 
-    public function __construct(string $api_version, string $host = self::VK_API_HOST) {
+    public function __construct(string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;
         $this->host = $host;
@@ -97,7 +99,7 @@ class VKApiRequest {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if ($decode_body[static::KEY_ERROR]) {
+        if (isset($decode_body[static::KEY_ERROR])) {
             $error = $decode_body[static::KEY_ERROR];
             $api_error = new VKApiError($error);
             throw ExceptionMapper::parse($api_error);

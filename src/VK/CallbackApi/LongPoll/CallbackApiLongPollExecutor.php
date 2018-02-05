@@ -134,16 +134,16 @@ class CallbackApiLongPollExecutor {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if ($decode_body[static::KEY_FAILED]) {
+        if (isset($decode_body[static::KEY_FAILED])) {
             switch ($decode_body[static::KEY_FAILED]) {
                 case static::ERROR_CODE_INCORRECT_TS_VALUE:
                     $ts = $params[static::API_PARAM_TS];
                     $msg = '\'ts\' value is incorrect, minimal value is 1, maximal value is ' . $ts;
                     throw new LongPollServerTsException($msg);
                 case static::ERROR_CODE_TOKEN_EXPIRED:
-                    throw new LongPollServerKeyExpiredException("Try to generate a new key.");
+                    throw new LongPollServerKeyExpiredException('Try to generate a new key.');
                 default:
-                    throw new VKClientException("Unknown LongPollServer exception, something went wrong. {$decode_body}");
+                    throw new VKClientException('Unknown LongPollServer exception, something went wrong. ' . $decode_body);
             }
         }
 
@@ -174,7 +174,7 @@ class CallbackApiLongPollExecutor {
      */
     protected function checkHttpStatus(TransportClientResponse $response) {
         if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
-            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
+            throw new VKClientException('Invalid http status: ' . $response->getHttpStatus());
         }
     }
 }

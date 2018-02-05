@@ -13,6 +13,8 @@ use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
 class VKOAuth {
+    protected const VK_API_VERSION = '5.69';
+
     protected const API_PARAM_VERSION = 'v';
     protected const API_PARAM_CLIENT_ID = 'client_id';
     protected const API_PARAM_REDIRECT_URI = 'redirect_uri';
@@ -38,7 +40,7 @@ class VKOAuth {
     protected $url_authorize;
     protected $url_access_token;
 
-    public function __construct($api_version, $url_authorize = self::URL_AUTHORIZE,
+    public function __construct($api_version = self::VK_API_VERSION, $url_authorize = self::URL_AUTHORIZE,
                                 $url_access_token = self::URL_ACCESS_TOKEN) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;
