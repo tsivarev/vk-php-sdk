@@ -9,7 +9,7 @@ final class UsersGetTest extends TestCase {
     const USER_ID_2 = '1';
 
     public function testCheckResponse() {
-        $users = array(static::USER_ID_2, static::USER_ID_1);
+        $users = array(static::USER_ID_1, static::USER_ID_2);
         $fields = array('city', 'photo');
 
         $vk = new VKApiClient();
@@ -22,7 +22,7 @@ final class UsersGetTest extends TestCase {
 
         $this->assertEquals($response[0]['first_name'], 'Lindsey');
         $this->assertEquals($response[0]['city']['title'], 'Los Angeles');
-        $this->assertEquals($response[1]['first_name'], 'Pavel1');
+        $this->assertEquals($response[1]['first_name'], 'Pavel');
         $this->assertNotNull($response[1]['photo']);
     }
 }
