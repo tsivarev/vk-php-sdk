@@ -2,42 +2,53 @@
 
 namespace VK\OAuth;
 
-use VK\OAuth\Enums\OAuthDisplay;
-use VK\OAuth\Enums\OAuthGroupScope;
-use VK\OAuth\Enums\OAuthResponseType;
-use VK\OAuth\Enums\OAuthUserScope;
 use VK\Exceptions\HttpRequestException;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKOAuthException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
-class OAuthClient {
+abstract class VKOAuth {
+    protected const VK_API_VERSION = '5.69';
+
     protected const API_PARAM_VERSION = 'v';
     protected const API_PARAM_CLIENT_ID = 'client_id';
     protected const API_PARAM_REDIRECT_URI = 'redirect_uri';
+    protected const API_PARAM_GROUP_IDS = 'group_ids';
     protected const API_PARAM_DISPLAY = 'display';
     protected const API_PARAM_SCOPE = 'scope';
     protected const API_PARAM_RESPONSE_TYPE = 'response_type';
     protected const API_PARAM_STATE = 'state';
     protected const API_PARAM_CLIENT_SECRET = 'client_secret';
     protected const API_PARAM_CODE = 'code';
+    protected const API_PARAM_REVOKE = 'revoke';
 
-    protected const ERROR_KEY = 'error';
-    protected const ERROR_DESCRIPTION_KEY = 'error_description';
+    protected const KEY_ERROR = 'error';
+    protected const KEY_ERROR_DESCRIPTION = 'error_description';
+    protected const KEY_ACCESS_TOKEN = 'access_token';
 
-    protected const AUTHORIZE_URL = 'https://oauth.vk.com/authorize';
-    protected const ACCESS_TOKEN_URL = 'https://oauth.vk.com/access_token';
+    protected const URL_AUTHORIZE = 'https://oauth.vk.com/authorize';
 
     protected const CONNECTION_TIMEOUT = 10;
     protected const HTTP_STATUS_CODE_OK = 200;
 
-    protected $http_client;
     protected $api_version;
+    protected $url_authorize;
+    protected $http_client;
+    protected $revoke_auth;
 
-    public function __construct($api_version) {
-        $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
+    /**
+     * VKOAuth constructor.
+     *
+     * @param string $api_version
+     * @param string $url_authorize
+     * @param int $revoke_auth
+     */
+    public function __construct(string $api_version, string $url_authorize, int $revoke_auth = 0) {
         $this->api_version = $api_version;
+        $this->url_authorize = $url_authorize;
+        $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
+        $this->revoke_auth = $revoke_auth;
     }
 
     /**
@@ -45,16 +56,20 @@ class OAuthClient {
      *
      * @param int $client_id
      * @param string $redirect_uri
-     * @param OAuthDisplay $display
-     * @param OAuthUserScope[]|OAuthGroupScope[] $scope
-     * @param OAuthResponseType $response_type
-     * @param string $state
+     * @param array|null $group_ids
+     * @param string $display
+     * @param array $scope
+     * @param string $response_type
+     * @param string|null $state
+     * @param int $revoke
+     *
+     * @return mixed
      *
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    public function authorize(int $client_id, string $redirect_uri, string $display, array $scope,
-                              string $response_type = OAuthResponseType::CODE, ?string $state = null) {
+    public function authorize(int $client_id, string $redirect_uri, array $group_ids = null, string $display, array $scope,
+                              string $response_type, string $state = null) {
         $scope_value = 0;
         foreach ($scope as $value) {
             $scope_value |= $value;
@@ -63,44 +78,19 @@ class OAuthClient {
         $params = array(
             static::API_PARAM_CLIENT_ID => $client_id,
             static::API_PARAM_REDIRECT_URI => $redirect_uri,
+            static::API_PARAM_GROUP_IDS => join(',', $group_ids),
             static::API_PARAM_DISPLAY => $display,
             static::API_PARAM_SCOPE => $scope_value,
             static::API_PARAM_STATE => $state,
             static::API_PARAM_RESPONSE_TYPE => $response_type,
             static::API_PARAM_VERSION => $this->api_version
         );
-
-        try {
-            $response = $this->http_client->post(static::AUTHORIZE_URL, $params);
-        } catch (HttpRequestException $e) {
-            throw new VKClientException($e);
+        if ($this->revoke_auth) {
+            $params[static::API_PARAM_REVOKE] = $this->revoke_auth;
         }
 
-        $this->checkOAuthResponse($response);
-    }
-
-    /**
-     * Returns an access token.
-     *
-     * @param int $client_id
-     * @param string $client_secret
-     * @param string $redirect_uri
-     * @param string $code
-     *
-     * @return string
-     * @throws VKClientException
-     * @throws VKOAuthException
-     */
-    public function getAccessToken(int $client_id, string $client_secret, string $redirect_uri, string $code) {
-        $params = array(
-            static::API_PARAM_CLIENT_ID => $client_id,
-            static::API_PARAM_CLIENT_SECRET => $client_secret,
-            static::API_PARAM_REDIRECT_URI => $redirect_uri,
-            static::API_PARAM_CODE => $code
-        );
-
         try {
-            $response = $this->http_client->post(static::ACCESS_TOKEN_URL, $params);
+            $response = $this->http_client->post(static::URL_AUTHORIZE, $params);
         } catch (HttpRequestException $e) {
             throw new VKClientException($e);
         }
@@ -118,18 +108,18 @@ class OAuthClient {
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    private function checkOAuthResponse(TransportClientResponse $response) {
+    protected function checkOAuthResponse(TransportClientResponse $response) {
         $this->checkHttpStatus($response);
 
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if ($decode_body[static::ERROR_KEY]) {
-            throw new VKOAuthException("{$decode_body[static::ERROR_DESCRIPTION_KEY]}. OAuth error {$decode_body[static::ERROR_KEY]}");
+        if (isset($decode_body[static::KEY_ERROR])) {
+            throw new VKOAuthException("{$decode_body[static::KEY_ERROR_DESCRIPTION]}. OAuth error {$decode_body[static::KEY_ERROR]}");
         }
 
-        if (isset($decode_body['access_token'])) {
-            return $decode_body['access_token'];
+        if (isset($decode_body[static::KEY_ACCESS_TOKEN])) {
+            return $decode_body[static::KEY_ACCESS_TOKEN];
         } else {
             return $decode_body;
         }

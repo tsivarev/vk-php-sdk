@@ -39,7 +39,7 @@ class GenerateActions {
     protected const API_REQUEST_VAR_NAME = 'request';
     protected const API_REQUEST_CLASS_NAME = 'VKApiRequest';
     protected const AUTH_VAR_NAME = 'oauth';
-    protected const AUTH_CLASS_NAME = 'OAuthClient';
+    protected const AUTH_CLASS_NAME = 'VKOAuth';
     protected const VK_API_HOST = 'VK_API_HOST';
     protected const VK_API_VERSION = 'VK_API_VERSION';
     protected const VK_API_VERSION_VALUE = '5.69';
