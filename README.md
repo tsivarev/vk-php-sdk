@@ -74,12 +74,9 @@ You can find the full list of VK API methods [here](https://vk.com/dev/methods).
 Example of calling method **users.get**:
  
 ```php
-$users = array(1, 210700286);
-$fields = array('city', 'photo');
-
 $response = $vk->users()->get($access_token, array(
-    'user_ids' => $users,
-    'fields' => $fields
+    'user_ids' => array(1, 210700286),
+    'fields' => $array('city', 'photo'),
     )
 );
 ```
