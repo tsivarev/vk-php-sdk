@@ -20,13 +20,13 @@ class VKApiError {
     protected $request_params;
 
     public function __construct(array $error) {
-        $this->error_code = $error[static::KEY_ERROR_CODE];
-        $this->error_msg = $error[static::KEY_ERROR_MSG];
-        $this->captcha_sid = $error[static::KEY_CAPTCHA_SID];
-        $this->captcha_img = $error[static::KEY_CAPTCHA_IMG];
-        $this->confirmation_text = $error[static::KEY_CONFIRMATION_TEXT];
-        $this->redirect_uri = $error[static::KEY_REDIRECT_URI];
-        $this->request_params = $error[static::KEY_REQUEST_PARAMS];
+        $this->error_code = isset($error[static::KEY_ERROR_CODE]) ? $error[static::KEY_ERROR_CODE] : null;
+        $this->error_msg = isset($error[static::KEY_ERROR_MSG]) ? $error[static::KEY_ERROR_MSG] : null;
+        $this->captcha_sid = isset($error[static::KEY_CAPTCHA_SID]) ? $error[static::KEY_CAPTCHA_SID] : null;
+        $this->captcha_img = isset($error[static::KEY_CAPTCHA_IMG]) ? $error[static::KEY_CAPTCHA_IMG] : null;
+        $this->confirmation_text = isset($error[static::KEY_CONFIRMATION_TEXT]) ? $error[static::KEY_CONFIRMATION_TEXT] : null;
+        $this->redirect_uri = isset($error[static::KEY_REDIRECT_URI]) ? $error[static::KEY_REDIRECT_URI] : null;
+        $this->request_params = isset($error[static::KEY_REQUEST_PARAMS]) ? $error[static::KEY_REQUEST_PARAMS] : null;
     }
 
     public function getErrorCode() {

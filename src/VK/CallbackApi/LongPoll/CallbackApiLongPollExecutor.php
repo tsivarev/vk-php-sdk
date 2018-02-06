@@ -20,14 +20,16 @@ class CallbackApiLongPollExecutor {
     protected const API_PARAM_WAIT = 'wait';
     protected const VALUE_ACT = 'a_check';
 
-    protected const KEY_FAILED = 'failed';
-    protected const KEY_TS = 'ts';
-    protected const KEY_TIMESTAMP = 'timestamp';
-    protected const KEY_SERVER = 'server';
-    protected const KEY_KEY = 'key';
-    protected const KEY_UPDATES = 'updates';
-    protected const KEY_TYPE = 'type';
-    protected const KEY_OBJECT = 'object';
+    protected const EVENTS_FAILED = 'failed';
+    protected const EVENTS_TIMESTAMP = 'timestamp';
+    protected const EVENTS_UPDATES = 'updates';
+
+    protected const EVENT_TYPE = 'type';
+    protected const EVENT_OBJECT = 'object';
+
+    protected const SERVER_TIMESTAMP = 'ts';
+    protected const SERVER_URL = 'url';
+    protected const SERVER_KEY = 'key';
 
     protected const ERROR_CODE_INCORRECT_TS_VALUE = 1;
     protected const ERROR_CODE_TOKEN_EXPIRED = 2;
@@ -41,6 +43,8 @@ class CallbackApiLongPollExecutor {
     protected $group_id;
     protected $handler;
     protected $http_client;
+    protected $server;
+    protected $last_timestamp = null;
 
     public function __construct(VKApiClient $api_client, string $access_token, int $group_id, CallbackApiHandler $handler) {
         $this->api_client = $api_client;
@@ -53,24 +57,35 @@ class CallbackApiLongPollExecutor {
     /**
      * Starts listening to LongPoll events.
      *
+     * @param int|null $timestamp
+     *
+     * @return null
+     * @throws LongPollServerTsException
      * @throws VKApiException
      * @throws VKClientException
-     * @throws LongPollServerTsException
      */
-    public function run() {
-        $server = $this->getLongPollServer();
-        $last_ts = $server[static::KEY_TS];
+    public function listen(?int $timestamp = null) {
+        if ($this->server === null) {
+            $this->server = $this->getLongPollServer();
+        }
 
-        while (true) {
-            try {
-                $response = $this->getEvents($server[static::KEY_SERVER], $server[static::KEY_KEY], $last_ts);
-                foreach ($response[static::KEY_UPDATES] as $event) {
-                    $this->handler->parseObject($this->group_id, null, $event[static::KEY_TYPE], $event[static::KEY_OBJECT]);
-                }
-                $last_ts = $response[static::KEY_TIMESTAMP];
-            } catch (LongPollServerKeyExpiredException $e) {
-                $server = $this->getLongPollServer();
+        if ($this->last_timestamp === null) {
+            $this->last_timestamp = $this->server[static::SERVER_TIMESTAMP];
+        }
+
+        if ($timestamp === null) {
+            $timestamp = $this->last_timestamp;
+        }
+
+        try {
+            $response = $this->getEvents($this->server[static::SERVER_URL], $this->server[static::SERVER_KEY], $timestamp);
+            foreach ($response[static::EVENTS_UPDATES] as $event) {
+                $this->handler->parseObject($this->group_id, null, $event[static::EVENT_TYPE], $event[static::EVENT_OBJECT]);
             }
+            $this->last_timestamp = $response[static::EVENTS_TIMESTAMP];
+            return $this->last_timestamp;
+        } catch (LongPollServerKeyExpiredException $e) {
+            $this->server = $this->getLongPollServer();
         }
     }
 
@@ -79,11 +94,18 @@ class CallbackApiLongPollExecutor {
      * @throws VKApiException
      * @throws VKClientException
      */
-    protected function getLongPollServer() {
+    public function getLongPollServer() {
         $params = array(
             static::API_PARAM_GROUP_ID => $this->group_id
         );
-        return $this->api_client->groups()->getLongPollServer($this->access_token, $params);
+
+        $server = $this->api_client->groups()->getLongPollServer($this->access_token, $params);
+
+        return array(
+            static::SERVER_URL => $server['server'],
+            static::SERVER_TIMESTAMP => $server['ts'],
+            static::SERVER_KEY => $server['key'],
+        );
     }
 
     /**
@@ -134,8 +156,8 @@ class CallbackApiLongPollExecutor {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if (isset($decode_body[static::KEY_FAILED])) {
-            switch ($decode_body[static::KEY_FAILED]) {
+        if (isset($decode_body[static::EVENTS_FAILED])) {
+            switch ($decode_body[static::EVENTS_FAILED]) {
                 case static::ERROR_CODE_INCORRECT_TS_VALUE:
                     $ts = $params[static::API_PARAM_TS];
                     $msg = '\'ts\' value is incorrect, minimal value is 1, maximal value is ' . $ts;

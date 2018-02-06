@@ -137,7 +137,7 @@ class VKOAuth {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if ($decode_body[static::KEY_ERROR]) {
+        if (isset($decode_body[static::KEY_ERROR])) {
             throw new VKOAuthException("{$decode_body[static::KEY_ERROR_DESCRIPTION]}. OAuth error {$decode_body[static::KEY_ERROR]}");
         }
 
