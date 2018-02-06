@@ -97,7 +97,7 @@ $address = $vk->photos()->getMessagesUploadServer('{access_token}');
 Then use **upload()** method to send files to the **upload_url** address received in the previous step:
 
 ```php
-$photo = $vk->request()->upload($address['upload_url'], 'photo', '/Users/Me/Documents/Photos/my_photo.jpg');
+$photo = $vk->request()->upload($address['upload_url'], 'photo', 'photo.jpg');
 ```
 
 You will get a JSON object with **server**, **photo**, **hash** fields. To save a photo call **photos.saveMessagesPhoto** with these three parameters:
@@ -129,7 +129,7 @@ $address = $vk->video()->save($access_token, array(
 Send a file to **upload_url** received previously calling **upload()** method:
 
 ```php
-$video = $vk->request()->upload($address['upload_url'], 'video_file', '/Users/Me/Documents/Videos/my_video.mp4');
+$video = $vk->request()->upload($address['upload_url'], 'video_file', 'video.mp4');
 ```
 
 Videos are processed for some time after uploading.
