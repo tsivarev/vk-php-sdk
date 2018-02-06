@@ -48,11 +48,6 @@ class VKApiClient {
     private $request;
 
     /**
-     * @var VKOAuth
-     **/
-    private $oauth;
-
-    /**
      * @var Account
      **/
     private $account;
@@ -224,7 +219,6 @@ class VKApiClient {
 
     public function __construct(string $api_version = self::VK_API_VERSION) {
         $this->request = new VKApiRequest(static::VK_API_HOST, $api_version);
-        $this->oauth = new VKOAuth(static::VK_API_VERSION);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);
         $this->apps = new Apps($this->request);

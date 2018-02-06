@@ -2,7 +2,6 @@
 
 namespace VK\CallbackApi;
 
-
 class CallbackApi extends CallbackApiHandler {
     protected const CALLBACK_EVENT_CONFIRMATION = 'confirmation';
 
