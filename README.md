@@ -149,11 +149,11 @@ Override methods from CallbackApiHandler class for handling events:
 ```php
 class CallbackAPIMyHandler extends CallbackApiHandler {
     public function messageNew($object) {
-        var_dump('New message: ' . $object['body']);
+        echo 'New message: ' . $object['body'];
     }
     
     public function wallPostNew($object) {
-        var_dump('New wall post: ' . $object['text']);
+        echo 'New wall post: ' . $object['text'];
     }
 }
 ```
