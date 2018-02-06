@@ -2,7 +2,6 @@
 
 namespace VK\Client;
 
-use VK\OAuth\OAuthClient;
 use VK\Actions\Account;
 use VK\Actions\Ads;
 use VK\Actions\Apps;
@@ -39,18 +38,12 @@ use VK\Actions\Wall;
 use VK\Actions\Widgets;
 
 class VKApiClient {
-    protected const VK_API_HOST = 'https://api.vk.com/method';
     protected const VK_API_VERSION = '5.69';
 
     /**
      * @var VKApiRequest
      **/
     private $request;
-
-    /**
-     * @var OAuthClient
-     **/
-    private $oauth;
 
     /**
      * @var Account
@@ -223,8 +216,7 @@ class VKApiClient {
     private $widgets;
 
     public function __construct(string $api_version = self::VK_API_VERSION) {
-        $this->request = new VKApiRequest(static::VK_API_HOST, $api_version);
-        $this->oauth = new OAuthClient(static::VK_API_VERSION);
+        $this->request = new VKApiRequest($api_version);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);
         $this->apps = new Apps($this->request);
@@ -263,10 +255,6 @@ class VKApiClient {
 
     public function request() {
         return $this->request;
-    }
-
-    public function oauth() {
-        return $this->oauth;
     }
 
     public function account() {
