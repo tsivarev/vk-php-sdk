@@ -3,10 +3,10 @@
 namespace VK\CallbackApi;
 
 abstract class CallbackApiHandler {
-    protected const KEY_TYPE = 'type';
-    protected const KEY_OBJECT = 'object';
-    protected const KEY_SECRET = 'secret';
-    protected const KEY_GROUP_ID = 'group_id';
+    protected const EVENT_KEY_TYPE = 'type';
+    protected const EVENT_KEY_OBJECT = 'object';
+    protected const EVENT_KEY_SECRET = 'secret';
+    protected const EVENT_KEY_GROUP_ID = 'group_id';
 
     protected const CALLBACK_EVENT_MESSAGE_NEW = 'message_new';
     protected const CALLBACK_EVENT_MESSAGE_REPLY = 'message_reply';
@@ -121,10 +121,10 @@ abstract class CallbackApiHandler {
     public function userUnblock(int $group_id, ?string $secret, array $object) {}
 
     public function parseCallbackApi(array $event) {
-        $group_id = $event[static::KEY_GROUP_ID];
-        $secret = $event[static::KEY_SECRET];
-        $type = $event[static::KEY_TYPE];
-        $object = $event[static::KEY_OBJECT];
+        $group_id = $event[static::EVENT_KEY_GROUP_ID];
+        $secret = $event[static::EVENT_KEY_SECRET];
+        $type = $event[static::EVENT_KEY_TYPE];
+        $object = $event[static::EVENT_KEY_OBJECT];
 
         $this->parseObject($group_id, $secret, $type, $object);
     }

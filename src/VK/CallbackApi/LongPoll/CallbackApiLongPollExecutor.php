@@ -86,10 +86,11 @@ class CallbackApiLongPollExecutor {
                 $this->handler->parseObject($this->group_id, null, $event[static::EVENT_TYPE], $event[static::EVENT_OBJECT]);
             }
             $this->last_timestamp = $response[static::EVENTS_TIMESTAMP];
-            return $this->last_timestamp;
         } catch (LongPollServerKeyExpiredException $e) {
             $this->server = $this->getLongPollServer();
         }
+
+        return $this->last_timestamp;
     }
 
     /**
@@ -97,7 +98,7 @@ class CallbackApiLongPollExecutor {
      * @throws VKApiException
      * @throws VKClientException
      */
-    public function getLongPollServer() {
+    protected function getLongPollServer() {
         $params = array(
             static::API_PARAM_GROUP_ID => $this->group_id
         );

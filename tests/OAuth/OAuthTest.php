@@ -5,7 +5,7 @@ use VK\OAuth\Enums\OAuthDisplay;
 use VK\OAuth\Enums\OAuthUserScope;
 use VK\OAuth\VKOAuth;
 
-class OauthTest extends TestCase {
+class OAuthTest extends TestCase {
     const REDIRECT_URI = 'http://example.com';
 
     /**
