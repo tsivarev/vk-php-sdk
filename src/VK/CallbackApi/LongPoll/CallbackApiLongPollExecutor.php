@@ -12,7 +12,7 @@ use VK\Exceptions\Api\VKApiException;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
-class CallbackApiLongPoll {
+class CallbackApiLongPollExecutor {
     protected const API_PARAM_GROUP_ID = 'group_id';
     protected const API_PARAM_ACT = 'act';
     protected const API_PARAM_KEY = 'key';
@@ -20,58 +20,77 @@ class CallbackApiLongPoll {
     protected const API_PARAM_WAIT = 'wait';
     protected const VALUE_ACT = 'a_check';
 
-    protected const FAILED_KEY = 'failed';
-    protected const TS_KEY = 'ts';
-    protected const TIMESTAMP_KEY = 'timestamp';
-    protected const SERVER_KEY = 'server';
-    protected const KEY_KEY = 'key';
-    protected const UPDATES_KEY = 'updates';
+    protected const EVENTS_FAILED = 'failed';
+    protected const EVENTS_TIMESTAMP = 'timestamp';
+    protected const EVENTS_UPDATES = 'updates';
 
-    protected const TYPE_KEY = 'type';
-    protected const OBJECT_KEY = 'object';
+    protected const EVENT_TYPE = 'type';
+    protected const EVENT_OBJECT = 'object';
 
-    protected const INCORRECT_TS_VALUE_ERROR_CODE = 1;
-    protected const TOKEN_EXPIRED_ERROR_CODE = 2;
+    protected const SERVER_TIMESTAMP = 'ts';
+    protected const SERVER_URL = 'url';
+    protected const SERVER_KEY = 'key';
+
+    protected const ERROR_CODE_INCORRECT_TS_VALUE = 1;
+    protected const ERROR_CODE_TOKEN_EXPIRED = 2;
 
     protected const CONNECTION_TIMEOUT = 10;
     protected const HTTP_STATUS_CODE_OK = 200;
+    protected const DEFAULT_WAIT = 10;
 
     protected $api_client;
     protected $access_token;
     protected $group_id;
     protected $handler;
     protected $http_client;
+    protected $server;
+    protected $last_timestamp = null;
+    protected $wait;
 
-    public function __construct(string $access_token, int $group_id, CallbackApiHandler $handler) {
-        $this->api_client = new VKApiClient();
+    public function __construct(VKApiClient $api_client, string $access_token, int $group_id, CallbackApiHandler $handler,
+                                int $wait = self::DEFAULT_WAIT) {
+        $this->api_client = $api_client;
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->access_token = $access_token;
         $this->group_id = $group_id;
         $this->handler = $handler;
+        $this->wait = $wait;
     }
 
     /**
      * Starts listening to LongPoll events.
      *
+     * @param int|null $timestamp
+     *
+     * @return null
+     * @throws LongPollServerTsException
      * @throws VKApiException
      * @throws VKClientException
-     * @throws LongPollServerTsException
      */
-    public function run() {
-        $server = $this->getLongPollServer();
-        $last_ts = $server[static::TS_KEY];
-
-        while (true) {
-            try {
-                $response = $this->getEvents($server[static::SERVER_KEY], $server[static::KEY_KEY], $last_ts);
-                foreach ($response[static::UPDATES_KEY] as $event) {
-                    $this->handler->parseObject($this->group_id, null, $event[static::TYPE_KEY], $event[static::OBJECT_KEY]);
-                }
-                $last_ts = $response[static::TIMESTAMP_KEY];
-            } catch (LongPollServerKeyExpiredException $e) {
-                $server = $this->getLongPollServer();
-            }
+    public function listen(?int $timestamp = null) {
+        if ($this->server === null) {
+            $this->server = $this->getLongPollServer();
         }
+
+        if ($this->last_timestamp === null) {
+            $this->last_timestamp = $this->server[static::SERVER_TIMESTAMP];
+        }
+
+        if ($timestamp === null) {
+            $timestamp = $this->last_timestamp;
+        }
+
+        try {
+            $response = $this->getEvents($this->server[static::SERVER_URL], $this->server[static::SERVER_KEY], $timestamp);
+            foreach ($response[static::EVENTS_UPDATES] as $event) {
+                $this->handler->parseObject($this->group_id, null, $event[static::EVENT_TYPE], $event[static::EVENT_OBJECT]);
+            }
+            $this->last_timestamp = $response[static::EVENTS_TIMESTAMP];
+        } catch (LongPollServerKeyExpiredException $e) {
+            $this->server = $this->getLongPollServer();
+        }
+
+        return $this->last_timestamp;
     }
 
     /**
@@ -83,7 +102,14 @@ class CallbackApiLongPoll {
         $params = array(
             static::API_PARAM_GROUP_ID => $this->group_id
         );
-        return $this->api_client->groups()->getLongPollServer($this->access_token, $params);
+
+        $server = $this->api_client->groups()->getLongPollServer($this->access_token, $params);
+
+        return array(
+            static::SERVER_URL => $server['server'],
+            static::SERVER_TIMESTAMP => $server['ts'],
+            static::SERVER_KEY => $server['key'],
+        );
     }
 
     /**
@@ -92,18 +118,17 @@ class CallbackApiLongPoll {
      * @param string $host
      * @param string $key
      * @param int $ts
-     * @param int $wait
      *
      * @return mixed
      * @throws LongPollServerKeyExpiredException
      * @throws LongPollServerTsException
      * @throws VKClientException
      */
-    public function getEvents(string $host, string $key, int $ts, int $wait = 10) {
+    public function getEvents(string $host, string $key, int $ts) {
         $params = array(
             static::API_PARAM_KEY => $key,
             static::API_PARAM_TS => $ts,
-            static::API_PARAM_WAIT => $wait,
+            static::API_PARAM_WAIT => $this->wait,
             static::API_PARAM_ACT => static::VALUE_ACT
         );
 
@@ -125,8 +150,8 @@ class CallbackApiLongPoll {
      * @return mixed
      *
      * @throws LongPollServerTsException
-     * @throws VKClientException
      * @throws LongPollServerKeyExpiredException
+     * @throws VKClientException
      */
     private function parseResponse(array $params, TransportClientResponse $response) {
         $this->checkHttpStatus($response);
@@ -134,17 +159,16 @@ class CallbackApiLongPoll {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if ($decode_body[static::FAILED_KEY]) {
-            switch ($decode_body[static::FAILED_KEY]) {
-                case static::INCORRECT_TS_VALUE_ERROR_CODE:
+        if (isset($decode_body[static::EVENTS_FAILED])) {
+            switch ($decode_body[static::EVENTS_FAILED]) {
+                case static::ERROR_CODE_INCORRECT_TS_VALUE:
                     $ts = $params[static::API_PARAM_TS];
                     $msg = '\'ts\' value is incorrect, minimal value is 1, maximal value is ' . $ts;
                     throw new LongPollServerTsException($msg);
-                case static::TOKEN_EXPIRED_ERROR_CODE:
-                    throw new LongPollServerKeyExpiredException("Try to generate a new key.");
+                case static::ERROR_CODE_TOKEN_EXPIRED:
+                    throw new LongPollServerKeyExpiredException('Try to generate a new key.');
                 default:
-                    //TODO: Response in exception
-                    throw new VKClientException("Unknown LongPollServer exception, something went wrong.");
+                    throw new VKClientException('Unknown LongPollServer exception, something went wrong. ' . $decode_body);
             }
         }
 
@@ -175,7 +199,7 @@ class CallbackApiLongPoll {
      */
     protected function checkHttpStatus(TransportClientResponse $response) {
         if ($response->getHttpStatus() != static::HTTP_STATUS_CODE_OK) {
-            throw new VKClientException("Invalid http status: {$response->getHttpStatus()}");
+            throw new VKClientException('Invalid http status: ' . $response->getHttpStatus());
         }
     }
 }

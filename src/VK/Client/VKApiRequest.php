@@ -10,25 +10,27 @@ use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
 
 class VKApiRequest {
+    protected const VK_API_VERSION = '5.69';
+
     protected const API_PARAM_VERSION = 'v';
     protected const API_PARAM_ACCESS_TOKEN = 'access_token';
 
-    protected const ERROR_KEY = 'error';
-    protected const RESPONSE_KEY = 'response';
+    protected const KEY_ERROR = 'error';
+    protected const KEY_RESPONSE = 'response';
 
     protected const CONNECTION_TIMEOUT = 10;
     protected const HTTP_STATUS_CODE_OK = 200;
 
+    protected const VK_API_HOST = 'https://api.vk.com/method';
+
     protected $host;
-    protected $exception_mapper;
     protected $http_client;
     protected $api_version;
 
-    public function __construct(string $host, string $api_version) {
+    public function __construct(string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
-        $this->host = $host;
         $this->api_version = $api_version;
-        $this->exception_mapper = new ExceptionMapper();
+        $this->host = $host;
     }
 
     /**
@@ -97,14 +99,14 @@ class VKApiRequest {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if ($decode_body[static::ERROR_KEY]) {
-            $error = $decode_body[static::ERROR_KEY];
+        if (isset($decode_body[static::KEY_ERROR])) {
+            $error = $decode_body[static::KEY_ERROR];
             $api_error = new VKApiError($error);
-            throw $this->exception_mapper->parse($api_error);
+            throw ExceptionMapper::parse($api_error);
         }
 
-        if (isset($decode_body[static::RESPONSE_KEY])) {
-            return $decode_body[static::RESPONSE_KEY];
+        if (isset($decode_body[static::KEY_RESPONSE])) {
+            return $decode_body[static::KEY_RESPONSE];
         } else {
             return $decode_body;
         }

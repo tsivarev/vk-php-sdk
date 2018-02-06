@@ -53,15 +53,15 @@ class Messages {
      * 
      * @param $access_token string
      * @param $params array
-     *      - integer offset: Offset needed to return a specific subset of conversations.
-     *      - integer count: Number of conversations to return.
+     *      - integer offset: Offset needed to return a specific subset of messages.
+     *      - integer count: Number of messages to return.
      *      - integer start_message_id: ID of the message from what to return dialogs.
      *      - integer preview_length: Number of characters after which to truncate a previewed message. To preview
      *        the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by
      *        words."
-     *      - boolean unread: '1' — return conversations with unread messages only.
-     *      - boolean important: '1' — return important conversations only.
-     *      - boolean unanswered: '1' — return unanswered conversations only.
+     *      - boolean unread: '1' — return dialogs with unread messages only.
+     *      - boolean important: '1' — return important dialogs only.
+     *      - boolean unanswered: '1' — return unanswered dialogs only.
      * 
      * @return mixed
      * @throws VKClientException in case of error on the Api side
@@ -272,7 +272,7 @@ class Messages {
      * @param $access_token string
      * @param $params array
      *      - array message_ids: IDs of messages to mark as important.
-     *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
+     *      - integer important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
      * @throws VKClientException in case of error on the Api side
@@ -289,7 +289,7 @@ class Messages {
      * @param $access_token string
      * @param $params array
      *      - array peer_id: IDs of messages to mark as important.
-     *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
+     *      - integer important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
      * @throws VKClientException in case of error on the Api side
@@ -306,7 +306,7 @@ class Messages {
      * @param $access_token string
      * @param $params array
      *      - array peer_id: IDs of messages to mark as important.
-     *      - boolean important: '1' — to add a star (mark as important), '0' — to remove the star
+     *      - integer important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
      * @throws VKClientException in case of error on the Api side
