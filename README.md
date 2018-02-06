@@ -154,6 +154,10 @@ To start listening to LongPoll events, create an instance of your CallbackAPIMyH
 
 ```php
 $handler = new CallbackApiMyHandler();
-$executor = new CallbackApiLongPollExecutor($vk, $access_token, $group_id, $handler);
-$executor->run();
+$executor = new CallbackApiLongPollExecutor($vk, '{access_token}', '{$group_id}', $handler, '{$wait}');
+$executor->listen();
 ```
+
+Parameter '{wait}' is the waiting period.
+
+While calling function **listen()** you can also specify the number of the event from which you want to receive data. The default value is the number of the last event.

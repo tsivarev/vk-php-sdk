@@ -45,13 +45,16 @@ class CallbackApiLongPollExecutor {
     protected $http_client;
     protected $server;
     protected $last_timestamp = null;
+    protected $wait;
 
-    public function __construct(VKApiClient $api_client, string $access_token, int $group_id, CallbackApiHandler $handler) {
+    public function __construct(VKApiClient $api_client, string $access_token, int $group_id, CallbackApiHandler $handler,
+                                int $wait = self::DEFAULT_WAIT) {
         $this->api_client = $api_client;
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->access_token = $access_token;
         $this->group_id = $group_id;
         $this->handler = $handler;
+        $this->wait = $wait;
     }
 
     /**
@@ -114,18 +117,17 @@ class CallbackApiLongPollExecutor {
      * @param string $host
      * @param string $key
      * @param int $ts
-     * @param int $wait
      *
      * @return mixed
      * @throws LongPollServerKeyExpiredException
      * @throws LongPollServerTsException
      * @throws VKClientException
      */
-    public function getEvents(string $host, string $key, int $ts, int $wait = self::DEFAULT_WAIT) {
+    public function getEvents(string $host, string $key, int $ts) {
         $params = array(
             static::API_PARAM_KEY => $key,
             static::API_PARAM_TS => $ts,
-            static::API_PARAM_WAIT => $wait,
+            static::API_PARAM_WAIT => $this->wait,
             static::API_PARAM_ACT => static::VALUE_ACT
         );
 
