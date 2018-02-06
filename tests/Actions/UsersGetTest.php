@@ -4,8 +4,8 @@ use VK\Client\VKApiClient;
 use PHPUnit\Framework\TestCase;
 
 final class UsersGetTest extends TestCase {
-    const USER_ID_1 = '210700286';
-    const USER_ID_2 = '1';
+    const USER_ID_1 = 210700286;
+    const USER_ID_2 = 1;
 
     /**
      * @throws \VK\Exceptions\Api\VKApiException
@@ -23,9 +23,10 @@ final class UsersGetTest extends TestCase {
             )
         );
 
-        $this->assertEquals($response[0]['first_name'], 'Lindsey');
-        $this->assertEquals($response[0]['city']['title'], 'Los Angeles');
-        $this->assertEquals($response[1]['first_name'], 'Павел');
-        $this->assertNotNull($response[1]['photo']);
+        list($user1, $user2) = $response;
+        $this->assertEquals($user1['first_name'], 'Lindsey');
+        $this->assertEquals($user1['city']['title'], 'Los Angeles');
+        $this->assertEquals($user2['first_name'], 'Павел');
+        $this->assertNotNull($user2['photo']);
     }
 }

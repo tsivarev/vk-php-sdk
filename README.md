@@ -39,6 +39,12 @@ $oauth->authorize('{client_id}', '{redirect_uri}', '{display}', '{scope_array}',
 
 As a '{display}' you should pass a constant from the OAuthDisplay class. The '{scope_array}' should be an array of constants from the OAuthUserScope class.
 
+Example:
+```php
+$oauth->authorize(6125390, 'http://example.com', OAuthDisplay::POPUP, array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS), 
+    OAuthResponseType::CODE, '5.69', 'some  state');
+```
+
 After successful authorization user's browser will be redirected to the specified **redirect_uri**. Meanwhile the code will be sent as a GET parameter to the specified address:
 
 ```sh
@@ -52,6 +58,12 @@ $access_token = $oauth->getAccessToken('{client_id}', '{client_secret}', '{redir
 ```
 
 The '{redirect_uri}' should be the URL that was used to get a code at the first step.
+
+Example:
+
+```php
+$access_token = $oauth->getAccessToken(6125390, 'Dv3Ef3srY3d2GE1c1X0F', 'http://example.com', '4g2h79rd3f7580a23d');
+```
 
 ## 4. API Requests
  
@@ -79,22 +91,22 @@ Please read [the full manual](https://vk.com/dev/upload_files?f=4.%20Uploading%2
 Call **photos.getMessagesUploadServer** to receive an upload address:
  
 ```php
-$response_address = $vk->photos()->getMessagesUploadServer('{access_token}');
+$address = $vk->photos()->getMessagesUploadServer('{access_token}');
 ```
 
 Then use **upload()** method to send files to the **upload_url** address received in the previous step:
 
 ```php
-$response_photo = $vk->request()->upload($response_address['upload_url'],'photo', '{photo_path}');
+$photo = $vk->request()->upload($address['upload_url'], 'photo', '/Users/Me/Documents/Photos/my_photo.jpg');
 ```
 
 You will get a JSON object with **server**, **photo**, **hash** fields. To save a photo call **photos.saveMessagesPhoto** with these three parameters:
 
 ```php
 $response_save_photo = $vk->photos()->saveMessagesPhoto($access_token, array(
-    'server' => $response_photo['server'],
-    'photo' => $response_photo['photo'],
-    'hash' => $response_photo['hash']
+    'server' => $photo['server'],
+    'photo' => $photo['photo'],
+    'hash' => $photo['hash']
     )
 );
 ```
@@ -108,9 +120,8 @@ Please read [the full manual](https://vk.com/dev/upload_files_2?f=9.%20Uploading
 Call **video.save** to get a video upload server address:
 
 ```php
-$response_address = $vk->video()->save($access_token, array(
-    'name' => '{video_name}',
-    'description' => '{description}'
+$address = $vk->video()->save($access_token, array(
+    'name' => 'My video',
     )
 );
 ```
@@ -118,7 +129,7 @@ $response_address = $vk->video()->save($access_token, array(
 Send a file to **upload_url** received previously calling **upload()** method:
 
 ```php
-$response_video = $vk->request()->upload($response_address['upload_url'],'video_file', $video_path);
+$video = $vk->request()->upload($address['upload_url'], 'video_file', '/Users/Me/Documents/Videos/my_video.mp4');
 ```
 
 Videos are processed for some time after uploading.
@@ -129,7 +140,7 @@ Enable Callback API LongPoll for your group and specify which events should be t
 
 ```php
 $vk->groups()->setLongPollSettings($access_token, array(
-   'group_id' => '{group_id}',
+   'group_id' => 159895463,
    'enabled' => 1,
    'message_new' => 1,
    'wall_post_new' => 1,
@@ -161,3 +172,10 @@ $executor->listen();
 Parameter '{wait}' is the waiting period.
 
 While calling function **listen()** you can also specify the number of the event from which you want to receive data. The default value is the number of the last event.
+
+Example:
+
+```php
+$executor = new CallbackApiLongPollExecutor($vk, $access_token, 159895463, $handler, 25);
+$executor->listen(12);
+```

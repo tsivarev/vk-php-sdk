@@ -29,14 +29,21 @@ final class LongPollTest extends TestCase {
 
         $executor = new CallbackApiLongPollExecutor($vk, $GLOBALS['access_token_group'], $GLOBALS['group_id'], $handler);
 
-        $server = $executor->getLongPollServer();
+        $server = $vk->groups()->getLongPollServer($GLOBALS['access_token_group'], array(
+            'group_id' => $GLOBALS['group_id']
+            )
+        );
 
         $vk->groups()->leave($GLOBALS['access_token_standalone'], array(
-            'group_id' => $GLOBALS['group_id']));
+            'group_id' => $GLOBALS['group_id']
+            )
+        );
 
         $executor->listen($server['ts']);
 
         $vk->groups()->join($GLOBALS['access_token_standalone'], array(
-            'group_id' => $GLOBALS['group_id']));
+            'group_id' => $GLOBALS['group_id']
+            )
+        );
     }
 }

@@ -9,10 +9,11 @@ class GenerateActions {
     protected const QUOTE = '\'';
     protected const BACKSLASH = '\\';
     protected const SLASH = '/';
-    protected const METHOD_NAME_DELIMITER = '.';
+    protected const DOT = '.';
     protected const DASH = '-';
     protected const COLON = ':';
     protected const UNDERSCORE = '_';
+    protected const COMMA = ',';
 
     protected const TAB_SIZE = 4;
     protected const CONNECTION_TIMEOUT = 10;
@@ -173,7 +174,7 @@ class GenerateActions {
     protected function mapMethods() {
         $mapped_methods = array();
         array_walk($this->response[static::KEYWORD_METHODS], function ($method) use (&$mapped_methods) {
-            list($action_name, $method_name) = explode(static::METHOD_NAME_DELIMITER, $method[static::KEY_NAME]);
+            list($action_name, $method_name) = explode(static::DOT, $method[static::KEY_NAME]);
             if (!isset($mapped_methods[$action_name])) {
                 $mapped_methods[$action_name] = array();
             }
@@ -282,7 +283,7 @@ class GenerateActions {
             . ', array ' . static::DOLLAR . static::ARG_PARAMS . ' = array()) {' . PHP_EOL;
 
         $result .= $this->tab(2) . static::KEYWORD_RETURN . static::DOLLAR . static::KEYWORD_THIS .
-            static::VK_API_REQUEST_VAR_NAME . '->post(' . static::QUOTE . $action_name . static::METHOD_NAME_DELIMITER .
+            static::VK_API_REQUEST_VAR_NAME . '->post(' . static::QUOTE . $action_name . static::DOT .
             $method[static::KEY_NAME] . static::QUOTE . ', ' . static::DOLLAR . static::ARG_ACCESS_TOKEN .
             ', ' . static::DOLLAR . static::ARG_PARAMS . ');' . PHP_EOL;
 
@@ -321,16 +322,22 @@ class GenerateActions {
         for ($i = 0; $i < count($enum); $i++) {
             $value = $enum[$i];
             $description = $enum_names ? $enum_names[$i] : null;
-            $members .= $this->wrapConstant(strtoupper($value), $value, $description);
+            $members .= $this->wrapConstant(strtoupper($value), $value, $description, '', $param[static::KEY_NAME]);
         }
         return $members;
     }
 
-    protected function wrapConstant($name, $value, $description, $type = '') {
-        if (is_numeric($name[0])) {
+    protected function wrapConstant($name, $value, $description, $type = '', $param_name = '') {
+        $edges = '\'';
+        if (is_numeric($name)) {
+            $edges = '';
             $name = str_replace(static::SPACE, static::UNDERSCORE, strtoupper($description));
+            $name = str_replace(array(static::COMMA, static::DOT), '', $name);
+            if (is_numeric($name[0])) {
+                $name = strtoupper($param_name) . static::UNDERSCORE . $name;
+            }
         }
-        $result = PHP_EOL . $this->tab(1) . $type . 'const ' . $name . ' = ' . static::QUOTE . $value . static::QUOTE . ';';
+        $result = PHP_EOL . $this->tab(1) . $type . 'const ' . $name . ' = ' . $edges . $value . $edges . ';';
         if ($description) {
             $result .= ' // ' . $description;
         }
