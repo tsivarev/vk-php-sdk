@@ -62,6 +62,12 @@ $oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, 6125390, 'http://example.com', 
  array(OAuthGroupScope::MESSAGES), '5.69', 'some  state');
 ```
 
+Example:
+```php
+$oauth->authorize(6125390, 'http://example.com', OAuthDisplay::POPUP, array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS), 
+    OAuthResponseType::CODE, '5.69', 'some  state');
+```
+
 After successful authorization user's browser will be redirected to the specified **redirect_uri**. Meanwhile the code will be sent as a GET parameter to the specified address:
 
 ```sh
@@ -221,7 +227,7 @@ class CallbackAPIMyHandler extends CallbackApiHandler {
 }
 ```
 
-To start listening to LongPoll events, create an instance of your CallbackAPIMyHandler class, instance of CallbackApiLongPollExecutor class and call method run():
+To start listening to LongPoll events, create an instance of your CallbackAPIMyHandler class, instance of CallbackApiLongPollExecutor class and call method listen():
 
 ```php
 $handler = new CallbackApiMyHandler();
@@ -276,4 +282,4 @@ $my_callback_handler->parseCallbackApi($data);
 To handle events you should to override methods from CallbackApi class like this.
 
 `confirmation` event handler contains 3 fields: its group id, your confirmation token from constructor, and secret key.
- 
+

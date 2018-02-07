@@ -63,13 +63,14 @@ class VKOAuth {
      * @param string $redirect_uri
      * @param array|null $group_ids
      * @param string $display
-     * @param array $scope
-     * @param string|null $state
+     * @param string[] $scope
+     * @param string $state
      * @param int $revoke_auth
-     * @return mixed
+     * @see OAuthResponseType
+     * @see OAuthDisplay
+     * @see OAuthGroupScope
+     * @see OAuthUserScope
      *
-     * @throws VKClientException
-     * @throws VKOAuthException
      */
     public function authorize(int $authorize_method = OAuthFlow::AUTHORIZATION_CODE, int $client_id, string $redirect_uri,
                               array $group_ids = null, string $display, array $scope, string $state = null, int $revoke_auth = 0) {
@@ -101,7 +102,7 @@ class VKOAuth {
         }
 
         try {
-            $response = $this->http_client->post(static::URL_AUTHORIZE, $params);
+            $response = $this->http_client->post($this->url_access_token, $params);
         } catch (HttpRequestException $e) {
             throw new VKClientException($e);
         }

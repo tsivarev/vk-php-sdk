@@ -11,13 +11,12 @@ class OAuthTest extends TestCase {
 
     /**
      * @throws \VK\Exceptions\VKClientException
-     * @throws \VK\Exceptions\VKOAuthException
      */
     public function testAuthorize() {
       $oauth = new VKOAuth();
 
       $oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, $GLOBALS['client_id'], static::REDIRECT_URI,
-        OAuthDisplay::POPUP, array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS));
+                OAuthDisplay::POPUP, array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS));
 
         $this->assertTrue(true);
     }
