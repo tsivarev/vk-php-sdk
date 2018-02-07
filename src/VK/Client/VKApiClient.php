@@ -36,6 +36,7 @@ use VK\Actions\Utils;
 use VK\Actions\Video;
 use VK\Actions\Wall;
 use VK\Actions\Widgets;
+use VK\Client\Enums\VKLanguage;
 
 class VKApiClient {
     protected const VK_API_VERSION = '5.69';
@@ -215,8 +216,8 @@ class VKApiClient {
      **/
     private $widgets;
 
-    public function __construct(string $api_version = self::VK_API_VERSION) {
-        $this->request = new VKApiRequest($api_version);
+    public function __construct(int $default_language = VKLanguage::ENGLISH, string $api_version = self::VK_API_VERSION) {
+        $this->request = new VKApiRequest($default_language, $api_version);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);
         $this->apps = new Apps($this->request);
