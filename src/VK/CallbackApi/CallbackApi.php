@@ -16,11 +16,11 @@ class CallbackApi extends CallbackApiHandler {
     }
 
     /**
-     * @param int $groupId
+     * @param int $group_id
      * @param string $token
      * @param null|string $secret
      */
-    public function confirmation(int $groupId, string $token, ?string $secret) {}
+    protected function confirmation(int $group_id, string $token, ?string $secret) {}
 
     public function parseObject(int $group_id, ?string $secret, string $type, array $object) {
         if ($type == self::CALLBACK_EVENT_CONFIRMATION) {

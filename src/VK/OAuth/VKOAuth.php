@@ -5,7 +5,7 @@ namespace VK\OAuth;
 use VK\Exceptions\HttpRequestException;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\VKOAuthException;
-use VK\OAuth\Enums\OAuthAuthorizeMethod;
+use VK\OAuth\Enums\OAuthFlow;
 use VK\OAuth\Enums\OAuthResponseType;
 use VK\TransportClient\CurlHttpClient;
 use VK\TransportClient\TransportClientResponse;
@@ -71,7 +71,7 @@ class VKOAuth {
      * @throws VKClientException
      * @throws VKOAuthException
      */
-    public function authorize(int $authorize_method = OAuthAuthorizeMethod::AUTHORIZATION_CODE, int $client_id, string $redirect_uri,
+    public function authorize(int $authorize_method = OAuthFlow::AUTHORIZATION_CODE, int $client_id, string $redirect_uri,
                               array $group_ids = null, string $display, array $scope, string $state = null, int $revoke_auth = 0) {
         $scope_value = 0;
         foreach ($scope as $value) {
@@ -79,9 +79,9 @@ class VKOAuth {
         }
 
         $response_type = null;
-        if ($authorize_method == OAuthAuthorizeMethod::AUTHORIZATION_CODE) {
+        if ($authorize_method == OAuthFlow::AUTHORIZATION_CODE) {
             $response_type = OAuthResponseType::CODE;
-        } else if($authorize_method == OAuthAuthorizeMethod::IMPLICIT) {
+        } else if($authorize_method == OAuthFlow::IMPLICIT) {
             $response_type = OAuthResponseType::TOKEN;
         }
 

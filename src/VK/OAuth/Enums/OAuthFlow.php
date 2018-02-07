@@ -2,7 +2,7 @@
 
 namespace VK\OAuth\Enums;
 
-class OAuthAuthorizeMethod {
+class OAuthFlow {
     const AUTHORIZATION_CODE = 0;
     const IMPLICIT = 1;
 }
