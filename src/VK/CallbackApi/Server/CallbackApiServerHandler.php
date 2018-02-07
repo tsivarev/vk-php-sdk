@@ -1,14 +1,16 @@
 <?php
 
-namespace VK\CallbackApi;
+namespace VK\CallbackApi\Server;
 
-class CallbackApi extends CallbackApiHandler {
+use VK\CallbackApi\CallbackApiHandler;
+
+class CallbackApiServerHandler extends CallbackApiHandler {
     protected const CALLBACK_EVENT_CONFIRMATION = 'confirmation';
 
     protected $confirmation_token;
 
     /**
-     * CallbackApi constructor.
+     * CallbackApiServerHandler constructor.
      * @param string $confirmation_token
      */
     public function __construct(string $confirmation_token) {

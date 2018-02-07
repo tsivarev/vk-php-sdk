@@ -82,14 +82,14 @@ class VKOAuth {
         $response_type = null;
         if ($authorize_method == OAuthFlow::AUTHORIZATION_CODE) {
             $response_type = OAuthResponseType::CODE;
-        } else if($authorize_method == OAuthFlow::IMPLICIT) {
+        } else if ($authorize_method == OAuthFlow::IMPLICIT) {
             $response_type = OAuthResponseType::TOKEN;
         }
 
         $params = array(
             static::API_PARAM_CLIENT_ID => $client_id,
             static::API_PARAM_REDIRECT_URI => $redirect_uri,
-            static::API_PARAM_GROUP_IDS => join(',', $group_ids),
+            static::API_PARAM_GROUP_IDS => implode(',', $group_ids),
             static::API_PARAM_DISPLAY => $display,
             static::API_PARAM_SCOPE => $scope_value,
             static::API_PARAM_STATE => $state,

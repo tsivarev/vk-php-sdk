@@ -256,9 +256,9 @@ First step will be approve your domain. VK sends you request to your server with
 
 Look at this example:
 ```php
-use VK\CallbackApi\CallbackApi;
+use VK\CallbackApi\Server\CallbackApiServerHandler;
 
-class myCallback extends CallbackApi {
+class myCallback extends CallbackApiServerHandler {
     const MY_SECRET = 'ab12aba';
     const MY_GROUPS = [123833, 123999];
 
