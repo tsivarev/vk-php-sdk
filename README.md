@@ -46,7 +46,7 @@ $oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, '{client_id}', '{redirect_uri}'
  '{scope_array}', '{api_version}', '{state}');
 ```
 
-Attention! [User access key](https://vk.com/dev/permissions?f=1.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F) and [community access key](https://vk.com/dev/permissions?f=2.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0) uses different values in scope array
+Attention! [User access key](https://vk.com/dev/permissions?f=1.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F) and [community access key](https://vk.com/dev/permissions?f=2.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0) uses different values inside scope array
 
 As a '{display}' you should pass a constant from the OAuthDisplay class. The '{scope_array}' should be an array of constants from the OAuthUserScope class. '{group_ids}' is array of community id`s you want to get access.
 
@@ -96,7 +96,7 @@ $oauth = new VKOAuth();
 3.2.1. For getting **user access key** use following command:
 ```php
 $oauth->authorize(OAuthFlow::IMPLICIT, '{client_id}', '{redirect_uri}', '{display}',
- '{scope_array}', '{api_version}', '{state} [,{revoke_auth}]');
+ '{scope_array}', '{api_version}', '{state}' [,{revoke_auth}]);
 ```
 
 Note: if you want to make user getting access anyway, set {revoke_auth} as `1`.
@@ -242,11 +242,11 @@ $executor->listen(12);
 
 ### 6.1. CallbackApi handler
 
-CallbackApi handler will wait until VK send notification about event. After that you may handle this event. More information [here](https://vk.com/dev/callback_api).
+CallbackApi handler will wait until VK send notification about event when it happened you may handle this event. More information [here](https://vk.com/dev/callback_api).
 
 You should to configure Callback API inside your community settings. 
 
-First step will be approve your domain. VK sends you request to your server with event-type **confirmation** and you should to send back confirmation string. In other types of events you should to send back `ok` string.
+First step will be approve your domain. VK sends you request to your server with event type **confirmation** and you should to send back confirmation string. In other types of event you should to send back `ok` string.
 
 Look at this example:
 ```php
