@@ -258,19 +258,18 @@ Look at this example:
 ```php
 use VK\CallbackApi\Server\CallbackApiServerHandler;
 
-class myCallback extends CallbackApiServerHandler {
+class CallbackServer extends CallbackApiServerHandler {
     const MY_SECRET = 'ab12aba';
     const MY_GROUPS = [123833, 123999];
 
-    protected function confirmation(int $group_id, string $token, ?string $secret) {
+    protected function confirmation(int $group_id, ?string $secret) {
         if ($secret === self::MY_SECRET && in_array($group_id, self::MY_GROUPS)) {
-            echo $token;
+            echo $this->confirmation_token;
         }
     }
     
     public function messageNew(int $group_id, ?string $secret, array $object) {
         echo 'ok';
-        MyLog.send('I`m got new message');
     }
 }
 
