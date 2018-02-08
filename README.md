@@ -20,10 +20,10 @@ Create VKApiClient object using the following code:
 $vk = new VKApiClient();
 ```
 
-also you can initialize `VKAPIClient` with different API version and different language like this:
+also you can initialize `VKApiClient` with different Api version and different language like this:
 
 ```php
-$vk = new VKAPIClient(VKLanguage::UKRAINIAN, '5.71');
+$vk = new VKApiClient(VKLanguage::UKRAINIAN, '5.71');
 ```
 
 ## 3. Authorization
