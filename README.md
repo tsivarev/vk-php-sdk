@@ -14,15 +14,15 @@ composer require vk/php-sdk
 
 ## 2. Initialization
 
-Create VKAPIClient object using the following code:
+Create VKApiClient object using the following code:
 
 ```php
-$vk = new VKAPIClient();
+$vk = new VKApiClient();
 ```
 
 ## 3. Authorization
 
-The library provides the authorization flows for user based on OAuth 2.0 protocol implementation in vk.com API. Please read the full [documentation](https://vk.com/dev/access_token) before you start.
+The library provides the authorization flows for user based on OAuth 2.0 protocol implementation in vk.com Api. Please read the full [documentation](https://vk.com/dev/access_token) before you start.
 
 ### 3.1. Authorization Code Flow
 
@@ -37,13 +37,13 @@ $oauth = new VKOAuth();
 
 3.1.1. For getting **user access key** use following command:
 ```php
-$oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, '{client_id}', '{redirect_uri}', '{display}',
- '{scope_array}', '{api_version}', '{state}');
+$oauth->authorize(OAuthResponseType::CODE, '{client_id}', '{redirect_uri}', '{display}'
+[, '{scope_array}', '{state}']);
 ```
 3.1.2. Or if you want to get **community access key** use:
 ```php
-$oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, '{client_id}', '{redirect_uri}', '{group_ids}', '{display}',
- '{scope_array}', '{api_version}', '{state}');
+$oauth->authorize(OAuthResponseType::CODE, '{client_id}', '{redirect_uri}', '{display}'
+[, '{scope_array}', '{state}', '{group_ids}');
 ```
 
 Attention! [User access key](https://vk.com/dev/permissions?f=1.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F) and [community access key](https://vk.com/dev/permissions?f=2.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0) uses different values inside scope array
@@ -52,20 +52,14 @@ As a '{display}' you should pass a constant from the OAuthDisplay class. The '{s
 
 **User access key** example:
 ```php
-$oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, 6125390, 'http://example.com', OAuthDisplay::POPUP,
- array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS), '5.69', 'some  state');
+$oauth->authorize(OAuthResponseType::CODE, 6125390, 'http://example.com', OAuthDisplay::POPUP,
+ array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS), 'some  state');
 ```
 
 **Community access key** example:
 ```php
-$oauth->authorize(OAuthFlow::AUTHORIZATION_CODE, 6125390, 'http://example.com', array(149019044), OAuthDisplay::POPUP,
- array(OAuthGroupScope::MESSAGES), '5.69', 'some  state');
-```
-
-Example:
-```php
-$oauth->authorize(6125390, 'http://example.com', OAuthDisplay::POPUP, array(OAuthUserScope::AUDIO, OAuthUserScope::DOCS), 
-    OAuthResponseType::CODE, '5.69', 'some  state');
+$oauth->authorize(OAuthResponseType::CODE, 6125390, 'http://example.com', array(149019044), OAuthDisplay::POPUP,
+ array(OAuthGroupScope::MESSAGES), 'some  state');
 ```
 
 After successful authorization user's browser will be redirected to the specified **redirect_uri**. Meanwhile the code will be sent as a GET parameter to the specified address:
@@ -101,16 +95,16 @@ $oauth = new VKOAuth();
 
 3.2.1. For getting **user access key** use following command:
 ```php
-$oauth->authorize(OAuthFlow::IMPLICIT, '{client_id}', '{redirect_uri}', '{display}',
- '{scope_array}', '{api_version}', '{state}' [,{revoke_auth}]);
+$oauth->authorize(OAuthResponseType::TOKEN, '{client_id}', '{redirect_uri}', '{display}'
+[, '{scope_array}', '{state}', {revoke_auth}]);
 ```
 
 Note: if you want to make user getting access anyway, set {revoke_auth} as `1`.
 
 3.2.2. Or if you want to get **community access key** use:
 ```php
-$oauth->authorize(OAuthFlow::IMPLICIT, '{client_id}', '{redirect_uri}', '{group_ids}', '{display}',
- '{scope_array}', '{api_version}', '{state}');
+$oauth->authorize(OAuthResponseType::TOKEN, '{client_id}', '{redirect_uri}', '{display}'
+[, '{scope_array}', '{state}', '{group_ids}');
 ```
 
 Arguments are similar with authorization code flow
@@ -216,7 +210,7 @@ $vk->groups()->setLongPollSettings($access_token, array(
 Override methods from CallbackApiHandler class for handling events:
 
 ```php
-class CallbackAPIMyHandler extends CallbackApiHandler {
+class CallbackApiMyHandler extends CallbackApiHandler {
     public function messageNew($object) {
         echo 'New message: ' . $object['body'];
     }
@@ -227,7 +221,7 @@ class CallbackAPIMyHandler extends CallbackApiHandler {
 }
 ```
 
-To start listening to LongPoll events, create an instance of your CallbackAPIMyHandler class, instance of CallbackApiLongPollExecutor class and call method listen():
+To start listening to LongPoll events, create an instance of your CallbackApiMyHandler class, instance of CallbackApiLongPollExecutor class and call method listen():
 
 ```php
 $handler = new CallbackApiMyHandler();
@@ -259,12 +253,13 @@ Look at this example:
 use VK\CallbackApi\Server\CallbackApiServerHandler;
 
 class CallbackServer extends CallbackApiServerHandler {
-    const MY_SECRET = 'ab12aba';
-    const MY_GROUPS = [123833, 123999];
+    const SECRET = 'ab12aba';
+    const GROUP = 123999;
+    const CONFIRMATION_TOKEN = 'e67anm1';
 
-    protected function confirmation(int $group_id, ?string $secret) {
-        if ($secret === self::MY_SECRET && in_array($group_id, self::MY_GROUPS)) {
-            echo $this->confirmation_token;
+    function confirmation(int $group_id, ?string $secret) {
+        if ($secret === self::MY_SECRET && $group_id == self::GROUP) {
+            echo $this->CONFIRMATION_TOKEN;
         }
     }
     
@@ -273,12 +268,12 @@ class CallbackServer extends CallbackApiServerHandler {
     }
 }
 
-$my_callback_handler = new myCallback('dsf0a19'); // its your confirmation token
+$my_callback_handler = new CallbackServer();
 $data = json_decode(file_get_contents('php://input'));
-$my_callback_handler->parseCallbackApi($data);
+$my_callback_handler->parse($data);
 ```
 
-To handle events you should to override methods from CallbackApi class like this.
+To handle events you should to override methods from CallbackApiServerHandler class like this. 
 
-`confirmation` event handler contains 3 fields: its group id, your confirmation token from constructor, and secret key.
+`confirmation` event handler contains 2 fields: group id, and secret key. You must to override confirmation method.
 

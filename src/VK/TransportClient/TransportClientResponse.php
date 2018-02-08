@@ -9,6 +9,12 @@ class TransportClientResponse {
 
     private $body;
 
+    /**
+     * TransportClientResponse constructor.
+     * @param int|null $http_status
+     * @param array|null $headers
+     * @param null|string $body
+     */
     public function __construct(?int $http_status, ?array $headers, ?string $body) {
         $this->http_status = $http_status;
         $this->headers = $headers;

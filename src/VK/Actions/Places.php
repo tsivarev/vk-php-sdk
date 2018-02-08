@@ -14,6 +14,10 @@ class Places {
      **/
     private $request;
 
+    /**
+     * Places constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

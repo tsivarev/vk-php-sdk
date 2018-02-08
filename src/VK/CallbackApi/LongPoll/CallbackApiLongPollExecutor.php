@@ -47,6 +47,14 @@ class CallbackApiLongPollExecutor {
     protected $last_timestamp = null;
     protected $wait;
 
+    /**
+     * CallbackApiLongPollExecutor constructor.
+     * @param VKApiClient $api_client
+     * @param string $access_token
+     * @param int $group_id
+     * @param CallbackApiHandler $handler
+     * @param int $wait
+     */
     public function __construct(VKApiClient $api_client, string $access_token, int $group_id, CallbackApiHandler $handler,
                                 int $wait = self::DEFAULT_WAIT) {
         $this->api_client = $api_client;

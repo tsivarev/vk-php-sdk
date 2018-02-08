@@ -19,6 +19,10 @@ class Apps {
      **/
     private $request;
 
+    /**
+     * Apps constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

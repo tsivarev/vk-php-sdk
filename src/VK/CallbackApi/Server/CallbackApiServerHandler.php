@@ -5,21 +5,28 @@ namespace VK\CallbackApi\Server;
 use VK\CallbackApi\CallbackApiHandler;
 
 abstract class CallbackApiServerHandler extends CallbackApiHandler {
+    protected const EVENT_KEY_TYPE = 'type';
+    protected const EVENT_KEY_OBJECT = 'object';
+    protected const EVENT_KEY_SECRET = 'secret';
+    protected const EVENT_KEY_GROUP_ID = 'group_id';
+
     protected const CALLBACK_EVENT_CONFIRMATION = 'confirmation';
 
-    protected $confirmation_token;
+    /**
+     * @param int $group_id
+     * @param null|string $secret
+     * @return mixed
+     */
+    abstract function confirmation(int $group_id, ?string $secret);
 
-    public function __construct(string $confirmation_token) {
-        $this->confirmation_token = $confirmation_token;
-    }
-
-    protected function confirmation(int $group_id, ?string $secret) {}
-
-    public function parseObject(int $group_id, ?string $secret, string $type, array $object) {
-        if ($type == self::CALLBACK_EVENT_CONFIRMATION) {
-            $this->confirmation($group_id, $secret);
+    /**
+     * @param array $event
+     */
+    public function parse(array $event) {
+        if ($event->type == self::CALLBACK_EVENT_CONFIRMATION) {
+            $this->confirmation($event->group_id, $event->secret);
         } else {
-            parent::parseObject($group_id, $secret, $type, $object);
+            parent::parseObject($event->group_id, $event->secret, $event->type, $event->object);
         }
     }
 }

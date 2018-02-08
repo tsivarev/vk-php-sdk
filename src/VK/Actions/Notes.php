@@ -13,6 +13,10 @@ class Notes {
      **/
     private $request;
 
+    /**
+     * Notes constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

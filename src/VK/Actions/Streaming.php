@@ -13,6 +13,10 @@ class Streaming {
      **/
     private $request;
 
+    /**
+     * Streaming constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

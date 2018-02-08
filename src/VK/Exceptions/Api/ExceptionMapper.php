@@ -5,6 +5,10 @@ namespace VK\Exceptions\Api;
 use VK\CLient\VKApiError;
 
 class ExceptionMapper {
+    /**
+     * @param VKApiError $error
+     * @return ApiAccessAlbumException|ApiAccessAudioException|ApiAccessException|ApiAccessGroupException|ApiAdsPermissionException|ApiAdsSpecificException|ApiAlbumFullException|ApiAuthException|ApiAuthHttpsException|ApiAuthValidationException|ApiCaptchaException|ApiDisabledException|ApiEnabledInTestException|ApiFloodException|ApiMethodAdsException|ApiMethodDisabledException|ApiMethodException|ApiMethodPermissionException|ApiNeedConfirmationException|ApiParamApiIdException|ApiParamException|ApiParamTimestampException|ApiParamUserIdException|ApiPermissionException|ApiRequestException|ApiServerException|ApiSignatureException|ApiTooManyException|ApiUnknownException|ApiUserDeletedException|ApiVotesPermissionException
+     */
     public static function parse(VKApiError $error) {
         switch($error->getErrorCode()) {
             case 1:

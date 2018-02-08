@@ -13,24 +13,25 @@ use VK\TransportClient\TransportClientResponse;
 class VKOAuth {
     protected const VK_API_VERSION = '5.69';
 
-    protected const API_PARAM_VERSION = 'v';
-    protected const API_PARAM_CLIENT_ID = 'client_id';
-    protected const API_PARAM_REDIRECT_URI = 'redirect_uri';
-    protected const API_PARAM_GROUP_IDS = 'group_ids';
-    protected const API_PARAM_DISPLAY = 'display';
-    protected const API_PARAM_SCOPE = 'scope';
-    protected const API_PARAM_RESPONSE_TYPE = 'response_type';
-    protected const API_PARAM_STATE = 'state';
-    protected const API_PARAM_CLIENT_SECRET = 'client_secret';
-    protected const API_PARAM_CODE = 'code';
-    protected const API_PARAM_REVOKE = 'revoke';
+    protected const OAUTH_PARAM_VERSION = 'v';
+    protected const OAUTH_PARAM_CLIENT_ID = 'client_id';
+    protected const OAUTH_PARAM_REDIRECT_URI = 'redirect_uri';
+    protected const OAUTH_PARAM_GROUP_IDS = 'group_ids';
+    protected const OAUTH_PARAM_DISPLAY = 'display';
+    protected const OAUTH_PARAM_SCOPE = 'scope';
+    protected const OAUTH_PARAM_RESPONSE_TYPE = 'response_type';
+    protected const OAUTH_PARAM_STATE = 'state';
+    protected const OAUTH_PARAM_CLIENT_SECRET = 'client_secret';
+    protected const OAUTH_PARAM_CODE = 'code';
+    protected const OAUTH_PARAM_REVOKE = 'revoke';
 
-    protected const KEY_ERROR = 'error';
-    protected const KEY_ERROR_DESCRIPTION = 'error_description';
-    protected const KEY_ACCESS_TOKEN = 'access_token';
+    protected const RESPONSE_KEY_ERROR = 'error';
+    protected const RESPONSE_KEY_ERROR_DESCRIPTION = 'error_description';
+    protected const RESPONSE_KEY_ACCESS_TOKEN = 'access_token';
 
-    protected const URL_AUTHORIZE = 'https://oauth.vk.com/authorize';
-    protected const URL_ACCESS_TOKEN = 'https://oauth.vk.com/access_token';
+    protected const OAUTH_HOST = 'https://oauth.vk.com';
+    protected const ENDPOINT_AUTHORIZE = '/authorize';
+    protected const ENDPOINT_ACCESS_TOKEN = '/access_token';
 
     protected const CONNECTION_TIMEOUT = 10;
     protected const HTTP_STATUS_CODE_OK = 200;
@@ -47,8 +48,8 @@ class VKOAuth {
      * @param string $url_authorize
      * @param string $url_access_token
      */
-    public function __construct($api_version = self::VK_API_VERSION, $url_authorize = self::URL_AUTHORIZE,
-                                $url_access_token = self::URL_ACCESS_TOKEN) {
+    public function __construct($api_version = self::VK_API_VERSION, $url_authorize = self::OAUTH_HOST . self::ENDPOINT_AUTHORIZE,
+                                $url_access_token = self::OAUTH_HOST . self::ENDPOINT_ACCESS_TOKEN) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;
         $this->url_authorize = $url_authorize;
@@ -58,47 +59,44 @@ class VKOAuth {
     /**
      * Opens the authorization dialog.
      *
-     * @param int $authorize_method
+     * @param string $response_type
      * @param int $client_id
      * @param string $redirect_uri
-     * @param array|null $group_ids
      * @param string $display
-     * @param string[] $scope
+     * @param int[] $scope
      * @param string $state
-     * @param int $revoke_auth
+     * @param int[] $group_ids
+     * @param bool $revoke
+     * @return mixed
+     * @throws VKClientException
+     * @throws VKOAuthException
      * @see OAuthResponseType
      * @see OAuthDisplay
      * @see OAuthGroupScope
      * @see OAuthUserScope
-     *
      */
-    public function authorize(int $authorize_method = OAuthFlow::AUTHORIZATION_CODE, int $client_id, string $redirect_uri,
-                              array $group_ids = null, string $display, array $scope, string $state = null, int $revoke_auth = 0) {
-        $scope_value = 0;
-        foreach ($scope as $value) {
-            $scope_value |= $value;
-        }
-
-        $response_type = null;
-        if ($authorize_method == OAuthFlow::AUTHORIZATION_CODE) {
-            $response_type = OAuthResponseType::CODE;
-        } else if ($authorize_method == OAuthFlow::IMPLICIT) {
-            $response_type = OAuthResponseType::TOKEN;
+    public function authorize(string $response_type, int $client_id, string $redirect_uri, string $display,
+                              ?array $scope = null, ?string $state = null, ?array $group_ids = null, bool $revoke = false) {
+        $scope_mask = 0;
+        foreach ($scope as $scope_setting) {
+            $scope_mask |= $scope_setting;
         }
 
         $params = array(
-            static::API_PARAM_CLIENT_ID => $client_id,
-            static::API_PARAM_REDIRECT_URI => $redirect_uri,
-            static::API_PARAM_GROUP_IDS => implode(',', $group_ids),
-            static::API_PARAM_DISPLAY => $display,
-            static::API_PARAM_SCOPE => $scope_value,
-            static::API_PARAM_STATE => $state,
-            static::API_PARAM_RESPONSE_TYPE => $response_type,
-            static::API_PARAM_VERSION => $this->api_version
+            static::OAUTH_PARAM_CLIENT_ID => $client_id,
+            static::OAUTH_PARAM_REDIRECT_URI => $redirect_uri,
+            static::OAUTH_PARAM_DISPLAY => $display,
+            static::OAUTH_PARAM_SCOPE => $scope_mask,
+            static::OAUTH_PARAM_STATE => $state,
+            static::OAUTH_PARAM_RESPONSE_TYPE => $response_type,
+            static::OAUTH_PARAM_VERSION => $this->api_version
         );
 
-        if ($revoke_auth) {
-            $params[static::API_PARAM_REVOKE] = $revoke_auth;
+        if ($group_ids) {
+            $params[static::OAUTH_PARAM_GROUP_IDS] = implode(',', $group_ids);
+        }
+        if ($revoke) {
+            $params[static::OAUTH_PARAM_REVOKE] = 1;
         }
 
         try {
@@ -126,12 +124,12 @@ class VKOAuth {
         $body = $response->getBody();
         $decode_body = $this->decodeBody($body);
 
-        if (isset($decode_body[static::KEY_ERROR])) {
-            throw new VKOAuthException("{$decode_body[static::KEY_ERROR_DESCRIPTION]}. OAuth error {$decode_body[static::KEY_ERROR]}");
+        if (isset($decode_body[static::RESPONSE_KEY_ERROR])) {
+            throw new VKOAuthException("{$decode_body[static::RESPONSE_KEY_ERROR_DESCRIPTION]}. OAuth error {$decode_body[static::RESPONSE_KEY_ERROR]}");
         }
 
-        if (isset($decode_body[static::KEY_ACCESS_TOKEN])) {
-            return $decode_body[static::KEY_ACCESS_TOKEN];
+        if (isset($decode_body[static::RESPONSE_KEY_ACCESS_TOKEN])) {
+            return $decode_body[static::RESPONSE_KEY_ACCESS_TOKEN];
         } else {
             return $decode_body;
         }

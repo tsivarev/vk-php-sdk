@@ -13,6 +13,10 @@ class Notifications {
      **/
     private $request;
 
+    /**
+     * Notifications constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

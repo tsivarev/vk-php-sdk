@@ -14,6 +14,10 @@ class Auth {
      **/
     private $request;
 
+    /**
+     * Auth constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
