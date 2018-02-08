@@ -27,6 +27,11 @@ class VKApiRequest {
     protected $http_client;
     protected $api_version;
 
+    /**
+     * VKApiRequest constructor.
+     * @param string $api_version
+     * @param string $host
+     */
     public function __construct(string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;

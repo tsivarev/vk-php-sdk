@@ -10,6 +10,10 @@ class CurlHttpClient implements TransportClient {
 
     protected $initial_opts;
 
+    /**
+     * CurlHttpClient constructor.
+     * @param int $connection_timeout
+     */
     public function __construct(int $connection_timeout) {
         $this->initial_opts = array(
             CURLOPT_HEADER => true,

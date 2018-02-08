@@ -13,6 +13,10 @@ class Widgets {
      **/
     private $request;
 
+    /**
+     * Widgets constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

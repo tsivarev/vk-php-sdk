@@ -19,6 +19,10 @@ class VKApiError {
     protected $redirect_uri;
     protected $request_params;
 
+    /**
+     * VKApiError constructor.
+     * @param array $error
+     */
     public function __construct(array $error) {
         $this->error_code = isset($error[static::KEY_ERROR_CODE]) ? $error[static::KEY_ERROR_CODE] : null;
         $this->error_msg = isset($error[static::KEY_ERROR_MSG]) ? $error[static::KEY_ERROR_MSG] : null;
@@ -29,30 +33,51 @@ class VKApiError {
         $this->request_params = isset($error[static::KEY_REQUEST_PARAMS]) ? $error[static::KEY_REQUEST_PARAMS] : null;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getErrorCode() {
         return $this->error_code;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getErrorMsg() {
         return $this->error_msg;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getCaptchaSid() {
         return $this->captcha_sid;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getCaptchaImg() {
         return $this->captcha_img;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getConfirmationText() {
         return $this->confirmation_text;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getRedirectUri() {
         return $this->redirect_uri;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getRequestParams() {
         return $this->request_params;
     }

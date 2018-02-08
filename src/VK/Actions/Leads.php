@@ -14,6 +14,10 @@ class Leads {
      **/
     private $request;
 
+    /**
+     * Leads constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

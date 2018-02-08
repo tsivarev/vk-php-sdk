@@ -13,6 +13,10 @@ class Status {
      **/
     private $request;
 
+    /**
+     * Status constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }

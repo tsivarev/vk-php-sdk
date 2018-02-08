@@ -7,6 +7,12 @@ class VKApiException extends \Exception {
     protected $description;
     protected $message;
 
+    /**
+     * VKApiException constructor.
+     * @param int $code
+     * @param string $description
+     * @param string $message
+     */
     public function __construct(int $code, string $description, string $message) {
         $this->code = $code;
         $this->description = $description;

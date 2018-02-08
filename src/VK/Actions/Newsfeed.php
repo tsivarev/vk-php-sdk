@@ -17,6 +17,10 @@ class Newsfeed {
      **/
     private $request;
 
+    /**
+     * Newsfeed constructor.
+     * @param VKApiRequest $request
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
