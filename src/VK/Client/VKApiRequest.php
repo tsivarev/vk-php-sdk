@@ -14,6 +14,7 @@ class VKApiRequest {
 
     protected const API_PARAM_VERSION = 'v';
     protected const API_PARAM_ACCESS_TOKEN = 'access_token';
+    protected const API_PARAM_LANG = 'lang';
 
     protected const KEY_ERROR = 'error';
     protected const KEY_RESPONSE = 'response';
@@ -26,16 +27,19 @@ class VKApiRequest {
     protected $host;
     protected $http_client;
     protected $api_version;
+    protected $lang;
 
     /**
      * VKApiRequest constructor.
+     * @param int $default_language
      * @param string $api_version
      * @param string $host
      */
-    public function __construct(string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
+    public function __construct(int $default_language, string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;
         $this->host = $host;
+        $this->lang = $default_language;
     }
 
     /**
@@ -54,6 +58,10 @@ class VKApiRequest {
         $params = $this->formatParams($params);
         $params[static::API_PARAM_VERSION] = $this->api_version;
         $params[static::API_PARAM_ACCESS_TOKEN] = $access_token;
+
+        if (!in_array(static::API_PARAM_LANG, $params)) {
+            $params[static::API_PARAM_LANG] = $this->lang;
+        }
 
         $url = $this->host . '/' . $method;
 

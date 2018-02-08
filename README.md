@@ -20,6 +20,12 @@ Create VKApiClient object using the following code:
 $vk = new VKApiClient();
 ```
 
+also you can initialize `VKAPIClient` with different API version and different language like this:
+
+```php
+$vk = new VKAPIClient(VKLanguage::UKRAINIAN, '5.71');
+```
+
 ## 3. Authorization
 
 The library provides the authorization flows for user based on OAuth 2.0 protocol implementation in vk.com Api. Please read the full [documentation](https://vk.com/dev/access_token) before you start.
