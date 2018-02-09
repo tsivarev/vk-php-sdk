@@ -264,8 +264,8 @@ class CallbackServer extends CallbackApiServerHandler {
     const CONFIRMATION_TOKEN = 'e67anm1';
 
     function confirmation(int $group_id, ?string $secret) {
-        if ($secret === self::MY_SECRET && $group_id == self::GROUP) {
-            echo $this->CONFIRMATION_TOKEN;
+        if ($secret === static::MY_SECRET && $group_id == self::GROUP) {
+            echo static::CONFIRMATION_TOKEN;
         }
     }
     
