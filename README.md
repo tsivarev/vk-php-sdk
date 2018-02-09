@@ -23,7 +23,7 @@ $vk = new VKApiClient();
 Also you can initialize `VKApiClient` with different Api version and different language like this:
 
 ```php
-$vk = new VKApiClient(VKLanguage::ENGLISH, '5.71');
+$vk = new VKApiClient(VKLanguage::ENGLISH, '5.69');
 ```
 
 ## 3. Authorization
