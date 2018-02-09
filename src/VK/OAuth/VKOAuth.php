@@ -48,8 +48,8 @@ class VKOAuth {
      * @param string $url_authorize
      * @param string $url_access_token
      */
-    public function __construct($api_version = self::VK_API_VERSION, $url_authorize = self::OAUTH_HOST . self::ENDPOINT_AUTHORIZE,
-                                $url_access_token = self::OAUTH_HOST . self::ENDPOINT_ACCESS_TOKEN) {
+    public function __construct(string $api_version = self::VK_API_VERSION, string $url_authorize = self::OAUTH_HOST . self::ENDPOINT_AUTHORIZE,
+                                string $url_access_token = self::OAUTH_HOST . self::ENDPOINT_ACCESS_TOKEN) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;
         $this->url_authorize = $url_authorize;

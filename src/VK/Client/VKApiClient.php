@@ -218,7 +218,7 @@ class VKApiClient {
 
     /**
      * VKApiClient constructor.
-     * @param int $default_language
+     * @param string $default_language
      * @param string $api_version
      */
     public function __construct(string $default_language = VKLanguage::RUSSIAN, string $api_version = self::VK_API_VERSION) {

@@ -31,7 +31,7 @@ class VKApiRequest {
 
     /**
      * VKApiRequest constructor.
-     * @param int $default_language
+     * @param string $default_language
      * @param string $api_version
      * @param string $host
      */
