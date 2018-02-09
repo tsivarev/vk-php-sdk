@@ -5,12 +5,12 @@ use VK\CallbackApi\Server\CallbackApiServerHandler;
 
 class CallbackServer extends CallbackApiServerHandler {
     const SECRET = 'ab12aba';
-    const GROUP = 123999;
+    const GROUP_ID = 123999;
     const CONFIRMATION_TOKEN = 'e67anm1';
 
     function confirmation(int $group_id, ?string $secret) {
-        if ($secret === self::SECRET && $group_id == self::GROUP) {
-            echo self::CONFIRMATION_TOKEN;
+        if ($secret === static::SECRET && $group_id === static::GROUP_ID) {
+            echo static::CONFIRMATION_TOKEN;
         }
     }
 
