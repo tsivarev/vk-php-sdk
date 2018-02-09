@@ -35,7 +35,7 @@ class VKApiRequest {
      * @param string $api_version
      * @param string $host
      */
-    public function __construct(int $default_language, string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
+    public function __construct(string $default_language, string $api_version = self::VK_API_VERSION, string $host = self::VK_API_HOST) {
         $this->http_client = new CurlHttpClient(static::CONNECTION_TIMEOUT);
         $this->api_version = $api_version;
         $this->host = $host;
@@ -56,10 +56,12 @@ class VKApiRequest {
      */
     public function post(string $method, string $access_token, array $params = array()) {
         $params = $this->formatParams($params);
-        $params[static::API_PARAM_VERSION] = $this->api_version;
         $params[static::API_PARAM_ACCESS_TOKEN] = $access_token;
 
-        if (!in_array(static::API_PARAM_LANG, $params)) {
+        if (!isset($params[static::API_PARAM_VERSION])) {
+            $params[static::API_PARAM_VERSION] = $this->api_version;
+        }
+        if (!isset($params[static::API_PARAM_LANG])) {
             $params[static::API_PARAM_LANG] = $this->lang;
         }
 

@@ -221,7 +221,7 @@ class VKApiClient {
      * @param int $default_language
      * @param string $api_version
      */
-    public function __construct(int $default_language = VKLanguage::ENGLISH, string $api_version = self::VK_API_VERSION) {
+    public function __construct(string $default_language = VKLanguage::RUSSIAN, string $api_version = self::VK_API_VERSION) {
         $this->request = new VKApiRequest($default_language, $api_version);
         $this->account = new Account($this->request);
         $this->ads = new Ads($this->request);
