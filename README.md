@@ -20,6 +20,12 @@ Create VKApiClient object using the following code:
 $vk = new VKApiClient();
 ```
 
+also you can initialize `VKApiClient` with different Api version and different language like this:
+
+```php
+$vk = new VKApiClient(VKLanguage::UKRAINIAN, '5.71');
+```
+
 ## 3. Authorization
 
 The library provides the authorization flows for user based on OAuth 2.0 protocol implementation in vk.com Api. Please read the full [documentation](https://vk.com/dev/access_token) before you start.
@@ -43,7 +49,7 @@ $oauth->authorize(OAuthResponseType::CODE, '{client_id}', '{redirect_uri}', '{di
 3.1.2. Or if you want to get **community access key** use:
 ```php
 $oauth->authorize(OAuthResponseType::CODE, '{client_id}', '{redirect_uri}', '{display}'
-[, '{scope_array}', '{state}', '{group_ids}');
+[, '{scope_array}', '{state}', '{group_ids}]');
 ```
 
 Attention! [User access key](https://vk.com/dev/permissions?f=1.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F) and [community access key](https://vk.com/dev/permissions?f=2.%20%D0%9F%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0) uses different values inside scope array
