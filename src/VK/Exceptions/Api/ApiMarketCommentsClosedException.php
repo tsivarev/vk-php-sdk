@@ -2,13 +2,15 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiMarketCommentsClosedException extends VkApiException {
+class ApiMarketCommentsClosedException extends VkApiException
+{
 
     /**
      * ApiMarketCommentsClosedException constructor.
      * @param string $message
      */
-    public function __construct(string $message) {
-		parent::__construct(1401, 'Comments for this market are closed', $message);
-	}
+    public function __construct(string $message)
+    {
+        parent::__construct(1401, 'Comments for this market are closed', $message);
+    }
 }

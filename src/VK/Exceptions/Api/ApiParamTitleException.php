@@ -2,13 +2,15 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiParamTitleException extends VkApiException {
+class ApiParamTitleException extends VkApiException
+{
 
     /**
      * ApiParamTitleException constructor.
      * @param string $message
      */
-    public function __construct(string $message) {
-		parent::__construct(119, 'Invalid title', $message);
-	}
+    public function __construct(string $message)
+    {
+        parent::__construct(119, 'Invalid title', $message);
+    }
 }

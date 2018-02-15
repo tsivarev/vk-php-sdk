@@ -2,13 +2,15 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiSameCheckinException extends VkApiException {
+class ApiSameCheckinException extends VkApiException
+{
 
     /**
      * ApiSameCheckinException constructor.
      * @param string $message
      */
-    public function __construct(string $message) {
-		parent::__construct(190, 'You have sent same checkin in last 10 minutes', $message);
-	}
+    public function __construct(string $message)
+    {
+        parent::__construct(190, 'You have sent same checkin in last 10 minutes', $message);
+    }
 }
