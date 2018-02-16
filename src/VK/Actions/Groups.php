@@ -33,10 +33,6 @@ class Groups {
      **/
     private $request;
 
-    /**
-     * Groups constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -97,6 +93,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessGroupsException
      * 
      **/
     public function get(string $access_token, array $params = array()) {
@@ -127,6 +124,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamGroupIdException
      * 
      **/
     public function getMembers(string $access_token, array $params = array()) {
@@ -145,6 +143,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
      * 
      **/
     public function join(string $access_token, array $params = array()) {
@@ -210,6 +209,8 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiCommunitiesCatalogDisabledException
+     * @throws ApiCommunitiesCategoriesDisabledException
      * 
      **/
     public function getCatalog(string $access_token, array $params = array()) {
@@ -333,6 +334,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiNotFoundException
      * 
      **/
     public function getBanned(string $access_token, array $params = array()) {
@@ -358,6 +360,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
      * 
      **/
     public function create(string $access_token, array $params = array()) {
@@ -453,6 +456,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiInvalidAddressException
      * 
      **/
     public function edit(string $access_token, array $params = array()) {
@@ -534,6 +538,9 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiGroupChangeCreatorException
+     * @throws ApiGroupNotInClubException
+     * @throws ApiGroupTooManyOfficersException
      * 
      **/
     public function editManager(string $access_token, array $params = array()) {
@@ -551,6 +558,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
      * 
      **/
     public function invite(string $access_token, array $params = array()) {
@@ -656,6 +664,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
      * 
      **/
     public function approveRequest(string $access_token, array $params = array()) {
@@ -746,90 +755,5 @@ class Groups {
      **/
     public function setCallbackSettings(string $access_token, array $params = array()) {
         return $this->request->post('groups.setCallbackSettings', $access_token, $params);
-    }
-
-    /**
-     * Returns data for connection to Bots Longpoll API.
-     *
-     * @param $access_token string
-     * @param $params array
-     *      - integer group_id: Community ID.
-     *
-     * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKApiException in case of network error
-     *
-     **/
-    public function getLongPollServer(string $access_token, array $params = array()) {
-        return $this->request->post('groups.getLongPollServer', $access_token, $params);
-    }
-
-    /**
-     * Gets settings of Bots Longpoll API for the community.
-     *
-     * @param $access_token string
-     * @param $params array
-     *      - integer group_id: Community ID.
-     *
-     * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKApiException in case of network error
-     *
-     **/
-    public function getLongPollSettings(string $access_token, array $params = array()) {
-        return $this->request->post('groups.getLongPollSettings', $access_token, $params);
-    }
-
-    /**
-     * Sets settings of Bots Longpoll API for the community.
-     *
-     * @param $access_token string
-     * @param $params array
-     *      - integer group_id: Community ID.
-     *      - boolean enabled: Enable Bots Longpoll ('0' — disabled, '1' — enabled).
-     *      - boolean message_new: A new incoming message has been received ('0' — disabled, '1' — enabled).
-     *      - boolean message_reply: A new outcoming message has been received ('0' — disabled, '1' — enabled).
-     *      - boolean message_allow: Allowed messages notifications ('0' — disabled, '1' — enabled).
-     *      - boolean message_deny: Denied messages notifications ('0' — disabled, '1' — enabled).
-     *      - boolean photo_new: New photos notifications ('0' — disabled, '1' — enabled).
-     *      - boolean audio_new: New audios notifications ('0' — disabled, '1' — enabled).
-     *      - boolean video_new: New videos notifications ('0' — disabled, '1' — enabled).
-     *      - boolean wall_reply_new: New wall replies notifications ('0' — disabled, '1' — enabled).
-     *      - boolean wall_reply_edit: Wall replies edited notifications ('0' — disabled, '1' — enabled).
-     *      - boolean wall_reply_delete: A wall comment has been deleted ('0' — disabled, '1' — enabled).
-     *      - boolean wall_reply_restore: A wall comment has been restored ('0' — disabled, '1' — enabled).
-     *      - boolean wall_post_new: New wall posts notifications ('0' — disabled, '1' — enabled).
-     *      - boolean wall_repost: New wall posts notifications ('0' — disabled, '1' — enabled).
-     *      - boolean board_post_new: New board posts notifications ('0' — disabled, '1' — enabled).
-     *      - boolean board_post_edit: Board posts edited notifications ('0' — disabled, '1' — enabled).
-     *      - boolean board_post_restore: Board posts restored notifications ('0' — disabled, '1' — enabled).
-     *      - boolean board_post_delete: Board posts deleted notifications ('0' — disabled, '1' — enabled).
-     *      - boolean photo_comment_new: New comment to photo notifications ('0' — disabled, '1' — enabled).
-     *      - boolean photo_comment_edit: A photo comment has been edited ('0' — disabled, '1' — enabled).
-     *      - boolean photo_comment_delete: A photo comment has been deleted ('0' — disabled, '1' — enabled).
-     *      - boolean photo_comment_restore: A photo comment has been restored ('0' — disabled, '1' — enabled).
-     *      - boolean video_comment_new: New comment to video notifications ('0' — disabled, '1' — enabled).
-     *      - boolean video_comment_edit: A video comment has been edited ('0' — disabled, '1' — enabled).
-     *      - boolean video_comment_delete: A video comment has been deleted ('0' — disabled, '1' — enabled).
-     *      - boolean video_comment_restore: A video comment has been restored ('0' — disabled, '1' — enabled).
-     *      - boolean market_comment_new: New comment to market item notifications ('0' — disabled, '1' —
-     *        enabled).
-     *      - boolean market_comment_edit: A market comment has been edited ('0' — disabled, '1' — enabled).
-     *      - boolean market_comment_delete: A market comment has been deleted ('0' — disabled, '1' — enabled).
-     *      - boolean market_comment_restore: A market comment has been restored ('0' — disabled, '1' —
-     *        enabled).
-     *      - boolean poll_vote_new: A vote in a public poll has been added ('0' — disabled, '1' — enabled).
-     *      - boolean group_join: Joined community notifications ('0' — disabled, '1' — enabled).
-     *      - boolean group_leave: Left community notifications ('0' — disabled, '1' — enabled).
-     *      - boolean user_block: User added to community blacklist
-     *      - boolean user_unblock: User removed from community blacklist
-     *
-     * @return mixed
-     * @throws VKClientException in case of error on the API side
-     * @throws VKApiException in case of network error
-     *
-     **/
-    public function setLongPollSettings(string $access_token, array $params = array()) {
-        return $this->request->post('groups.setLongPollSettings', $access_token, $params);
     }
 }

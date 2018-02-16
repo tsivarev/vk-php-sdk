@@ -2,15 +2,8 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiAccessVideoException extends VkApiException
-{
-
-    /**
-     * ApiAccessVideoException constructor.
-     * @param string $message
-     */
-    public function __construct(string $message)
-    {
-        parent::__construct(204, 'Access denied', $message);
+class ApiAccessVideoException extends VKApiException {
+    public function __construct($message) {
+        parent::__construct(204,  'Access denied',  $message);
     }
 }

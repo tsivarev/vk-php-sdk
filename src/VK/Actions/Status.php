@@ -13,10 +13,6 @@ class Status {
      **/
     private $request;
 
-    /**
-     * Status constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -50,6 +46,7 @@ class Status {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiStatusNoAudioException
      * 
      **/
     public function set(string $access_token, array $params = array()) {

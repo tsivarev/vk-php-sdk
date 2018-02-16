@@ -14,10 +14,6 @@ class Leads {
      **/
     private $request;
 
-    /**
-     * Leads constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -34,6 +30,8 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
+     * @throws ApiVotesException
      * 
      **/
     public function complete(string $access_token, array $params = array()) {
@@ -51,6 +49,7 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
      * 
      **/
     public function start(string $access_token, array $params = array()) {
@@ -113,6 +112,7 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiActionFailedException
      * 
      **/
     public function checkUser(string $access_token, array $params = array()) {
@@ -129,6 +129,7 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamException
      * 
      **/
     public function metricHit(string $access_token, array $params = array()) {

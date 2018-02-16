@@ -14,10 +14,6 @@ class Polls {
      **/
     private $request;
 
-    /**
-     * Polls constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,6 +31,7 @@ class Polls {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiPollsAccessException
      * 
      **/
     public function getById(string $access_token, array $params = array()) {
@@ -55,6 +52,9 @@ class Polls {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiPollsAccessException
+     * @throws ApiPollsAnswerIdException
+     * @throws ApiPollsPollIdException
      * 
      **/
     public function addVote(string $access_token, array $params = array()) {
@@ -75,6 +75,9 @@ class Polls {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiPollsAccessException
+     * @throws ApiPollsAnswerIdException
+     * @throws ApiPollsPollIdException
      * 
      **/
     public function deleteVote(string $access_token, array $params = array()) {
@@ -107,6 +110,9 @@ class Polls {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiPollsAccessException
+     * @throws ApiPollsAnswerIdException
+     * @throws ApiPollsPollIdException
      * 
      **/
     public function getVoters(string $access_token, array $params = array()) {

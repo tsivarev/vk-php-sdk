@@ -13,10 +13,6 @@ class Notes {
      **/
     private $request;
 
-    /**
-     * Notes constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -33,6 +29,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamNoteIdException
      * 
      **/
     public function get(string $access_token, array $params = array()) {
@@ -50,6 +47,8 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessNoteException
+     * @throws ApiParamNoteIdException
      * 
      **/
     public function getById(string $access_token, array $params = array()) {
@@ -89,6 +88,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamNoteIdException
      * 
      **/
     public function edit(string $access_token, array $params = array()) {
@@ -105,6 +105,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamNoteIdException
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -123,6 +124,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessNoteException
      * 
      **/
     public function getComments(string $access_token, array $params = array()) {
@@ -144,6 +146,8 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessNoteException
+     * @throws ApiAccessNoteCommentException
      * 
      **/
     public function createComment(string $access_token, array $params = array()) {
@@ -162,6 +166,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessCommentException
      * 
      **/
     public function editComment(string $access_token, array $params = array()) {
@@ -179,6 +184,8 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessNoteException
+     * @throws ApiAccessCommentException
      * 
      **/
     public function deleteComment(string $access_token, array $params = array()) {
@@ -196,6 +203,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessCommentException
      * 
      **/
     public function restoreComment(string $access_token, array $params = array()) {

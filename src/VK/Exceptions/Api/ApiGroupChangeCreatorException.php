@@ -2,15 +2,8 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiGroupChangeCreatorException extends VkApiException
-{
-
-    /**
-     * ApiGroupChangeCreatorException constructor.
-     * @param string $message
-     */
-    public function __construct(string $message)
-    {
-        parent::__construct(700, 'Cannot edit creator role', $message);
+class ApiGroupChangeCreatorException extends VKApiException {
+    public function __construct($message) {
+        parent::__construct(700,  'Cannot edit creator role',  $message);
     }
 }

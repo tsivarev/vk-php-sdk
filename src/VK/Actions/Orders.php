@@ -14,10 +14,6 @@ class Orders {
      **/
     private $request;
 
-    /**
-     * Orders constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -76,6 +72,8 @@ class Orders {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
+     * @throws ApiActionFailedException
      * 
      **/
     public function changeState(string $access_token, array $params = array()) {
@@ -93,6 +91,7 @@ class Orders {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamException
      * 
      **/
     public function getAmount(string $access_token, array $params = array()) {

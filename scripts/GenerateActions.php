@@ -53,6 +53,7 @@ class GenerateActions {
     protected const KEY_ENUM = 'enum';
     protected const KEY_ENUM_NAMES = 'enumNames';
     protected const KEY_TYPE = 'type';
+    protected const KEY_ERRORS = 'errors';
 
     protected const LINK_SCHEMA = 'https://raw.githubusercontent.com/VKCOM/vk-api-schema/master/';
     protected const LINK_METHODS = self::LINK_SCHEMA . 'methods.json';
@@ -270,14 +271,22 @@ class GenerateActions {
             $method_description = $method[static::KEY_DESCRIPTION];
         }
 
+        $method_errors = array('', '@return mixed',
+            '@throws VKClientException in case of error on the Api side',
+            '@throws VKApiException in case of network error');
+        if (isset($method[static::KEY_ERRORS])) {
+            foreach ($method[static::KEY_ERRORS] as $error) {
+                array_push($method_errors, '@throws ' . static::parseErrorName($error['name']));
+            }
+        }
+        array_push($method_errors, '');
+
         $method_description = wordwrap($method_description, static::LINE_LENGTH_DESCRIPTION);
         $method_description_array = explode(PHP_EOL, $method_description);
 
         $result .= $this->wrapComment(array_merge($method_description_array, array('', '@param ' . static::DOLLAR .
         static::ARG_ACCESS_TOKEN . ' string', '@param ' . static::DOLLAR .
-            static::ARG_PARAMS . ' array'), $params, array('', '@return mixed',
-                '@throws VKClientException in case of error on the Api side',
-                '@throws VKApiException in case of network error', ''))) . PHP_EOL;
+            static::ARG_PARAMS . ' array'), $params, $method_errors)) . PHP_EOL;
 
         $result .= $this->tab(1) . 'public function ' . $method_name . '(string ' . static::DOLLAR . static::ARG_ACCESS_TOKEN
             . ', array ' . static::DOLLAR . static::ARG_PARAMS . ' = array()) {' . PHP_EOL;
@@ -290,6 +299,14 @@ class GenerateActions {
         $result .= $this->tab(1) . '}';
 
         return $result;
+    }
+
+    protected function parseErrorName(string $name) {
+        $error_name = str_replace(static::SPACE, '',
+            ucwords(str_replace(static::UNDERSCORE, static::SPACE, strtolower($name))));
+        $error_name = str_replace('Error', '', $error_name);
+        $error_name .= 'Exception';
+        return $error_name;
     }
 
     protected function createParameterEnum($param, $parameter_name, $method_name, $action_name) {

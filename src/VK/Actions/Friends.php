@@ -19,10 +19,6 @@ class Friends {
      **/
     private $request;
 
-    /**
-     * Friends constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -159,6 +155,9 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiFriendsAddInEnemyException
+     * @throws ApiFriendsAddEnemyException
+     * @throws ApiFriendsAddYourselfException
      * 
      **/
     public function add(string $access_token, array $params = array()) {
@@ -227,6 +226,7 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiFriendsListLimitException
      * 
      **/
     public function addList(string $access_token, array $params = array()) {
@@ -249,6 +249,7 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiFriendsListIdException
      * 
      **/
     public function editList(string $access_token, array $params = array()) {
@@ -265,6 +266,7 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiFriendsListIdException
      * 
      **/
     public function deleteList(string $access_token, array $params = array()) {
@@ -288,7 +290,7 @@ class Friends {
 
     /**
      * Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a
-     * given list.
+given list.
      * 
      * @param $access_token string
      * @param $params array

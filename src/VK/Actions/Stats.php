@@ -13,10 +13,6 @@ class Stats {
      **/
     private $request;
 
-    /**
-     * Stats constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -67,6 +63,7 @@ class Stats {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessPostException
      * 
      **/
     public function getPostReach(string $access_token, array $params = array()) {

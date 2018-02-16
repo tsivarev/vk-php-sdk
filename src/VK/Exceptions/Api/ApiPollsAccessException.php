@@ -2,15 +2,8 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiPollsAccessException extends VkApiException
-{
-
-    /**
-     * ApiPollsAccessException constructor.
-     * @param string $message
-     */
-    public function __construct(string $message)
-    {
-        parent::__construct(250, 'Access to poll denied', $message);
+class ApiPollsAccessException extends VKApiException {
+    public function __construct($message) {
+        parent::__construct(250,  'Access to poll denied',  $message);
     }
 }

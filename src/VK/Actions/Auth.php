@@ -14,10 +14,6 @@ class Auth {
      **/
     private $request;
 
-    /**
-     * Auth constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,6 +31,9 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiPhoneAlreadyUsedException
+     * @throws ApiAuthDelayException
+     * @throws ApiParamPhoneException
      * 
      **/
     public function checkPhone(string $access_token, array $params = array()) {
@@ -66,6 +65,9 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiPhoneAlreadyUsedException
+     * @throws ApiAuthDelayException
+     * @throws ApiParamPhoneException
      * 
      **/
     public function signup(string $access_token, array $params = array()) {
@@ -74,7 +76,7 @@ class Auth {
 
     /**
      * Completes a user's registration (begun with the [vk.com/dev/auth.signup|auth.signup] method) using an
-     * authorization code.
+authorization code.
      * 
      * @param $access_token string
      * @param $params array
@@ -89,6 +91,8 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAuthParamPasswordException
+     * @throws ApiAuthParamCodeException
      * 
      **/
     public function confirm(string $access_token, array $params = array()) {
@@ -97,7 +101,7 @@ class Auth {
 
     /**
      * Allows to restore account access using a code received via SMS. " This method is only available for apps with
-     * [vk.com/dev/auth_direct|Direct authorization] access. "
+[vk.com/dev/auth_direct|Direct authorization] access. "
      * 
      * @param $access_token string
      * @param $params array
@@ -107,6 +111,7 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAuthFloodException
      * 
      **/
     public function restore(string $access_token, array $params = array()) {

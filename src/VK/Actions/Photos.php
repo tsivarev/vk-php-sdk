@@ -17,10 +17,6 @@ class Photos {
      **/
     private $request;
 
-    /**
-     * Photos constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -41,6 +37,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAlbumsLimitException
      * 
      **/
     public function createAlbum(string $access_token, array $params = array()) {
@@ -64,6 +61,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamAlbumIdException
      * 
      **/
     public function editAlbum(string $access_token, array $params = array()) {
@@ -287,6 +285,8 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamHashException
+     * @throws ApiParamPhotoException
      * 
      **/
     public function saveMarketPhoto(string $access_token, array $params = array()) {
@@ -304,6 +304,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamPhotoException
      * 
      **/
     public function saveOwnerCoverPhoto(string $access_token, array $params = array()) {
@@ -323,6 +324,8 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamHashException
+     * @throws ApiParamPhotoException
      * 
      **/
     public function saveMarketAlbumPhoto(string $access_token, array $params = array()) {
@@ -331,7 +334,7 @@ class Photos {
 
     /**
      * Saves a profile or community photo. Upload URL can be got with the
-     * [vk.com/dev/photos.getOwnerPhotoUploadServer|photos.getOwnerPhotoUploadServer] method.
+[vk.com/dev/photos.getOwnerPhotoUploadServer|photos.getOwnerPhotoUploadServer] method.
      * 
      * @param $access_token string
      * @param $params array
@@ -342,6 +345,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamPhotoException
      * 
      **/
     public function saveOwnerPhoto(string $access_token, array $params = array()) {
@@ -366,6 +370,9 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamAlbumIdException
+     * @throws ApiParamServerException
+     * @throws ApiParamHashException
      * 
      **/
     public function saveWallPhoto(string $access_token, array $params = array()) {
@@ -405,7 +412,7 @@ class Photos {
 
     /**
      * Saves a photo after being successfully uploaded. URL obtained with
-     * [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
+[vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
      * 
      * @param $access_token string
      * @param $params array
@@ -416,6 +423,9 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamAlbumIdException
+     * @throws ApiParamServerException
+     * @throws ApiParamHashException
      * 
      **/
     public function saveMessagesPhoto(string $access_token, array $params = array()) {
@@ -504,6 +514,9 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamAlbumIdException
+     * @throws ApiParamServerException
+     * @throws ApiParamHashException
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -620,6 +633,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamPhotosException
      * 
      **/
     public function reorderPhotos(string $access_token, array $params = array()) {
@@ -647,6 +661,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiBlockedException
      * 
      **/
     public function getAll(string $access_token, array $params = array()) {
@@ -685,6 +700,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamAlbumIdException
      * 
      **/
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -771,7 +787,7 @@ class Photos {
 
     /**
      * Returns a list of comments on a specific photo album or all albums of the user sorted in reverse chronological
-     * order.
+order.
      * 
      * @param $access_token string
      * @param $params array
@@ -785,6 +801,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamAlbumIdException
      * 
      **/
     public function getAllComments(string $access_token, array $params = array()) {

@@ -13,10 +13,6 @@ class Docs {
      **/
     private $request;
 
-    /**
-     * Docs constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -101,6 +97,7 @@ class Docs {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiSaveFileException
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -119,6 +116,8 @@ class Docs {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamDocDeleteAccessException
+     * @throws ApiParamDocIdException
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -193,6 +192,9 @@ class Docs {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiParamDocAccessException
+     * @throws ApiParamDocIdException
+     * @throws ApiParamDocTitleException
      * 
      **/
     public function edit(string $access_token, array $params = array()) {

@@ -15,10 +15,6 @@ class Pages {
      **/
     private $request;
 
-    /**
-     * Pages constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -59,6 +55,9 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessPageException
+     * @throws ApiParamPageIdException
+     * @throws ApiParamTitleException
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -83,6 +82,8 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessPageException
+     * @throws ApiParamPageIdException
      * 
      **/
     public function saveAccess(string $access_token, array $params = array()) {
@@ -101,6 +102,8 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessPageException
+     * @throws ApiParamPageIdException
      * 
      **/
     public function getHistory(string $access_token, array $params = array()) {
@@ -117,6 +120,7 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessPageException
      * 
      **/
     public function getTitles(string $access_token, array $params = array()) {
@@ -136,6 +140,7 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessPageException
      * 
      **/
     public function getVersion(string $access_token, array $params = array()) {

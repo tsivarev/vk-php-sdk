@@ -17,10 +17,6 @@ class Wall {
      **/
     private $request;
 
-    /**
-     * Wall constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -46,6 +42,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiBlockedException
+     * @throws ApiUserDeletedException
      * 
      **/
     public function get(string $access_token, array $params = array()) {
@@ -69,6 +67,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessPostException
+     * @throws ApiUserDeletedException
      * 
      **/
     public function search(string $access_token, array $params = array()) {
@@ -131,6 +131,10 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAdsPublishedException
+     * @throws ApiWallAddPostException
+     * @throws ApiWallTooManyRecipientsException
+     * @throws ApiWallLinksForbiddenException
      * 
      **/
     public function post(string $access_token, array $params = array()) {
@@ -150,6 +154,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAdsPublishedException
+     * @throws ApiWallAddPostException
      * 
      **/
     public function repost(string $access_token, array $params = array()) {
@@ -224,6 +230,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessPostException
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -242,6 +249,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessPostException
+     * @throws ApiWallAddPostException
      * 
      **/
     public function restore(string $access_token, array $params = array()) {
@@ -305,6 +314,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessRepliesException
      * 
      **/
     public function getComments(string $access_token, array $params = array()) {
@@ -331,6 +341,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessAddReplyException
      * 
      **/
     public function createComment(string $access_token, array $params = array()) {
@@ -370,6 +381,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessCommentException
      * 
      **/
     public function deleteComment(string $access_token, array $params = array()) {
@@ -387,6 +399,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWallAccessCommentException
      * 
      **/
     public function restoreComment(string $access_token, array $params = array()) {

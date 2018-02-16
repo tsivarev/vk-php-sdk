@@ -22,10 +22,6 @@ class Ads {
      **/
     private $request;
 
-    /**
-     * Ads constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -55,6 +51,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getClients(string $access_token, array $params = array()) {
@@ -73,6 +70,8 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAdsPartialSuccessException
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function createClients(string $access_token, array $params = array()) {
@@ -91,6 +90,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function updateClients(string $access_token, array $params = array()) {
@@ -108,6 +108,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function deleteClients(string $access_token, array $params = array()) {
@@ -131,6 +132,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getCampaigns(string $access_token, array $params = array()) {
@@ -149,6 +151,8 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAdsPartialSuccessException
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function createCampaigns(string $access_token, array $params = array()) {
@@ -167,6 +171,8 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAdsPartialSuccessException
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function updateCampaigns(string $access_token, array $params = array()) {
@@ -184,6 +190,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function deleteCampaigns(string $access_token, array $params = array()) {
@@ -211,6 +218,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getAds(string $access_token, array $params = array()) {
@@ -237,6 +245,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getAdsLayout(string $access_token, array $params = array()) {
@@ -263,6 +272,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getAdsTargeting(string $access_token, array $params = array()) {
@@ -281,6 +291,8 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAdsPartialSuccessException
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function createAds(string $access_token, array $params = array()) {
@@ -299,6 +311,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function updateAds(string $access_token, array $params = array()) {
@@ -316,6 +329,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function deleteAds(string $access_token, array $params = array()) {
@@ -368,6 +382,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getStatistics(string $access_token, array $params = array()) {
@@ -399,6 +414,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getDemographics(string $access_token, array $params = array()) {
@@ -416,6 +432,8 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
+     * @throws ApiAdsPermissionException
      * 
      **/
     public function getAdsPostsReach(string $access_token, array $params = array()) {
@@ -432,6 +450,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getBudget(string $access_token, array $params = array()) {
@@ -448,6 +467,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getOfficeUsers(string $access_token, array $params = array()) {
@@ -466,6 +486,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function addOfficeUsers(string $access_token, array $params = array()) {
@@ -483,6 +504,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function removeOfficeUsers(string $access_token, array $params = array()) {
@@ -511,6 +533,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getTargetingStats(string $access_token, array $params = array()) {
@@ -603,7 +626,7 @@ class Ads {
 
     /**
      * Returns information about current state of a counter — number of remaining runs of methods and time to the
-     * next counter nulling in seconds.
+next counter nulling in seconds.
      * 
      * @param $access_token string
      * @param $params array
@@ -629,6 +652,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getRejectionReason(string $access_token, array $params = array()) {
@@ -637,7 +661,7 @@ class Ads {
 
     /**
      * Creates a group to re-target ads for users who visited advertiser's site (viewed information about the product,
-     * registered, etc.).
+registered, etc.).
      * 
      * @param $access_token string
      * @param $params array
@@ -652,6 +676,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function createTargetGroup(string $access_token, array $params = array()) {
@@ -676,6 +701,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function updateTargetGroup(string $access_token, array $params = array()) {
@@ -695,6 +721,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function deleteTargetGroup(string $access_token, array $params = array()) {
@@ -714,6 +741,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function getTargetGroups(string $access_token, array $params = array()) {
@@ -734,6 +762,7 @@ class Ads {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiWeightedFloodException
      * 
      **/
     public function importTargetContacts(string $access_token, array $params = array()) {

@@ -13,10 +13,6 @@ class Secure {
      **/
     private $request;
 
-    /**
-     * Secure constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -53,7 +49,7 @@ class Secure {
 
     /**
      * Shows a list of SMS notifications sent by the application using
-     * [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
+[vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
      * 
      * @param $access_token string
      * @param $params array
@@ -84,6 +80,8 @@ class Secure {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiInsufficientFundsException
+     * @throws ApiMobileNotActivatedException
      * 
      **/
     public function sendSMSNotification(string $access_token, array $params = array()) {
@@ -121,6 +119,7 @@ class Secure {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMenuException
      * 
      **/
     public function setCounter(string $access_token, array $params = array()) {
@@ -175,6 +174,7 @@ class Secure {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAppsAlreadyUnlockedException
      * 
      **/
     public function addAppEvent(string $access_token, array $params = array()) {

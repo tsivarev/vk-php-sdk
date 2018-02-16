@@ -2,15 +2,8 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiGroupNotInClubException extends VkApiException
-{
-
-    /**
-     * ApiGroupNotInClubException constructor.
-     * @param string $message
-     */
-    public function __construct(string $message)
-    {
-        parent::__construct(701, 'User should be in club', $message);
+class ApiGroupNotInClubException extends VKApiException {
+    public function __construct($message) {
+        parent::__construct(701,  'User should be in club',  $message);
     }
 }

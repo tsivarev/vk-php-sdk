@@ -17,10 +17,6 @@ class Account {
      **/
     private $request;
 
-    /**
-     * Account constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -52,6 +48,7 @@ class Account {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMenuException
      * 
      **/
     public function setNameInMenu(string $access_token, array $params = array()) {
@@ -227,7 +224,7 @@ class Account {
 
     /**
      * Returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes
-     * to his balance in the application.
+to his balance in the application.
      * 
      * @param $access_token string
      * @param $params array
@@ -329,7 +326,7 @@ class Account {
 
     /**
      * Changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore]
-     * method.
+method.
      * 
      * @param $access_token string
      * @param $params array
@@ -394,6 +391,7 @@ class Account {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiInvalidAddressException
      * 
      **/
     public function saveProfileInfo(string $access_token, array $params = array()) {

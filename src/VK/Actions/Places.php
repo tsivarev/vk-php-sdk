@@ -14,10 +14,6 @@ class Places {
      **/
     private $request;
 
-    /**
-     * Places constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -105,6 +101,7 @@ class Places {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiSameCheckinException
      * 
      **/
     public function checkin(string $access_token, array $params = array()) {
@@ -135,6 +132,7 @@ class Places {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessCheckinException
      * 
      **/
     public function getCheckins(string $access_token, array $params = array()) {

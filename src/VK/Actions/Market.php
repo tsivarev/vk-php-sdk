@@ -17,10 +17,6 @@ class Market {
      **/
     private $request;
 
-    /**
-     * Market constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -174,6 +170,7 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMarketCommentsClosedException
      * 
      **/
     public function getComments(string $access_token, array $params = array()) {
@@ -317,6 +314,8 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMarketException
+     * @throws ApiMarketTooManyItemsException
      * 
      **/
     public function add(string $access_token, array $params = array()) {
@@ -341,6 +340,8 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMarketException
+     * @throws ApiMarketItemNotFoundException
      * 
      **/
     public function edit(string $access_token, array $params = array()) {
@@ -358,6 +359,7 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMarketException
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -375,6 +377,8 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMarketException
+     * @throws ApiMarketRestoreTooLateException
      * 
      **/
     public function restore(string $access_token, array $params = array()) {
@@ -395,6 +399,9 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMarketException
+     * @throws ApiMarketAlbumNotFoundException
+     * @throws ApiMarketItemNotFoundException
      * 
      **/
     public function reorderItems(string $access_token, array $params = array()) {
@@ -414,6 +421,8 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiAccessMarketException
+     * @throws ApiMarketAlbumNotFoundException
      * 
      **/
     public function reorderAlbums(string $access_token, array $params = array()) {
@@ -433,6 +442,7 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMarketTooManyAlbumsException
      * 
      **/
     public function addAlbum(string $access_token, array $params = array()) {
@@ -453,6 +463,7 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMarketAlbumNotFoundException
      * 
      **/
     public function editAlbum(string $access_token, array $params = array()) {
@@ -470,6 +481,7 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMarketAlbumNotFoundException
      * 
      **/
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -488,6 +500,8 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMarketAlbumNotFoundException
+     * @throws ApiMarketItemNotFoundException
      * 
      **/
     public function removeFromAlbum(string $access_token, array $params = array()) {
@@ -506,6 +520,10 @@ class Market {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMarketAlbumNotFoundException
+     * @throws ApiMarketItemNotFoundException
+     * @throws ApiMarketTooManyItemsInAlbumException
+     * @throws ApiMarketItemAlreadyAddedException
      * 
      **/
     public function addToAlbum(string $access_token, array $params = array()) {

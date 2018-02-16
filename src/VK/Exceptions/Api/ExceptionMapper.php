@@ -2,14 +2,11 @@
 
 namespace VK\Exceptions\Api;
 
-use PHPUnit\Runner\Exception;
-use VK\CLient\VKApiError;
+use VK\Client\VKApiError;
 
-class ExceptionMapper
-{
-    public static function parse(VKApiError $error)
-    {
-        switch ($error->getErrorCode()) {
+class ExceptionMapper {
+    public static function parse(VKApiError $error) {
+        switch($error->getErrorCode()) {
             case 1:
                 return new ApiUnknownException($error->getErrorMsg());
             case 2:
@@ -237,7 +234,7 @@ class ExceptionMapper
             case 1407:
                 return new ApiMarketTooManyAlbumsException($error->getErrorMsg());
             default:
-                throw new Exception('Internal error');
+                return new VKApiException($error->getErrorCode(), $error->getErrorMsg(), 'Unknown error');
         }
     }
 }

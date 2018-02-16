@@ -17,10 +17,6 @@ class Messages {
      **/
     private $request;
 
-    /**
-     * Messages constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -191,6 +187,11 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiMessagesUserBlockedException
+     * @throws ApiMessagesDenySendException
+     * @throws ApiMessagesPrivacyException
+     * @throws ApiMessagesForwardAmountExceededException
+     * @throws ApiMessagesForwardException
      * 
      **/
     public function send(string $access_token, array $params = array()) {
@@ -401,6 +402,7 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiFloodException
      * 
      **/
     public function createChat(string $access_token, array $params = array()) {
@@ -494,6 +496,7 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiLimitsException
      * 
      **/
     public function addChatUser(string $access_token, array $params = array()) {
@@ -502,7 +505,7 @@ class Messages {
 
     /**
      * Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove
-     * another user from the chat.
+another user from the chat.
      * 
      * @param $access_token string
      * @param $params array
@@ -546,6 +549,8 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiUploadException
+     * @throws ApiPhotoChangedException
      * 
      **/
     public function setChatPhoto(string $access_token, array $params = array()) {

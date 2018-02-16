@@ -17,10 +17,6 @@ class Newsfeed {
      **/
     private $request;
 
-    /**
-     * Newsfeed constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -289,6 +285,7 @@ class Newsfeed {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiTooManyListsException
      * 
      **/
     public function saveList(string $access_token, array $params = array()) {

@@ -2,15 +2,8 @@
 
 namespace VK\Exceptions\Api;
 
-class ApiMarketTooManyItemsInAlbumException extends VkApiException
-{
-
-    /**
-     * ApiMarketTooManyItemsInAlbumException constructor.
-     * @param string $message
-     */
-    public function __construct(string $message)
-    {
-        parent::__construct(1406, 'Too many items in album', $message);
+class ApiMarketTooManyItemsInAlbumException extends VKApiException {
+    public function __construct($message) {
+        parent::__construct(1406,  'Too many items in album',  $message);
     }
 }

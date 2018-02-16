@@ -19,10 +19,6 @@ class Apps {
      **/
     private $request;
 
-    /**
-     * Apps constructor.
-     * @param VKApiRequest $request
-     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -103,6 +99,7 @@ class Apps {
      * @return mixed
      * @throws VKClientException in case of error on the Api side
      * @throws VKApiException in case of network error
+     * @throws ApiFloodException
      * 
      **/
     public function sendRequest(string $access_token, array $params = array()) {
