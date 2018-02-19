@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiFloodException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiFloodException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(9,  'Flood control',  $message);
     }
 }

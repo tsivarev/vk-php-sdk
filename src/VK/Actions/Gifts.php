@@ -13,6 +13,10 @@ class Gifts {
      **/
     private $request;
 
+    /**
+     * Gifts constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -27,7 +31,7 @@ class Gifts {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

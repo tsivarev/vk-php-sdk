@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiAlbumFullException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiAlbumFullException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(300,  'This album is full',  $message);
     }
 }

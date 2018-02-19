@@ -17,6 +17,10 @@ class Photos {
      **/
     private $request;
 
+    /**
+     * Photos constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,9 +39,9 @@ class Photos {
      *      - boolean comments_disabled:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAlbumsLimitException
+     * @throws ApiAlbumsLimitException Albums number limit is reached
      * 
      **/
     public function createAlbum(string $access_token, array $params = array()) {
@@ -59,9 +63,9 @@ class Photos {
      *      - boolean comments_disabled:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException
+     * @throws ApiParamAlbumIdException Invalid album id
      * 
      **/
     public function editAlbum(string $access_token, array $params = array()) {
@@ -82,7 +86,7 @@ class Photos {
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -113,7 +117,7 @@ class Photos {
      *      - integer count:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -130,7 +134,7 @@ class Photos {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -151,7 +155,7 @@ class Photos {
      *      - boolean photo_sizes: '1' — to return photo sizes in a
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -169,7 +173,7 @@ class Photos {
      *        album).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -190,7 +194,7 @@ class Photos {
      *      - integer crop_y2: Y coordinate of the right-bottom corner
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -207,7 +211,7 @@ class Photos {
      *        negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -226,7 +230,7 @@ class Photos {
      *      - integer crop_width: Width (in pixels) of the photo after cropping.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -246,7 +250,7 @@ class Photos {
      *      - integer crop_width: Width of the cropped photo in px.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -262,7 +266,7 @@ class Photos {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -283,10 +287,10 @@ class Photos {
      *      - string crop_hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamHashException
-     * @throws ApiParamPhotoException
+     * @throws ApiParamHashException Invalid hash
+     * @throws ApiParamPhotoException Invalid photo
      * 
      **/
     public function saveMarketPhoto(string $access_token, array $params = array()) {
@@ -302,9 +306,9 @@ class Photos {
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamPhotoException
+     * @throws ApiParamPhotoException Invalid photo
      * 
      **/
     public function saveOwnerCoverPhoto(string $access_token, array $params = array()) {
@@ -322,10 +326,10 @@ class Photos {
      *      - string hash: Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamHashException
-     * @throws ApiParamPhotoException
+     * @throws ApiParamHashException Invalid hash
+     * @throws ApiParamPhotoException Invalid photo
      * 
      **/
     public function saveMarketAlbumPhoto(string $access_token, array $params = array()) {
@@ -334,7 +338,7 @@ class Photos {
 
     /**
      * Saves a profile or community photo. Upload URL can be got with the
-[vk.com/dev/photos.getOwnerPhotoUploadServer|photos.getOwnerPhotoUploadServer] method.
+     * [vk.com/dev/photos.getOwnerPhotoUploadServer|photos.getOwnerPhotoUploadServer] method.
      * 
      * @param $access_token string
      * @param $params array
@@ -343,9 +347,9 @@ class Photos {
      *      - string photo: parameter returned after [vk.com/dev/upload_files|photo upload].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamPhotoException
+     * @throws ApiParamPhotoException Invalid photo
      * 
      **/
     public function saveOwnerPhoto(string $access_token, array $params = array()) {
@@ -368,11 +372,11 @@ class Photos {
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException
-     * @throws ApiParamServerException
-     * @throws ApiParamHashException
+     * @throws ApiParamAlbumIdException Invalid album id
+     * @throws ApiParamServerException Invalid server
+     * @throws ApiParamHashException Invalid hash
      * 
      **/
     public function saveWallPhoto(string $access_token, array $params = array()) {
@@ -387,7 +391,7 @@ class Photos {
      *      - integer group_id: ID of community to whose wall the photo will be uploaded.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -402,7 +406,7 @@ class Photos {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -412,7 +416,7 @@ class Photos {
 
     /**
      * Saves a photo after being successfully uploaded. URL obtained with
-[vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
+     * [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
      * 
      * @param $access_token string
      * @param $params array
@@ -421,11 +425,11 @@ class Photos {
      *      - string hash:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException
-     * @throws ApiParamServerException
-     * @throws ApiParamHashException
+     * @throws ApiParamAlbumIdException Invalid album id
+     * @throws ApiParamServerException Invalid server
+     * @throws ApiParamHashException Invalid hash
      * 
      **/
     public function saveMessagesPhoto(string $access_token, array $params = array()) {
@@ -444,7 +448,7 @@ class Photos {
      *        @see PhotosReportReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -464,7 +468,7 @@ class Photos {
      *        @see PhotosReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -489,7 +493,7 @@ class Photos {
      *        '800', '6000', '50000'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -512,11 +516,11 @@ class Photos {
      *      - string caption: Text describing the photo. 2048 digits max.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException
-     * @throws ApiParamServerException
-     * @throws ApiParamHashException
+     * @throws ApiParamAlbumIdException Invalid album id
+     * @throws ApiParamServerException Invalid server
+     * @throws ApiParamHashException Invalid hash
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -533,7 +537,7 @@ class Photos {
      *      - string access_key: for private photos
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -557,7 +561,7 @@ class Photos {
      *      - boolean delete_place:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -575,7 +579,7 @@ class Photos {
      *      - integer photo_id: Photo ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -593,7 +597,7 @@ class Photos {
      *      - integer album_id: Album ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -612,7 +616,7 @@ class Photos {
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -631,9 +635,9 @@ class Photos {
      *      - integer after: ID of the photo after which the photo in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamPhotosException
+     * @throws ApiParamPhotosException Invalid photos
      * 
      **/
     public function reorderPhotos(string $access_token, array $params = array()) {
@@ -659,9 +663,9 @@ class Photos {
      *        only with owner_id>0, no_service_albums is ignored.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiBlockedException
+     * @throws ApiBlockedException Content blocked
      * 
      **/
     public function getAll(string $access_token, array $params = array()) {
@@ -681,7 +685,7 @@ class Photos {
      *        tag was added in descending order
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -698,9 +702,9 @@ class Photos {
      *      - integer group_id: ID of the community that owns the album.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException
+     * @throws ApiParamAlbumIdException Invalid album id
      * 
      **/
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -716,7 +720,7 @@ class Photos {
      *      - integer photo_id: Photo ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -733,7 +737,7 @@ class Photos {
      *      - integer photo_id: Photo ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -751,7 +755,7 @@ class Photos {
      *      - integer tag_id: Tag ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -777,7 +781,7 @@ class Photos {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -787,7 +791,7 @@ class Photos {
 
     /**
      * Returns a list of comments on a specific photo album or all albums of the user sorted in reverse chronological
-order.
+     * order.
      * 
      * @param $access_token string
      * @param $params array
@@ -799,9 +803,9 @@ order.
      *      - integer count: Number of comments to return. By default, '20'. Maximum value, '100'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException
+     * @throws ApiParamAlbumIdException Invalid album id
      * 
      **/
     public function getAllComments(string $access_token, array $params = array()) {
@@ -827,7 +831,7 @@ order.
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -844,7 +848,7 @@ order.
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -861,7 +865,7 @@ order.
      *      - integer comment_id: ID of the deleted comment.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -883,7 +887,7 @@ order.
      *        ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -901,7 +905,7 @@ order.
      *      - string access_key:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -923,7 +927,7 @@ order.
      *      - number y2: Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -941,7 +945,7 @@ order.
      *      - integer tag_id: Tag ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -958,7 +962,7 @@ order.
      *      - integer count: Number of photos to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

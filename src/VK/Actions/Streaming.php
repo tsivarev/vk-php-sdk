@@ -13,6 +13,10 @@ class Streaming {
      **/
     private $request;
 
+    /**
+     * Streaming constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -24,7 +28,7 @@ class Streaming {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

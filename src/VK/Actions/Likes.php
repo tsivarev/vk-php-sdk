@@ -18,6 +18,10 @@ class Likes {
      **/
     private $request;
 
+    /**
+     * Likes constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -56,7 +60,7 @@ class Likes {
      *      - boolean skip_own:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -79,7 +83,7 @@ class Likes {
      *      - string access_key: Access key required for an object owned by a private entity.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -101,7 +105,7 @@ class Likes {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -124,7 +128,7 @@ class Likes {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

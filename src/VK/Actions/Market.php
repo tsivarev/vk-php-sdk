@@ -17,6 +17,10 @@ class Market {
      **/
     private $request;
 
+    /**
+     * Market constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -34,7 +38,7 @@ class Market {
      *        photos'. These parameters are not returned by default.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -53,7 +57,7 @@ class Market {
      *        default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -79,7 +83,7 @@ class Market {
      *        default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -97,7 +101,7 @@ class Market {
      *      - integer count: Number of items to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -116,7 +120,7 @@ class Market {
      *      - array album_ids: collections identifiers to obtain data from
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -143,7 +147,7 @@ class Market {
      *      - string guid: Random value to avoid resending one comment.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -168,9 +172,9 @@ class Market {
      *      - array fields: List of additional profile fields to return. See the [vk.com/dev/fields|details]
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMarketCommentsClosedException
+     * @throws ApiMarketCommentsClosedException Comments for this market are closed
      * 
      **/
     public function getComments(string $access_token, array $params = array()) {
@@ -188,7 +192,7 @@ class Market {
      *      - integer comment_id: comment id
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -207,7 +211,7 @@ class Market {
      *      - integer comment_id: deleted comment id
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -230,7 +234,7 @@ class Market {
      *        media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -251,7 +255,7 @@ class Market {
      *        @see MarketReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -268,7 +272,7 @@ class Market {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -289,7 +293,7 @@ class Market {
      *        @see MarketReportReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -312,10 +316,10 @@ class Market {
      *      - array photo_ids: IDs of additional photos.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMarketException
-     * @throws ApiMarketTooManyItemsException
+     * @throws ApiAccessMarketException Access denied
+     * @throws ApiMarketTooManyItemsException Too many items
      * 
      **/
     public function add(string $access_token, array $params = array()) {
@@ -338,10 +342,10 @@ class Market {
      *      - array photo_ids: IDs of additional photos.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMarketException
-     * @throws ApiMarketItemNotFoundException
+     * @throws ApiAccessMarketException Access denied
+     * @throws ApiMarketItemNotFoundException Item not found
      * 
      **/
     public function edit(string $access_token, array $params = array()) {
@@ -357,9 +361,9 @@ class Market {
      *      - integer item_id: Item ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMarketException
+     * @throws ApiAccessMarketException Access denied
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -375,10 +379,10 @@ class Market {
      *      - integer item_id: Deleted item ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMarketException
-     * @throws ApiMarketRestoreTooLateException
+     * @throws ApiAccessMarketException Access denied
+     * @throws ApiMarketRestoreTooLateException Too late for restore
      * 
      **/
     public function restore(string $access_token, array $params = array()) {
@@ -397,11 +401,11 @@ class Market {
      *      - integer after: ID of an item to place current item after it.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMarketException
-     * @throws ApiMarketAlbumNotFoundException
-     * @throws ApiMarketItemNotFoundException
+     * @throws ApiAccessMarketException Access denied
+     * @throws ApiMarketAlbumNotFoundException Album not found
+     * @throws ApiMarketItemNotFoundException Item not found
      * 
      **/
     public function reorderItems(string $access_token, array $params = array()) {
@@ -419,10 +423,10 @@ class Market {
      *      - integer after: ID of a collection to place current collection after it.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMarketException
-     * @throws ApiMarketAlbumNotFoundException
+     * @throws ApiAccessMarketException Access denied
+     * @throws ApiMarketAlbumNotFoundException Album not found
      * 
      **/
     public function reorderAlbums(string $access_token, array $params = array()) {
@@ -440,9 +444,9 @@ class Market {
      *      - boolean main_album: Set as main ('1' – set, '0' – no).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMarketTooManyAlbumsException
+     * @throws ApiMarketTooManyAlbumsException Too many albums
      * 
      **/
     public function addAlbum(string $access_token, array $params = array()) {
@@ -461,9 +465,9 @@ class Market {
      *      - boolean main_album: Set as main ('1' – set, '0' – no).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMarketAlbumNotFoundException
+     * @throws ApiMarketAlbumNotFoundException Album not found
      * 
      **/
     public function editAlbum(string $access_token, array $params = array()) {
@@ -479,9 +483,9 @@ class Market {
      *      - integer album_id: Collection ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMarketAlbumNotFoundException
+     * @throws ApiMarketAlbumNotFoundException Album not found
      * 
      **/
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -498,10 +502,10 @@ class Market {
      *      - array album_ids: Collections IDs to remove item from.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMarketAlbumNotFoundException
-     * @throws ApiMarketItemNotFoundException
+     * @throws ApiMarketAlbumNotFoundException Album not found
+     * @throws ApiMarketItemNotFoundException Item not found
      * 
      **/
     public function removeFromAlbum(string $access_token, array $params = array()) {
@@ -518,12 +522,12 @@ class Market {
      *      - array album_ids: Collections IDs to add item to.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMarketAlbumNotFoundException
-     * @throws ApiMarketItemNotFoundException
-     * @throws ApiMarketTooManyItemsInAlbumException
-     * @throws ApiMarketItemAlreadyAddedException
+     * @throws ApiMarketAlbumNotFoundException Album not found
+     * @throws ApiMarketItemNotFoundException Item not found
+     * @throws ApiMarketTooManyItemsInAlbumException Too many items in album
+     * @throws ApiMarketItemAlreadyAddedException Item already added to album
      * 
      **/
     public function addToAlbum(string $access_token, array $params = array()) {

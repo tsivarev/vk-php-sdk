@@ -14,6 +14,10 @@ class Leads {
      **/
     private $request;
 
+    /**
+     * Leads constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -28,10 +32,10 @@ class Leads {
      *      - string comment: Comment text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
-     * @throws ApiVotesException
+     * @throws ApiLimitsException Out of limits
+     * @throws ApiVotesException Not enough votes
      * 
      **/
     public function complete(string $access_token, array $params = array()) {
@@ -47,9 +51,9 @@ class Leads {
      *      - string secret: Secret key from the lead testing interface.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function start(string $access_token, array $params = array()) {
@@ -67,7 +71,7 @@ class Leads {
      *      - string date_end: Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -91,7 +95,7 @@ class Leads {
      *        chronological.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -110,9 +114,9 @@ class Leads {
      *      - string country: User country code.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiActionFailedException
+     * @throws ApiActionFailedException Unable to process action
      * 
      **/
     public function checkUser(string $access_token, array $params = array()) {
@@ -127,9 +131,9 @@ class Leads {
      *      - string data: Metric data obtained in the lead interface.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamException
+     * @throws ApiParamException One of the parameters specified was missing or invalid
      * 
      **/
     public function metricHit(string $access_token, array $params = array()) {

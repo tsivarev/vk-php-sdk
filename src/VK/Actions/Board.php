@@ -16,6 +16,10 @@ class Board {
      **/
     private $request;
 
+    /**
+     * Board constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -44,7 +48,7 @@ class Board {
      *        preview the full comment, specify '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -71,7 +75,7 @@ class Board {
      *        @see BoardGetCommentsSort
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -96,7 +100,7 @@ class Board {
      *        reference, an error will be thrown.",
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -122,7 +126,7 @@ class Board {
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -139,7 +143,7 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -157,7 +161,7 @@ class Board {
      *      - string title: New title of the topic.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -180,7 +184,7 @@ class Board {
      *        '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -198,7 +202,7 @@ class Board {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -216,7 +220,7 @@ class Board {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -233,7 +237,7 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -250,7 +254,7 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -267,7 +271,7 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -284,7 +288,7 @@ class Board {
      *      - integer topic_id: Topic ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

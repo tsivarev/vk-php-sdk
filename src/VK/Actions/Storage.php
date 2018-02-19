@@ -13,6 +13,10 @@ class Storage {
      **/
     private $request;
 
+    /**
+     * Storage constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -27,7 +31,7 @@ class Storage {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -45,9 +49,9 @@ class Storage {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function set(string $access_token, array $params = array()) {
@@ -64,7 +68,7 @@ class Storage {
      *      - integer count: amount of variable names the info needs to be collected from.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

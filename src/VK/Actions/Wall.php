@@ -17,6 +17,10 @@ class Wall {
      **/
     private $request;
 
+    /**
+     * Wall constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -40,10 +44,10 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiBlockedException
-     * @throws ApiUserDeletedException
+     * @throws ApiBlockedException Content blocked
+     * @throws ApiUserDeletedException User was deleted or banned
      * 
      **/
     public function get(string $access_token, array $params = array()) {
@@ -65,10 +69,10 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException
-     * @throws ApiUserDeletedException
+     * @throws ApiWallAccessPostException Access to wall's post denied
+     * @throws ApiUserDeletedException User was deleted or banned
      * 
      **/
     public function search(string $access_token, array $params = array()) {
@@ -89,7 +93,7 @@ class Wall {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -129,12 +133,12 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAdsPublishedException
-     * @throws ApiWallAddPostException
-     * @throws ApiWallTooManyRecipientsException
-     * @throws ApiWallLinksForbiddenException
+     * @throws ApiWallAdsPublishedException Advertisement post was recently added
+     * @throws ApiWallAddPostException Access to adding post denied
+     * @throws ApiWallTooManyRecipientsException Too many recipients
+     * @throws ApiWallLinksForbiddenException Hyperlinks are forbidden
      * 
      **/
     public function post(string $access_token, array $params = array()) {
@@ -152,10 +156,10 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAdsPublishedException
-     * @throws ApiWallAddPostException
+     * @throws ApiWallAdsPublishedException Advertisement post was recently added
+     * @throws ApiWallAddPostException Access to adding post denied
      * 
      **/
     public function repost(string $access_token, array $params = array()) {
@@ -174,7 +178,7 @@ class Wall {
      *      - integer count: Number of reposts to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -211,7 +215,7 @@ class Wall {
      *      - boolean mark_as_ads:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -228,9 +232,9 @@ class Wall {
      *      - integer post_id: ID of the post to be deleted.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException
+     * @throws ApiWallAccessPostException Access to wall's post denied
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -247,10 +251,10 @@ class Wall {
      *      - integer post_id: ID of the post to be restored.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException
-     * @throws ApiWallAddPostException
+     * @throws ApiWallAccessPostException Access to wall's post denied
+     * @throws ApiWallAddPostException Access to adding post denied
      * 
      **/
     public function restore(string $access_token, array $params = array()) {
@@ -267,7 +271,7 @@ class Wall {
      *      - integer post_id: Post ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -285,7 +289,7 @@ class Wall {
      *      - integer post_id: Post ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -312,9 +316,9 @@ class Wall {
      *      - boolean extended:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessRepliesException
+     * @throws ApiWallAccessRepliesException Access to post comments denied
      * 
      **/
     public function getComments(string $access_token, array $params = array()) {
@@ -339,9 +343,9 @@ class Wall {
      *      - string guid: Unique identifier to avoid repeated comments.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessAddReplyException
+     * @throws ApiWallAccessAddReplyException Access to status replies denied
      * 
      **/
     public function createComment(string $access_token, array $params = array()) {
@@ -362,7 +366,7 @@ class Wall {
      *        '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -379,9 +383,9 @@ class Wall {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessCommentException
+     * @throws ApiWallAccessCommentException Access to wall's comment denied
      * 
      **/
     public function deleteComment(string $access_token, array $params = array()) {
@@ -397,9 +401,9 @@ class Wall {
      *      - integer comment_id: Comment ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessCommentException
+     * @throws ApiWallAccessCommentException Access to wall's comment denied
      * 
      **/
     public function restoreComment(string $access_token, array $params = array()) {
@@ -418,7 +422,7 @@ class Wall {
      *        @see WallReportPostReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -438,7 +442,7 @@ class Wall {
      *        @see WallReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

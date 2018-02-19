@@ -17,6 +17,10 @@ class Messages {
      **/
     private $request;
 
+    /**
+     * Messages constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -40,7 +44,7 @@ class Messages {
      *        used).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -64,7 +68,7 @@ class Messages {
      *      - boolean unanswered: '1' — return unanswered dialogs only.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -80,7 +84,7 @@ class Messages {
      *      - array message_ids: Message IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -104,7 +108,7 @@ class Messages {
      *      - integer count: Number of messages to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -127,7 +131,7 @@ class Messages {
      *        @see MessagesGetHistoryRev
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -151,7 +155,7 @@ class Messages {
      *      - array fields: Additional profile [vk.com/dev/fields|fields] to return. 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -185,13 +189,13 @@ class Messages {
      *      - boolean notification: '1' if the message is a notification (for community messages).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMessagesUserBlockedException
-     * @throws ApiMessagesDenySendException
-     * @throws ApiMessagesPrivacyException
-     * @throws ApiMessagesForwardAmountExceededException
-     * @throws ApiMessagesForwardException
+     * @throws ApiMessagesUserBlockedException Can't send messages for users from blacklist
+     * @throws ApiMessagesDenySendException Can't send messages for users without dialogs
+     * @throws ApiMessagesPrivacyException Can't send messages to this user due to their privacy settings
+     * @throws ApiMessagesForwardAmountExceededException Too many forwarded messages
+     * @throws ApiMessagesForwardException Can't forward these messages
      * 
      **/
     public function send(string $access_token, array $params = array()) {
@@ -207,7 +211,7 @@ class Messages {
      *      - boolean spam: '1' — to mark message as spam.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -228,7 +232,7 @@ class Messages {
      *        the method shall be called several times."
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -244,7 +248,7 @@ class Messages {
      *      - integer message_id: ID of a previously-deleted message to restore.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -263,7 +267,7 @@ class Messages {
      *      - integer start_message_id: Message ID to start from.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -280,7 +284,7 @@ class Messages {
      *      - integer important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -297,7 +301,7 @@ class Messages {
      *      - integer important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -314,7 +318,7 @@ class Messages {
      *      - integer important: '1' — to add a star (mark as important), '0' — to remove the star
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -332,7 +336,7 @@ class Messages {
      *        [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -361,7 +365,7 @@ class Messages {
      *        are taken into account.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -383,7 +387,7 @@ class Messages {
      *        @see MessagesGetChatNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -400,9 +404,9 @@ class Messages {
      *      - string title: Chat title.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFloodException
+     * @throws ApiFloodException Flood control
      * 
      **/
     public function createChat(string $access_token, array $params = array()) {
@@ -418,7 +422,7 @@ class Messages {
      *      - string title: New title of the chat.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -440,7 +444,7 @@ class Messages {
      *        @see MessagesGetChatUsersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -459,7 +463,7 @@ class Messages {
      *        'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -477,7 +481,7 @@ class Messages {
      *      - array fields: Profile fields to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -494,9 +498,9 @@ class Messages {
      *      - integer user_id: ID of the user to be added to the chat.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function addChatUser(string $access_token, array $params = array()) {
@@ -505,7 +509,7 @@ class Messages {
 
     /**
      * Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove
-another user from the chat.
+     * another user from the chat.
      * 
      * @param $access_token string
      * @param $params array
@@ -513,7 +517,7 @@ another user from the chat.
      *      - string user_id: ID of the user to be removed from the chat.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -529,7 +533,7 @@ another user from the chat.
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -547,10 +551,10 @@ another user from the chat.
      *        image.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiUploadException
-     * @throws ApiPhotoChangedException
+     * @throws ApiUploadException Upload error
+     * @throws ApiPhotoChangedException Original photo was changed
      * 
      **/
     public function setChatPhoto(string $access_token, array $params = array()) {
@@ -565,7 +569,7 @@ another user from the chat.
      *      - integer chat_id: Chat ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -581,7 +585,7 @@ another user from the chat.
      *      - integer group_id: Group ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -597,7 +601,7 @@ another user from the chat.
      *      - integer group_id: Group ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -614,7 +618,7 @@ another user from the chat.
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

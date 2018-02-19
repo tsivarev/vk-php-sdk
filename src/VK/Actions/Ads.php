@@ -22,6 +22,10 @@ class Ads {
      **/
     private $request;
 
+    /**
+     * Ads constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -33,7 +37,7 @@ class Ads {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -49,9 +53,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getClients(string $access_token, array $params = array()) {
@@ -68,10 +72,10 @@ class Ads {
      *        'client_specification' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAdsPartialSuccessException
-     * @throws ApiWeightedFloodException
+     * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function createClients(string $access_token, array $params = array()) {
@@ -88,9 +92,9 @@ class Ads {
      *        'client_mod' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function updateClients(string $access_token, array $params = array()) {
@@ -106,9 +110,9 @@ class Ads {
      *      - string ids: Serialized JSON array with IDs of deleted clients.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function deleteClients(string $access_token, array $params = array()) {
@@ -130,9 +134,9 @@ class Ads {
      *        shown. If the parameter is null, all campaigns will be shown.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getCampaigns(string $access_token, array $params = array()) {
@@ -149,10 +153,10 @@ class Ads {
      *        'campaign_specification' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAdsPartialSuccessException
-     * @throws ApiWeightedFloodException
+     * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function createCampaigns(string $access_token, array $params = array()) {
@@ -169,10 +173,10 @@ class Ads {
      *        'campaign_mod' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAdsPartialSuccessException
-     * @throws ApiWeightedFloodException
+     * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function updateCampaigns(string $access_token, array $params = array()) {
@@ -188,9 +192,9 @@ class Ads {
      *      - string ids: Serialized JSON array with IDs of deleted campaigns.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function deleteCampaigns(string $access_token, array $params = array()) {
@@ -216,9 +220,9 @@ class Ads {
      *      - integer offset: Offset. Used in the same cases as 'limit' parameter.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getAds(string $access_token, array $params = array()) {
@@ -243,9 +247,9 @@ class Ads {
      *      - integer offset: Offset. Used in the same cases as 'limit' parameter.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getAdsLayout(string $access_token, array $params = array()) {
@@ -270,9 +274,9 @@ class Ads {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getAdsTargeting(string $access_token, array $params = array()) {
@@ -289,10 +293,10 @@ class Ads {
      *        'ad_specification' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAdsPartialSuccessException
-     * @throws ApiWeightedFloodException
+     * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function createAds(string $access_token, array $params = array()) {
@@ -309,9 +313,9 @@ class Ads {
      *        'ad_edit_specification' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function updateAds(string $access_token, array $params = array()) {
@@ -327,9 +331,9 @@ class Ads {
      *      - string ids: Serialized JSON array with ad IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function deleteAds(string $access_token, array $params = array()) {
@@ -349,7 +353,7 @@ class Ads {
      *      - integer campaign_id: Campaign ID
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -380,9 +384,9 @@ class Ads {
      *        example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getStatistics(string $access_token, array $params = array()) {
@@ -412,9 +416,9 @@ class Ads {
      *        example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getDemographics(string $access_token, array $params = array()) {
@@ -430,10 +434,10 @@ class Ads {
      *      - string ads_ids: Ads IDS separated by comma.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
-     * @throws ApiAdsPermissionException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
+     * @throws ApiAdsPermissionException Permission denied. You have no access to operations specified with given object(s)
      * 
      **/
     public function getAdsPostsReach(string $access_token, array $params = array()) {
@@ -448,9 +452,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getBudget(string $access_token, array $params = array()) {
@@ -465,9 +469,9 @@ class Ads {
      *      - integer account_id: Advertising account ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getOfficeUsers(string $access_token, array $params = array()) {
@@ -484,9 +488,9 @@ class Ads {
      *        'user_specification' objects see below.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function addOfficeUsers(string $access_token, array $params = array()) {
@@ -502,9 +506,9 @@ class Ads {
      *      - string ids: Serialized JSON array with IDs of deleted managers.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function removeOfficeUsers(string $access_token, array $params = array()) {
@@ -531,9 +535,9 @@ class Ads {
      *      - string link_domain: Domain of the advertised object.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getTargetingStats(string $access_token, array $params = array()) {
@@ -567,7 +571,7 @@ class Ads {
      *        @see AdsGetSuggestionsLang
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -583,7 +587,7 @@ class Ads {
      *      - string lang: Language. The full list of supported languages is [vk.com/dev/api_requests|here].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -601,7 +605,7 @@ class Ads {
      *        @see AdsGetUploadURLAdFormat
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -616,7 +620,7 @@ class Ads {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -626,14 +630,14 @@ class Ads {
 
     /**
      * Returns information about current state of a counter — number of remaining runs of methods and time to the
-next counter nulling in seconds.
+     * next counter nulling in seconds.
      * 
      * @param $access_token string
      * @param $params array
      *      - integer account_id: Advertising account ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -650,9 +654,9 @@ next counter nulling in seconds.
      *      - integer ad_id: Ad ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getRejectionReason(string $access_token, array $params = array()) {
@@ -661,7 +665,7 @@ next counter nulling in seconds.
 
     /**
      * Creates a group to re-target ads for users who visited advertiser's site (viewed information about the product,
-registered, etc.).
+     * registered, etc.).
      * 
      * @param $access_token string
      * @param $params array
@@ -674,9 +678,9 @@ registered, etc.).
      *        that users will be automatically removed from the group. '0' — not to remove users.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function createTargetGroup(string $access_token, array $params = array()) {
@@ -699,9 +703,9 @@ registered, etc.).
      *        exclusion is off.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function updateTargetGroup(string $access_token, array $params = array()) {
@@ -719,9 +723,9 @@ registered, etc.).
      *      - integer target_group_id: Group ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function deleteTargetGroup(string $access_token, array $params = array()) {
@@ -739,9 +743,9 @@ registered, etc.).
      *      - boolean extended: '1' — to return pixel code.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function getTargetGroups(string $access_token, array $params = array()) {
@@ -760,9 +764,9 @@ registered, etc.).
      *      - string contacts: List of phone numbers, emails or user IDs separated with a comma.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWeightedFloodException
+     * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
      **/
     public function importTargetContacts(string $access_token, array $params = array()) {

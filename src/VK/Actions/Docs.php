@@ -13,6 +13,10 @@ class Docs {
      **/
     private $request;
 
+    /**
+     * Docs constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -28,7 +32,7 @@ class Docs {
      *        designate a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -44,7 +48,7 @@ class Docs {
      *      - array docs: Document IDs. Example: , "66748_91488,66748_91455",
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -60,7 +64,7 @@ class Docs {
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -76,7 +80,7 @@ class Docs {
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -95,9 +99,9 @@ class Docs {
      *      - string tags: Document tags.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiSaveFileException
+     * @throws ApiSaveFileException Couldn't save file
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -114,10 +118,10 @@ class Docs {
      *      - integer doc_id: Document ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamDocDeleteAccessException
-     * @throws ApiParamDocIdException
+     * @throws ApiParamDocDeleteAccessException Access to document deleting is denied
+     * @throws ApiParamDocIdException Invalid document id
      * 
      **/
     public function delete(string $access_token, array $params = array()) {
@@ -136,7 +140,7 @@ class Docs {
      *        document's data.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -153,7 +157,7 @@ class Docs {
      *        designate a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -171,7 +175,7 @@ class Docs {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -190,11 +194,11 @@ class Docs {
      *      - array tags: Document tags.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamDocAccessException
-     * @throws ApiParamDocIdException
-     * @throws ApiParamDocTitleException
+     * @throws ApiParamDocAccessException Access to document is denied
+     * @throws ApiParamDocIdException Invalid document id
+     * @throws ApiParamDocTitleException Invalid document title
      * 
      **/
     public function edit(string $access_token, array $params = array()) {

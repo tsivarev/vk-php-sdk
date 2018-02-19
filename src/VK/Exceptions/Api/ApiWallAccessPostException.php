@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiWallAccessPostException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiWallAccessPostException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(210,  'Access to wall\'s post denied',  $message);
     }
 }

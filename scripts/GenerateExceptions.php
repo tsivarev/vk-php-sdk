@@ -2,6 +2,9 @@
 
 class GenerateExceptions {
 
+    protected const COMMENT_START = '/**';
+    protected const COMMENT_END = '**/';
+    protected const ASTERISK = '*';
     protected const SPACE = ' ';
     protected const UNDERSCORE = '_';
     protected const COLON = ':';
@@ -68,7 +71,7 @@ class GenerateExceptions {
 
             $this->switch_content[$code] = $class_name;
 
-            $exception_construct = $this->wrapExceptionConstruct($code, $description);
+            $exception_construct = $this->wrapExceptionConstruct($class_name, $code, $description);
 
             $exception_content = $this->wrapClass($class_name, static::NAMESPACE_API, null,
                 static::VK_API_EXCEPTION_CLASS_NAME, null, $exception_construct, null);
@@ -127,8 +130,13 @@ class GenerateExceptions {
         return $result;
     }
 
-    protected function wrapExceptionConstruct(int $code, string $description) {
-        $result = $this->tab(1) . 'public function __construct($message) {';
+    protected function wrapExceptionConstruct(string $class_name, int $code, string $description) {
+        $result = $this->tab(1) . static::COMMENT_START . PHP_EOL;
+        $result .= $this->tab(1) . static::SPACE . static::ASTERISK . static::SPACE . $class_name . static::SPACE . 'constructor.';
+        $result .= PHP_EOL . $this->tab(1) . static::SPACE . static::ASTERISK . static::SPACE . '@param string $message';
+        $result .= PHP_EOL . $this->tab(1) . static::SPACE . static::COMMENT_END . PHP_EOL;
+
+        $result .= $this->tab(1) . 'public function __construct(string $message) {';
         $result .= PHP_EOL . $this->tab(2) . 'parent::__construct(' . $code . static::COMMA . static::SPACE;
         $result .= static::QUOTE . $description . static::QUOTE . static::COMMA . static::SPACE . '$message);';
         $result .= PHP_EOL . $this->tab(1) . static::CLOSING_BRACKET;

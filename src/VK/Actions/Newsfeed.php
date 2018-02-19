@@ -17,6 +17,10 @@ class Newsfeed {
      **/
     private $request;
 
+    /**
+     * Newsfeed constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -47,7 +51,7 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -71,7 +75,7 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -101,7 +105,7 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -121,7 +125,7 @@ class Newsfeed {
      *      - integer count: Number of posts to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -142,7 +146,7 @@ class Newsfeed {
      *        @see NewsfeedGetBannedNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -159,7 +163,7 @@ class Newsfeed {
      *      - array group_ids:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -176,7 +180,7 @@ class Newsfeed {
      *      - array group_ids:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -197,7 +201,7 @@ class Newsfeed {
      *      - integer item_id: Item identifier
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -218,7 +222,7 @@ class Newsfeed {
      *      - integer item_id: Item identifier
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -246,7 +250,7 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -263,7 +267,7 @@ class Newsfeed {
      *      - boolean extended: Return additional list info
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -283,9 +287,9 @@ class Newsfeed {
      *      - boolean no_reposts: reposts display on and off ('1' is for off).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiTooManyListsException
+     * @throws ApiTooManyListsException Too many feed lists
      * 
      **/
     public function saveList(string $access_token, array $params = array()) {
@@ -300,7 +304,7 @@ class Newsfeed {
      *      - integer list_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -320,7 +324,7 @@ class Newsfeed {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -340,7 +344,7 @@ class Newsfeed {
      *        and [vk.com/dev/fields_groups|communities].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

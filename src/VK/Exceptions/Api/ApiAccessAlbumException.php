@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiAccessAlbumException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiAccessAlbumException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(200,  'Access denied',  $message);
     }
 }

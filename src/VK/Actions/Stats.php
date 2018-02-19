@@ -13,6 +13,10 @@ class Stats {
      **/
     private $request;
 
+    /**
+     * Stats constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -28,7 +32,7 @@ class Stats {
      *      - string date_to: End datestamp (in Unix time) of statistics to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -43,7 +47,7 @@ class Stats {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -61,9 +65,9 @@ class Stats {
      *        community wall.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException
+     * @throws ApiWallAccessPostException Access to wall's post denied
      * 
      **/
     public function getPostReach(string $access_token, array $params = array()) {

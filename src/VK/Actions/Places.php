@@ -14,6 +14,10 @@ class Places {
      **/
     private $request;
 
+    /**
+     * Places constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,7 +39,7 @@ class Places {
      *      - string address: Street address of the location (e.g., '125 Elm Street').
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -51,7 +55,7 @@ class Places {
      *      - array places: Location IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -76,7 +80,7 @@ class Places {
      *      - integer count: Number of locations to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -99,9 +103,9 @@ class Places {
      *        be exported, if the user has set up the respective option.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiSameCheckinException
+     * @throws ApiSameCheckinException You have sent same checkin in last 10 minutes
      * 
      **/
     public function checkin(string $access_token, array $params = array()) {
@@ -130,9 +134,9 @@ class Places {
      *        is not set.),
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessCheckinException
+     * @throws ApiAccessCheckinException Access to checkins denied
      * 
      **/
     public function getCheckins(string $access_token, array $params = array()) {
@@ -146,7 +150,7 @@ class Places {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

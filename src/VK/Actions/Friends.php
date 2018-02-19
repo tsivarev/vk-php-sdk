@@ -19,6 +19,10 @@ class Friends {
      **/
     private $request;
 
+    /**
+     * Friends constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -47,7 +51,7 @@ class Friends {
      *        @see FriendsGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -69,7 +73,7 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of friends.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -93,7 +97,7 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of mutual friends.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -109,7 +113,7 @@ class Friends {
      *      - integer count: Number of recently added friends to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -134,7 +138,7 @@ class Friends {
      *        (default)
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -153,11 +157,11 @@ class Friends {
      *      - boolean follow: '1' to pass an incoming request to followers list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsAddInEnemyException
-     * @throws ApiFriendsAddEnemyException
-     * @throws ApiFriendsAddYourselfException
+     * @throws ApiFriendsAddInEnemyException Cannot add this user to friends as they have put you on their blacklist
+     * @throws ApiFriendsAddEnemyException Cannot add this user to friends as you put him on blacklist
+     * @throws ApiFriendsAddYourselfException Cannot add user himself as friend
      * 
      **/
     public function add(string $access_token, array $params = array()) {
@@ -173,7 +177,7 @@ class Friends {
      *      - array list_ids: IDs of the friend lists to which to add the user.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -190,7 +194,7 @@ class Friends {
      *        the current user's friend list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -207,7 +211,7 @@ class Friends {
      *      - boolean return_system: '1' — to return system friend lists. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -224,9 +228,9 @@ class Friends {
      *      - array user_ids: IDs of users to be added to the friend list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsListLimitException
+     * @throws ApiFriendsListLimitException Reached the maximum number of lists
      * 
      **/
     public function addList(string $access_token, array $params = array()) {
@@ -247,9 +251,9 @@ class Friends {
      *        friend list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsListIdException
+     * @throws ApiFriendsListIdException Invalid list id
      * 
      **/
     public function editList(string $access_token, array $params = array()) {
@@ -264,9 +268,9 @@ class Friends {
      *      - integer list_id: ID of the friend list to delete.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsListIdException
+     * @throws ApiFriendsListIdException Invalid list id
      * 
      **/
     public function deleteList(string $access_token, array $params = array()) {
@@ -280,7 +284,7 @@ class Friends {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -290,7 +294,7 @@ class Friends {
 
     /**
      * Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a
-given list.
+     * given list.
      * 
      * @param $access_token string
      * @param $params array
@@ -301,7 +305,7 @@ given list.
      *        'contacts', 'education', 'online, counters'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -316,7 +320,7 @@ given list.
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -344,7 +348,7 @@ given list.
      *        @see FriendsGetSuggestionsNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -363,7 +367,7 @@ given list.
      *        to check that data has not been modified by the client. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -385,7 +389,7 @@ given list.
      *        @see FriendsGetAvailableForCallNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -411,7 +415,7 @@ given list.
      *      - integer count: Number of friends to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

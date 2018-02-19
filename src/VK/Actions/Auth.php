@@ -14,6 +14,10 @@ class Auth {
      **/
     private $request;
 
+    /**
+     * Auth constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -29,11 +33,11 @@ class Auth {
      *      - boolean auth_by_phone:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiPhoneAlreadyUsedException
-     * @throws ApiAuthDelayException
-     * @throws ApiParamPhoneException
+     * @throws ApiPhoneAlreadyUsedException This phone number is used by another user
+     * @throws ApiAuthDelayException Processing. Try later
+     * @throws ApiParamPhoneException Invalid phone number
      * 
      **/
     public function checkPhone(string $access_token, array $params = array()) {
@@ -63,11 +67,11 @@ class Auth {
      *      - string sid: Session ID required for method recall when SMS was not delivered.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiPhoneAlreadyUsedException
-     * @throws ApiAuthDelayException
-     * @throws ApiParamPhoneException
+     * @throws ApiPhoneAlreadyUsedException This phone number is used by another user
+     * @throws ApiAuthDelayException Processing. Try later
+     * @throws ApiParamPhoneException Invalid phone number
      * 
      **/
     public function signup(string $access_token, array $params = array()) {
@@ -76,7 +80,7 @@ class Auth {
 
     /**
      * Completes a user's registration (begun with the [vk.com/dev/auth.signup|auth.signup] method) using an
-authorization code.
+     * authorization code.
      * 
      * @param $access_token string
      * @param $params array
@@ -89,10 +93,10 @@ authorization code.
      *      - integer intro:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAuthParamPasswordException
-     * @throws ApiAuthParamCodeException
+     * @throws ApiAuthParamPasswordException Invalid password
+     * @throws ApiAuthParamCodeException Incorrect code
      * 
      **/
     public function confirm(string $access_token, array $params = array()) {
@@ -101,7 +105,7 @@ authorization code.
 
     /**
      * Allows to restore account access using a code received via SMS. " This method is only available for apps with
-[vk.com/dev/auth_direct|Direct authorization] access. "
+     * [vk.com/dev/auth_direct|Direct authorization] access. "
      * 
      * @param $access_token string
      * @param $params array
@@ -109,9 +113,9 @@ authorization code.
      *      - string last_name: User last name.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAuthFloodException
+     * @throws ApiAuthFloodException Too many auth attempts, try again later
      * 
      **/
     public function restore(string $access_token, array $params = array()) {

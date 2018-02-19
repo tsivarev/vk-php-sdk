@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiAuthHttpsException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiAuthHttpsException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(16,  'HTTP authorization failed',  $message);
     }
 }

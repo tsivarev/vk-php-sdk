@@ -13,6 +13,10 @@ class Search {
      **/
     private $request;
 
+    /**
+     * Search constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -29,7 +33,7 @@ class Search {
      *      - boolean search_global: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

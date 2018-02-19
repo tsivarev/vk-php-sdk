@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiAppsAlreadyUnlockedException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiAppsAlreadyUnlockedException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(1251,  'This achievement is already unlocked',  $message);
     }
 }

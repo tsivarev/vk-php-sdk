@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiParamDocTitleException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiParamDocTitleException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(1152,  'Invalid document title',  $message);
     }
 }

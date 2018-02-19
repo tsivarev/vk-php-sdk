@@ -13,6 +13,10 @@ class Widgets {
      **/
     private $request;
 
+    /**
+     * Widgets constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -30,7 +34,7 @@ class Widgets {
      *      - integer count:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -40,7 +44,7 @@ class Widgets {
 
     /**
      * Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like
-widget] is installed.
+     * widget] is installed.
      * 
      * @param $access_token string
      * @param $params array
@@ -50,7 +54,7 @@ widget] is installed.
      *      - integer count:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

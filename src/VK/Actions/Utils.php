@@ -14,6 +14,10 @@ class Utils {
      **/
     private $request;
 
+    /**
+     * Utils constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -26,7 +30,7 @@ class Utils {
      *      - string url: Link to check (e.g., 'http://google.com').
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -42,7 +46,7 @@ class Utils {
      *      - string key: Link key (characters after vk.cc/).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -59,7 +63,7 @@ class Utils {
      *      - integer offset: Offset needed to return a specific subset of links.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -81,7 +85,7 @@ class Utils {
      *        only.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -98,7 +102,7 @@ class Utils {
      *      - boolean private: 1 — private stats, 0 — public stats.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -115,7 +119,7 @@ class Utils {
      *        'rules_of_war'), or application.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -130,7 +134,7 @@ class Utils {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

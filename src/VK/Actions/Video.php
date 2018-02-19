@@ -17,6 +17,10 @@ class Video {
      **/
     private $request;
 
+    /**
+     * Video constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,9 +39,9 @@ class Video {
      *      - boolean extended: '1' — to return an extended response with additional fields
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function get(string $access_token, array $params = array()) {
@@ -61,7 +65,7 @@ class Video {
      *      - boolean repeat: '1' — to repeat the playback of the video, '0' — to play the video once,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -81,10 +85,10 @@ class Video {
      *        a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
-     * @throws ApiVideoAlreadyAddedException
+     * @throws ApiAccessVideoException Access denied
+     * @throws ApiVideoAlreadyAddedException This video is already added
      * 
      **/
     public function add(string $access_token, array $params = array()) {
@@ -113,11 +117,11 @@ class Video {
      *      - boolean repeat: '1' — to repeat the playback of the video, '0' — to play the video once,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
-     * @throws ApiWallAddPostException
-     * @throws ApiWallAdsPublishedException
+     * @throws ApiAccessVideoException Access denied
+     * @throws ApiWallAddPostException Access to adding post denied
+     * @throws ApiWallAdsPublishedException Advertisement post was recently added
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -134,7 +138,7 @@ class Video {
      *      - integer target_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -151,7 +155,7 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -179,7 +183,7 @@ class Video {
      *      - boolean extended: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -198,7 +202,7 @@ class Video {
      *      - boolean extended: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -218,9 +222,9 @@ class Video {
      *        current user
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function getAlbums(string $access_token, array $params = array()) {
@@ -237,9 +241,9 @@ class Video {
      *      - integer album_id: Album ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function getAlbumById(string $access_token, array $params = array()) {
@@ -257,10 +261,10 @@ class Video {
      *        friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
-     * @throws ApiAlbumsLimitException
+     * @throws ApiAccessVideoException Access denied
+     * @throws ApiAlbumsLimitException Albums number limit is reached
      * 
      **/
     public function addAlbum(string $access_token, array $params = array()) {
@@ -279,9 +283,9 @@ class Video {
      *        friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function editAlbum(string $access_token, array $params = array()) {
@@ -297,9 +301,9 @@ class Video {
      *      - integer album_id: Album ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -317,9 +321,9 @@ class Video {
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function reorderAlbums(string $access_token, array $params = array()) {
@@ -343,9 +347,9 @@ class Video {
      *      - integer after_video_id: ID of the video after which the photo in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function reorderVideos(string $access_token, array $params = array()) {
@@ -364,10 +368,10 @@ class Video {
      *      - integer video_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
-     * @throws ApiVideoAlreadyAddedException
+     * @throws ApiAccessVideoException Access denied
+     * @throws ApiVideoAlreadyAddedException This video is already added
      * 
      **/
     public function addToAlbum(string $access_token, array $params = array()) {
@@ -386,9 +390,9 @@ class Video {
      *      - integer video_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function removeFromAlbum(string $access_token, array $params = array()) {
@@ -406,9 +410,9 @@ class Video {
      *      - boolean extended: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException
+     * @throws ApiAccessVideoException Access denied
      * 
      **/
     public function getAlbumsByVideo(string $access_token, array $params = array()) {
@@ -432,9 +436,9 @@ class Video {
      *      - boolean extended:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiVideoCommentsClosedException
+     * @throws ApiVideoCommentsClosedException Comments for this video are closed
      * 
      **/
     public function getComments(string $access_token, array $params = array()) {
@@ -459,7 +463,7 @@ class Video {
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -476,7 +480,7 @@ class Video {
      *      - integer comment_id: ID of the comment to be deleted.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -493,7 +497,7 @@ class Video {
      *      - integer comment_id: ID of the deleted comment.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -515,7 +519,7 @@ class Video {
      *        '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -532,7 +536,7 @@ class Video {
      *      - integer video_id: Video ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -551,7 +555,7 @@ class Video {
      *      - string tagged_name: Tag text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -569,7 +573,7 @@ class Video {
      *      - integer video_id: Video ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -586,7 +590,7 @@ class Video {
      *      - integer count: Number of videos to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -608,7 +612,7 @@ class Video {
      *      - string search_query: (If the video was found in search results.) Search query string.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -628,7 +632,7 @@ class Video {
      *        @see VideoReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -650,7 +654,7 @@ class Video {
      *        fields.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -670,7 +674,7 @@ class Video {
      *        fields.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -686,7 +690,7 @@ class Video {
      *      - integer section_id: 'id' value returned with a block to hide by the '' method.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

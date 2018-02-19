@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiParamServerException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiParamServerException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(118,  'Invalid server',  $message);
     }
 }

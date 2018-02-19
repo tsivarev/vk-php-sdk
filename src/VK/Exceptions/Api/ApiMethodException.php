@@ -3,7 +3,11 @@
 namespace VK\Exceptions\Api;
 
 class ApiMethodException extends VKApiException {
-    public function __construct($message) {
+    /**
+     * ApiMethodException constructor.
+     * @param string $message
+     **/
+    public function __construct(string $message) {
         parent::__construct(3,  'Unknown method passed',  $message);
     }
 }

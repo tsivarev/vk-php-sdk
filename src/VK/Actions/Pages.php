@@ -15,6 +15,10 @@ class Pages {
      **/
     private $request;
 
+    /**
+     * Pages constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -33,7 +37,7 @@ class Pages {
      *      - boolean need_html: '1' — to return the page as HTML,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -53,11 +57,11 @@ class Pages {
      *      - string title: Wiki page title.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException
-     * @throws ApiParamPageIdException
-     * @throws ApiParamTitleException
+     * @throws ApiAccessPageException Access to page denied
+     * @throws ApiParamPageIdException Page not found
+     * @throws ApiParamTitleException Invalid title
      * 
      **/
     public function save(string $access_token, array $params = array()) {
@@ -80,10 +84,10 @@ class Pages {
      *        @see PagesSaveAccessEdit
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException
-     * @throws ApiParamPageIdException
+     * @throws ApiAccessPageException Access to page denied
+     * @throws ApiParamPageIdException Page not found
      * 
      **/
     public function saveAccess(string $access_token, array $params = array()) {
@@ -100,10 +104,10 @@ class Pages {
      *      - integer user_id: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException
-     * @throws ApiParamPageIdException
+     * @throws ApiAccessPageException Access to page denied
+     * @throws ApiParamPageIdException Page not found
      * 
      **/
     public function getHistory(string $access_token, array $params = array()) {
@@ -118,9 +122,9 @@ class Pages {
      *      - integer group_id: ID of the community that owns the wiki page.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException
+     * @throws ApiAccessPageException Access to page denied
      * 
      **/
     public function getTitles(string $access_token, array $params = array()) {
@@ -138,9 +142,9 @@ class Pages {
      *      - boolean need_html: '1' — to return the page as HTML
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException
+     * @throws ApiAccessPageException Access to page denied
      * 
      **/
     public function getVersion(string $access_token, array $params = array()) {
@@ -156,7 +160,7 @@ class Pages {
      *      - integer group_id: ID of the group in the context of which this markup is interpreted.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -172,7 +176,7 @@ class Pages {
      *      - string url: Address of the page where you need to refesh the cached version
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

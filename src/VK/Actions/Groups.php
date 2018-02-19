@@ -33,6 +33,10 @@ class Groups {
      **/
     private $request;
 
+    /**
+     * Groups constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -48,7 +52,7 @@ class Groups {
      *      - boolean extended: '1' — to return an extended response with additional fields. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -66,7 +70,7 @@ class Groups {
      *      - array fields: Group fields to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -91,9 +95,9 @@ class Groups {
      *      - integer count: Number of communities to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessGroupsException
+     * @throws ApiAccessGroupsException Access to the groups list is denied due to the user's privacy settings
      * 
      **/
     public function get(string $access_token, array $params = array()) {
@@ -122,9 +126,9 @@ class Groups {
      *        @see GroupsGetMembersFilter
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamGroupIdException
+     * @throws ApiParamGroupIdException Invalid group id
      * 
      **/
     public function getMembers(string $access_token, array $params = array()) {
@@ -141,9 +145,9 @@ class Groups {
      *        — Perhaps I will attend, '0' — I will be there for sure (default), ,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function join(string $access_token, array $params = array()) {
@@ -158,7 +162,7 @@ class Groups {
      *      - integer group_id: ID or screen name of the community.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -188,7 +192,7 @@ class Groups {
      *        thousand of results, regardless of 'count' and 'offset' values."
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -207,10 +211,10 @@ class Groups {
      *        [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiCommunitiesCatalogDisabledException
-     * @throws ApiCommunitiesCategoriesDisabledException
+     * @throws ApiCommunitiesCatalogDisabledException Catalog is not available for this user
+     * @throws ApiCommunitiesCategoriesDisabledException Catalog categories are not available for this user
      * 
      **/
     public function getCatalog(string $access_token, array $params = array()) {
@@ -226,7 +230,7 @@ class Groups {
      *      - boolean subcategories: 1 – to return subcategories info. By default: 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -244,7 +248,7 @@ class Groups {
      *      - boolean extended: '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -271,7 +275,7 @@ class Groups {
      *        @see GroupsGetInvitedUsersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -295,7 +299,7 @@ class Groups {
      *        comment will be invisible to the user. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -312,7 +316,7 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -332,9 +336,9 @@ class Groups {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiNotFoundException
+     * @throws ApiNotFoundException Not found
      * 
      **/
     public function getBanned(string $access_token, array $params = array()) {
@@ -358,9 +362,9 @@ class Groups {
      *        @see GroupsCreateSubtype
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function create(string $access_token, array $params = array()) {
@@ -454,9 +458,9 @@ class Groups {
      *      - array obscene_words: Keywords for stopwords filter.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiInvalidAddressException
+     * @throws ApiInvalidAddressException Invalid screen name
      * 
      **/
     public function edit(string $access_token, array $params = array()) {
@@ -477,7 +481,7 @@ class Groups {
      *      - number longitude: Geographical longitude.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -493,7 +497,7 @@ class Groups {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -512,7 +516,7 @@ class Groups {
      *      - array fields: Profile fields to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -536,11 +540,11 @@ class Groups {
      *      - string contact_email: Contact e-mail.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiGroupChangeCreatorException
-     * @throws ApiGroupNotInClubException
-     * @throws ApiGroupTooManyOfficersException
+     * @throws ApiGroupChangeCreatorException Cannot edit creator role
+     * @throws ApiGroupNotInClubException User should be in club
+     * @throws ApiGroupTooManyOfficersException Too many officers in club
      * 
      **/
     public function editManager(string $access_token, array $params = array()) {
@@ -556,9 +560,9 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function invite(string $access_token, array $params = array()) {
@@ -575,7 +579,7 @@ class Groups {
      *      - string text: Description text for the link.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -592,7 +596,7 @@ class Groups {
      *      - integer link_id: Link ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -610,7 +614,7 @@ class Groups {
      *      - string text: New description text for the link.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -628,7 +632,7 @@ class Groups {
      *      - integer after: ID of the link after which to place the link with 'link_id'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -645,7 +649,7 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -662,9 +666,9 @@ class Groups {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
+     * @throws ApiLimitsException Out of limits
      * 
      **/
     public function approveRequest(string $access_token, array $params = array()) {
@@ -679,7 +683,7 @@ class Groups {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -696,7 +700,7 @@ class Groups {
      *      - integer server_id: Server ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -749,11 +753,96 @@ class Groups {
      *      - boolean user_unblock: User removed from community blacklist
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
     public function setCallbackSettings(string $access_token, array $params = array()) {
         return $this->request->post('groups.setCallbackSettings', $access_token, $params);
+    }
+
+    /**
+     * Returns data for connection to Bots Longpoll API.
+     *
+     * @param $access_token string
+     * @param $params array
+     *      - integer group_id: Community ID.
+     *
+     * @return mixed
+     * @throws VKClientException in case of error on the API side
+     * @throws VKApiException in case of network error
+     *
+     **/
+    public function getLongPollServer(string $access_token, array $params = array()) {
+        return $this->request->post('groups.getLongPollServer', $access_token, $params);
+    }
+
+    /**
+     * Gets settings of Bots Longpoll API for the community.
+     *
+     * @param $access_token string
+     * @param $params array
+     *      - integer group_id: Community ID.
+     *
+     * @return mixed
+     * @throws VKClientException in case of error on the API side
+     * @throws VKApiException in case of network error
+     *
+     **/
+    public function getLongPollSettings(string $access_token, array $params = array()) {
+        return $this->request->post('groups.getLongPollSettings', $access_token, $params);
+    }
+
+    /**
+     * Sets settings of Bots Longpoll API for the community.
+     *
+     * @param $access_token string
+     * @param $params array
+     *      - integer group_id: Community ID.
+     *      - boolean enabled: Enable Bots Longpoll ('0' — disabled, '1' — enabled).
+     *      - boolean message_new: A new incoming message has been received ('0' — disabled, '1' — enabled).
+     *      - boolean message_reply: A new outcoming message has been received ('0' — disabled, '1' — enabled).
+     *      - boolean message_allow: Allowed messages notifications ('0' — disabled, '1' — enabled).
+     *      - boolean message_deny: Denied messages notifications ('0' — disabled, '1' — enabled).
+     *      - boolean photo_new: New photos notifications ('0' — disabled, '1' — enabled).
+     *      - boolean audio_new: New audios notifications ('0' — disabled, '1' — enabled).
+     *      - boolean video_new: New videos notifications ('0' — disabled, '1' — enabled).
+     *      - boolean wall_reply_new: New wall replies notifications ('0' — disabled, '1' — enabled).
+     *      - boolean wall_reply_edit: Wall replies edited notifications ('0' — disabled, '1' — enabled).
+     *      - boolean wall_reply_delete: A wall comment has been deleted ('0' — disabled, '1' — enabled).
+     *      - boolean wall_reply_restore: A wall comment has been restored ('0' — disabled, '1' — enabled).
+     *      - boolean wall_post_new: New wall posts notifications ('0' — disabled, '1' — enabled).
+     *      - boolean wall_repost: New wall posts notifications ('0' — disabled, '1' — enabled).
+     *      - boolean board_post_new: New board posts notifications ('0' — disabled, '1' — enabled).
+     *      - boolean board_post_edit: Board posts edited notifications ('0' — disabled, '1' — enabled).
+     *      - boolean board_post_restore: Board posts restored notifications ('0' — disabled, '1' — enabled).
+     *      - boolean board_post_delete: Board posts deleted notifications ('0' — disabled, '1' — enabled).
+     *      - boolean photo_comment_new: New comment to photo notifications ('0' — disabled, '1' — enabled).
+     *      - boolean photo_comment_edit: A photo comment has been edited ('0' — disabled, '1' — enabled).
+     *      - boolean photo_comment_delete: A photo comment has been deleted ('0' — disabled, '1' — enabled).
+     *      - boolean photo_comment_restore: A photo comment has been restored ('0' — disabled, '1' — enabled).
+     *      - boolean video_comment_new: New comment to video notifications ('0' — disabled, '1' — enabled).
+     *      - boolean video_comment_edit: A video comment has been edited ('0' — disabled, '1' — enabled).
+     *      - boolean video_comment_delete: A video comment has been deleted ('0' — disabled, '1' — enabled).
+     *      - boolean video_comment_restore: A video comment has been restored ('0' — disabled, '1' — enabled).
+     *      - boolean market_comment_new: New comment to market item notifications ('0' — disabled, '1' —
+     *        enabled).
+     *      - boolean market_comment_edit: A market comment has been edited ('0' — disabled, '1' — enabled).
+     *      - boolean market_comment_delete: A market comment has been deleted ('0' — disabled, '1' — enabled).
+     *      - boolean market_comment_restore: A market comment has been restored ('0' — disabled, '1' —
+     *        enabled).
+     *      - boolean poll_vote_new: A vote in a public poll has been added ('0' — disabled, '1' — enabled).
+     *      - boolean group_join: Joined community notifications ('0' — disabled, '1' — enabled).
+     *      - boolean group_leave: Left community notifications ('0' — disabled, '1' — enabled).
+     *      - boolean user_block: User added to community blacklist
+     *      - boolean user_unblock: User removed from community blacklist
+     *
+     * @return mixed
+     * @throws VKClientException in case of error on the API side
+     * @throws VKApiException in case of network error
+     *
+     **/
+    public function setLongPollSettings(string $access_token, array $params = array()) {
+        return $this->request->post('groups.setLongPollSettings', $access_token, $params);
     }
 }

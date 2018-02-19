@@ -13,6 +13,10 @@ class Secure {
      **/
     private $request;
 
+    /**
+     * Secure constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -24,7 +28,7 @@ class Secure {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -39,7 +43,7 @@ class Secure {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -49,7 +53,7 @@ class Secure {
 
     /**
      * Shows a list of SMS notifications sent by the application using
-[vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
+     * [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
      * 
      * @param $access_token string
      * @param $params array
@@ -59,7 +63,7 @@ class Secure {
      *      - integer limit: number of returned posts. By default — 1000.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -78,10 +82,10 @@ class Secure {
      *        allowed. Maximum size is '160' characters.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiInsufficientFundsException
-     * @throws ApiMobileNotActivatedException
+     * @throws ApiInsufficientFundsException Application has insufficient funds
+     * @throws ApiMobileNotActivatedException The mobile number of the user is unknown
      * 
      **/
     public function sendSMSNotification(string $access_token, array $params = array()) {
@@ -99,7 +103,7 @@ class Secure {
      *        maximum).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -117,9 +121,9 @@ class Secure {
      *      - integer counter: counter value.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMenuException
+     * @throws ApiAccessMenuException Access to the menu of the user denied
      * 
      **/
     public function setCounter(string $access_token, array $params = array()) {
@@ -136,7 +140,7 @@ class Secure {
      *      - integer level: level value.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -152,7 +156,7 @@ class Secure {
      *      - array user_ids:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -172,9 +176,9 @@ class Secure {
      *        user's points amount, , Any other value is ignored
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAppsAlreadyUnlockedException
+     * @throws ApiAppsAlreadyUnlockedException This achievement is already unlocked
      * 
      **/
     public function addAppEvent(string $access_token, array $params = array()) {
@@ -191,7 +195,7 @@ class Secure {
      *        required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

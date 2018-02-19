@@ -14,6 +14,10 @@ class Orders {
      **/
     private $request;
 
+    /**
+     * Orders constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -28,7 +32,7 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -47,7 +51,7 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -70,10 +74,10 @@ class Orders {
      *        default — 0.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException
-     * @throws ApiActionFailedException
+     * @throws ApiLimitsException Out of limits
+     * @throws ApiActionFailedException Unable to process action
      * 
      **/
     public function changeState(string $access_token, array $params = array()) {
@@ -89,9 +93,9 @@ class Orders {
      *      - array votes:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamException
+     * @throws ApiParamException One of the parameters specified was missing or invalid
      * 
      **/
     public function getAmount(string $access_token, array $params = array()) {

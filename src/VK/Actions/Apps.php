@@ -19,6 +19,10 @@ class Apps {
      **/
     private $request;
 
+    /**
+     * Apps constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -46,7 +50,7 @@ class Apps {
      *      - string filter: 'installed' — to return list of installed apps (only for mobile platform).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -74,7 +78,7 @@ class Apps {
      *        @see AppsGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -97,9 +101,9 @@ class Apps {
      *      - boolean separate:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFloodException
+     * @throws ApiFloodException Flood control
      * 
      **/
     public function sendRequest(string $access_token, array $params = array()) {
@@ -113,7 +117,7 @@ class Apps {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -133,7 +137,7 @@ class Apps {
      *      - array fields: Additional profile fields, see [vk.com/dev/fields|description].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -154,7 +158,7 @@ class Apps {
      *      - boolean extended: 1 — to return additional info about users
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -170,7 +174,7 @@ class Apps {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/

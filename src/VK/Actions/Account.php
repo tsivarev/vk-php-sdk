@@ -17,6 +17,10 @@ class Account {
      **/
     private $request;
 
+    /**
+     * Account constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -29,7 +33,7 @@ class Account {
      *      - array filter: Counters to be returned.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -46,9 +50,9 @@ class Account {
      *      - string name: Application screen name.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMenuException
+     * @throws ApiAccessMenuException Access to the menu of the user denied
      * 
      **/
     public function setNameInMenu(string $access_token, array $params = array()) {
@@ -63,7 +67,7 @@ class Account {
      *      - boolean voip: '1' if videocalls are available for current device.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -78,7 +82,7 @@ class Account {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -104,7 +108,7 @@ class Account {
      *        last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -126,7 +130,7 @@ class Account {
      *      - string settings: Push settings in a [vk.com/dev/push_settings|special format].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -142,7 +146,7 @@ class Account {
      *      - string device_id: Unique device ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -163,7 +167,7 @@ class Account {
      *        contains user or community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -179,7 +183,7 @@ class Account {
      *      - string device_id: Unique device ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -198,7 +202,7 @@ class Account {
      *      - array value: New value for the key in a [vk.com/dev/push_settings|special format].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -214,7 +218,7 @@ class Account {
      *      - integer user_id: User ID whose settings information shall be got. By default: current user.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -224,14 +228,14 @@ class Account {
 
     /**
      * Returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes
-to his balance in the application.
+     * to his balance in the application.
      * 
      * @param $access_token string
      * @param $params array
      *      - integer count: Number of results to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -247,7 +251,7 @@ to his balance in the application.
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -263,7 +267,7 @@ to his balance in the application.
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -280,7 +284,7 @@ to his balance in the application.
      *      - integer count: Number of results to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -299,7 +303,7 @@ to his balance in the application.
      *        *'lang' — user language. By default: all.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -316,7 +320,7 @@ to his balance in the application.
      *      - string value: Setting value.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -326,7 +330,7 @@ to his balance in the application.
 
     /**
      * Changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore]
-method.
+     * method.
      * 
      * @param $access_token string
      * @param $params array
@@ -338,7 +342,7 @@ method.
      *      - string new_password: New password that will be set as a current
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -353,7 +357,7 @@ method.
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -389,9 +393,9 @@ method.
      *      - string status: Status text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiInvalidAddressException
+     * @throws ApiInvalidAddressException Invalid screen name
      * 
      **/
     public function saveProfileInfo(string $access_token, array $params = array()) {

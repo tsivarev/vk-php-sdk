@@ -13,6 +13,10 @@ class Fave {
      **/
     private $request;
 
+    /**
+     * Fave constructor.
+     * @param VKApiRequest $request
+     **/
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -26,7 +30,7 @@ class Fave {
      *      - integer count: Number of users to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -44,7 +48,7 @@ class Fave {
      *      - boolean photo_sizes: '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -63,7 +67,7 @@ class Fave {
      *        '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -82,7 +86,7 @@ class Fave {
      *        groups.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -99,7 +103,7 @@ class Fave {
      *      - integer count: Number of results to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -117,7 +121,7 @@ class Fave {
      *        default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -133,7 +137,7 @@ class Fave {
      *      - integer user_id: Profile ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -149,7 +153,7 @@ class Fave {
      *      - integer user_id: Profile ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -165,7 +169,7 @@ class Fave {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -181,7 +185,7 @@ class Fave {
      *      - integer group_id: Community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -198,7 +202,7 @@ class Fave {
      *      - string text: Description text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
@@ -214,7 +218,7 @@ class Fave {
      *      - string link_id: Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
      **/
