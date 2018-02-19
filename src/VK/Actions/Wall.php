@@ -5,6 +5,16 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiBlockedException;
+use VK\Exceptions\Api\VKApiUserDeletedException;
+use VK\Exceptions\Api\VKApiWallAccessPostException;
+use VK\Exceptions\Api\VKApiWallAdsPublishedException;
+use VK\Exceptions\Api\VKApiWallAddPostException;
+use VK\Exceptions\Api\VKApiWallTooManyRecipientsException;
+use VK\Exceptions\Api\VKApiWallLinksForbiddenException;
+use VK\Exceptions\Api\VKApiWallAccessRepliesException;
+use VK\Exceptions\Api\VKApiWallAccessAddReplyException;
+use VK\Exceptions\Api\VKApiWallAccessCommentException;
 use VK\Actions\Enums\WallGetFilter;
 use VK\Actions\Enums\WallGetCommentsSort;
 use VK\Actions\Enums\WallReportPostReason;
@@ -46,8 +56,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiBlockedException Content blocked
-     * @throws ApiUserDeletedException User was deleted or banned
+     * @throws VKApiBlockedException Content blocked
+     * @throws VKApiUserDeletedException User was deleted or banned
      * 
      */
     public function get(string $access_token, array $params = array()) {
@@ -71,8 +81,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException Access to wall's post denied
-     * @throws ApiUserDeletedException User was deleted or banned
+     * @throws VKApiWallAccessPostException Access to wall's post denied
+     * @throws VKApiUserDeletedException User was deleted or banned
      * 
      */
     public function search(string $access_token, array $params = array()) {
@@ -135,10 +145,10 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAdsPublishedException Advertisement post was recently added
-     * @throws ApiWallAddPostException Access to adding post denied
-     * @throws ApiWallTooManyRecipientsException Too many recipients
-     * @throws ApiWallLinksForbiddenException Hyperlinks are forbidden
+     * @throws VKApiWallAdsPublishedException Advertisement post was recently added
+     * @throws VKApiWallAddPostException Access to adding post denied
+     * @throws VKApiWallTooManyRecipientsException Too many recipients
+     * @throws VKApiWallLinksForbiddenException Hyperlinks are forbidden
      * 
      */
     public function post(string $access_token, array $params = array()) {
@@ -158,8 +168,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAdsPublishedException Advertisement post was recently added
-     * @throws ApiWallAddPostException Access to adding post denied
+     * @throws VKApiWallAdsPublishedException Advertisement post was recently added
+     * @throws VKApiWallAddPostException Access to adding post denied
      * 
      */
     public function repost(string $access_token, array $params = array()) {
@@ -234,7 +244,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException Access to wall's post denied
+     * @throws VKApiWallAccessPostException Access to wall's post denied
      * 
      */
     public function delete(string $access_token, array $params = array()) {
@@ -253,8 +263,8 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException Access to wall's post denied
-     * @throws ApiWallAddPostException Access to adding post denied
+     * @throws VKApiWallAccessPostException Access to wall's post denied
+     * @throws VKApiWallAddPostException Access to adding post denied
      * 
      */
     public function restore(string $access_token, array $params = array()) {
@@ -318,7 +328,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessRepliesException Access to post comments denied
+     * @throws VKApiWallAccessRepliesException Access to post comments denied
      * 
      */
     public function getComments(string $access_token, array $params = array()) {
@@ -345,7 +355,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessAddReplyException Access to status replies denied
+     * @throws VKApiWallAccessAddReplyException Access to status replies denied
      * 
      */
     public function createComment(string $access_token, array $params = array()) {
@@ -385,7 +395,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessCommentException Access to wall's comment denied
+     * @throws VKApiWallAccessCommentException Access to wall's comment denied
      * 
      */
     public function deleteComment(string $access_token, array $params = array()) {
@@ -403,7 +413,7 @@ class Wall {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessCommentException Access to wall's comment denied
+     * @throws VKApiWallAccessCommentException Access to wall's comment denied
      * 
      */
     public function restoreComment(string $access_token, array $params = array()) {

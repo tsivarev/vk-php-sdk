@@ -21,6 +21,7 @@ class GenerateExceptions {
     protected const PHP = '.php';
     protected const EXCEPTION_MAPPER = 'ExceptionMapper';
 
+    protected const VK_NAMESPACE = 'VK';
     protected const VK_API_EXCEPTION_CLASS_NAME = 'VKApiException';
     protected const NAMESPACE_API = 'VK\Exceptions\Api';
     protected const DEFAULT_EXCEPTION_MESSAGE = 'Unknown error';
@@ -40,7 +41,7 @@ class GenerateExceptions {
         $this->response = json_decode($schema, true);
     }
 
-    public function initSchemaFromJson(array $json) {
+    public function initSchemaMethodFromJson(array $json) {
         if (isset($json['errors'])) {
             $this->response = $json;
         } else {
@@ -52,7 +53,28 @@ class GenerateExceptions {
         return str_repeat(' ', static::TAB_SIZE * $count);
     }
 
-    public function generate(string $exceptions_path = null) {
+    public function generate(string $file_path = null, string $json_file_path = null) {
+        self::initSchemaFromFile($file_path);
+        self::generateInitiatedSchema();
+
+        if ($json_file_path == null) {
+            $schema = file_get_contents(dirname(__DIR__) . self::PATH_SCHEMA);
+        } else {
+            $schema = file_get_contents($json_file_path);
+        }
+        $schema = json_decode($schema, true);
+
+        foreach ($schema['methods'] as $method) {
+            if (isset($method['errors'])) {
+                self::initSchemaMethodFromJson($method);
+                self::generateInitiatedSchema();
+            }
+        }
+
+        self::writeMapper();
+    }
+
+    public function generateInitiatedSchema(string $exceptions_path = null) {
         if ($exceptions_path == null) {
             $exceptions_path = dirname(__DIR__) . static::PATH_EXCEPTIONS;
         }
@@ -67,6 +89,7 @@ class GenerateExceptions {
             $class_name = str_replace(static::SPACE, '',
                 ucwords(str_replace(static::UNDERSCORE, static::SPACE, strtolower($name))));
             $class_name = str_replace('Error', '', $class_name);
+            $class_name = self::VK_NAMESPACE . $class_name;
             $class_name .= 'Exception';
 
             $this->switch_content[$code] = $class_name;
@@ -137,8 +160,8 @@ class GenerateExceptions {
         $result .= PHP_EOL . $this->tab(1) . static::SPACE . static::COMMENT_END . PHP_EOL;
 
         $result .= $this->tab(1) . 'public function __construct(string $message) {';
-        $result .= PHP_EOL . $this->tab(2) . 'parent::__construct(' . $code . static::COMMA . static::SPACE;
-        $result .= static::QUOTE . $description . static::QUOTE . static::COMMA . static::SPACE . '$message);';
+        $result .= PHP_EOL . $this->tab(2) . 'parent::__construct(' . $code . static::COMMA;
+        $result .= static::QUOTE . $description . static::QUOTE . static::COMMA. '$message);';
         $result .= PHP_EOL . $this->tab(1) . static::CLOSING_BRACKET;
         return $result;
     }

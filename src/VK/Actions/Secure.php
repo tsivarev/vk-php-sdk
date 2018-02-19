@@ -5,6 +5,10 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiInsufficientFundsException;
+use VK\Exceptions\Api\VKApiMobileNotActivatedException;
+use VK\Exceptions\Api\VKApiAccessMenuException;
+use VK\Exceptions\Api\VKApiAppsAlreadyUnlockedException;
 
 class Secure {
 
@@ -84,8 +88,8 @@ class Secure {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiInsufficientFundsException Application has insufficient funds
-     * @throws ApiMobileNotActivatedException The mobile number of the user is unknown
+     * @throws VKApiInsufficientFundsException Application has insufficient funds
+     * @throws VKApiMobileNotActivatedException The mobile number of the user is unknown
      * 
      */
     public function sendSMSNotification(string $access_token, array $params = array()) {
@@ -123,7 +127,7 @@ class Secure {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMenuException Access to the menu of the user denied
+     * @throws VKApiAccessMenuException Access to the menu of the user denied
      * 
      */
     public function setCounter(string $access_token, array $params = array()) {
@@ -178,7 +182,7 @@ class Secure {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAppsAlreadyUnlockedException This achievement is already unlocked
+     * @throws VKApiAppsAlreadyUnlockedException This achievement is already unlocked
      * 
      */
     public function addAppEvent(string $access_token, array $params = array()) {

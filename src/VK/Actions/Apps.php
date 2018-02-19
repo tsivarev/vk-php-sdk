@@ -5,6 +5,7 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiFloodException;
 use VK\Actions\Enums\AppsGetCatalogSort;
 use VK\Actions\Enums\AppsGetPlatform;
 use VK\Actions\Enums\AppsGetNameCase;
@@ -103,7 +104,7 @@ class Apps {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFloodException Flood control
+     * @throws VKApiFloodException Flood control
      * 
      */
     public function sendRequest(string $access_token, array $params = array()) {

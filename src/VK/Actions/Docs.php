@@ -5,6 +5,11 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiSaveFileException;
+use VK\Exceptions\Api\VKApiParamDocDeleteAccessException;
+use VK\Exceptions\Api\VKApiParamDocIdException;
+use VK\Exceptions\Api\VKApiParamDocAccessException;
+use VK\Exceptions\Api\VKApiParamDocTitleException;
 
 class Docs {
 
@@ -101,7 +106,7 @@ class Docs {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiSaveFileException Couldn't save file
+     * @throws VKApiSaveFileException Couldn't save file
      * 
      */
     public function save(string $access_token, array $params = array()) {
@@ -120,8 +125,8 @@ class Docs {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamDocDeleteAccessException Access to document deleting is denied
-     * @throws ApiParamDocIdException Invalid document id
+     * @throws VKApiParamDocDeleteAccessException Access to document deleting is denied
+     * @throws VKApiParamDocIdException Invalid document id
      * 
      */
     public function delete(string $access_token, array $params = array()) {
@@ -196,9 +201,9 @@ class Docs {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamDocAccessException Access to document is denied
-     * @throws ApiParamDocIdException Invalid document id
-     * @throws ApiParamDocTitleException Invalid document title
+     * @throws VKApiParamDocAccessException Access to document is denied
+     * @throws VKApiParamDocIdException Invalid document id
+     * @throws VKApiParamDocTitleException Invalid document title
      * 
      */
     public function edit(string $access_token, array $params = array()) {

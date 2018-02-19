@@ -5,6 +5,8 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessMenuException;
+use VK\Exceptions\Api\VKApiInvalidAddressException;
 use VK\Actions\Enums\AccountLookupContactsService;
 use VK\Actions\Enums\AccountSaveProfileInfoSex;
 use VK\Actions\Enums\AccountSaveProfileInfoRelation;
@@ -52,7 +54,7 @@ class Account {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessMenuException Access to the menu of the user denied
+     * @throws VKApiAccessMenuException Access to the menu of the user denied
      * 
      */
     public function setNameInMenu(string $access_token, array $params = array()) {
@@ -395,7 +397,7 @@ class Account {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiInvalidAddressException Invalid screen name
+     * @throws VKApiInvalidAddressException Invalid screen name
      * 
      */
     public function saveProfileInfo(string $access_token, array $params = array()) {

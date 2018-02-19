@@ -5,6 +5,9 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessPageException;
+use VK\Exceptions\Api\VKApiParamPageIdException;
+use VK\Exceptions\Api\VKApiParamTitleException;
 use VK\Actions\Enums\PagesSaveAccessView;
 use VK\Actions\Enums\PagesSaveAccessEdit;
 
@@ -59,9 +62,9 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException Access to page denied
-     * @throws ApiParamPageIdException Page not found
-     * @throws ApiParamTitleException Invalid title
+     * @throws VKApiAccessPageException Access to page denied
+     * @throws VKApiParamPageIdException Page not found
+     * @throws VKApiParamTitleException Invalid title
      * 
      */
     public function save(string $access_token, array $params = array()) {
@@ -86,8 +89,8 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException Access to page denied
-     * @throws ApiParamPageIdException Page not found
+     * @throws VKApiAccessPageException Access to page denied
+     * @throws VKApiParamPageIdException Page not found
      * 
      */
     public function saveAccess(string $access_token, array $params = array()) {
@@ -106,8 +109,8 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException Access to page denied
-     * @throws ApiParamPageIdException Page not found
+     * @throws VKApiAccessPageException Access to page denied
+     * @throws VKApiParamPageIdException Page not found
      * 
      */
     public function getHistory(string $access_token, array $params = array()) {
@@ -124,7 +127,7 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException Access to page denied
+     * @throws VKApiAccessPageException Access to page denied
      * 
      */
     public function getTitles(string $access_token, array $params = array()) {
@@ -144,7 +147,7 @@ class Pages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessPageException Access to page denied
+     * @throws VKApiAccessPageException Access to page denied
      * 
      */
     public function getVersion(string $access_token, array $params = array()) {

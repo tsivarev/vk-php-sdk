@@ -5,6 +5,10 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiParamNoteIdException;
+use VK\Exceptions\Api\VKApiAccessNoteException;
+use VK\Exceptions\Api\VKApiAccessNoteCommentException;
+use VK\Exceptions\Api\VKApiAccessCommentException;
 
 class Notes {
 
@@ -33,7 +37,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamNoteIdException Note not found
+     * @throws VKApiParamNoteIdException Note not found
      * 
      */
     public function get(string $access_token, array $params = array()) {
@@ -51,8 +55,8 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessNoteException Access to note denied
-     * @throws ApiParamNoteIdException Note not found
+     * @throws VKApiAccessNoteException Access to note denied
+     * @throws VKApiParamNoteIdException Note not found
      * 
      */
     public function getById(string $access_token, array $params = array()) {
@@ -92,7 +96,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamNoteIdException Note not found
+     * @throws VKApiParamNoteIdException Note not found
      * 
      */
     public function edit(string $access_token, array $params = array()) {
@@ -109,7 +113,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamNoteIdException Note not found
+     * @throws VKApiParamNoteIdException Note not found
      * 
      */
     public function delete(string $access_token, array $params = array()) {
@@ -128,7 +132,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessNoteException Access to note denied
+     * @throws VKApiAccessNoteException Access to note denied
      * 
      */
     public function getComments(string $access_token, array $params = array()) {
@@ -150,8 +154,8 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessNoteException Access to note denied
-     * @throws ApiAccessNoteCommentException You can't comment this note
+     * @throws VKApiAccessNoteException Access to note denied
+     * @throws VKApiAccessNoteCommentException You can't comment this note
      * 
      */
     public function createComment(string $access_token, array $params = array()) {
@@ -170,7 +174,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessCommentException Access to comment denied
+     * @throws VKApiAccessCommentException Access to comment denied
      * 
      */
     public function editComment(string $access_token, array $params = array()) {
@@ -188,8 +192,8 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessNoteException Access to note denied
-     * @throws ApiAccessCommentException Access to comment denied
+     * @throws VKApiAccessNoteException Access to note denied
+     * @throws VKApiAccessCommentException Access to comment denied
      * 
      */
     public function deleteComment(string $access_token, array $params = array()) {
@@ -207,7 +211,7 @@ class Notes {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessCommentException Access to comment denied
+     * @throws VKApiAccessCommentException Access to comment denied
      * 
      */
     public function restoreComment(string $access_token, array $params = array()) {

@@ -5,6 +5,7 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiTooManyListsException;
 use VK\Actions\Enums\NewsfeedGetBannedNameCase;
 use VK\Actions\Enums\NewsfeedIgnoreItemType;
 use VK\Actions\Enums\NewsfeedUnignoreItemType;
@@ -289,7 +290,7 @@ class Newsfeed {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiTooManyListsException Too many feed lists
+     * @throws VKApiTooManyListsException Too many feed lists
      * 
      */
     public function saveList(string $access_token, array $params = array()) {

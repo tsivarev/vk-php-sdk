@@ -5,6 +5,16 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessGroupsException;
+use VK\Exceptions\Api\VKApiParamGroupIdException;
+use VK\Exceptions\Api\VKApiLimitsException;
+use VK\Exceptions\Api\VKApiCommunitiesCatalogDisabledException;
+use VK\Exceptions\Api\VKApiCommunitiesCategoriesDisabledException;
+use VK\Exceptions\Api\VKApiNotFoundException;
+use VK\Exceptions\Api\VKApiInvalidAddressException;
+use VK\Exceptions\Api\VKApiGroupChangeCreatorException;
+use VK\Exceptions\Api\VKApiGroupNotInClubException;
+use VK\Exceptions\Api\VKApiGroupTooManyOfficersException;
 use VK\Actions\Enums\GroupsGetMembersSort;
 use VK\Actions\Enums\GroupsGetMembersFilter;
 use VK\Actions\Enums\GroupsSearchType;
@@ -97,7 +107,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessGroupsException Access to the groups list is denied due to the user's privacy settings
+     * @throws VKApiAccessGroupsException Access to the groups list is denied due to the user's privacy settings
      * 
      */
     public function get(string $access_token, array $params = array()) {
@@ -128,7 +138,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamGroupIdException Invalid group id
+     * @throws VKApiParamGroupIdException Invalid group id
      * 
      */
     public function getMembers(string $access_token, array $params = array()) {
@@ -147,7 +157,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
+     * @throws VKApiLimitsException Out of limits
      * 
      */
     public function join(string $access_token, array $params = array()) {
@@ -213,8 +223,8 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiCommunitiesCatalogDisabledException Catalog is not available for this user
-     * @throws ApiCommunitiesCategoriesDisabledException Catalog categories are not available for this user
+     * @throws VKApiCommunitiesCatalogDisabledException Catalog is not available for this user
+     * @throws VKApiCommunitiesCategoriesDisabledException Catalog categories are not available for this user
      * 
      */
     public function getCatalog(string $access_token, array $params = array()) {
@@ -338,7 +348,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiNotFoundException Not found
+     * @throws VKApiNotFoundException Not found
      * 
      */
     public function getBanned(string $access_token, array $params = array()) {
@@ -364,7 +374,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
+     * @throws VKApiLimitsException Out of limits
      * 
      */
     public function create(string $access_token, array $params = array()) {
@@ -460,7 +470,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiInvalidAddressException Invalid screen name
+     * @throws VKApiInvalidAddressException Invalid screen name
      * 
      */
     public function edit(string $access_token, array $params = array()) {
@@ -542,9 +552,9 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiGroupChangeCreatorException Cannot edit creator role
-     * @throws ApiGroupNotInClubException User should be in club
-     * @throws ApiGroupTooManyOfficersException Too many officers in club
+     * @throws VKApiGroupChangeCreatorException Cannot edit creator role
+     * @throws VKApiGroupNotInClubException User should be in club
+     * @throws VKApiGroupTooManyOfficersException Too many officers in club
      * 
      */
     public function editManager(string $access_token, array $params = array()) {
@@ -562,7 +572,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
+     * @throws VKApiLimitsException Out of limits
      * 
      */
     public function invite(string $access_token, array $params = array()) {
@@ -668,7 +678,7 @@ class Groups {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
+     * @throws VKApiLimitsException Out of limits
      * 
      */
     public function approveRequest(string $access_token, array $params = array()) {

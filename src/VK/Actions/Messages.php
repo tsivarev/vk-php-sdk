@@ -5,6 +5,15 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiMessagesUserBlockedException;
+use VK\Exceptions\Api\VKApiMessagesDenySendException;
+use VK\Exceptions\Api\VKApiMessagesPrivacyException;
+use VK\Exceptions\Api\VKApiMessagesForwardAmountExceededException;
+use VK\Exceptions\Api\VKApiMessagesForwardException;
+use VK\Exceptions\Api\VKApiFloodException;
+use VK\Exceptions\Api\VKApiLimitsException;
+use VK\Exceptions\Api\VKApiUploadException;
+use VK\Exceptions\Api\VKApiPhotoChangedException;
 use VK\Actions\Enums\MessagesGetHistoryRev;
 use VK\Actions\Enums\MessagesGetHistoryAttachmentsMediaType;
 use VK\Actions\Enums\MessagesGetChatNameCase;
@@ -191,11 +200,11 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiMessagesUserBlockedException Can't send messages for users from blacklist
-     * @throws ApiMessagesDenySendException Can't send messages for users without dialogs
-     * @throws ApiMessagesPrivacyException Can't send messages to this user due to their privacy settings
-     * @throws ApiMessagesForwardAmountExceededException Too many forwarded messages
-     * @throws ApiMessagesForwardException Can't forward these messages
+     * @throws VKApiMessagesUserBlockedException Can't send messages for users from blacklist
+     * @throws VKApiMessagesDenySendException Can't send messages for users without dialogs
+     * @throws VKApiMessagesPrivacyException Can't send messages to this user due to their privacy settings
+     * @throws VKApiMessagesForwardAmountExceededException Too many forwarded messages
+     * @throws VKApiMessagesForwardException Can't forward these messages
      * 
      */
     public function send(string $access_token, array $params = array()) {
@@ -406,7 +415,7 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFloodException Flood control
+     * @throws VKApiFloodException Flood control
      * 
      */
     public function createChat(string $access_token, array $params = array()) {
@@ -500,7 +509,7 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
+     * @throws VKApiLimitsException Out of limits
      * 
      */
     public function addChatUser(string $access_token, array $params = array()) {
@@ -553,8 +562,8 @@ class Messages {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiUploadException Upload error
-     * @throws ApiPhotoChangedException Original photo was changed
+     * @throws VKApiUploadException Upload error
+     * @throws VKApiPhotoChangedException Original photo was changed
      * 
      */
     public function setChatPhoto(string $access_token, array $params = array()) {

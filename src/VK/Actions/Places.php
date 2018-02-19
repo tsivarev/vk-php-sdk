@@ -5,6 +5,8 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiSameCheckinException;
+use VK\Exceptions\Api\VKApiAccessCheckinException;
 use VK\Actions\Enums\PlacesSearchRadius;
 
 class Places {
@@ -105,7 +107,7 @@ class Places {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiSameCheckinException You have sent same checkin in last 10 minutes
+     * @throws VKApiSameCheckinException You have sent same checkin in last 10 minutes
      * 
      */
     public function checkin(string $access_token, array $params = array()) {
@@ -136,7 +138,7 @@ class Places {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessCheckinException Access to checkins denied
+     * @throws VKApiAccessCheckinException Access to checkins denied
      * 
      */
     public function getCheckins(string $access_token, array $params = array()) {

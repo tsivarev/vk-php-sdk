@@ -5,6 +5,13 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAlbumsLimitException;
+use VK\Exceptions\Api\VKApiParamAlbumIdException;
+use VK\Exceptions\Api\VKApiParamHashException;
+use VK\Exceptions\Api\VKApiParamPhotoException;
+use VK\Exceptions\Api\VKApiParamServerException;
+use VK\Exceptions\Api\VKApiParamPhotosException;
+use VK\Exceptions\Api\VKApiBlockedException;
 use VK\Actions\Enums\PhotosGetAlbumId;
 use VK\Actions\Enums\PhotosReportReason;
 use VK\Actions\Enums\PhotosReportCommentReason;
@@ -41,7 +48,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAlbumsLimitException Albums number limit is reached
+     * @throws VKApiAlbumsLimitException Albums number limit is reached
      * 
      */
     public function createAlbum(string $access_token, array $params = array()) {
@@ -65,7 +72,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException Invalid album id
+     * @throws VKApiParamAlbumIdException Invalid album id
      * 
      */
     public function editAlbum(string $access_token, array $params = array()) {
@@ -289,8 +296,8 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamHashException Invalid hash
-     * @throws ApiParamPhotoException Invalid photo
+     * @throws VKApiParamHashException Invalid hash
+     * @throws VKApiParamPhotoException Invalid photo
      * 
      */
     public function saveMarketPhoto(string $access_token, array $params = array()) {
@@ -308,7 +315,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamPhotoException Invalid photo
+     * @throws VKApiParamPhotoException Invalid photo
      * 
      */
     public function saveOwnerCoverPhoto(string $access_token, array $params = array()) {
@@ -328,8 +335,8 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamHashException Invalid hash
-     * @throws ApiParamPhotoException Invalid photo
+     * @throws VKApiParamHashException Invalid hash
+     * @throws VKApiParamPhotoException Invalid photo
      * 
      */
     public function saveMarketAlbumPhoto(string $access_token, array $params = array()) {
@@ -349,7 +356,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamPhotoException Invalid photo
+     * @throws VKApiParamPhotoException Invalid photo
      * 
      */
     public function saveOwnerPhoto(string $access_token, array $params = array()) {
@@ -374,9 +381,9 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException Invalid album id
-     * @throws ApiParamServerException Invalid server
-     * @throws ApiParamHashException Invalid hash
+     * @throws VKApiParamAlbumIdException Invalid album id
+     * @throws VKApiParamServerException Invalid server
+     * @throws VKApiParamHashException Invalid hash
      * 
      */
     public function saveWallPhoto(string $access_token, array $params = array()) {
@@ -427,9 +434,9 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException Invalid album id
-     * @throws ApiParamServerException Invalid server
-     * @throws ApiParamHashException Invalid hash
+     * @throws VKApiParamAlbumIdException Invalid album id
+     * @throws VKApiParamServerException Invalid server
+     * @throws VKApiParamHashException Invalid hash
      * 
      */
     public function saveMessagesPhoto(string $access_token, array $params = array()) {
@@ -518,9 +525,9 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException Invalid album id
-     * @throws ApiParamServerException Invalid server
-     * @throws ApiParamHashException Invalid hash
+     * @throws VKApiParamAlbumIdException Invalid album id
+     * @throws VKApiParamServerException Invalid server
+     * @throws VKApiParamHashException Invalid hash
      * 
      */
     public function save(string $access_token, array $params = array()) {
@@ -637,7 +644,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamPhotosException Invalid photos
+     * @throws VKApiParamPhotosException Invalid photos
      * 
      */
     public function reorderPhotos(string $access_token, array $params = array()) {
@@ -665,7 +672,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiBlockedException Content blocked
+     * @throws VKApiBlockedException Content blocked
      * 
      */
     public function getAll(string $access_token, array $params = array()) {
@@ -704,7 +711,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException Invalid album id
+     * @throws VKApiParamAlbumIdException Invalid album id
      * 
      */
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -805,7 +812,7 @@ class Photos {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamAlbumIdException Invalid album id
+     * @throws VKApiParamAlbumIdException Invalid album id
      * 
      */
     public function getAllComments(string $access_token, array $params = array()) {

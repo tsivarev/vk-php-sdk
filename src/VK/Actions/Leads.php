@@ -5,6 +5,10 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiLimitsException;
+use VK\Exceptions\Api\VKApiVotesException;
+use VK\Exceptions\Api\VKApiActionFailedException;
+use VK\Exceptions\Api\VKApiParamException;
 use VK\Actions\Enums\LeadsGetUsersStatus;
 
 class Leads {
@@ -34,8 +38,8 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
-     * @throws ApiVotesException Not enough votes
+     * @throws VKApiLimitsException Out of limits
+     * @throws VKApiVotesException Not enough votes
      * 
      */
     public function complete(string $access_token, array $params = array()) {
@@ -53,7 +57,7 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
+     * @throws VKApiLimitsException Out of limits
      * 
      */
     public function start(string $access_token, array $params = array()) {
@@ -116,7 +120,7 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiActionFailedException Unable to process action
+     * @throws VKApiActionFailedException Unable to process action
      * 
      */
     public function checkUser(string $access_token, array $params = array()) {
@@ -133,7 +137,7 @@ class Leads {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamException One of the parameters specified was missing or invalid
+     * @throws VKApiParamException One of the parameters specified was missing or invalid
      * 
      */
     public function metricHit(string $access_token, array $params = array()) {

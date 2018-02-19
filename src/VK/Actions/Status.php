@@ -5,6 +5,7 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiStatusNoAudioException;
 
 class Status {
 
@@ -50,7 +51,7 @@ class Status {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiStatusNoAudioException User disabled track name broadcast
+     * @throws VKApiStatusNoAudioException User disabled track name broadcast
      * 
      */
     public function set(string $access_token, array $params = array()) {

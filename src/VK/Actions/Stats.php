@@ -5,6 +5,7 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiWallAccessPostException;
 
 class Stats {
 
@@ -67,7 +68,7 @@ class Stats {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiWallAccessPostException Access to wall's post denied
+     * @throws VKApiWallAccessPostException Access to wall's post denied
      * 
      */
     public function getPostReach(string $access_token, array $params = array()) {

@@ -5,6 +5,9 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiLimitsException;
+use VK\Exceptions\Api\VKApiActionFailedException;
+use VK\Exceptions\Api\VKApiParamException;
 use VK\Actions\Enums\OrdersChangeStateAction;
 
 class Orders {
@@ -76,8 +79,8 @@ class Orders {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiLimitsException Out of limits
-     * @throws ApiActionFailedException Unable to process action
+     * @throws VKApiLimitsException Out of limits
+     * @throws VKApiActionFailedException Unable to process action
      * 
      */
     public function changeState(string $access_token, array $params = array()) {
@@ -95,7 +98,7 @@ class Orders {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiParamException One of the parameters specified was missing or invalid
+     * @throws VKApiParamException One of the parameters specified was missing or invalid
      * 
      */
     public function getAmount(string $access_token, array $params = array()) {

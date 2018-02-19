@@ -33,7 +33,6 @@ class GenerateActions {
     protected const KEYWORD_ENUMS = 'Enums';
     protected const KEYWORD_CLIENT = 'Client';
     protected const VK_NAMESPACE = 'VK';
-    protected const USE_VK = self::KEYWORD_USE . self::SPACE . self::VK_NAMESPACE . self::BACKSLASH;
     protected const VK_ACTIONS = self::VK_NAMESPACE . self::BACKSLASH . self::KEYWORD_ACTIONS;
     protected const VK_ENUMS = self::VK_ACTIONS . self::BACKSLASH. self::KEYWORD_ENUMS;
     protected const VK_CLIENT = self::VK_NAMESPACE . self::BACKSLASH. self::KEYWORD_CLIENT;
@@ -63,9 +62,11 @@ class GenerateActions {
     protected const PATH_SCHEMA = '/vendor/vkcom/vk-api-schema/methods.json';
     protected const SRC_VK = '/src/VK/';
 
-    protected const USE_VK_API_REQUEST = self::USE_VK . self::KEYWORD_CLIENT . self::BACKSLASH . self::VK_API_REQUEST . ';';
+    protected const USE_VK = self::KEYWORD_USE . self::SPACE . self::VK_NAMESPACE . self::BACKSLASH;
+    protected const USE_VK_API_EXCEPTIONS = self::USE_VK . 'Exceptions\Api\\';
+    protected const USE_VK_API_EXCEPTION = self::USE_VK_API_EXCEPTIONS . 'VKApiException;';
     protected const USE_VK_CLIENT_EXCEPTION = self::USE_VK . 'Exceptions\VKClientException;';
-    protected const USE_VK_API_EXCEPTION = self::USE_VK . 'Exceptions\Api\VKApiException;';
+    protected const USE_VK_API_REQUEST = self::USE_VK . self::KEYWORD_CLIENT . self::BACKSLASH . self::VK_API_REQUEST . ';';
 
     protected $response = null;
     protected $enums_path = null;
@@ -142,13 +143,15 @@ class GenerateActions {
             $this->updateApiActionClientProperties($class_name, $action_name);
 
             $action_class_code = '';
+            $action_exceptions = array();
             foreach ($action_methods as &$method) {
-                $action_class_code .= $this->wrapActionMethod($method, $action_name);
+                $action_class_code .= $this->wrapActionMethod($method, $action_name, $action_exceptions);
             }
 
             $action_class_use = PHP_EOL . static::USE_VK_API_REQUEST;
             $action_class_use .= PHP_EOL . static::USE_VK_CLIENT_EXCEPTION;
             $action_class_use .= PHP_EOL . static::USE_VK_API_EXCEPTION;
+            $action_class_use .= $this->addActionExceptionsToUse($action_exceptions);
             $action_class_use .= $this->addActionEnumsToUse($action_methods, $action_name);
             $action_class_members = $this->api_request_member;
             $action_class_construct = $this->wrapConstruct($class_name, static::VK_API_REQUEST . static::SPACE .
@@ -223,7 +226,7 @@ class GenerateActions {
         return $result;
     }
 
-    protected function wrapActionMethod($method, $action_name) {
+    protected function wrapActionMethod($method, $action_name, &$exception_names) {
         $method_name = $method[static::KEY_NAME];
         $add_params = function ($param) use (&$action_name, &$method_name) {
             $result = static::SPACE . $this->tab(1) . static::DASH . static::SPACE;
@@ -281,7 +284,12 @@ class GenerateActions {
             '@throws VKApiException in case of network error');
         if (isset($method[static::KEY_ERRORS])) {
             foreach ($method[static::KEY_ERRORS] as $error) {
-                $error_text = '@throws ' . static::parseErrorName($error['name']);
+                $exception_name = static::parseErrorName($error['name']);
+                $error_text = '@throws ' . $exception_name;
+
+                if (!in_array($exception_name, $exception_names)) {
+                    array_push($exception_names, $exception_name);
+                }
 
                 if (isset($error['description'])) {
                     $error_text .= self::SPACE . $error['description'];
@@ -315,6 +323,7 @@ class GenerateActions {
         $error_name = str_replace(static::SPACE, '',
             ucwords(str_replace(static::UNDERSCORE, static::SPACE, strtolower($name))));
         $error_name = str_replace('Error', '', $error_name);
+        $error_name = self::VK_NAMESPACE . $error_name;
         $error_name .= 'Exception';
         return $error_name;
     }
@@ -440,6 +449,14 @@ class GenerateActions {
                     }
                 }
             }
+        }
+        return $result;
+    }
+
+    protected function addActionExceptionsToUse($action_exceptions) {
+        $result = '';
+        foreach ($action_exceptions as $exception_name) {
+            $result .= PHP_EOL . self::USE_VK_API_EXCEPTIONS . $exception_name . ';';
         }
         return $result;
     }

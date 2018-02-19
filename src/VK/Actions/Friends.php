@@ -5,6 +5,11 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiFriendsAddInEnemyException;
+use VK\Exceptions\Api\VKApiFriendsAddEnemyException;
+use VK\Exceptions\Api\VKApiFriendsAddYourselfException;
+use VK\Exceptions\Api\VKApiFriendsListLimitException;
+use VK\Exceptions\Api\VKApiFriendsListIdException;
 use VK\Actions\Enums\FriendsGetOrder;
 use VK\Actions\Enums\FriendsGetNameCase;
 use VK\Actions\Enums\FriendsGetRequestsSort;
@@ -159,9 +164,9 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsAddInEnemyException Cannot add this user to friends as they have put you on their blacklist
-     * @throws ApiFriendsAddEnemyException Cannot add this user to friends as you put him on blacklist
-     * @throws ApiFriendsAddYourselfException Cannot add user himself as friend
+     * @throws VKApiFriendsAddInEnemyException Cannot add this user to friends as they have put you on their blacklist
+     * @throws VKApiFriendsAddEnemyException Cannot add this user to friends as you put him on blacklist
+     * @throws VKApiFriendsAddYourselfException Cannot add user himself as friend
      * 
      */
     public function add(string $access_token, array $params = array()) {
@@ -230,7 +235,7 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsListLimitException Reached the maximum number of lists
+     * @throws VKApiFriendsListLimitException Reached the maximum number of lists
      * 
      */
     public function addList(string $access_token, array $params = array()) {
@@ -253,7 +258,7 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsListIdException Invalid list id
+     * @throws VKApiFriendsListIdException Invalid list id
      * 
      */
     public function editList(string $access_token, array $params = array()) {
@@ -270,7 +275,7 @@ class Friends {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiFriendsListIdException Invalid list id
+     * @throws VKApiFriendsListIdException Invalid list id
      * 
      */
     public function deleteList(string $access_token, array $params = array()) {

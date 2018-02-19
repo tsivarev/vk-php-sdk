@@ -5,6 +5,12 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiPhoneAlreadyUsedException;
+use VK\Exceptions\Api\VKApiAuthDelayException;
+use VK\Exceptions\Api\VKApiParamPhoneException;
+use VK\Exceptions\Api\VKApiAuthParamPasswordException;
+use VK\Exceptions\Api\VKApiAuthParamCodeException;
+use VK\Exceptions\Api\VKApiAuthFloodException;
 use VK\Actions\Enums\AuthSignupSex;
 
 class Auth {
@@ -35,9 +41,9 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiPhoneAlreadyUsedException This phone number is used by another user
-     * @throws ApiAuthDelayException Processing. Try later
-     * @throws ApiParamPhoneException Invalid phone number
+     * @throws VKApiPhoneAlreadyUsedException This phone number is used by another user
+     * @throws VKApiAuthDelayException Processing. Try later
+     * @throws VKApiParamPhoneException Invalid phone number
      * 
      */
     public function checkPhone(string $access_token, array $params = array()) {
@@ -69,9 +75,9 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiPhoneAlreadyUsedException This phone number is used by another user
-     * @throws ApiAuthDelayException Processing. Try later
-     * @throws ApiParamPhoneException Invalid phone number
+     * @throws VKApiPhoneAlreadyUsedException This phone number is used by another user
+     * @throws VKApiAuthDelayException Processing. Try later
+     * @throws VKApiParamPhoneException Invalid phone number
      * 
      */
     public function signup(string $access_token, array $params = array()) {
@@ -95,8 +101,8 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAuthParamPasswordException Invalid password
-     * @throws ApiAuthParamCodeException Incorrect code
+     * @throws VKApiAuthParamPasswordException Invalid password
+     * @throws VKApiAuthParamCodeException Incorrect code
      * 
      */
     public function confirm(string $access_token, array $params = array()) {
@@ -115,7 +121,7 @@ class Auth {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAuthFloodException Too many auth attempts, try again later
+     * @throws VKApiAuthFloodException Too many auth attempts, try again later
      * 
      */
     public function restore(string $access_token, array $params = array()) {

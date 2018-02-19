@@ -5,6 +5,12 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessVideoException;
+use VK\Exceptions\Api\VKApiVideoAlreadyAddedException;
+use VK\Exceptions\Api\VKApiWallAddPostException;
+use VK\Exceptions\Api\VKApiWallAdsPublishedException;
+use VK\Exceptions\Api\VKApiAlbumsLimitException;
+use VK\Exceptions\Api\VKApiVideoCommentsClosedException;
 use VK\Actions\Enums\VideoSearchSort;
 use VK\Actions\Enums\VideoGetCommentsSort;
 use VK\Actions\Enums\VideoReportReason;
@@ -41,7 +47,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function get(string $access_token, array $params = array()) {
@@ -87,8 +93,8 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
-     * @throws ApiVideoAlreadyAddedException This video is already added
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiVideoAlreadyAddedException This video is already added
      * 
      */
     public function add(string $access_token, array $params = array()) {
@@ -119,9 +125,9 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
-     * @throws ApiWallAddPostException Access to adding post denied
-     * @throws ApiWallAdsPublishedException Advertisement post was recently added
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiWallAddPostException Access to adding post denied
+     * @throws VKApiWallAdsPublishedException Advertisement post was recently added
      * 
      */
     public function save(string $access_token, array $params = array()) {
@@ -224,7 +230,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function getAlbums(string $access_token, array $params = array()) {
@@ -243,7 +249,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function getAlbumById(string $access_token, array $params = array()) {
@@ -263,8 +269,8 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
-     * @throws ApiAlbumsLimitException Albums number limit is reached
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiAlbumsLimitException Albums number limit is reached
      * 
      */
     public function addAlbum(string $access_token, array $params = array()) {
@@ -285,7 +291,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function editAlbum(string $access_token, array $params = array()) {
@@ -303,7 +309,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function deleteAlbum(string $access_token, array $params = array()) {
@@ -323,7 +329,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function reorderAlbums(string $access_token, array $params = array()) {
@@ -349,7 +355,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function reorderVideos(string $access_token, array $params = array()) {
@@ -370,8 +376,8 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
-     * @throws ApiVideoAlreadyAddedException This video is already added
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiVideoAlreadyAddedException This video is already added
      * 
      */
     public function addToAlbum(string $access_token, array $params = array()) {
@@ -392,7 +398,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function removeFromAlbum(string $access_token, array $params = array()) {
@@ -412,7 +418,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiAccessVideoException Access denied
+     * @throws VKApiAccessVideoException Access denied
      * 
      */
     public function getAlbumsByVideo(string $access_token, array $params = array()) {
@@ -438,7 +444,7 @@ class Video {
      * @return mixed
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
-     * @throws ApiVideoCommentsClosedException Comments for this video are closed
+     * @throws VKApiVideoCommentsClosedException Comments for this video are closed
      * 
      */
     public function getComments(string $access_token, array $params = array()) {
