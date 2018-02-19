@@ -15,13 +15,13 @@ class Likes {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Likes constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -63,7 +63,7 @@ class Likes {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getList(string $access_token, array $params = array()) {
         return $this->request->post('likes.getList', $access_token, $params);
     }
@@ -86,7 +86,7 @@ class Likes {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('likes.add', $access_token, $params);
     }
@@ -108,7 +108,7 @@ class Likes {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('likes.delete', $access_token, $params);
     }
@@ -131,7 +131,7 @@ class Likes {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function isLiked(string $access_token, array $params = array()) {
         return $this->request->post('likes.isLiked', $access_token, $params);
     }

@@ -11,13 +11,13 @@ class Auth {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Auth constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -39,7 +39,7 @@ class Auth {
      * @throws ApiAuthDelayException Processing. Try later
      * @throws ApiParamPhoneException Invalid phone number
      * 
-     **/
+     */
     public function checkPhone(string $access_token, array $params = array()) {
         return $this->request->post('auth.checkPhone', $access_token, $params);
     }
@@ -73,7 +73,7 @@ class Auth {
      * @throws ApiAuthDelayException Processing. Try later
      * @throws ApiParamPhoneException Invalid phone number
      * 
-     **/
+     */
     public function signup(string $access_token, array $params = array()) {
         return $this->request->post('auth.signup', $access_token, $params);
     }
@@ -98,7 +98,7 @@ class Auth {
      * @throws ApiAuthParamPasswordException Invalid password
      * @throws ApiAuthParamCodeException Incorrect code
      * 
-     **/
+     */
     public function confirm(string $access_token, array $params = array()) {
         return $this->request->post('auth.confirm', $access_token, $params);
     }
@@ -117,7 +117,7 @@ class Auth {
      * @throws VKApiException in case of network error
      * @throws ApiAuthFloodException Too many auth attempts, try again later
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('auth.restore', $access_token, $params);
     }

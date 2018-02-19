@@ -10,13 +10,13 @@ class Widgets {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Widgets constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -37,7 +37,7 @@ class Widgets {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('widgets.getComments', $access_token, $params);
     }
@@ -57,7 +57,7 @@ class Widgets {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getPages(string $access_token, array $params = array()) {
         return $this->request->post('widgets.getPages', $access_token, $params);
     }

@@ -12,13 +12,13 @@ class Pages {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Pages constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -40,7 +40,7 @@ class Pages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('pages.get', $access_token, $params);
     }
@@ -63,7 +63,7 @@ class Pages {
      * @throws ApiParamPageIdException Page not found
      * @throws ApiParamTitleException Invalid title
      * 
-     **/
+     */
     public function save(string $access_token, array $params = array()) {
         return $this->request->post('pages.save', $access_token, $params);
     }
@@ -89,7 +89,7 @@ class Pages {
      * @throws ApiAccessPageException Access to page denied
      * @throws ApiParamPageIdException Page not found
      * 
-     **/
+     */
     public function saveAccess(string $access_token, array $params = array()) {
         return $this->request->post('pages.saveAccess', $access_token, $params);
     }
@@ -109,7 +109,7 @@ class Pages {
      * @throws ApiAccessPageException Access to page denied
      * @throws ApiParamPageIdException Page not found
      * 
-     **/
+     */
     public function getHistory(string $access_token, array $params = array()) {
         return $this->request->post('pages.getHistory', $access_token, $params);
     }
@@ -126,7 +126,7 @@ class Pages {
      * @throws VKApiException in case of network error
      * @throws ApiAccessPageException Access to page denied
      * 
-     **/
+     */
     public function getTitles(string $access_token, array $params = array()) {
         return $this->request->post('pages.getTitles', $access_token, $params);
     }
@@ -146,7 +146,7 @@ class Pages {
      * @throws VKApiException in case of network error
      * @throws ApiAccessPageException Access to page denied
      * 
-     **/
+     */
     public function getVersion(string $access_token, array $params = array()) {
         return $this->request->post('pages.getVersion', $access_token, $params);
     }
@@ -163,7 +163,7 @@ class Pages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function parseWiki(string $access_token, array $params = array()) {
         return $this->request->post('pages.parseWiki', $access_token, $params);
     }
@@ -179,7 +179,7 @@ class Pages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function clearCache(string $access_token, array $params = array()) {
         return $this->request->post('pages.clearCache', $access_token, $params);
     }

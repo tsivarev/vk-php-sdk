@@ -3,7 +3,7 @@
 class GenerateExceptions {
 
     protected const COMMENT_START = '/**';
-    protected const COMMENT_END = '**/';
+    protected const COMMENT_END = '*/';
     protected const ASTERISK = '*';
     protected const SPACE = ' ';
     protected const UNDERSCORE = '_';

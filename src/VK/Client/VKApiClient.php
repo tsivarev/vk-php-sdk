@@ -43,184 +43,184 @@ class VKApiClient {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * @var Account
-     **/
+     */
     private $account;
 
     /**
      * @var Ads
-     **/
+     */
     private $ads;
 
     /**
      * @var Apps
-     **/
+     */
     private $apps;
 
     /**
      * @var Auth
-     **/
+     */
     private $auth;
 
     /**
      * @var Board
-     **/
+     */
     private $board;
 
     /**
      * @var Database
-     **/
+     */
     private $database;
 
     /**
      * @var Docs
-     **/
+     */
     private $docs;
 
     /**
      * @var Fave
-     **/
+     */
     private $fave;
 
     /**
      * @var Friends
-     **/
+     */
     private $friends;
 
     /**
      * @var Gifts
-     **/
+     */
     private $gifts;
 
     /**
      * @var Groups
-     **/
+     */
     private $groups;
 
     /**
      * @var Leads
-     **/
+     */
     private $leads;
 
     /**
      * @var Likes
-     **/
+     */
     private $likes;
 
     /**
      * @var Market
-     **/
+     */
     private $market;
 
     /**
      * @var Messages
-     **/
+     */
     private $messages;
 
     /**
      * @var Newsfeed
-     **/
+     */
     private $newsfeed;
 
     /**
      * @var Notes
-     **/
+     */
     private $notes;
 
     /**
      * @var Notifications
-     **/
+     */
     private $notifications;
 
     /**
      * @var Orders
-     **/
+     */
     private $orders;
 
     /**
      * @var Pages
-     **/
+     */
     private $pages;
 
     /**
      * @var Photos
-     **/
+     */
     private $photos;
 
     /**
      * @var Places
-     **/
+     */
     private $places;
 
     /**
      * @var Polls
-     **/
+     */
     private $polls;
 
     /**
      * @var Search
-     **/
+     */
     private $search;
 
     /**
      * @var Secure
-     **/
+     */
     private $secure;
 
     /**
      * @var Stats
-     **/
+     */
     private $stats;
 
     /**
      * @var Status
-     **/
+     */
     private $status;
 
     /**
      * @var Storage
-     **/
+     */
     private $storage;
 
     /**
      * @var Streaming
-     **/
+     */
     private $streaming;
 
     /**
      * @var Users
-     **/
+     */
     private $users;
 
     /**
      * @var Utils
-     **/
+     */
     private $utils;
 
     /**
      * @var Video
-     **/
+     */
     private $video;
 
     /**
      * @var Wall
-     **/
+     */
     private $wall;
 
     /**
      * @var Widgets
-     **/
+     */
     private $widgets;
 
     /**
      * VKApiClient constructor.
      * @param string $default_language
      * @param string $api_version
-     **/
+     */
     public function __construct(string $default_language = VKLanguage::RUSSIAN, string $api_version = self::VK_API_VERSION) {
         $this->request = new VKApiRequest($default_language, $api_version);
         $this->account = new Account($this->request);
@@ -261,245 +261,245 @@ class VKApiClient {
 
     /**
      * @return VKApiRequest
-     **/
+     */
     public function request() {
         return $this->request;
     }
 
     /**
      * @return Account
-     **/
+     */
     public function account() {
         return $this->account;
     }
 
     /**
      * @return Ads
-     **/
+     */
     public function ads() {
         return $this->ads;
     }
 
     /**
      * @return Apps
-     **/
+     */
     public function apps() {
         return $this->apps;
     }
 
     /**
      * @return Auth
-     **/
+     */
     public function auth() {
         return $this->auth;
     }
 
     /**
      * @return Board
-     **/
+     */
     public function board() {
         return $this->board;
     }
 
     /**
      * @return Database
-     **/
+     */
     public function database() {
         return $this->database;
     }
 
     /**
      * @return Docs
-     **/
+     */
     public function docs() {
         return $this->docs;
     }
 
     /**
      * @return Fave
-     **/
+     */
     public function fave() {
         return $this->fave;
     }
 
     /**
      * @return Friends
-     **/
+     */
     public function friends() {
         return $this->friends;
     }
 
     /**
      * @return Gifts
-     **/
+     */
     public function gifts() {
         return $this->gifts;
     }
 
     /**
      * @return Groups
-     **/
+     */
     public function groups() {
         return $this->groups;
     }
 
     /**
      * @return Leads
-     **/
+     */
     public function leads() {
         return $this->leads;
     }
 
     /**
      * @return Likes
-     **/
+     */
     public function likes() {
         return $this->likes;
     }
 
     /**
      * @return Market
-     **/
+     */
     public function market() {
         return $this->market;
     }
 
     /**
      * @return Messages
-     **/
+     */
     public function messages() {
         return $this->messages;
     }
 
     /**
      * @return Newsfeed
-     **/
+     */
     public function newsfeed() {
         return $this->newsfeed;
     }
 
     /**
      * @return Notes
-     **/
+     */
     public function notes() {
         return $this->notes;
     }
 
     /**
      * @return Notifications
-     **/
+     */
     public function notifications() {
         return $this->notifications;
     }
 
     /**
      * @return Orders
-     **/
+     */
     public function orders() {
         return $this->orders;
     }
 
     /**
      * @return Pages
-     **/
+     */
     public function pages() {
         return $this->pages;
     }
 
     /**
      * @return Photos
-     **/
+     */
     public function photos() {
         return $this->photos;
     }
 
     /**
      * @return Places
-     **/
+     */
     public function places() {
         return $this->places;
     }
 
     /**
      * @return Polls
-     **/
+     */
     public function polls() {
         return $this->polls;
     }
 
     /**
      * @return Search
-     **/
+     */
     public function search() {
         return $this->search;
     }
 
     /**
      * @return Secure
-     **/
+     */
     public function secure() {
         return $this->secure;
     }
 
     /**
      * @return Stats
-     **/
+     */
     public function stats() {
         return $this->stats;
     }
 
     /**
      * @return Status
-     **/
+     */
     public function status() {
         return $this->status;
     }
 
     /**
      * @return Storage
-     **/
+     */
     public function storage() {
         return $this->storage;
     }
 
     /**
      * @return Streaming
-     **/
+     */
     public function streaming() {
         return $this->streaming;
     }
 
     /**
      * @return Users
-     **/
+     */
     public function users() {
         return $this->users;
     }
 
     /**
      * @return Utils
-     **/
+     */
     public function utils() {
         return $this->utils;
     }
 
     /**
      * @return Video
-     **/
+     */
     public function video() {
         return $this->video;
     }
 
     /**
      * @return Wall
-     **/
+     */
     public function wall() {
         return $this->wall;
     }
 
     /**
      * @return Widgets
-     **/
+     */
     public function widgets() {
         return $this->widgets;
     }

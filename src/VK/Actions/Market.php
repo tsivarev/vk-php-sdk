@@ -14,13 +14,13 @@ class Market {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Market constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -41,7 +41,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('market.get', $access_token, $params);
     }
@@ -60,7 +60,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('market.getById', $access_token, $params);
     }
@@ -86,7 +86,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('market.search', $access_token, $params);
     }
@@ -104,7 +104,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAlbums(string $access_token, array $params = array()) {
         return $this->request->post('market.getAlbums', $access_token, $params);
     }
@@ -123,7 +123,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAlbumById(string $access_token, array $params = array()) {
         return $this->request->post('market.getAlbumById', $access_token, $params);
     }
@@ -150,7 +150,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('market.createComment', $access_token, $params);
     }
@@ -176,7 +176,7 @@ class Market {
      * @throws VKApiException in case of network error
      * @throws ApiMarketCommentsClosedException Comments for this market are closed
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('market.getComments', $access_token, $params);
     }
@@ -195,7 +195,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('market.deleteComment', $access_token, $params);
     }
@@ -214,7 +214,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('market.restoreComment', $access_token, $params);
     }
@@ -237,7 +237,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('market.editComment', $access_token, $params);
     }
@@ -258,7 +258,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reportComment(string $access_token, array $params = array()) {
         return $this->request->post('market.reportComment', $access_token, $params);
     }
@@ -275,7 +275,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCategories(string $access_token, array $params = array()) {
         return $this->request->post('market.getCategories', $access_token, $params);
     }
@@ -296,7 +296,7 @@ class Market {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function report(string $access_token, array $params = array()) {
         return $this->request->post('market.report', $access_token, $params);
     }
@@ -321,7 +321,7 @@ class Market {
      * @throws ApiAccessMarketException Access denied
      * @throws ApiMarketTooManyItemsException Too many items
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('market.add', $access_token, $params);
     }
@@ -347,7 +347,7 @@ class Market {
      * @throws ApiAccessMarketException Access denied
      * @throws ApiMarketItemNotFoundException Item not found
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('market.edit', $access_token, $params);
     }
@@ -365,7 +365,7 @@ class Market {
      * @throws VKApiException in case of network error
      * @throws ApiAccessMarketException Access denied
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('market.delete', $access_token, $params);
     }
@@ -384,7 +384,7 @@ class Market {
      * @throws ApiAccessMarketException Access denied
      * @throws ApiMarketRestoreTooLateException Too late for restore
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('market.restore', $access_token, $params);
     }
@@ -407,7 +407,7 @@ class Market {
      * @throws ApiMarketAlbumNotFoundException Album not found
      * @throws ApiMarketItemNotFoundException Item not found
      * 
-     **/
+     */
     public function reorderItems(string $access_token, array $params = array()) {
         return $this->request->post('market.reorderItems', $access_token, $params);
     }
@@ -428,7 +428,7 @@ class Market {
      * @throws ApiAccessMarketException Access denied
      * @throws ApiMarketAlbumNotFoundException Album not found
      * 
-     **/
+     */
     public function reorderAlbums(string $access_token, array $params = array()) {
         return $this->request->post('market.reorderAlbums', $access_token, $params);
     }
@@ -448,7 +448,7 @@ class Market {
      * @throws VKApiException in case of network error
      * @throws ApiMarketTooManyAlbumsException Too many albums
      * 
-     **/
+     */
     public function addAlbum(string $access_token, array $params = array()) {
         return $this->request->post('market.addAlbum', $access_token, $params);
     }
@@ -469,7 +469,7 @@ class Market {
      * @throws VKApiException in case of network error
      * @throws ApiMarketAlbumNotFoundException Album not found
      * 
-     **/
+     */
     public function editAlbum(string $access_token, array $params = array()) {
         return $this->request->post('market.editAlbum', $access_token, $params);
     }
@@ -487,7 +487,7 @@ class Market {
      * @throws VKApiException in case of network error
      * @throws ApiMarketAlbumNotFoundException Album not found
      * 
-     **/
+     */
     public function deleteAlbum(string $access_token, array $params = array()) {
         return $this->request->post('market.deleteAlbum', $access_token, $params);
     }
@@ -507,7 +507,7 @@ class Market {
      * @throws ApiMarketAlbumNotFoundException Album not found
      * @throws ApiMarketItemNotFoundException Item not found
      * 
-     **/
+     */
     public function removeFromAlbum(string $access_token, array $params = array()) {
         return $this->request->post('market.removeFromAlbum', $access_token, $params);
     }
@@ -529,7 +529,7 @@ class Market {
      * @throws ApiMarketTooManyItemsInAlbumException Too many items in album
      * @throws ApiMarketItemAlreadyAddedException Item already added to album
      * 
-     **/
+     */
     public function addToAlbum(string $access_token, array $params = array()) {
         return $this->request->post('market.addToAlbum', $access_token, $params);
     }

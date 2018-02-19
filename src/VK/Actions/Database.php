@@ -10,13 +10,13 @@ class Database {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Database constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -36,7 +36,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCountries(string $access_token, array $params = array()) {
         return $this->request->post('database.getCountries', $access_token, $params);
     }
@@ -56,7 +56,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRegions(string $access_token, array $params = array()) {
         return $this->request->post('database.getRegions', $access_token, $params);
     }
@@ -72,7 +72,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getStreetsById(string $access_token, array $params = array()) {
         return $this->request->post('database.getStreetsById', $access_token, $params);
     }
@@ -88,7 +88,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCountriesById(string $access_token, array $params = array()) {
         return $this->request->post('database.getCountriesById', $access_token, $params);
     }
@@ -110,7 +110,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCities(string $access_token, array $params = array()) {
         return $this->request->post('database.getCities', $access_token, $params);
     }
@@ -126,7 +126,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCitiesById(string $access_token, array $params = array()) {
         return $this->request->post('database.getCitiesById', $access_token, $params);
     }
@@ -146,7 +146,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUniversities(string $access_token, array $params = array()) {
         return $this->request->post('database.getUniversities', $access_token, $params);
     }
@@ -165,7 +165,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSchools(string $access_token, array $params = array()) {
         return $this->request->post('database.getSchools', $access_token, $params);
     }
@@ -181,7 +181,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSchoolClasses(string $access_token, array $params = array()) {
         return $this->request->post('database.getSchoolClasses', $access_token, $params);
     }
@@ -199,7 +199,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getFaculties(string $access_token, array $params = array()) {
         return $this->request->post('database.getFaculties', $access_token, $params);
     }
@@ -217,7 +217,7 @@ class Database {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getChairs(string $access_token, array $params = array()) {
         return $this->request->post('database.getChairs', $access_token, $params);
     }

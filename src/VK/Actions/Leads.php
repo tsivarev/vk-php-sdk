@@ -11,13 +11,13 @@ class Leads {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Leads constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -37,7 +37,7 @@ class Leads {
      * @throws ApiLimitsException Out of limits
      * @throws ApiVotesException Not enough votes
      * 
-     **/
+     */
     public function complete(string $access_token, array $params = array()) {
         return $this->request->post('leads.complete', $access_token, $params);
     }
@@ -55,7 +55,7 @@ class Leads {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function start(string $access_token, array $params = array()) {
         return $this->request->post('leads.start', $access_token, $params);
     }
@@ -74,7 +74,7 @@ class Leads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getStats(string $access_token, array $params = array()) {
         return $this->request->post('leads.getStats', $access_token, $params);
     }
@@ -98,7 +98,7 @@ class Leads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUsers(string $access_token, array $params = array()) {
         return $this->request->post('leads.getUsers', $access_token, $params);
     }
@@ -118,7 +118,7 @@ class Leads {
      * @throws VKApiException in case of network error
      * @throws ApiActionFailedException Unable to process action
      * 
-     **/
+     */
     public function checkUser(string $access_token, array $params = array()) {
         return $this->request->post('leads.checkUser', $access_token, $params);
     }
@@ -135,7 +135,7 @@ class Leads {
      * @throws VKApiException in case of network error
      * @throws ApiParamException One of the parameters specified was missing or invalid
      * 
-     **/
+     */
     public function metricHit(string $access_token, array $params = array()) {
         return $this->request->post('leads.metricHit', $access_token, $params);
     }

@@ -10,13 +10,13 @@ class Status {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Status constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -33,7 +33,7 @@ class Status {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('status.get', $access_token, $params);
     }
@@ -52,7 +52,7 @@ class Status {
      * @throws VKApiException in case of network error
      * @throws ApiStatusNoAudioException User disabled track name broadcast
      * 
-     **/
+     */
     public function set(string $access_token, array $params = array()) {
         return $this->request->post('status.set', $access_token, $params);
     }

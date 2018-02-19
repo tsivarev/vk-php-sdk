@@ -11,13 +11,13 @@ class Utils {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Utils constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -33,7 +33,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function checkLink(string $access_token, array $params = array()) {
         return $this->request->post('utils.checkLink', $access_token, $params);
     }
@@ -49,7 +49,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteFromLastShortened(string $access_token, array $params = array()) {
         return $this->request->post('utils.deleteFromLastShortened', $access_token, $params);
     }
@@ -66,7 +66,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLastShortenedLinks(string $access_token, array $params = array()) {
         return $this->request->post('utils.getLastShortenedLinks', $access_token, $params);
     }
@@ -88,7 +88,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLinkStats(string $access_token, array $params = array()) {
         return $this->request->post('utils.getLinkStats', $access_token, $params);
     }
@@ -105,7 +105,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getShortLink(string $access_token, array $params = array()) {
         return $this->request->post('utils.getShortLink', $access_token, $params);
     }
@@ -122,7 +122,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function resolveScreenName(string $access_token, array $params = array()) {
         return $this->request->post('utils.resolveScreenName', $access_token, $params);
     }
@@ -137,7 +137,7 @@ class Utils {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getServerTime(string $access_token, array $params = array()) {
         return $this->request->post('utils.getServerTime', $access_token, $params);
     }

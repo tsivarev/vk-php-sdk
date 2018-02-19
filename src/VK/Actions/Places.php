@@ -11,13 +11,13 @@ class Places {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Places constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -42,7 +42,7 @@ class Places {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('places.add', $access_token, $params);
     }
@@ -58,7 +58,7 @@ class Places {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('places.getById', $access_token, $params);
     }
@@ -83,7 +83,7 @@ class Places {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('places.search', $access_token, $params);
     }
@@ -107,7 +107,7 @@ class Places {
      * @throws VKApiException in case of network error
      * @throws ApiSameCheckinException You have sent same checkin in last 10 minutes
      * 
-     **/
+     */
     public function checkin(string $access_token, array $params = array()) {
         return $this->request->post('places.checkin', $access_token, $params);
     }
@@ -138,7 +138,7 @@ class Places {
      * @throws VKApiException in case of network error
      * @throws ApiAccessCheckinException Access to checkins denied
      * 
-     **/
+     */
     public function getCheckins(string $access_token, array $params = array()) {
         return $this->request->post('places.getCheckins', $access_token, $params);
     }
@@ -153,7 +153,7 @@ class Places {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTypes(string $access_token, array $params = array()) {
         return $this->request->post('places.getTypes', $access_token, $params);
     }

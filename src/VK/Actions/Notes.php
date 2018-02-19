@@ -10,13 +10,13 @@ class Notes {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Notes constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,7 +35,7 @@ class Notes {
      * @throws VKApiException in case of network error
      * @throws ApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('notes.get', $access_token, $params);
     }
@@ -54,7 +54,7 @@ class Notes {
      * @throws ApiAccessNoteException Access to note denied
      * @throws ApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('notes.getById', $access_token, $params);
     }
@@ -73,7 +73,7 @@ class Notes {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('notes.add', $access_token, $params);
     }
@@ -94,7 +94,7 @@ class Notes {
      * @throws VKApiException in case of network error
      * @throws ApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('notes.edit', $access_token, $params);
     }
@@ -111,7 +111,7 @@ class Notes {
      * @throws VKApiException in case of network error
      * @throws ApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('notes.delete', $access_token, $params);
     }
@@ -130,7 +130,7 @@ class Notes {
      * @throws VKApiException in case of network error
      * @throws ApiAccessNoteException Access to note denied
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('notes.getComments', $access_token, $params);
     }
@@ -153,7 +153,7 @@ class Notes {
      * @throws ApiAccessNoteException Access to note denied
      * @throws ApiAccessNoteCommentException You can't comment this note
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.createComment', $access_token, $params);
     }
@@ -172,7 +172,7 @@ class Notes {
      * @throws VKApiException in case of network error
      * @throws ApiAccessCommentException Access to comment denied
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.editComment', $access_token, $params);
     }
@@ -191,7 +191,7 @@ class Notes {
      * @throws ApiAccessNoteException Access to note denied
      * @throws ApiAccessCommentException Access to comment denied
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.deleteComment', $access_token, $params);
     }
@@ -209,7 +209,7 @@ class Notes {
      * @throws VKApiException in case of network error
      * @throws ApiAccessCommentException Access to comment denied
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.restoreComment', $access_token, $params);
     }

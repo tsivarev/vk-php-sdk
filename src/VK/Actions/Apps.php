@@ -16,13 +16,13 @@ class Apps {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Apps constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -53,7 +53,7 @@ class Apps {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCatalog(string $access_token, array $params = array()) {
         return $this->request->post('apps.getCatalog', $access_token, $params);
     }
@@ -81,7 +81,7 @@ class Apps {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('apps.get', $access_token, $params);
     }
@@ -105,7 +105,7 @@ class Apps {
      * @throws VKApiException in case of network error
      * @throws ApiFloodException Flood control
      * 
-     **/
+     */
     public function sendRequest(string $access_token, array $params = array()) {
         return $this->request->post('apps.sendRequest', $access_token, $params);
     }
@@ -120,7 +120,7 @@ class Apps {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteAppRequests(string $access_token, array $params = array()) {
         return $this->request->post('apps.deleteAppRequests', $access_token, $params);
     }
@@ -140,7 +140,7 @@ class Apps {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getFriendsList(string $access_token, array $params = array()) {
         return $this->request->post('apps.getFriendsList', $access_token, $params);
     }
@@ -161,7 +161,7 @@ class Apps {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLeaderboard(string $access_token, array $params = array()) {
         return $this->request->post('apps.getLeaderboard', $access_token, $params);
     }
@@ -177,7 +177,7 @@ class Apps {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getScore(string $access_token, array $params = array()) {
         return $this->request->post('apps.getScore', $access_token, $params);
     }

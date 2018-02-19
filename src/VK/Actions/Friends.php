@@ -16,13 +16,13 @@ class Friends {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Friends constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -54,7 +54,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('friends.get', $access_token, $params);
     }
@@ -76,7 +76,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getOnline(string $access_token, array $params = array()) {
         return $this->request->post('friends.getOnline', $access_token, $params);
     }
@@ -100,7 +100,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMutual(string $access_token, array $params = array()) {
         return $this->request->post('friends.getMutual', $access_token, $params);
     }
@@ -116,7 +116,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRecent(string $access_token, array $params = array()) {
         return $this->request->post('friends.getRecent', $access_token, $params);
     }
@@ -141,7 +141,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRequests(string $access_token, array $params = array()) {
         return $this->request->post('friends.getRequests', $access_token, $params);
     }
@@ -163,7 +163,7 @@ class Friends {
      * @throws ApiFriendsAddEnemyException Cannot add this user to friends as you put him on blacklist
      * @throws ApiFriendsAddYourselfException Cannot add user himself as friend
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('friends.add', $access_token, $params);
     }
@@ -180,7 +180,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('friends.edit', $access_token, $params);
     }
@@ -197,7 +197,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('friends.delete', $access_token, $params);
     }
@@ -214,7 +214,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLists(string $access_token, array $params = array()) {
         return $this->request->post('friends.getLists', $access_token, $params);
     }
@@ -232,7 +232,7 @@ class Friends {
      * @throws VKApiException in case of network error
      * @throws ApiFriendsListLimitException Reached the maximum number of lists
      * 
-     **/
+     */
     public function addList(string $access_token, array $params = array()) {
         return $this->request->post('friends.addList', $access_token, $params);
     }
@@ -255,7 +255,7 @@ class Friends {
      * @throws VKApiException in case of network error
      * @throws ApiFriendsListIdException Invalid list id
      * 
-     **/
+     */
     public function editList(string $access_token, array $params = array()) {
         return $this->request->post('friends.editList', $access_token, $params);
     }
@@ -272,7 +272,7 @@ class Friends {
      * @throws VKApiException in case of network error
      * @throws ApiFriendsListIdException Invalid list id
      * 
-     **/
+     */
     public function deleteList(string $access_token, array $params = array()) {
         return $this->request->post('friends.deleteList', $access_token, $params);
     }
@@ -287,7 +287,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAppUsers(string $access_token, array $params = array()) {
         return $this->request->post('friends.getAppUsers', $access_token, $params);
     }
@@ -308,7 +308,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getByPhones(string $access_token, array $params = array()) {
         return $this->request->post('friends.getByPhones', $access_token, $params);
     }
@@ -323,7 +323,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteAllRequests(string $access_token, array $params = array()) {
         return $this->request->post('friends.deleteAllRequests', $access_token, $params);
     }
@@ -351,7 +351,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSuggestions(string $access_token, array $params = array()) {
         return $this->request->post('friends.getSuggestions', $access_token, $params);
     }
@@ -370,7 +370,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function areFriends(string $access_token, array $params = array()) {
         return $this->request->post('friends.areFriends', $access_token, $params);
     }
@@ -392,7 +392,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAvailableForCall(string $access_token, array $params = array()) {
         return $this->request->post('friends.getAvailableForCall', $access_token, $params);
     }
@@ -418,7 +418,7 @@ class Friends {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('friends.search', $access_token, $params);
     }

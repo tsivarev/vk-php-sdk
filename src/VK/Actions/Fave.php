@@ -10,13 +10,13 @@ class Fave {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Fave constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -33,7 +33,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUsers(string $access_token, array $params = array()) {
         return $this->request->post('fave.getUsers', $access_token, $params);
     }
@@ -51,7 +51,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getPhotos(string $access_token, array $params = array()) {
         return $this->request->post('fave.getPhotos', $access_token, $params);
     }
@@ -70,7 +70,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getPosts(string $access_token, array $params = array()) {
         return $this->request->post('fave.getPosts', $access_token, $params);
     }
@@ -89,7 +89,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getVideos(string $access_token, array $params = array()) {
         return $this->request->post('fave.getVideos', $access_token, $params);
     }
@@ -106,7 +106,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLinks(string $access_token, array $params = array()) {
         return $this->request->post('fave.getLinks', $access_token, $params);
     }
@@ -124,7 +124,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMarketItems(string $access_token, array $params = array()) {
         return $this->request->post('fave.getMarketItems', $access_token, $params);
     }
@@ -140,7 +140,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function addUser(string $access_token, array $params = array()) {
         return $this->request->post('fave.addUser', $access_token, $params);
     }
@@ -156,7 +156,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeUser(string $access_token, array $params = array()) {
         return $this->request->post('fave.removeUser', $access_token, $params);
     }
@@ -172,7 +172,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function addGroup(string $access_token, array $params = array()) {
         return $this->request->post('fave.addGroup', $access_token, $params);
     }
@@ -188,7 +188,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeGroup(string $access_token, array $params = array()) {
         return $this->request->post('fave.removeGroup', $access_token, $params);
     }
@@ -205,7 +205,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function addLink(string $access_token, array $params = array()) {
         return $this->request->post('fave.addLink', $access_token, $params);
     }
@@ -221,7 +221,7 @@ class Fave {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeLink(string $access_token, array $params = array()) {
         return $this->request->post('fave.removeLink', $access_token, $params);
     }

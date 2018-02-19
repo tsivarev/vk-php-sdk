@@ -11,13 +11,13 @@ class Orders {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Orders constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,7 +35,7 @@ class Orders {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('orders.get', $access_token, $params);
     }
@@ -54,7 +54,7 @@ class Orders {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('orders.getById', $access_token, $params);
     }
@@ -79,7 +79,7 @@ class Orders {
      * @throws ApiLimitsException Out of limits
      * @throws ApiActionFailedException Unable to process action
      * 
-     **/
+     */
     public function changeState(string $access_token, array $params = array()) {
         return $this->request->post('orders.changeState', $access_token, $params);
     }
@@ -97,7 +97,7 @@ class Orders {
      * @throws VKApiException in case of network error
      * @throws ApiParamException One of the parameters specified was missing or invalid
      * 
-     **/
+     */
     public function getAmount(string $access_token, array $params = array()) {
         return $this->request->post('orders.getAmount', $access_token, $params);
     }

@@ -19,13 +19,13 @@ class Ads {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Ads constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -40,7 +40,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAccounts(string $access_token, array $params = array()) {
         return $this->request->post('ads.getAccounts', $access_token, $params);
     }
@@ -57,7 +57,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getClients(string $access_token, array $params = array()) {
         return $this->request->post('ads.getClients', $access_token, $params);
     }
@@ -77,7 +77,7 @@ class Ads {
      * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function createClients(string $access_token, array $params = array()) {
         return $this->request->post('ads.createClients', $access_token, $params);
     }
@@ -96,7 +96,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function updateClients(string $access_token, array $params = array()) {
         return $this->request->post('ads.updateClients', $access_token, $params);
     }
@@ -114,7 +114,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function deleteClients(string $access_token, array $params = array()) {
         return $this->request->post('ads.deleteClients', $access_token, $params);
     }
@@ -138,7 +138,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getCampaigns(string $access_token, array $params = array()) {
         return $this->request->post('ads.getCampaigns', $access_token, $params);
     }
@@ -158,7 +158,7 @@ class Ads {
      * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function createCampaigns(string $access_token, array $params = array()) {
         return $this->request->post('ads.createCampaigns', $access_token, $params);
     }
@@ -178,7 +178,7 @@ class Ads {
      * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function updateCampaigns(string $access_token, array $params = array()) {
         return $this->request->post('ads.updateCampaigns', $access_token, $params);
     }
@@ -196,7 +196,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function deleteCampaigns(string $access_token, array $params = array()) {
         return $this->request->post('ads.deleteCampaigns', $access_token, $params);
     }
@@ -224,7 +224,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getAds(string $access_token, array $params = array()) {
         return $this->request->post('ads.getAds', $access_token, $params);
     }
@@ -251,7 +251,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getAdsLayout(string $access_token, array $params = array()) {
         return $this->request->post('ads.getAdsLayout', $access_token, $params);
     }
@@ -278,7 +278,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getAdsTargeting(string $access_token, array $params = array()) {
         return $this->request->post('ads.getAdsTargeting', $access_token, $params);
     }
@@ -298,7 +298,7 @@ class Ads {
      * @throws ApiAdsPartialSuccessException Some part of the request has not been completed
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function createAds(string $access_token, array $params = array()) {
         return $this->request->post('ads.createAds', $access_token, $params);
     }
@@ -317,7 +317,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function updateAds(string $access_token, array $params = array()) {
         return $this->request->post('ads.updateAds', $access_token, $params);
     }
@@ -335,7 +335,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function deleteAds(string $access_token, array $params = array()) {
         return $this->request->post('ads.deleteAds', $access_token, $params);
     }
@@ -356,7 +356,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function checkLink(string $access_token, array $params = array()) {
         return $this->request->post('ads.checkLink', $access_token, $params);
     }
@@ -388,7 +388,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getStatistics(string $access_token, array $params = array()) {
         return $this->request->post('ads.getStatistics', $access_token, $params);
     }
@@ -420,7 +420,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getDemographics(string $access_token, array $params = array()) {
         return $this->request->post('ads.getDemographics', $access_token, $params);
     }
@@ -439,7 +439,7 @@ class Ads {
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * @throws ApiAdsPermissionException Permission denied. You have no access to operations specified with given object(s)
      * 
-     **/
+     */
     public function getAdsPostsReach(string $access_token, array $params = array()) {
         return $this->request->post('ads.getAdsPostsReach', $access_token, $params);
     }
@@ -456,7 +456,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getBudget(string $access_token, array $params = array()) {
         return $this->request->post('ads.getBudget', $access_token, $params);
     }
@@ -473,7 +473,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getOfficeUsers(string $access_token, array $params = array()) {
         return $this->request->post('ads.getOfficeUsers', $access_token, $params);
     }
@@ -492,7 +492,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function addOfficeUsers(string $access_token, array $params = array()) {
         return $this->request->post('ads.addOfficeUsers', $access_token, $params);
     }
@@ -510,7 +510,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function removeOfficeUsers(string $access_token, array $params = array()) {
         return $this->request->post('ads.removeOfficeUsers', $access_token, $params);
     }
@@ -539,7 +539,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getTargetingStats(string $access_token, array $params = array()) {
         return $this->request->post('ads.getTargetingStats', $access_token, $params);
     }
@@ -574,7 +574,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSuggestions(string $access_token, array $params = array()) {
         return $this->request->post('ads.getSuggestions', $access_token, $params);
     }
@@ -590,7 +590,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCategories(string $access_token, array $params = array()) {
         return $this->request->post('ads.getCategories', $access_token, $params);
     }
@@ -608,7 +608,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUploadURL(string $access_token, array $params = array()) {
         return $this->request->post('ads.getUploadURL', $access_token, $params);
     }
@@ -623,7 +623,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getVideoUploadURL(string $access_token, array $params = array()) {
         return $this->request->post('ads.getVideoUploadURL', $access_token, $params);
     }
@@ -640,7 +640,7 @@ class Ads {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getFloodStats(string $access_token, array $params = array()) {
         return $this->request->post('ads.getFloodStats', $access_token, $params);
     }
@@ -658,7 +658,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getRejectionReason(string $access_token, array $params = array()) {
         return $this->request->post('ads.getRejectionReason', $access_token, $params);
     }
@@ -682,7 +682,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function createTargetGroup(string $access_token, array $params = array()) {
         return $this->request->post('ads.createTargetGroup', $access_token, $params);
     }
@@ -707,7 +707,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function updateTargetGroup(string $access_token, array $params = array()) {
         return $this->request->post('ads.updateTargetGroup', $access_token, $params);
     }
@@ -727,7 +727,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function deleteTargetGroup(string $access_token, array $params = array()) {
         return $this->request->post('ads.deleteTargetGroup', $access_token, $params);
     }
@@ -747,7 +747,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function getTargetGroups(string $access_token, array $params = array()) {
         return $this->request->post('ads.getTargetGroups', $access_token, $params);
     }
@@ -768,7 +768,7 @@ class Ads {
      * @throws VKApiException in case of network error
      * @throws ApiWeightedFloodException Permission denied. You have requested too many actions this day. Try later.
      * 
-     **/
+     */
     public function importTargetContacts(string $access_token, array $params = array()) {
         return $this->request->post('ads.importTargetContacts', $access_token, $params);
     }

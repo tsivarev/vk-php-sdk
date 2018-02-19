@@ -30,13 +30,13 @@ class Groups {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Groups constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -55,7 +55,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function isMember(string $access_token, array $params = array()) {
         return $this->request->post('groups.isMember', $access_token, $params);
     }
@@ -73,7 +73,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('groups.getById', $access_token, $params);
     }
@@ -99,7 +99,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiAccessGroupsException Access to the groups list is denied due to the user's privacy settings
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('groups.get', $access_token, $params);
     }
@@ -130,7 +130,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiParamGroupIdException Invalid group id
      * 
-     **/
+     */
     public function getMembers(string $access_token, array $params = array()) {
         return $this->request->post('groups.getMembers', $access_token, $params);
     }
@@ -149,7 +149,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function join(string $access_token, array $params = array()) {
         return $this->request->post('groups.join', $access_token, $params);
     }
@@ -165,7 +165,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function leave(string $access_token, array $params = array()) {
         return $this->request->post('groups.leave', $access_token, $params);
     }
@@ -195,7 +195,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('groups.search', $access_token, $params);
     }
@@ -216,7 +216,7 @@ class Groups {
      * @throws ApiCommunitiesCatalogDisabledException Catalog is not available for this user
      * @throws ApiCommunitiesCategoriesDisabledException Catalog categories are not available for this user
      * 
-     **/
+     */
     public function getCatalog(string $access_token, array $params = array()) {
         return $this->request->post('groups.getCatalog', $access_token, $params);
     }
@@ -233,7 +233,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCatalogInfo(string $access_token, array $params = array()) {
         return $this->request->post('groups.getCatalogInfo', $access_token, $params);
     }
@@ -251,7 +251,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getInvites(string $access_token, array $params = array()) {
         return $this->request->post('groups.getInvites', $access_token, $params);
     }
@@ -278,7 +278,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getInvitedUsers(string $access_token, array $params = array()) {
         return $this->request->post('groups.getInvitedUsers', $access_token, $params);
     }
@@ -302,7 +302,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function banUser(string $access_token, array $params = array()) {
         return $this->request->post('groups.banUser', $access_token, $params);
     }
@@ -319,7 +319,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unbanUser(string $access_token, array $params = array()) {
         return $this->request->post('groups.unbanUser', $access_token, $params);
     }
@@ -340,7 +340,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiNotFoundException Not found
      * 
-     **/
+     */
     public function getBanned(string $access_token, array $params = array()) {
         return $this->request->post('groups.getBanned', $access_token, $params);
     }
@@ -366,7 +366,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function create(string $access_token, array $params = array()) {
         return $this->request->post('groups.create', $access_token, $params);
     }
@@ -462,7 +462,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiInvalidAddressException Invalid screen name
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('groups.edit', $access_token, $params);
     }
@@ -484,7 +484,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editPlace(string $access_token, array $params = array()) {
         return $this->request->post('groups.editPlace', $access_token, $params);
     }
@@ -500,7 +500,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSettings(string $access_token, array $params = array()) {
         return $this->request->post('groups.getSettings', $access_token, $params);
     }
@@ -519,7 +519,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRequests(string $access_token, array $params = array()) {
         return $this->request->post('groups.getRequests', $access_token, $params);
     }
@@ -546,7 +546,7 @@ class Groups {
      * @throws ApiGroupNotInClubException User should be in club
      * @throws ApiGroupTooManyOfficersException Too many officers in club
      * 
-     **/
+     */
     public function editManager(string $access_token, array $params = array()) {
         return $this->request->post('groups.editManager', $access_token, $params);
     }
@@ -564,7 +564,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function invite(string $access_token, array $params = array()) {
         return $this->request->post('groups.invite', $access_token, $params);
     }
@@ -582,7 +582,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function addLink(string $access_token, array $params = array()) {
         return $this->request->post('groups.addLink', $access_token, $params);
     }
@@ -599,7 +599,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteLink(string $access_token, array $params = array()) {
         return $this->request->post('groups.deleteLink', $access_token, $params);
     }
@@ -617,7 +617,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editLink(string $access_token, array $params = array()) {
         return $this->request->post('groups.editLink', $access_token, $params);
     }
@@ -635,7 +635,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reorderLink(string $access_token, array $params = array()) {
         return $this->request->post('groups.reorderLink', $access_token, $params);
     }
@@ -652,7 +652,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeUser(string $access_token, array $params = array()) {
         return $this->request->post('groups.removeUser', $access_token, $params);
     }
@@ -670,7 +670,7 @@ class Groups {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function approveRequest(string $access_token, array $params = array()) {
         return $this->request->post('groups.approveRequest', $access_token, $params);
     }
@@ -686,7 +686,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCallbackConfirmationCode(string $access_token, array $params = array()) {
         return $this->request->post('groups.getCallbackConfirmationCode', $access_token, $params);
     }
@@ -703,7 +703,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCallbackSettings(string $access_token, array $params = array()) {
         return $this->request->post('groups.getCallbackSettings', $access_token, $params);
     }
@@ -756,7 +756,7 @@ class Groups {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setCallbackSettings(string $access_token, array $params = array()) {
         return $this->request->post('groups.setCallbackSettings', $access_token, $params);
     }

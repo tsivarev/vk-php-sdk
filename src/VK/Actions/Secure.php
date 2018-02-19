@@ -10,13 +10,13 @@ class Secure {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Secure constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -31,7 +31,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAppBalance(string $access_token, array $params = array()) {
         return $this->request->post('secure.getAppBalance', $access_token, $params);
     }
@@ -46,7 +46,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTransactionsHistory(string $access_token, array $params = array()) {
         return $this->request->post('secure.getTransactionsHistory', $access_token, $params);
     }
@@ -66,7 +66,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSMSHistory(string $access_token, array $params = array()) {
         return $this->request->post('secure.getSMSHistory', $access_token, $params);
     }
@@ -87,7 +87,7 @@ class Secure {
      * @throws ApiInsufficientFundsException Application has insufficient funds
      * @throws ApiMobileNotActivatedException The mobile number of the user is unknown
      * 
-     **/
+     */
     public function sendSMSNotification(string $access_token, array $params = array()) {
         return $this->request->post('secure.sendSMSNotification', $access_token, $params);
     }
@@ -106,7 +106,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function sendNotification(string $access_token, array $params = array()) {
         return $this->request->post('secure.sendNotification', $access_token, $params);
     }
@@ -125,7 +125,7 @@ class Secure {
      * @throws VKApiException in case of network error
      * @throws ApiAccessMenuException Access to the menu of the user denied
      * 
-     **/
+     */
     public function setCounter(string $access_token, array $params = array()) {
         return $this->request->post('secure.setCounter', $access_token, $params);
     }
@@ -143,7 +143,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setUserLevel(string $access_token, array $params = array()) {
         return $this->request->post('secure.setUserLevel', $access_token, $params);
     }
@@ -159,7 +159,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUserLevel(string $access_token, array $params = array()) {
         return $this->request->post('secure.getUserLevel', $access_token, $params);
     }
@@ -180,7 +180,7 @@ class Secure {
      * @throws VKApiException in case of network error
      * @throws ApiAppsAlreadyUnlockedException This achievement is already unlocked
      * 
-     **/
+     */
     public function addAppEvent(string $access_token, array $params = array()) {
         return $this->request->post('secure.addAppEvent', $access_token, $params);
     }
@@ -198,7 +198,7 @@ class Secure {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function checkToken(string $access_token, array $params = array()) {
         return $this->request->post('secure.checkToken', $access_token, $params);
     }

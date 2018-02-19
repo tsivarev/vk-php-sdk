@@ -11,13 +11,13 @@ class Polls {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Polls constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -37,7 +37,7 @@ class Polls {
      * @throws VKApiException in case of network error
      * @throws ApiPollsAccessException Access to poll denied
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('polls.getById', $access_token, $params);
     }
@@ -60,7 +60,7 @@ class Polls {
      * @throws ApiPollsAnswerIdException Invalid answer id
      * @throws ApiPollsPollIdException Invalid poll id
      * 
-     **/
+     */
     public function addVote(string $access_token, array $params = array()) {
         return $this->request->post('polls.addVote', $access_token, $params);
     }
@@ -83,7 +83,7 @@ class Polls {
      * @throws ApiPollsAnswerIdException Invalid answer id
      * @throws ApiPollsPollIdException Invalid poll id
      * 
-     **/
+     */
     public function deleteVote(string $access_token, array $params = array()) {
         return $this->request->post('polls.deleteVote', $access_token, $params);
     }
@@ -118,7 +118,7 @@ class Polls {
      * @throws ApiPollsAnswerIdException Invalid answer id
      * @throws ApiPollsPollIdException Invalid poll id
      * 
-     **/
+     */
     public function getVoters(string $access_token, array $params = array()) {
         return $this->request->post('polls.getVoters', $access_token, $params);
     }
@@ -140,7 +140,7 @@ class Polls {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function create(string $access_token, array $params = array()) {
         return $this->request->post('polls.create', $access_token, $params);
     }
@@ -162,7 +162,7 @@ class Polls {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('polls.edit', $access_token, $params);
     }

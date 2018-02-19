@@ -10,13 +10,13 @@ class Storage {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Storage constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -34,7 +34,7 @@ class Storage {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('storage.get', $access_token, $params);
     }
@@ -53,7 +53,7 @@ class Storage {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function set(string $access_token, array $params = array()) {
         return $this->request->post('storage.set', $access_token, $params);
     }
@@ -71,7 +71,7 @@ class Storage {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getKeys(string $access_token, array $params = array()) {
         return $this->request->post('storage.getKeys', $access_token, $params);
     }

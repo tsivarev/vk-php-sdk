@@ -10,13 +10,13 @@ class Search {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Search constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -36,7 +36,7 @@ class Search {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getHints(string $access_token, array $params = array()) {
         return $this->request->post('search.getHints', $access_token, $params);
     }

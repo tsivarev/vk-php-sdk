@@ -10,13 +10,13 @@ class Notifications {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Notifications constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -41,7 +41,7 @@ class Notifications {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('notifications.get', $access_token, $params);
     }
@@ -56,7 +56,7 @@ class Notifications {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function markAsViewed(string $access_token, array $params = array()) {
         return $this->request->post('notifications.markAsViewed', $access_token, $params);
     }

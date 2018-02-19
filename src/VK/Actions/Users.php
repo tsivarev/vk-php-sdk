@@ -18,13 +18,13 @@ class Users {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Users constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -48,7 +48,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('users.get', $access_token, $params);
     }
@@ -102,7 +102,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('users.search', $access_token, $params);
     }
@@ -118,7 +118,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function isAppUser(string $access_token, array $params = array()) {
         return $this->request->post('users.isAppUser', $access_token, $params);
     }
@@ -139,7 +139,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSubscriptions(string $access_token, array $params = array()) {
         return $this->request->post('users.getSubscriptions', $access_token, $params);
     }
@@ -164,7 +164,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getFollowers(string $access_token, array $params = array()) {
         return $this->request->post('users.getFollowers', $access_token, $params);
     }
@@ -184,7 +184,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function report(string $access_token, array $params = array()) {
         return $this->request->post('users.report', $access_token, $params);
     }
@@ -215,7 +215,7 @@ class Users {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getNearby(string $access_token, array $params = array()) {
         return $this->request->post('users.getNearby', $access_token, $params);
     }

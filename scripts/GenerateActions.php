@@ -21,7 +21,7 @@ class GenerateActions {
     protected const LINE_LENGTH_DESCRIPTION = 112;
 
     protected const COMMENT_START = '/**';
-    protected const COMMENT_END = '**/';
+    protected const COMMENT_END = '*/';
 
     protected const KEYWORD_METHODS = 'methods';
     protected const KEYWORD_USE = 'use';

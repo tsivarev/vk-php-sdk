@@ -14,13 +14,13 @@ class Account {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Account constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -36,7 +36,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCounters(string $access_token, array $params = array()) {
         return $this->request->post('account.getCounters', $access_token, $params);
     }
@@ -54,7 +54,7 @@ class Account {
      * @throws VKApiException in case of network error
      * @throws ApiAccessMenuException Access to the menu of the user denied
      * 
-     **/
+     */
     public function setNameInMenu(string $access_token, array $params = array()) {
         return $this->request->post('account.setNameInMenu', $access_token, $params);
     }
@@ -70,7 +70,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setOnline(string $access_token, array $params = array()) {
         return $this->request->post('account.setOnline', $access_token, $params);
     }
@@ -85,7 +85,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setOffline(string $access_token, array $params = array()) {
         return $this->request->post('account.setOffline', $access_token, $params);
     }
@@ -111,7 +111,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function lookupContacts(string $access_token, array $params = array()) {
         return $this->request->post('account.lookupContacts', $access_token, $params);
     }
@@ -133,7 +133,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function registerDevice(string $access_token, array $params = array()) {
         return $this->request->post('account.registerDevice', $access_token, $params);
     }
@@ -149,7 +149,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unregisterDevice(string $access_token, array $params = array()) {
         return $this->request->post('account.unregisterDevice', $access_token, $params);
     }
@@ -170,7 +170,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setSilenceMode(string $access_token, array $params = array()) {
         return $this->request->post('account.setSilenceMode', $access_token, $params);
     }
@@ -186,7 +186,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getPushSettings(string $access_token, array $params = array()) {
         return $this->request->post('account.getPushSettings', $access_token, $params);
     }
@@ -205,7 +205,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setPushSettings(string $access_token, array $params = array()) {
         return $this->request->post('account.setPushSettings', $access_token, $params);
     }
@@ -221,7 +221,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAppPermissions(string $access_token, array $params = array()) {
         return $this->request->post('account.getAppPermissions', $access_token, $params);
     }
@@ -238,7 +238,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getActiveOffers(string $access_token, array $params = array()) {
         return $this->request->post('account.getActiveOffers', $access_token, $params);
     }
@@ -254,7 +254,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function banUser(string $access_token, array $params = array()) {
         return $this->request->post('account.banUser', $access_token, $params);
     }
@@ -270,7 +270,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unbanUser(string $access_token, array $params = array()) {
         return $this->request->post('account.unbanUser', $access_token, $params);
     }
@@ -287,7 +287,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getBanned(string $access_token, array $params = array()) {
         return $this->request->post('account.getBanned', $access_token, $params);
     }
@@ -306,7 +306,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.getInfo', $access_token, $params);
     }
@@ -323,7 +323,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.setInfo', $access_token, $params);
     }
@@ -345,7 +345,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function changePassword(string $access_token, array $params = array()) {
         return $this->request->post('account.changePassword', $access_token, $params);
     }
@@ -360,7 +360,7 @@ class Account {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getProfileInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.getProfileInfo', $access_token, $params);
     }
@@ -397,7 +397,7 @@ class Account {
      * @throws VKApiException in case of network error
      * @throws ApiInvalidAddressException Invalid screen name
      * 
-     **/
+     */
     public function saveProfileInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.saveProfileInfo', $access_token, $params);
     }

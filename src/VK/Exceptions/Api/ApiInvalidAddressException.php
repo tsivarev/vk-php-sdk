@@ -6,7 +6,7 @@ class ApiInvalidAddressException extends VKApiException {
     /**
      * ApiInvalidAddressException constructor.
      * @param string $message
-     **/
+     */
     public function __construct(string $message) {
         parent::__construct(1260,  'Invalid screen name',  $message);
     }

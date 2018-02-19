@@ -14,13 +14,13 @@ class Messages {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Messages constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -47,7 +47,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('messages.get', $access_token, $params);
     }
@@ -71,7 +71,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getDialogs(string $access_token, array $params = array()) {
         return $this->request->post('messages.getDialogs', $access_token, $params);
     }
@@ -87,7 +87,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('messages.getById', $access_token, $params);
     }
@@ -111,7 +111,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('messages.search', $access_token, $params);
     }
@@ -134,7 +134,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getHistory(string $access_token, array $params = array()) {
         return $this->request->post('messages.getHistory', $access_token, $params);
     }
@@ -158,7 +158,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getHistoryAttachments(string $access_token, array $params = array()) {
         return $this->request->post('messages.getHistoryAttachments', $access_token, $params);
     }
@@ -197,7 +197,7 @@ class Messages {
      * @throws ApiMessagesForwardAmountExceededException Too many forwarded messages
      * @throws ApiMessagesForwardException Can't forward these messages
      * 
-     **/
+     */
     public function send(string $access_token, array $params = array()) {
         return $this->request->post('messages.send', $access_token, $params);
     }
@@ -214,7 +214,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('messages.delete', $access_token, $params);
     }
@@ -235,7 +235,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteDialog(string $access_token, array $params = array()) {
         return $this->request->post('messages.deleteDialog', $access_token, $params);
     }
@@ -251,7 +251,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('messages.restore', $access_token, $params);
     }
@@ -270,7 +270,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function markAsRead(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsRead', $access_token, $params);
     }
@@ -287,7 +287,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function markAsImportant(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsImportant', $access_token, $params);
     }
@@ -304,7 +304,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function markAsImportantDialog(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsImportantDialog', $access_token, $params);
     }
@@ -321,7 +321,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function markAsUnansweredDialog(string $access_token, array $params = array()) {
         return $this->request->post('messages.markAsUnansweredDialog', $access_token, $params);
     }
@@ -339,7 +339,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLongPollServer(string $access_token, array $params = array()) {
         return $this->request->post('messages.getLongPollServer', $access_token, $params);
     }
@@ -368,7 +368,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLongPollHistory(string $access_token, array $params = array()) {
         return $this->request->post('messages.getLongPollHistory', $access_token, $params);
     }
@@ -390,7 +390,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getChat(string $access_token, array $params = array()) {
         return $this->request->post('messages.getChat', $access_token, $params);
     }
@@ -408,7 +408,7 @@ class Messages {
      * @throws VKApiException in case of network error
      * @throws ApiFloodException Flood control
      * 
-     **/
+     */
     public function createChat(string $access_token, array $params = array()) {
         return $this->request->post('messages.createChat', $access_token, $params);
     }
@@ -425,7 +425,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editChat(string $access_token, array $params = array()) {
         return $this->request->post('messages.editChat', $access_token, $params);
     }
@@ -447,7 +447,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getChatUsers(string $access_token, array $params = array()) {
         return $this->request->post('messages.getChatUsers', $access_token, $params);
     }
@@ -466,7 +466,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setActivity(string $access_token, array $params = array()) {
         return $this->request->post('messages.setActivity', $access_token, $params);
     }
@@ -484,7 +484,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function searchDialogs(string $access_token, array $params = array()) {
         return $this->request->post('messages.searchDialogs', $access_token, $params);
     }
@@ -502,7 +502,7 @@ class Messages {
      * @throws VKApiException in case of network error
      * @throws ApiLimitsException Out of limits
      * 
-     **/
+     */
     public function addChatUser(string $access_token, array $params = array()) {
         return $this->request->post('messages.addChatUser', $access_token, $params);
     }
@@ -520,7 +520,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeChatUser(string $access_token, array $params = array()) {
         return $this->request->post('messages.removeChatUser', $access_token, $params);
     }
@@ -536,7 +536,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLastActivity(string $access_token, array $params = array()) {
         return $this->request->post('messages.getLastActivity', $access_token, $params);
     }
@@ -556,7 +556,7 @@ class Messages {
      * @throws ApiUploadException Upload error
      * @throws ApiPhotoChangedException Original photo was changed
      * 
-     **/
+     */
     public function setChatPhoto(string $access_token, array $params = array()) {
         return $this->request->post('messages.setChatPhoto', $access_token, $params);
     }
@@ -572,7 +572,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteChatPhoto(string $access_token, array $params = array()) {
         return $this->request->post('messages.deleteChatPhoto', $access_token, $params);
     }
@@ -588,7 +588,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function denyMessagesFromGroup(string $access_token, array $params = array()) {
         return $this->request->post('messages.denyMessagesFromGroup', $access_token, $params);
     }
@@ -604,7 +604,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function allowMessagesFromGroup(string $access_token, array $params = array()) {
         return $this->request->post('messages.allowMessagesFromGroup', $access_token, $params);
     }
@@ -621,7 +621,7 @@ class Messages {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function isMessagesFromGroupAllowed(string $access_token, array $params = array()) {
         return $this->request->post('messages.isMessagesFromGroupAllowed', $access_token, $params);
     }

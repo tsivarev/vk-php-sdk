@@ -13,13 +13,13 @@ class Board {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Board constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -51,7 +51,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTopics(string $access_token, array $params = array()) {
         return $this->request->post('board.getTopics', $access_token, $params);
     }
@@ -78,7 +78,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('board.getComments', $access_token, $params);
     }
@@ -103,7 +103,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function addTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.addTopic', $access_token, $params);
     }
@@ -129,7 +129,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('board.createComment', $access_token, $params);
     }
@@ -146,7 +146,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.deleteTopic', $access_token, $params);
     }
@@ -164,7 +164,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.editTopic', $access_token, $params);
     }
@@ -187,7 +187,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('board.editComment', $access_token, $params);
     }
@@ -205,7 +205,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('board.restoreComment', $access_token, $params);
     }
@@ -223,7 +223,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('board.deleteComment', $access_token, $params);
     }
@@ -240,7 +240,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function openTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.openTopic', $access_token, $params);
     }
@@ -257,7 +257,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function closeTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.closeTopic', $access_token, $params);
     }
@@ -274,7 +274,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function fixTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.fixTopic', $access_token, $params);
     }
@@ -291,7 +291,7 @@ class Board {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unfixTopic(string $access_token, array $params = array()) {
         return $this->request->post('board.unfixTopic', $access_token, $params);
     }

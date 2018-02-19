@@ -10,13 +10,13 @@ class Stats {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Stats constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,7 +35,7 @@ class Stats {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('stats.get', $access_token, $params);
     }
@@ -50,7 +50,7 @@ class Stats {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function trackVisitor(string $access_token, array $params = array()) {
         return $this->request->post('stats.trackVisitor', $access_token, $params);
     }
@@ -69,7 +69,7 @@ class Stats {
      * @throws VKApiException in case of network error
      * @throws ApiWallAccessPostException Access to wall's post denied
      * 
-     **/
+     */
     public function getPostReach(string $access_token, array $params = array()) {
         return $this->request->post('stats.getPostReach', $access_token, $params);
     }

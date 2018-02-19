@@ -10,13 +10,13 @@ class Gifts {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Gifts constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -34,7 +34,7 @@ class Gifts {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('gifts.get', $access_token, $params);
     }

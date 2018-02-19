@@ -10,13 +10,13 @@ class Docs {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Docs constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -35,7 +35,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('docs.get', $access_token, $params);
     }
@@ -51,7 +51,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('docs.getById', $access_token, $params);
     }
@@ -67,7 +67,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('docs.getUploadServer', $access_token, $params);
     }
@@ -83,7 +83,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getWallUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('docs.getWallUploadServer', $access_token, $params);
     }
@@ -103,7 +103,7 @@ class Docs {
      * @throws VKApiException in case of network error
      * @throws ApiSaveFileException Couldn't save file
      * 
-     **/
+     */
     public function save(string $access_token, array $params = array()) {
         return $this->request->post('docs.save', $access_token, $params);
     }
@@ -123,7 +123,7 @@ class Docs {
      * @throws ApiParamDocDeleteAccessException Access to document deleting is denied
      * @throws ApiParamDocIdException Invalid document id
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('docs.delete', $access_token, $params);
     }
@@ -143,7 +143,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('docs.add', $access_token, $params);
     }
@@ -160,7 +160,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTypes(string $access_token, array $params = array()) {
         return $this->request->post('docs.getTypes', $access_token, $params);
     }
@@ -178,7 +178,7 @@ class Docs {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('docs.search', $access_token, $params);
     }
@@ -200,7 +200,7 @@ class Docs {
      * @throws ApiParamDocIdException Invalid document id
      * @throws ApiParamDocTitleException Invalid document title
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('docs.edit', $access_token, $params);
     }

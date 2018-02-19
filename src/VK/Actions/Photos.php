@@ -14,13 +14,13 @@ class Photos {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Photos constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -43,7 +43,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiAlbumsLimitException Albums number limit is reached
      * 
-     **/
+     */
     public function createAlbum(string $access_token, array $params = array()) {
         return $this->request->post('photos.createAlbum', $access_token, $params);
     }
@@ -67,7 +67,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiParamAlbumIdException Invalid album id
      * 
-     **/
+     */
     public function editAlbum(string $access_token, array $params = array()) {
         return $this->request->post('photos.editAlbum', $access_token, $params);
     }
@@ -89,7 +89,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAlbums(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAlbums', $access_token, $params);
     }
@@ -120,7 +120,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('photos.get', $access_token, $params);
     }
@@ -137,7 +137,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAlbumsCount(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAlbumsCount', $access_token, $params);
     }
@@ -158,7 +158,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('photos.getById', $access_token, $params);
     }
@@ -176,7 +176,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getUploadServer', $access_token, $params);
     }
@@ -197,7 +197,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getOwnerCoverPhotoUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getOwnerCoverPhotoUploadServer', $access_token, $params);
     }
@@ -214,7 +214,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getOwnerPhotoUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getOwnerPhotoUploadServer', $access_token, $params);
     }
@@ -233,7 +233,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getChatUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getChatUploadServer', $access_token, $params);
     }
@@ -253,7 +253,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMarketUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getMarketUploadServer', $access_token, $params);
     }
@@ -269,7 +269,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMarketAlbumUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getMarketAlbumUploadServer', $access_token, $params);
     }
@@ -292,7 +292,7 @@ class Photos {
      * @throws ApiParamHashException Invalid hash
      * @throws ApiParamPhotoException Invalid photo
      * 
-     **/
+     */
     public function saveMarketPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveMarketPhoto', $access_token, $params);
     }
@@ -310,7 +310,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiParamPhotoException Invalid photo
      * 
-     **/
+     */
     public function saveOwnerCoverPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveOwnerCoverPhoto', $access_token, $params);
     }
@@ -331,7 +331,7 @@ class Photos {
      * @throws ApiParamHashException Invalid hash
      * @throws ApiParamPhotoException Invalid photo
      * 
-     **/
+     */
     public function saveMarketAlbumPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveMarketAlbumPhoto', $access_token, $params);
     }
@@ -351,7 +351,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiParamPhotoException Invalid photo
      * 
-     **/
+     */
     public function saveOwnerPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveOwnerPhoto', $access_token, $params);
     }
@@ -378,7 +378,7 @@ class Photos {
      * @throws ApiParamServerException Invalid server
      * @throws ApiParamHashException Invalid hash
      * 
-     **/
+     */
     public function saveWallPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveWallPhoto', $access_token, $params);
     }
@@ -394,7 +394,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getWallUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getWallUploadServer', $access_token, $params);
     }
@@ -409,7 +409,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMessagesUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('photos.getMessagesUploadServer', $access_token, $params);
     }
@@ -431,7 +431,7 @@ class Photos {
      * @throws ApiParamServerException Invalid server
      * @throws ApiParamHashException Invalid hash
      * 
-     **/
+     */
     public function saveMessagesPhoto(string $access_token, array $params = array()) {
         return $this->request->post('photos.saveMessagesPhoto', $access_token, $params);
     }
@@ -451,7 +451,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function report(string $access_token, array $params = array()) {
         return $this->request->post('photos.report', $access_token, $params);
     }
@@ -471,7 +471,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reportComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.reportComment', $access_token, $params);
     }
@@ -496,7 +496,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('photos.search', $access_token, $params);
     }
@@ -522,7 +522,7 @@ class Photos {
      * @throws ApiParamServerException Invalid server
      * @throws ApiParamHashException Invalid hash
      * 
-     **/
+     */
     public function save(string $access_token, array $params = array()) {
         return $this->request->post('photos.save', $access_token, $params);
     }
@@ -540,7 +540,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function copy(string $access_token, array $params = array()) {
         return $this->request->post('photos.copy', $access_token, $params);
     }
@@ -564,7 +564,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('photos.edit', $access_token, $params);
     }
@@ -582,7 +582,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function move(string $access_token, array $params = array()) {
         return $this->request->post('photos.move', $access_token, $params);
     }
@@ -600,7 +600,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function makeCover(string $access_token, array $params = array()) {
         return $this->request->post('photos.makeCover', $access_token, $params);
     }
@@ -619,7 +619,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reorderAlbums(string $access_token, array $params = array()) {
         return $this->request->post('photos.reorderAlbums', $access_token, $params);
     }
@@ -639,7 +639,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiParamPhotosException Invalid photos
      * 
-     **/
+     */
     public function reorderPhotos(string $access_token, array $params = array()) {
         return $this->request->post('photos.reorderPhotos', $access_token, $params);
     }
@@ -667,7 +667,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiBlockedException Content blocked
      * 
-     **/
+     */
     public function getAll(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAll', $access_token, $params);
     }
@@ -688,7 +688,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUserPhotos(string $access_token, array $params = array()) {
         return $this->request->post('photos.getUserPhotos', $access_token, $params);
     }
@@ -706,7 +706,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiParamAlbumIdException Invalid album id
      * 
-     **/
+     */
     public function deleteAlbum(string $access_token, array $params = array()) {
         return $this->request->post('photos.deleteAlbum', $access_token, $params);
     }
@@ -723,7 +723,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('photos.delete', $access_token, $params);
     }
@@ -740,7 +740,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('photos.restore', $access_token, $params);
     }
@@ -758,7 +758,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function confirmTag(string $access_token, array $params = array()) {
         return $this->request->post('photos.confirmTag', $access_token, $params);
     }
@@ -784,7 +784,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('photos.getComments', $access_token, $params);
     }
@@ -807,7 +807,7 @@ class Photos {
      * @throws VKApiException in case of network error
      * @throws ApiParamAlbumIdException Invalid album id
      * 
-     **/
+     */
     public function getAllComments(string $access_token, array $params = array()) {
         return $this->request->post('photos.getAllComments', $access_token, $params);
     }
@@ -834,7 +834,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.createComment', $access_token, $params);
     }
@@ -851,7 +851,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.deleteComment', $access_token, $params);
     }
@@ -868,7 +868,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.restoreComment', $access_token, $params);
     }
@@ -890,7 +890,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('photos.editComment', $access_token, $params);
     }
@@ -908,7 +908,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTags(string $access_token, array $params = array()) {
         return $this->request->post('photos.getTags', $access_token, $params);
     }
@@ -930,7 +930,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function putTag(string $access_token, array $params = array()) {
         return $this->request->post('photos.putTag', $access_token, $params);
     }
@@ -948,7 +948,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeTag(string $access_token, array $params = array()) {
         return $this->request->post('photos.removeTag', $access_token, $params);
     }
@@ -965,7 +965,7 @@ class Photos {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getNewTags(string $access_token, array $params = array()) {
         return $this->request->post('photos.getNewTags', $access_token, $params);
     }

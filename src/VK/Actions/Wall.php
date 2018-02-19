@@ -14,13 +14,13 @@ class Wall {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Wall constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -49,7 +49,7 @@ class Wall {
      * @throws ApiBlockedException Content blocked
      * @throws ApiUserDeletedException User was deleted or banned
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('wall.get', $access_token, $params);
     }
@@ -74,7 +74,7 @@ class Wall {
      * @throws ApiWallAccessPostException Access to wall's post denied
      * @throws ApiUserDeletedException User was deleted or banned
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('wall.search', $access_token, $params);
     }
@@ -96,7 +96,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('wall.getById', $access_token, $params);
     }
@@ -140,7 +140,7 @@ class Wall {
      * @throws ApiWallTooManyRecipientsException Too many recipients
      * @throws ApiWallLinksForbiddenException Hyperlinks are forbidden
      * 
-     **/
+     */
     public function post(string $access_token, array $params = array()) {
         return $this->request->post('wall.post', $access_token, $params);
     }
@@ -161,7 +161,7 @@ class Wall {
      * @throws ApiWallAdsPublishedException Advertisement post was recently added
      * @throws ApiWallAddPostException Access to adding post denied
      * 
-     **/
+     */
     public function repost(string $access_token, array $params = array()) {
         return $this->request->post('wall.repost', $access_token, $params);
     }
@@ -181,7 +181,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getReposts(string $access_token, array $params = array()) {
         return $this->request->post('wall.getReposts', $access_token, $params);
     }
@@ -218,7 +218,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('wall.edit', $access_token, $params);
     }
@@ -236,7 +236,7 @@ class Wall {
      * @throws VKApiException in case of network error
      * @throws ApiWallAccessPostException Access to wall's post denied
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('wall.delete', $access_token, $params);
     }
@@ -256,7 +256,7 @@ class Wall {
      * @throws ApiWallAccessPostException Access to wall's post denied
      * @throws ApiWallAddPostException Access to adding post denied
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('wall.restore', $access_token, $params);
     }
@@ -274,7 +274,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function pin(string $access_token, array $params = array()) {
         return $this->request->post('wall.pin', $access_token, $params);
     }
@@ -292,7 +292,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unpin(string $access_token, array $params = array()) {
         return $this->request->post('wall.unpin', $access_token, $params);
     }
@@ -320,7 +320,7 @@ class Wall {
      * @throws VKApiException in case of network error
      * @throws ApiWallAccessRepliesException Access to post comments denied
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('wall.getComments', $access_token, $params);
     }
@@ -347,7 +347,7 @@ class Wall {
      * @throws VKApiException in case of network error
      * @throws ApiWallAccessAddReplyException Access to status replies denied
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.createComment', $access_token, $params);
     }
@@ -369,7 +369,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.editComment', $access_token, $params);
     }
@@ -387,7 +387,7 @@ class Wall {
      * @throws VKApiException in case of network error
      * @throws ApiWallAccessCommentException Access to wall's comment denied
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.deleteComment', $access_token, $params);
     }
@@ -405,7 +405,7 @@ class Wall {
      * @throws VKApiException in case of network error
      * @throws ApiWallAccessCommentException Access to wall's comment denied
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.restoreComment', $access_token, $params);
     }
@@ -425,7 +425,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reportPost(string $access_token, array $params = array()) {
         return $this->request->post('wall.reportPost', $access_token, $params);
     }
@@ -445,7 +445,7 @@ class Wall {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reportComment(string $access_token, array $params = array()) {
         return $this->request->post('wall.reportComment', $access_token, $params);
     }

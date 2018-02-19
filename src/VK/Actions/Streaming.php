@@ -10,13 +10,13 @@ class Streaming {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * Streaming constructor.
      * @param VKApiRequest $request
-     **/
+     */
     public function __construct(VKApiRequest $request) {
         $this->request = $request;
     }
@@ -31,7 +31,7 @@ class Streaming {
      * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getServerUrl(string $access_token, array $params = array()) {
         return $this->request->post('streaming.getServerUrl', $access_token, $params);
     }
