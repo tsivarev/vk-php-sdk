@@ -10,7 +10,7 @@ class Notifications {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -38,10 +38,10 @@ class Notifications {
      *        current time.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('notifications.get', $access_token, $params);
     }
@@ -53,10 +53,10 @@ class Notifications {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function markAsViewed(string $access_token, array $params = array()) {
         return $this->request->post('notifications.markAsViewed', $access_token, $params);
     }

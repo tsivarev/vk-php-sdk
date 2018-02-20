@@ -2,6 +2,7 @@
 
 namespace VK\Client;
 
+use VK\Client\Enums\VKLanguage;
 use VK\Actions\Account;
 use VK\Actions\Ads;
 use VK\Actions\Apps;
@@ -36,184 +37,183 @@ use VK\Actions\Utils;
 use VK\Actions\Video;
 use VK\Actions\Wall;
 use VK\Actions\Widgets;
-use VK\Client\Enums\VKLanguage;
 
 class VKApiClient {
     protected const VK_API_VERSION = '5.69';
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
      * @var Account
-     **/
+     */
     private $account;
 
     /**
      * @var Ads
-     **/
+     */
     private $ads;
 
     /**
      * @var Apps
-     **/
+     */
     private $apps;
 
     /**
      * @var Auth
-     **/
+     */
     private $auth;
 
     /**
      * @var Board
-     **/
+     */
     private $board;
 
     /**
      * @var Database
-     **/
+     */
     private $database;
 
     /**
      * @var Docs
-     **/
+     */
     private $docs;
 
     /**
      * @var Fave
-     **/
+     */
     private $fave;
 
     /**
      * @var Friends
-     **/
+     */
     private $friends;
 
     /**
      * @var Gifts
-     **/
+     */
     private $gifts;
 
     /**
      * @var Groups
-     **/
+     */
     private $groups;
 
     /**
      * @var Leads
-     **/
+     */
     private $leads;
 
     /**
      * @var Likes
-     **/
+     */
     private $likes;
 
     /**
      * @var Market
-     **/
+     */
     private $market;
 
     /**
      * @var Messages
-     **/
+     */
     private $messages;
 
     /**
      * @var Newsfeed
-     **/
+     */
     private $newsfeed;
 
     /**
      * @var Notes
-     **/
+     */
     private $notes;
 
     /**
      * @var Notifications
-     **/
+     */
     private $notifications;
 
     /**
      * @var Orders
-     **/
+     */
     private $orders;
 
     /**
      * @var Pages
-     **/
+     */
     private $pages;
 
     /**
      * @var Photos
-     **/
+     */
     private $photos;
 
     /**
      * @var Places
-     **/
+     */
     private $places;
 
     /**
      * @var Polls
-     **/
+     */
     private $polls;
 
     /**
      * @var Search
-     **/
+     */
     private $search;
 
     /**
      * @var Secure
-     **/
+     */
     private $secure;
 
     /**
      * @var Stats
-     **/
+     */
     private $stats;
 
     /**
      * @var Status
-     **/
+     */
     private $status;
 
     /**
      * @var Storage
-     **/
+     */
     private $storage;
 
     /**
      * @var Streaming
-     **/
+     */
     private $streaming;
 
     /**
      * @var Users
-     **/
+     */
     private $users;
 
     /**
      * @var Utils
-     **/
+     */
     private $utils;
 
     /**
      * @var Video
-     **/
+     */
     private $video;
 
     /**
      * @var Wall
-     **/
+     */
     private $wall;
 
     /**
      * @var Widgets
-     **/
+     */
     private $widgets;
 
     /**
@@ -503,4 +503,5 @@ class VKApiClient {
     public function widgets() {
         return $this->widgets;
     }
+
 }

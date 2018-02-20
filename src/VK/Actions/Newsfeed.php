@@ -5,6 +5,7 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiTooManyListsException;
 use VK\Actions\Enums\NewsfeedGetBannedNameCase;
 use VK\Actions\Enums\NewsfeedIgnoreItemType;
 use VK\Actions\Enums\NewsfeedUnignoreItemType;
@@ -14,7 +15,7 @@ class Newsfeed {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -51,10 +52,10 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.get', $access_token, $params);
     }
@@ -75,10 +76,10 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRecommended(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.getRecommended', $access_token, $params);
     }
@@ -105,10 +106,10 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.getComments', $access_token, $params);
     }
@@ -125,10 +126,10 @@ class Newsfeed {
      *      - integer count: Number of posts to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMentions(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.getMentions', $access_token, $params);
     }
@@ -146,10 +147,10 @@ class Newsfeed {
      *        @see NewsfeedGetBannedNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getBanned(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.getBanned', $access_token, $params);
     }
@@ -163,10 +164,10 @@ class Newsfeed {
      *      - array group_ids:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function addBan(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.addBan', $access_token, $params);
     }
@@ -180,10 +181,10 @@ class Newsfeed {
      *      - array group_ids:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteBan(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.deleteBan', $access_token, $params);
     }
@@ -201,10 +202,10 @@ class Newsfeed {
      *      - integer item_id: Item identifier
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function ignoreItem(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.ignoreItem', $access_token, $params);
     }
@@ -222,10 +223,10 @@ class Newsfeed {
      *      - integer item_id: Item identifier
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unignoreItem(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.unignoreItem', $access_token, $params);
     }
@@ -250,10 +251,10 @@ class Newsfeed {
      *        [vk.com/dev/fields_groups|communities] to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.search', $access_token, $params);
     }
@@ -267,10 +268,10 @@ class Newsfeed {
      *      - boolean extended: Return additional list info
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLists(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.getLists', $access_token, $params);
     }
@@ -287,10 +288,11 @@ class Newsfeed {
      *      - boolean no_reposts: reposts display on and off ('1' is for off).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiTooManyListsException Too many feed lists
      * 
-     **/
+     */
     public function saveList(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.saveList', $access_token, $params);
     }
@@ -303,10 +305,10 @@ class Newsfeed {
      *      - integer list_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteList(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.deleteList', $access_token, $params);
     }
@@ -323,10 +325,10 @@ class Newsfeed {
      *      - integer item_id: Object ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unsubscribe(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.unsubscribe', $access_token, $params);
     }
@@ -343,10 +345,10 @@ class Newsfeed {
      *        and [vk.com/dev/fields_groups|communities].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSuggestedSources(string $access_token, array $params = array()) {
         return $this->request->post('newsfeed.getSuggestedSources', $access_token, $params);
     }

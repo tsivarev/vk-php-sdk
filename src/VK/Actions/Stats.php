@@ -5,12 +5,13 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiWallAccessPostException;
 
 class Stats {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -32,10 +33,10 @@ class Stats {
      *      - string date_to: End datestamp (in Unix time) of statistics to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('stats.get', $access_token, $params);
     }
@@ -47,10 +48,10 @@ class Stats {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function trackVisitor(string $access_token, array $params = array()) {
         return $this->request->post('stats.trackVisitor', $access_token, $params);
     }
@@ -65,10 +66,11 @@ class Stats {
      *        community wall.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiWallAccessPostException Access to wall's post denied
      * 
-     **/
+     */
     public function getPostReach(string $access_token, array $params = array()) {
         return $this->request->post('stats.getPostReach', $access_token, $params);
     }

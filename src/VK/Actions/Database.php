@@ -10,7 +10,7 @@ class Database {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -33,10 +33,10 @@ class Database {
      *      - integer count: Number of countries to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCountries(string $access_token, array $params = array()) {
         return $this->request->post('database.getCountries', $access_token, $params);
     }
@@ -53,10 +53,10 @@ class Database {
      *      - integer count: Number of regions to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRegions(string $access_token, array $params = array()) {
         return $this->request->post('database.getRegions', $access_token, $params);
     }
@@ -69,10 +69,10 @@ class Database {
      *      - array street_ids: Street IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getStreetsById(string $access_token, array $params = array()) {
         return $this->request->post('database.getStreetsById', $access_token, $params);
     }
@@ -85,10 +85,10 @@ class Database {
      *      - array country_ids: Country IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCountriesById(string $access_token, array $params = array()) {
         return $this->request->post('database.getCountriesById', $access_token, $params);
     }
@@ -107,10 +107,10 @@ class Database {
      *      - integer count: Number of cities to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCities(string $access_token, array $params = array()) {
         return $this->request->post('database.getCities', $access_token, $params);
     }
@@ -123,10 +123,10 @@ class Database {
      *      - array city_ids: City IDs.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCitiesById(string $access_token, array $params = array()) {
         return $this->request->post('database.getCitiesById', $access_token, $params);
     }
@@ -143,10 +143,10 @@ class Database {
      *      - integer count: Number of universities to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUniversities(string $access_token, array $params = array()) {
         return $this->request->post('database.getUniversities', $access_token, $params);
     }
@@ -162,10 +162,10 @@ class Database {
      *      - integer count: Number of schools to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSchools(string $access_token, array $params = array()) {
         return $this->request->post('database.getSchools', $access_token, $params);
     }
@@ -178,10 +178,10 @@ class Database {
      *      - integer country_id: Country ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSchoolClasses(string $access_token, array $params = array()) {
         return $this->request->post('database.getSchoolClasses', $access_token, $params);
     }
@@ -196,10 +196,10 @@ class Database {
      *      - integer count: Number of faculties to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getFaculties(string $access_token, array $params = array()) {
         return $this->request->post('database.getFaculties', $access_token, $params);
     }
@@ -214,10 +214,10 @@ class Database {
      *      - integer count: amount of chairs to get
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getChairs(string $access_token, array $params = array()) {
         return $this->request->post('database.getChairs', $access_token, $params);
     }

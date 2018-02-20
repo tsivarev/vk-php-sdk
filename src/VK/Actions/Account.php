@@ -5,6 +5,8 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessMenuException;
+use VK\Exceptions\Api\VKApiInvalidAddressException;
 use VK\Actions\Enums\AccountLookupContactsService;
 use VK\Actions\Enums\AccountSaveProfileInfoSex;
 use VK\Actions\Enums\AccountSaveProfileInfoRelation;
@@ -14,7 +16,7 @@ class Account {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -33,10 +35,10 @@ class Account {
      *      - array filter: Counters to be returned.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCounters(string $access_token, array $params = array()) {
         return $this->request->post('account.getCounters', $access_token, $params);
     }
@@ -50,10 +52,11 @@ class Account {
      *      - string name: Application screen name.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessMenuException Access to the menu of the user denied
      * 
-     **/
+     */
     public function setNameInMenu(string $access_token, array $params = array()) {
         return $this->request->post('account.setNameInMenu', $access_token, $params);
     }
@@ -66,10 +69,10 @@ class Account {
      *      - boolean voip: '1' if videocalls are available for current device.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setOnline(string $access_token, array $params = array()) {
         return $this->request->post('account.setOnline', $access_token, $params);
     }
@@ -81,10 +84,10 @@ class Account {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setOffline(string $access_token, array $params = array()) {
         return $this->request->post('account.setOffline', $access_token, $params);
     }
@@ -107,10 +110,10 @@ class Account {
      *        last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function lookupContacts(string $access_token, array $params = array()) {
         return $this->request->post('account.lookupContacts', $access_token, $params);
     }
@@ -129,10 +132,10 @@ class Account {
      *      - string settings: Push settings in a [vk.com/dev/push_settings|special format].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function registerDevice(string $access_token, array $params = array()) {
         return $this->request->post('account.registerDevice', $access_token, $params);
     }
@@ -145,10 +148,10 @@ class Account {
      *      - string device_id: Unique device ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unregisterDevice(string $access_token, array $params = array()) {
         return $this->request->post('account.unregisterDevice', $access_token, $params);
     }
@@ -166,10 +169,10 @@ class Account {
      *        contains user or community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setSilenceMode(string $access_token, array $params = array()) {
         return $this->request->post('account.setSilenceMode', $access_token, $params);
     }
@@ -182,10 +185,10 @@ class Account {
      *      - string device_id: Unique device ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getPushSettings(string $access_token, array $params = array()) {
         return $this->request->post('account.getPushSettings', $access_token, $params);
     }
@@ -201,10 +204,10 @@ class Account {
      *      - array value: New value for the key in a [vk.com/dev/push_settings|special format].
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setPushSettings(string $access_token, array $params = array()) {
         return $this->request->post('account.setPushSettings', $access_token, $params);
     }
@@ -217,10 +220,10 @@ class Account {
      *      - integer user_id: User ID whose settings information shall be got. By default: current user.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAppPermissions(string $access_token, array $params = array()) {
         return $this->request->post('account.getAppPermissions', $access_token, $params);
     }
@@ -234,10 +237,10 @@ class Account {
      *      - integer count: Number of results to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getActiveOffers(string $access_token, array $params = array()) {
         return $this->request->post('account.getActiveOffers', $access_token, $params);
     }
@@ -250,10 +253,10 @@ class Account {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function banUser(string $access_token, array $params = array()) {
         return $this->request->post('account.banUser', $access_token, $params);
     }
@@ -266,10 +269,10 @@ class Account {
      *      - integer user_id: User ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function unbanUser(string $access_token, array $params = array()) {
         return $this->request->post('account.unbanUser', $access_token, $params);
     }
@@ -283,10 +286,10 @@ class Account {
      *      - integer count: Number of results to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getBanned(string $access_token, array $params = array()) {
         return $this->request->post('account.getBanned', $access_token, $params);
     }
@@ -302,10 +305,10 @@ class Account {
      *        *'lang' — user language. By default: all.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.getInfo', $access_token, $params);
     }
@@ -319,10 +322,10 @@ class Account {
      *      - string value: Setting value.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function setInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.setInfo', $access_token, $params);
     }
@@ -341,10 +344,10 @@ class Account {
      *      - string new_password: New password that will be set as a current
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function changePassword(string $access_token, array $params = array()) {
         return $this->request->post('account.changePassword', $access_token, $params);
     }
@@ -356,10 +359,10 @@ class Account {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getProfileInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.getProfileInfo', $access_token, $params);
     }
@@ -392,10 +395,11 @@ class Account {
      *      - string status: Status text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiInvalidAddressException Invalid screen name
      * 
-     **/
+     */
     public function saveProfileInfo(string $access_token, array $params = array()) {
         return $this->request->post('account.saveProfileInfo', $access_token, $params);
     }

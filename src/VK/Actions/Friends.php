@@ -5,6 +5,11 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiFriendsAddInEnemyException;
+use VK\Exceptions\Api\VKApiFriendsAddEnemyException;
+use VK\Exceptions\Api\VKApiFriendsAddYourselfException;
+use VK\Exceptions\Api\VKApiFriendsListLimitException;
+use VK\Exceptions\Api\VKApiFriendsListIdException;
 use VK\Actions\Enums\FriendsGetOrder;
 use VK\Actions\Enums\FriendsGetNameCase;
 use VK\Actions\Enums\FriendsGetRequestsSort;
@@ -16,7 +21,7 @@ class Friends {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -51,10 +56,10 @@ class Friends {
      *        @see FriendsGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('friends.get', $access_token, $params);
     }
@@ -73,10 +78,10 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of friends.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getOnline(string $access_token, array $params = array()) {
         return $this->request->post('friends.getOnline', $access_token, $params);
     }
@@ -97,10 +102,10 @@ class Friends {
      *      - integer offset: Offset needed to return a specific subset of mutual friends.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getMutual(string $access_token, array $params = array()) {
         return $this->request->post('friends.getMutual', $access_token, $params);
     }
@@ -113,10 +118,10 @@ class Friends {
      *      - integer count: Number of recently added friends to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRecent(string $access_token, array $params = array()) {
         return $this->request->post('friends.getRecent', $access_token, $params);
     }
@@ -138,10 +143,10 @@ class Friends {
      *        (default)
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getRequests(string $access_token, array $params = array()) {
         return $this->request->post('friends.getRequests', $access_token, $params);
     }
@@ -157,10 +162,13 @@ class Friends {
      *      - boolean follow: '1' to pass an incoming request to followers list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiFriendsAddInEnemyException Cannot add this user to friends as they have put you on their blacklist
+     * @throws VKApiFriendsAddEnemyException Cannot add this user to friends as you put him on blacklist
+     * @throws VKApiFriendsAddYourselfException Cannot add user himself as friend
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('friends.add', $access_token, $params);
     }
@@ -174,10 +182,10 @@ class Friends {
      *      - array list_ids: IDs of the friend lists to which to add the user.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('friends.edit', $access_token, $params);
     }
@@ -191,10 +199,10 @@ class Friends {
      *        the current user's friend list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('friends.delete', $access_token, $params);
     }
@@ -208,10 +216,10 @@ class Friends {
      *      - boolean return_system: '1' — to return system friend lists. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLists(string $access_token, array $params = array()) {
         return $this->request->post('friends.getLists', $access_token, $params);
     }
@@ -225,10 +233,11 @@ class Friends {
      *      - array user_ids: IDs of users to be added to the friend list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiFriendsListLimitException Reached the maximum number of lists
      * 
-     **/
+     */
     public function addList(string $access_token, array $params = array()) {
         return $this->request->post('friends.addList', $access_token, $params);
     }
@@ -247,10 +256,11 @@ class Friends {
      *        friend list.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiFriendsListIdException Invalid list id
      * 
-     **/
+     */
     public function editList(string $access_token, array $params = array()) {
         return $this->request->post('friends.editList', $access_token, $params);
     }
@@ -263,10 +273,11 @@ class Friends {
      *      - integer list_id: ID of the friend list to delete.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiFriendsListIdException Invalid list id
      * 
-     **/
+     */
     public function deleteList(string $access_token, array $params = array()) {
         return $this->request->post('friends.deleteList', $access_token, $params);
     }
@@ -278,10 +289,10 @@ class Friends {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAppUsers(string $access_token, array $params = array()) {
         return $this->request->post('friends.getAppUsers', $access_token, $params);
     }
@@ -299,10 +310,10 @@ class Friends {
      *        'contacts', 'education', 'online, counters'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getByPhones(string $access_token, array $params = array()) {
         return $this->request->post('friends.getByPhones', $access_token, $params);
     }
@@ -314,10 +325,10 @@ class Friends {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteAllRequests(string $access_token, array $params = array()) {
         return $this->request->post('friends.deleteAllRequests', $access_token, $params);
     }
@@ -342,10 +353,10 @@ class Friends {
      *        @see FriendsGetSuggestionsNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSuggestions(string $access_token, array $params = array()) {
         return $this->request->post('friends.getSuggestions', $access_token, $params);
     }
@@ -361,10 +372,10 @@ class Friends {
      *        to check that data has not been modified by the client. By default: '0'.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function areFriends(string $access_token, array $params = array()) {
         return $this->request->post('friends.areFriends', $access_token, $params);
     }
@@ -383,10 +394,10 @@ class Friends {
      *        @see FriendsGetAvailableForCallNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getAvailableForCall(string $access_token, array $params = array()) {
         return $this->request->post('friends.getAvailableForCall', $access_token, $params);
     }
@@ -409,10 +420,10 @@ class Friends {
      *      - integer count: Number of friends to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('friends.search', $access_token, $params);
     }

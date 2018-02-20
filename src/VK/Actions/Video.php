@@ -5,6 +5,12 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessVideoException;
+use VK\Exceptions\Api\VKApiVideoAlreadyAddedException;
+use VK\Exceptions\Api\VKApiWallAddPostException;
+use VK\Exceptions\Api\VKApiWallAdsPublishedException;
+use VK\Exceptions\Api\VKApiAlbumsLimitException;
+use VK\Exceptions\Api\VKApiVideoCommentsClosedException;
 use VK\Actions\Enums\VideoSearchSort;
 use VK\Actions\Enums\VideoGetCommentsSort;
 use VK\Actions\Enums\VideoReportReason;
@@ -14,7 +20,7 @@ class Video {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -39,10 +45,11 @@ class Video {
      *      - boolean extended: '1' — to return an extended response with additional fields
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('video.get', $access_token, $params);
     }
@@ -64,10 +71,10 @@ class Video {
      *      - boolean repeat: '1' — to repeat the playback of the video, '0' — to play the video once,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('video.edit', $access_token, $params);
     }
@@ -84,10 +91,12 @@ class Video {
      *        a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiVideoAlreadyAddedException This video is already added
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('video.add', $access_token, $params);
     }
@@ -114,10 +123,13 @@ class Video {
      *      - boolean repeat: '1' — to repeat the playback of the video, '0' — to play the video once,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiWallAddPostException Access to adding post denied
+     * @throws VKApiWallAdsPublishedException Advertisement post was recently added
      * 
-     **/
+     */
     public function save(string $access_token, array $params = array()) {
         return $this->request->post('video.save', $access_token, $params);
     }
@@ -132,10 +144,10 @@ class Video {
      *      - integer target_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('video.delete', $access_token, $params);
     }
@@ -149,10 +161,10 @@ class Video {
      *      - integer owner_id: ID of the user or community that owns the video.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('video.restore', $access_token, $params);
     }
@@ -177,10 +189,10 @@ class Video {
      *      - boolean extended: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('video.search', $access_token, $params);
     }
@@ -196,10 +208,10 @@ class Video {
      *      - boolean extended: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUserVideos(string $access_token, array $params = array()) {
         return $this->request->post('video.getUserVideos', $access_token, $params);
     }
@@ -216,10 +228,11 @@ class Video {
      *        current user
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function getAlbums(string $access_token, array $params = array()) {
         return $this->request->post('video.getAlbums', $access_token, $params);
     }
@@ -234,10 +247,11 @@ class Video {
      *      - integer album_id: Album ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function getAlbumById(string $access_token, array $params = array()) {
         return $this->request->post('video.getAlbumById', $access_token, $params);
     }
@@ -253,10 +267,12 @@ class Video {
      *        friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiAlbumsLimitException Albums number limit is reached
      * 
-     **/
+     */
     public function addAlbum(string $access_token, array $params = array()) {
         return $this->request->post('video.addAlbum', $access_token, $params);
     }
@@ -273,10 +289,11 @@ class Video {
      *        friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function editAlbum(string $access_token, array $params = array()) {
         return $this->request->post('video.editAlbum', $access_token, $params);
     }
@@ -290,10 +307,11 @@ class Video {
      *      - integer album_id: Album ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function deleteAlbum(string $access_token, array $params = array()) {
         return $this->request->post('video.deleteAlbum', $access_token, $params);
     }
@@ -309,10 +327,11 @@ class Video {
      *      - integer after: ID of the album after which the album in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function reorderAlbums(string $access_token, array $params = array()) {
         return $this->request->post('video.reorderAlbums', $access_token, $params);
     }
@@ -334,10 +353,11 @@ class Video {
      *      - integer after_video_id: ID of the video after which the photo in question shall be placed.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function reorderVideos(string $access_token, array $params = array()) {
         return $this->request->post('video.reorderVideos', $access_token, $params);
     }
@@ -354,10 +374,12 @@ class Video {
      *      - integer video_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
+     * @throws VKApiVideoAlreadyAddedException This video is already added
      * 
-     **/
+     */
     public function addToAlbum(string $access_token, array $params = array()) {
         return $this->request->post('video.addToAlbum', $access_token, $params);
     }
@@ -374,10 +396,11 @@ class Video {
      *      - integer video_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function removeFromAlbum(string $access_token, array $params = array()) {
         return $this->request->post('video.removeFromAlbum', $access_token, $params);
     }
@@ -393,10 +416,11 @@ class Video {
      *      - boolean extended: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessVideoException Access denied
      * 
-     **/
+     */
     public function getAlbumsByVideo(string $access_token, array $params = array()) {
         return $this->request->post('video.getAlbumsByVideo', $access_token, $params);
     }
@@ -418,10 +442,11 @@ class Video {
      *      - boolean extended:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiVideoCommentsClosedException Comments for this video are closed
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('video.getComments', $access_token, $params);
     }
@@ -444,10 +469,10 @@ class Video {
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('video.createComment', $access_token, $params);
     }
@@ -461,10 +486,10 @@ class Video {
      *      - integer comment_id: ID of the comment to be deleted.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('video.deleteComment', $access_token, $params);
     }
@@ -478,10 +503,10 @@ class Video {
      *      - integer comment_id: ID of the deleted comment.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('video.restoreComment', $access_token, $params);
     }
@@ -500,10 +525,10 @@ class Video {
      *        '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('video.editComment', $access_token, $params);
     }
@@ -517,10 +542,10 @@ class Video {
      *      - integer video_id: Video ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTags(string $access_token, array $params = array()) {
         return $this->request->post('video.getTags', $access_token, $params);
     }
@@ -536,10 +561,10 @@ class Video {
      *      - string tagged_name: Tag text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function putTag(string $access_token, array $params = array()) {
         return $this->request->post('video.putTag', $access_token, $params);
     }
@@ -554,10 +579,10 @@ class Video {
      *      - integer video_id: Video ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function removeTag(string $access_token, array $params = array()) {
         return $this->request->post('video.removeTag', $access_token, $params);
     }
@@ -571,10 +596,10 @@ class Video {
      *      - integer count: Number of videos to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getNewTags(string $access_token, array $params = array()) {
         return $this->request->post('video.getNewTags', $access_token, $params);
     }
@@ -593,10 +618,10 @@ class Video {
      *      - string search_query: (If the video was found in search results.) Search query string.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function report(string $access_token, array $params = array()) {
         return $this->request->post('video.report', $access_token, $params);
     }
@@ -613,10 +638,10 @@ class Video {
      *        @see VideoReportCommentReason
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function reportComment(string $access_token, array $params = array()) {
         return $this->request->post('video.reportComment', $access_token, $params);
     }
@@ -635,10 +660,10 @@ class Video {
      *        fields.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCatalog(string $access_token, array $params = array()) {
         return $this->request->post('video.getCatalog', $access_token, $params);
     }
@@ -655,10 +680,10 @@ class Video {
      *        fields.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getCatalogSection(string $access_token, array $params = array()) {
         return $this->request->post('video.getCatalogSection', $access_token, $params);
     }
@@ -671,10 +696,10 @@ class Video {
      *      - integer section_id: 'id' value returned with a block to hide by the '' method.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function hideCatalogSection(string $access_token, array $params = array()) {
         return $this->request->post('video.hideCatalogSection', $access_token, $params);
     }

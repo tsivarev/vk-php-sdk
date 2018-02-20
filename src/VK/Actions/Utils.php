@@ -11,7 +11,7 @@ class Utils {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -30,10 +30,10 @@ class Utils {
      *      - string url: Link to check (e.g., 'http://google.com').
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function checkLink(string $access_token, array $params = array()) {
         return $this->request->post('utils.checkLink', $access_token, $params);
     }
@@ -46,10 +46,10 @@ class Utils {
      *      - string key: Link key (characters after vk.cc/).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function deleteFromLastShortened(string $access_token, array $params = array()) {
         return $this->request->post('utils.deleteFromLastShortened', $access_token, $params);
     }
@@ -63,10 +63,10 @@ class Utils {
      *      - integer offset: Offset needed to return a specific subset of links.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLastShortenedLinks(string $access_token, array $params = array()) {
         return $this->request->post('utils.getLastShortenedLinks', $access_token, $params);
     }
@@ -85,10 +85,10 @@ class Utils {
      *        only.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getLinkStats(string $access_token, array $params = array()) {
         return $this->request->post('utils.getLinkStats', $access_token, $params);
     }
@@ -102,10 +102,10 @@ class Utils {
      *      - boolean private: 1 — private stats, 0 — public stats.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getShortLink(string $access_token, array $params = array()) {
         return $this->request->post('utils.getShortLink', $access_token, $params);
     }
@@ -119,10 +119,10 @@ class Utils {
      *        'rules_of_war'), or application.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function resolveScreenName(string $access_token, array $params = array()) {
         return $this->request->post('utils.resolveScreenName', $access_token, $params);
     }
@@ -134,10 +134,10 @@ class Utils {
      * @param $params array
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getServerTime(string $access_token, array $params = array()) {
         return $this->request->post('utils.getServerTime', $access_token, $params);
     }

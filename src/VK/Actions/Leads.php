@@ -5,13 +5,17 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiLimitsException;
+use VK\Exceptions\Api\VKApiVotesException;
+use VK\Exceptions\Api\VKApiActionFailedException;
+use VK\Exceptions\Api\VKApiParamException;
 use VK\Actions\Enums\LeadsGetUsersStatus;
 
 class Leads {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -32,10 +36,12 @@ class Leads {
      *      - string comment: Comment text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiLimitsException Out of limits
+     * @throws VKApiVotesException Not enough votes
      * 
-     **/
+     */
     public function complete(string $access_token, array $params = array()) {
         return $this->request->post('leads.complete', $access_token, $params);
     }
@@ -49,10 +55,11 @@ class Leads {
      *      - string secret: Secret key from the lead testing interface.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiLimitsException Out of limits
      * 
-     **/
+     */
     public function start(string $access_token, array $params = array()) {
         return $this->request->post('leads.start', $access_token, $params);
     }
@@ -68,10 +75,10 @@ class Leads {
      *      - string date_end: Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getStats(string $access_token, array $params = array()) {
         return $this->request->post('leads.getStats', $access_token, $params);
     }
@@ -92,10 +99,10 @@ class Leads {
      *        chronological.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUsers(string $access_token, array $params = array()) {
         return $this->request->post('leads.getUsers', $access_token, $params);
     }
@@ -111,10 +118,11 @@ class Leads {
      *      - string country: User country code.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiActionFailedException Unable to process action
      * 
-     **/
+     */
     public function checkUser(string $access_token, array $params = array()) {
         return $this->request->post('leads.checkUser', $access_token, $params);
     }
@@ -127,10 +135,11 @@ class Leads {
      *      - string data: Metric data obtained in the lead interface.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiParamException One of the parameters specified was missing or invalid
      * 
-     **/
+     */
     public function metricHit(string $access_token, array $params = array()) {
         return $this->request->post('leads.metricHit', $access_token, $params);
     }

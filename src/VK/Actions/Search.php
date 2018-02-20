@@ -10,7 +10,7 @@ class Search {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -33,10 +33,10 @@ class Search {
      *      - boolean search_global: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getHints(string $access_token, array $params = array()) {
         return $this->request->post('search.getHints', $access_token, $params);
     }

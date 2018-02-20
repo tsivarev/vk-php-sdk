@@ -5,12 +5,16 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiParamNoteIdException;
+use VK\Exceptions\Api\VKApiAccessNoteException;
+use VK\Exceptions\Api\VKApiAccessNoteCommentException;
+use VK\Exceptions\Api\VKApiAccessCommentException;
 
 class Notes {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -31,10 +35,11 @@ class Notes {
      *      - integer count: Number of notes to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('notes.get', $access_token, $params);
     }
@@ -48,10 +53,12 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessNoteException Access to note denied
+     * @throws VKApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('notes.getById', $access_token, $params);
     }
@@ -67,10 +74,10 @@ class Notes {
      *      - array privacy_comment:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('notes.add', $access_token, $params);
     }
@@ -87,10 +94,11 @@ class Notes {
      *      - array privacy_comment:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('notes.edit', $access_token, $params);
     }
@@ -103,10 +111,11 @@ class Notes {
      *      - integer note_id: Note ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiParamNoteIdException Note not found
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('notes.delete', $access_token, $params);
     }
@@ -121,10 +130,11 @@ class Notes {
      *      - integer count: Number of comments to return.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessNoteException Access to note denied
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('notes.getComments', $access_token, $params);
     }
@@ -142,10 +152,12 @@ class Notes {
      *      - string guid:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessNoteException Access to note denied
+     * @throws VKApiAccessNoteCommentException You can't comment this note
      * 
-     **/
+     */
     public function createComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.createComment', $access_token, $params);
     }
@@ -160,10 +172,11 @@ class Notes {
      *      - string message: New comment text.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessCommentException Access to comment denied
      * 
-     **/
+     */
     public function editComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.editComment', $access_token, $params);
     }
@@ -177,10 +190,12 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessNoteException Access to note denied
+     * @throws VKApiAccessCommentException Access to comment denied
      * 
-     **/
+     */
     public function deleteComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.deleteComment', $access_token, $params);
     }
@@ -194,10 +209,11 @@ class Notes {
      *      - integer owner_id: Note owner ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessCommentException Access to comment denied
      * 
-     **/
+     */
     public function restoreComment(string $access_token, array $params = array()) {
         return $this->request->post('notes.restoreComment', $access_token, $params);
     }

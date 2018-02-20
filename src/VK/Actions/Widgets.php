@@ -10,7 +10,7 @@ class Widgets {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -34,10 +34,10 @@ class Widgets {
      *      - integer count:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getComments(string $access_token, array $params = array()) {
         return $this->request->post('widgets.getComments', $access_token, $params);
     }
@@ -54,10 +54,10 @@ class Widgets {
      *      - integer count:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getPages(string $access_token, array $params = array()) {
         return $this->request->post('widgets.getPages', $access_token, $params);
     }

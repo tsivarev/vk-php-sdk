@@ -5,6 +5,9 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiAccessPageException;
+use VK\Exceptions\Api\VKApiParamPageIdException;
+use VK\Exceptions\Api\VKApiParamTitleException;
 use VK\Actions\Enums\PagesSaveAccessView;
 use VK\Actions\Enums\PagesSaveAccessEdit;
 
@@ -12,7 +15,7 @@ class Pages {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -37,10 +40,10 @@ class Pages {
      *      - boolean need_html: '1' — to return the page as HTML,
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('pages.get', $access_token, $params);
     }
@@ -57,10 +60,13 @@ class Pages {
      *      - string title: Wiki page title.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessPageException Access to page denied
+     * @throws VKApiParamPageIdException Page not found
+     * @throws VKApiParamTitleException Invalid title
      * 
-     **/
+     */
     public function save(string $access_token, array $params = array()) {
         return $this->request->post('pages.save', $access_token, $params);
     }
@@ -81,10 +87,12 @@ class Pages {
      *        @see PagesSaveAccessEdit
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessPageException Access to page denied
+     * @throws VKApiParamPageIdException Page not found
      * 
-     **/
+     */
     public function saveAccess(string $access_token, array $params = array()) {
         return $this->request->post('pages.saveAccess', $access_token, $params);
     }
@@ -99,10 +107,12 @@ class Pages {
      *      - integer user_id: 
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessPageException Access to page denied
+     * @throws VKApiParamPageIdException Page not found
      * 
-     **/
+     */
     public function getHistory(string $access_token, array $params = array()) {
         return $this->request->post('pages.getHistory', $access_token, $params);
     }
@@ -115,10 +125,11 @@ class Pages {
      *      - integer group_id: ID of the community that owns the wiki page.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessPageException Access to page denied
      * 
-     **/
+     */
     public function getTitles(string $access_token, array $params = array()) {
         return $this->request->post('pages.getTitles', $access_token, $params);
     }
@@ -134,10 +145,11 @@ class Pages {
      *      - boolean need_html: '1' — to return the page as HTML
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAccessPageException Access to page denied
      * 
-     **/
+     */
     public function getVersion(string $access_token, array $params = array()) {
         return $this->request->post('pages.getVersion', $access_token, $params);
     }
@@ -151,10 +163,10 @@ class Pages {
      *      - integer group_id: ID of the group in the context of which this markup is interpreted.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function parseWiki(string $access_token, array $params = array()) {
         return $this->request->post('pages.parseWiki', $access_token, $params);
     }
@@ -167,10 +179,10 @@ class Pages {
      *      - string url: Address of the page where you need to refesh the cached version
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function clearCache(string $access_token, array $params = array()) {
         return $this->request->post('pages.clearCache', $access_token, $params);
     }

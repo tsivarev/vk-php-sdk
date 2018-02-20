@@ -109,6 +109,30 @@ class VKOAuth {
     }
 
     /**
+     * @param int $client_id
+     * @param string $client_secret
+     * @param string $redirect_uri
+     * @param string $code
+     * @return mixed
+     * @throws VKClientException
+     * @throws VKOAuthException
+     */
+    public function getAccessToken(int $client_id, string $client_secret, string $redirect_uri, string $code) {
+        $params = array(
+            static::OAUTH_PARAM_CLIENT_ID => $client_id,
+            static::OAUTH_PARAM_CLIENT_SECRET => $client_secret,
+            static::OAUTH_PARAM_REDIRECT_URI => $redirect_uri,
+            static::OAUTH_PARAM_CODE => $code
+        );
+        try {
+            $response = $this->http_client->post($this->url_access_token, $params);
+        } catch (HttpRequestException $e) {
+            throw new VKClientException($e);
+        }
+        return $this->checkOAuthResponse($response);
+    }
+
+    /**
      * Decodes the authorization response and checks its status code and whether it has an error.
      *
      * @param TransportClientResponse $response

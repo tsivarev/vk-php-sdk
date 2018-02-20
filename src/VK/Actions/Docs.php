@@ -5,12 +5,17 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiSaveFileException;
+use VK\Exceptions\Api\VKApiParamDocDeleteAccessException;
+use VK\Exceptions\Api\VKApiParamDocIdException;
+use VK\Exceptions\Api\VKApiParamDocAccessException;
+use VK\Exceptions\Api\VKApiParamDocTitleException;
 
 class Docs {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -32,10 +37,10 @@ class Docs {
      *        designate a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('docs.get', $access_token, $params);
     }
@@ -48,10 +53,10 @@ class Docs {
      *      - array docs: Document IDs. Example: , "66748_91488,66748_91455",
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('docs.getById', $access_token, $params);
     }
@@ -64,10 +69,10 @@ class Docs {
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('docs.getUploadServer', $access_token, $params);
     }
@@ -80,10 +85,10 @@ class Docs {
      *      - integer group_id: Community ID (if the document will be uploaded to the community).
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getWallUploadServer(string $access_token, array $params = array()) {
         return $this->request->post('docs.getWallUploadServer', $access_token, $params);
     }
@@ -99,10 +104,11 @@ class Docs {
      *      - string tags: Document tags.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiSaveFileException Couldn't save file
      * 
-     **/
+     */
     public function save(string $access_token, array $params = array()) {
         return $this->request->post('docs.save', $access_token, $params);
     }
@@ -117,10 +123,12 @@ class Docs {
      *      - integer doc_id: Document ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiParamDocDeleteAccessException Access to document deleting is denied
+     * @throws VKApiParamDocIdException Invalid document id
      * 
-     **/
+     */
     public function delete(string $access_token, array $params = array()) {
         return $this->request->post('docs.delete', $access_token, $params);
     }
@@ -137,10 +145,10 @@ class Docs {
      *        document's data.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function add(string $access_token, array $params = array()) {
         return $this->request->post('docs.add', $access_token, $params);
     }
@@ -154,10 +162,10 @@ class Docs {
      *        designate a community ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getTypes(string $access_token, array $params = array()) {
         return $this->request->post('docs.getTypes', $access_token, $params);
     }
@@ -172,10 +180,10 @@ class Docs {
      *      - integer offset: Offset needed to return a specific subset of results.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('docs.search', $access_token, $params);
     }
@@ -191,10 +199,13 @@ class Docs {
      *      - array tags: Document tags.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiParamDocAccessException Access to document is denied
+     * @throws VKApiParamDocIdException Invalid document id
+     * @throws VKApiParamDocTitleException Invalid document title
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('docs.edit', $access_token, $params);
     }

@@ -5,13 +5,16 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiPollsAccessException;
+use VK\Exceptions\Api\VKApiPollsAnswerIdException;
+use VK\Exceptions\Api\VKApiPollsPollIdException;
 use VK\Actions\Enums\PollsGetVotersNameCase;
 
 class Polls {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -33,10 +36,11 @@ class Polls {
      *      - integer poll_id: Poll ID.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiPollsAccessException Access to poll denied
      * 
-     **/
+     */
     public function getById(string $access_token, array $params = array()) {
         return $this->request->post('polls.getById', $access_token, $params);
     }
@@ -53,10 +57,13 @@ class Polls {
      *      - boolean is_board:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiPollsAccessException Access to poll denied
+     * @throws VKApiPollsAnswerIdException Invalid answer id
+     * @throws VKApiPollsPollIdException Invalid poll id
      * 
-     **/
+     */
     public function addVote(string $access_token, array $params = array()) {
         return $this->request->post('polls.addVote', $access_token, $params);
     }
@@ -73,10 +80,13 @@ class Polls {
      *      - boolean is_board:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiPollsAccessException Access to poll denied
+     * @throws VKApiPollsAnswerIdException Invalid answer id
+     * @throws VKApiPollsPollIdException Invalid poll id
      * 
-     **/
+     */
     public function deleteVote(string $access_token, array $params = array()) {
         return $this->request->post('polls.deleteVote', $access_token, $params);
     }
@@ -105,10 +115,13 @@ class Polls {
      *        @see PollsGetVotersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiPollsAccessException Access to poll denied
+     * @throws VKApiPollsAnswerIdException Invalid answer id
+     * @throws VKApiPollsPollIdException Invalid poll id
      * 
-     **/
+     */
     public function getVoters(string $access_token, array $params = array()) {
         return $this->request->post('polls.getVoters', $access_token, $params);
     }
@@ -127,10 +140,10 @@ class Polls {
      *        to 10 answers.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function create(string $access_token, array $params = array()) {
         return $this->request->post('polls.create', $access_token, $params);
     }
@@ -149,10 +162,10 @@ class Polls {
      *      - string delete_answers: list of answer ids to be deleted. For example: "[382967099, 382967103]"
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function edit(string $access_token, array $params = array()) {
         return $this->request->post('polls.edit', $access_token, $params);
     }

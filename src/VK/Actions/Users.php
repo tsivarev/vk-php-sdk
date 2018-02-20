@@ -18,7 +18,7 @@ class Users {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -45,10 +45,10 @@ class Users {
      *        @see UsersGetNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function get(string $access_token, array $params = array()) {
         return $this->request->post('users.get', $access_token, $params);
     }
@@ -99,10 +99,10 @@ class Users {
      *      - array from_list:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function search(string $access_token, array $params = array()) {
         return $this->request->post('users.search', $access_token, $params);
     }
@@ -115,10 +115,10 @@ class Users {
      *      - integer user_id:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function isAppUser(string $access_token, array $params = array()) {
         return $this->request->post('users.isAppUser', $access_token, $params);
     }
@@ -136,10 +136,10 @@ class Users {
      *      - array fields:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getSubscriptions(string $access_token, array $params = array()) {
         return $this->request->post('users.getSubscriptions', $access_token, $params);
     }
@@ -161,10 +161,10 @@ class Users {
      *        @see UsersGetFollowersNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getFollowers(string $access_token, array $params = array()) {
         return $this->request->post('users.getFollowers', $access_token, $params);
     }
@@ -181,10 +181,10 @@ class Users {
      *      - string comment: Comment describing the complaint.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function report(string $access_token, array $params = array()) {
         return $this->request->post('users.report', $access_token, $params);
     }
@@ -212,10 +212,10 @@ class Users {
      *        @see UsersGetNearbyNameCase
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
      * 
-     **/
+     */
     public function getNearby(string $access_token, array $params = array()) {
         return $this->request->post('users.getNearby', $access_token, $params);
     }

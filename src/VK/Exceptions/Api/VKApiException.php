@@ -2,7 +2,8 @@
 
 namespace VK\Exceptions\Api;
 
-class VKApiException extends \Exception {
+class VKApiException extends \Exception
+{
     protected $code;
     protected $description;
     protected $message;

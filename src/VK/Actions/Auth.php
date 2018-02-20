@@ -5,13 +5,19 @@ namespace VK\Actions;
 use VK\Client\VKApiRequest;
 use VK\Exceptions\VKClientException;
 use VK\Exceptions\Api\VKApiException;
+use VK\Exceptions\Api\VKApiPhoneAlreadyUsedException;
+use VK\Exceptions\Api\VKApiAuthDelayException;
+use VK\Exceptions\Api\VKApiParamPhoneException;
+use VK\Exceptions\Api\VKApiAuthParamPasswordException;
+use VK\Exceptions\Api\VKApiAuthParamCodeException;
+use VK\Exceptions\Api\VKApiAuthFloodException;
 use VK\Actions\Enums\AuthSignupSex;
 
 class Auth {
 
     /**
      * @var VKApiRequest
-     **/
+     */
     private $request;
 
     /**
@@ -33,10 +39,13 @@ class Auth {
      *      - boolean auth_by_phone:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiPhoneAlreadyUsedException This phone number is used by another user
+     * @throws VKApiAuthDelayException Processing. Try later
+     * @throws VKApiParamPhoneException Invalid phone number
      * 
-     **/
+     */
     public function checkPhone(string $access_token, array $params = array()) {
         return $this->request->post('auth.checkPhone', $access_token, $params);
     }
@@ -64,10 +73,13 @@ class Auth {
      *      - string sid: Session ID required for method recall when SMS was not delivered.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiPhoneAlreadyUsedException This phone number is used by another user
+     * @throws VKApiAuthDelayException Processing. Try later
+     * @throws VKApiParamPhoneException Invalid phone number
      * 
-     **/
+     */
     public function signup(string $access_token, array $params = array()) {
         return $this->request->post('auth.signup', $access_token, $params);
     }
@@ -87,10 +99,12 @@ class Auth {
      *      - integer intro:
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAuthParamPasswordException Invalid password
+     * @throws VKApiAuthParamCodeException Incorrect code
      * 
-     **/
+     */
     public function confirm(string $access_token, array $params = array()) {
         return $this->request->post('auth.confirm', $access_token, $params);
     }
@@ -105,10 +119,11 @@ class Auth {
      *      - string last_name: User last name.
      * 
      * @return mixed
-     * @throws VKClientException in case of error on the Api side
+     * @throws VKClientException in case of network error
      * @throws VKApiException in case of network error
+     * @throws VKApiAuthFloodException Too many auth attempts, try again later
      * 
-     **/
+     */
     public function restore(string $access_token, array $params = array()) {
         return $this->request->post('auth.restore', $access_token, $params);
     }
